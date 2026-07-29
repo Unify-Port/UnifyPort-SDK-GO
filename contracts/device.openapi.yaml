@@ -1,0 +1,3113 @@
+openapi: 3.1.0
+info:
+  title: UnifyPort Device API
+  version: 0.1.0
+  license:
+    name: Proprietary
+    identifier: LicenseRef-Proprietary
+  description: |
+    Device API 是 UnifyPort 的控制面 HTTP API，用于管理 workspace、API Key、provider 账号、账号授权与运行态、消息发送、会话、联系人、群组以及业务 webhook endpoint。
+
+    本契约仅描述面向 SDK 调用方公开的 `/v1/` 接口，并使用 `X-Api-Key` 解析 workspace 上下文。
+servers:
+  - url: /
+    description: SDK 调用方通过 baseUrl 显式配置 API 根地址。
+tags:
+  - name: Workspace
+    description: 当前 API Key 所属 workspace。
+  - name: API Keys
+    description: workspace API Key 管理。
+  - name: Providers
+    description: provider 元数据查询。
+  - name: Accounts
+    description: provider 账号资源管理。
+  - name: Account Auth
+    description: provider 账号授权流程。
+  - name: Account Runtime
+    description: provider 账号运行态控制。
+  - name: Conversations
+    description: 会话列表、详情、成员、读写状态、静音、置顶与标签。
+  - name: Contacts
+    description: provider 联系人视图与联系人动作。
+  - name: Groups
+    description: provider 群组视图与群组动作。
+  - name: Messages
+    description: 统一消息发送与消息动作。
+  - name: Webhook Endpoints
+    description: 业务 webhook endpoint 管理。
+security:
+  - ApiKeyAuth: []
+paths:
+  /v1/workspace:
+    get:
+      tags: [Workspace]
+      summary: 获取当前 workspace
+      operationId: getWorkspace
+      responses:
+        "200":
+          description: 当前 workspace 信息。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Workspace"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    patch:
+      tags: [Workspace]
+      summary: 更新当前 workspace
+      operationId: updateWorkspace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkspaceUpdateRequest"
+      responses:
+        "200":
+          description: 更新后的 workspace 信息。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Workspace"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /v1/api-keys:
+    get:
+      tags: [API Keys]
+      summary: 列出 API Key
+      operationId: listApiKeys
+      responses:
+        "200":
+          description: API Key 列表。不会返回完整明文 API Key。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/APIKey"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    post:
+      tags: [API Keys]
+      summary: 创建 API Key
+      operationId: createApiKey
+      description: 完整 `api_key` 只在创建响应中出现一次，客户端应自行保存。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/APIKeyCreateRequest"
+            examples:
+              default:
+                value:
+                  name: 默认密钥
+                  prefix: dk_live
+      responses:
+        "201":
+          description: 创建成功，返回一次性明文 API Key 与可持久展示的 Key 元数据。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/APIKeyCreateResult"
+              examples:
+                created:
+                  value:
+                    request_id: req_xxx
+                    data:
+                      key:
+                        id: ak_xxx
+                        name: 默认密钥
+                        key_prefix: dk_live
+                        status: active
+                      api_key: "<api-key-visible-once>"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/api-keys/{key_id}:
+    patch:
+      tags: [API Keys]
+      summary: 更新 API Key 状态
+      operationId: updateApiKeyStatus
+      parameters:
+        - $ref: "#/components/parameters/KeyId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/APIKeyStatusUpdateRequest"
+      responses:
+        "200":
+          description: 更新后的 API Key 元数据。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/APIKey"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/api-keys/{key_id}/rotate:
+    post:
+      tags: [API Keys]
+      summary: 轮换 API Key
+      operationId: rotateApiKey
+      description: 轮换后返回新的完整 `api_key`，旧完整密钥不可恢复。
+      parameters:
+        - $ref: "#/components/parameters/KeyId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/APIKeyCreateRequest"
+      responses:
+        "200":
+          description: 轮换成功。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/APIKeyCreateResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/providers/{provider}/regions:
+    get:
+      tags: [Providers]
+      summary: 查询 provider 地区可用性
+      operationId: listProviderRegions
+      parameters:
+        - $ref: "#/components/parameters/Provider"
+      responses:
+        "200":
+          description: provider 支持的 region 及是否可分配。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ProviderRegionsResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /v1/accounts:
+    get:
+      tags: [Accounts]
+      summary: 列出账号
+      operationId: listAccounts
+      responses:
+        "200":
+          description: 当前 workspace 下的账号列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Account"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    post:
+      tags: [Accounts]
+      summary: 创建账号
+      operationId: createAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountRequest"
+      responses:
+        "201":
+          description: 创建成功。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Account"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+
+  /v1/accounts/{account_id}:
+    get:
+      tags: [Accounts]
+      summary: 获取账号详情
+      operationId: getAccount
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        "200":
+          description: 账号详情。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Account"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    patch:
+      tags: [Accounts]
+      summary: 更新账号
+      operationId: updateAccount
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountRequest"
+      responses:
+        "200":
+          description: 更新后的账号。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Account"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    delete:
+      tags: [Accounts]
+      summary: 删除账号
+      operationId: deleteAccount
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        "204":
+          description: 删除成功，无响应体。
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth:
+    get:
+      tags: [Account Auth]
+      summary: 获取账号授权状态
+      operationId: getAccountAuthState
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        "200":
+          description: 当前授权状态。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/AccountSession"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /v1/accounts/{account_id}/auth/start:
+    post:
+      tags: [Account Auth]
+      summary: 启动验证码类授权
+      operationId: startAccountAuth
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/qr/start:
+    post:
+      tags: [Account Auth]
+      summary: 启动二维码授权
+      operationId: startAccountQrAuth
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/qr/check:
+    post:
+      tags: [Account Auth]
+      summary: 检查二维码授权结果
+      operationId: checkAccountQrAuth
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/code:
+    post:
+      tags: [Account Auth]
+      summary: 提交验证码
+      operationId: submitAccountAuthCode
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        description: provider 授权参数。常见字段为 `code`。
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FreeFormObject"
+            examples:
+              code:
+                value:
+                  code: "123456"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/password:
+    post:
+      tags: [Account Auth]
+      summary: 提交二次密码
+      operationId: submitAccountAuthPassword
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        description: provider 授权参数。常见字段为 `password`。
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FreeFormObject"
+            examples:
+              password:
+                value:
+                  password: "<password>"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/session:
+    post:
+      tags: [Account Auth]
+      summary: 导入会话授权
+      operationId: importAccountAuthSession
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        description: provider 授权参数。常见字段为 `session_url`。
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FreeFormObject"
+            examples:
+              sessionUrl:
+                value:
+                  session_url: https://example.com/account.session
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/auth/cancel:
+    post:
+      tags: [Account Auth]
+      summary: 取消授权流程
+      operationId: cancelAccountAuth
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/ActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/runtime/refresh:
+    post:
+      tags: [Account Runtime]
+      summary: 刷新账号运行态
+      operationId: refreshAccountRuntime
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/RuntimeActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/runtime/start:
+    post:
+      tags: [Account Runtime]
+      summary: 启动账号运行态
+      operationId: startAccountRuntime
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/RuntimeActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/runtime/stop:
+    post:
+      tags: [Account Runtime]
+      summary: 停止账号运行态
+      operationId: stopAccountRuntime
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/RuntimeActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/runtime/reconnect:
+    post:
+      tags: [Account Runtime]
+      summary: 重连账号运行态
+      operationId: reconnectAccountRuntime
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ActionParams"
+      responses:
+        "200":
+          $ref: "#/components/responses/RuntimeActionResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations:
+    get:
+      tags: [Conversations]
+      summary: 列出会话
+      operationId: listConversations
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/ConversationTypeFilter"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+        - name: label_id
+          in: query
+          required: false
+          schema:
+            type: string
+          description: 按会话标签过滤。
+      responses:
+        "200":
+          description: 会话分页列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationListResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/info:
+    get:
+      tags: [Conversations]
+      summary: 获取会话详情
+      operationId: getConversation
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/ConversationIdQuery"
+        - $ref: "#/components/parameters/ConversationType"
+      responses:
+        "200":
+          description: 会话详情。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Conversation"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/members:
+    get:
+      tags: [Conversations]
+      summary: 列出会话成员
+      operationId: listConversationMembers
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/ConversationIdQuery"
+        - $ref: "#/components/parameters/ConversationType"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200":
+          description: 会话成员分页列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationMemberListResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/read:
+    post:
+      tags: [Conversations]
+      summary: 标记会话已读
+      operationId: markConversationRead
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConversationReadRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/unread:
+    post:
+      tags: [Conversations]
+      summary: 标记会话未读
+      operationId: markConversationUnread
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ConversationId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/mute:
+    post:
+      tags: [Conversations]
+      summary: 静音会话
+      operationId: muteConversation
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConversationMuteRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/unmute:
+    post:
+      tags: [Conversations]
+      summary: 取消静音会话
+      operationId: unmuteConversation
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ConversationId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/pin:
+    post:
+      tags: [Conversations]
+      summary: 置顶会话
+      operationId: pinConversation
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ConversationId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/unpin:
+    post:
+      tags: [Conversations]
+      summary: 取消置顶会话
+      operationId: unpinConversation
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ConversationId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/labels:
+    get:
+      tags: [Conversations]
+      summary: 列出会话标签
+      operationId: listConversationLabels
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200":
+          description: 会话标签分页列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationLabelListResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+    post:
+      tags: [Conversations]
+      summary: 给会话打标或移除标签
+      operationId: setConversationLabelMembers
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConversationLabelMembersRequest"
+      responses:
+        "200":
+          description: 标签成员操作结果。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationLabelMembersResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/labels/upsert:
+    post:
+      tags: [Conversations]
+      summary: 新建或更新会话标签
+      operationId: upsertConversationLabel
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConversationLabelUpsertRequest"
+      responses:
+        "200":
+          description: 新建或更新后的标签。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationLabel"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/conversations/labels/delete:
+    post:
+      tags: [Conversations]
+      summary: 删除会话标签
+      operationId: deleteConversationLabel
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConversationLabelDeleteRequest"
+      responses:
+        "200":
+          description: 删除结果。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ConversationLabelDeleteResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts:
+    get:
+      tags: [Contacts]
+      summary: 列出联系人
+      operationId: listContacts
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
+          description: 关键字过滤。
+        - name: updated_since
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: RFC3339 时间戳，只返回此时间后更新的联系人；provider 不支持时可能退化为全量。
+      responses:
+        "200":
+          description: 联系人分页列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ContactListResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts/info:
+    get:
+      tags: [Contacts]
+      summary: 获取联系人详情
+      operationId: getContact
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - name: contact_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: provider 侧联系人 ID，因可能包含 `@` 等字符，固定走 query。
+      responses:
+        "200":
+          description: 联系人详情。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Contact"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts/blocklist:
+    get:
+      tags: [Contacts]
+      summary: 查询联系人黑名单
+      operationId: listContactBlocklist
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        "200":
+          description: 黑名单列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/ContactBlocklistResult"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts/block:
+    post:
+      tags: [Contacts]
+      summary: 封锁联系人
+      operationId: blockContact
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ContactId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts/unblock:
+    post:
+      tags: [Contacts]
+      summary: 解封联系人
+      operationId: unblockContact
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/ContactId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/contacts/note:
+    post:
+      tags: [Contacts]
+      summary: 设置或清空联系人备注
+      operationId: setContactNote
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactNoteRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups:
+    get:
+      tags: [Groups]
+      summary: 列出群组
+      operationId: listGroups
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200":
+          description: 群组分页列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/GroupListResult"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/info:
+    get:
+      tags: [Groups]
+      summary: 获取群组详情
+      operationId: getGroup
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - name: group_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: provider 侧群 ID，因可能包含 `@` 等字符，固定走 query。
+      responses:
+        "200":
+          description: 群组详情。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/Group"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/create:
+    post:
+      tags: [Groups]
+      summary: 创建群组
+      operationId: createGroup
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupCreateRequest"
+      responses:
+        "200":
+          description: 创建成功，返回新群 ID。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/GroupCreateResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/leave:
+    post:
+      tags: [Groups]
+      summary: 退出群组
+      operationId: leaveGroup
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        $ref: "#/components/requestBodies/GroupId"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/members:
+    post:
+      tags: [Groups]
+      summary: 管理群成员
+      operationId: updateGroupMembers
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupMemberUpdateRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/update-info:
+    post:
+      tags: [Groups]
+      summary: 修改群信息
+      operationId: updateGroupInfo
+      description: "`name`、`description`、`avatar_url` 三个字段每次只能传一个。"
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupInfoUpdateRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/join-requests:
+    get:
+      tags: [Groups]
+      summary: 列出待审批入群申请
+      operationId: listGroupJoinRequests
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - name: group_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: provider 侧群 ID。
+      responses:
+        "200":
+          description: 入群申请列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/GroupJoinRequestsResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/join-requests/update:
+    post:
+      tags: [Groups]
+      summary: 处理入群申请
+      operationId: updateGroupJoinRequests
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupJoinRequestsUpdateRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/join-approval-mode:
+    post:
+      tags: [Groups]
+      summary: 设置入群审批模式
+      operationId: setGroupJoinApprovalMode
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupJoinApprovalModeRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/accounts/{account_id}/groups/invite-code:
+    get:
+      tags: [Groups]
+      summary: 获取群邀请链接或邀请码
+      operationId: getGroupInviteCode
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+        - name: group_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: provider 侧群 ID。
+      responses:
+        "200":
+          description: 邀请信息。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/GroupInviteCode"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/messages:
+    post:
+      tags: [Messages]
+      summary: 发送消息
+      operationId: sendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendMessageRequest"
+            examples:
+              text:
+                value:
+                  account_id: acc_123
+                  to:
+                    id: target_123
+                    type: user
+                  message:
+                    type: text
+                    text: hello
+              contact:
+                value:
+                  account_id: acc_123
+                  to:
+                    id: 120363413405165529@g.us
+                    type: group
+                  message:
+                    type: contact
+                    contacts:
+                      - name: 张三
+                        phones:
+                          - number: "+8613800000000"
+                            type: CELL
+      responses:
+        "200":
+          description: 消息发送请求已被接收或完成。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/SendMessageResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/messages/pin:
+    post:
+      tags: [Messages]
+      summary: 置顶或取消置顶消息
+      operationId: pinMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessagePinRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/messages/revoke:
+    post:
+      tags: [Messages]
+      summary: 撤回消息
+      operationId: revokeMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageRevokeRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/messages/reaction:
+    post:
+      tags: [Messages]
+      summary: 给消息加表情回应或取消回应
+      operationId: reactMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageReactionRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/messages/edit:
+    post:
+      tags: [Messages]
+      summary: 编辑消息文本
+      operationId: editMessage
+      description: 当前主要由支持该能力的 provider 实现，通常仅支持文本消息。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageEditRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/OkResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "501":
+          $ref: "#/components/responses/UnsupportedByProvider"
+        "502":
+          $ref: "#/components/responses/BadGateway"
+
+  /v1/webhook-endpoints:
+    get:
+      tags: [Webhook Endpoints]
+      summary: 列出 webhook endpoint
+      operationId: listWebhookEndpoints
+      responses:
+        "200":
+          description: Webhook endpoint 列表。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/WebhookEndpoint"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    post:
+      tags: [Webhook Endpoints]
+      summary: 创建 webhook endpoint
+      operationId: createWebhookEndpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookEndpointRequest"
+      responses:
+        "201":
+          description: 创建成功。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/WebhookEndpoint"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/webhook-endpoints/{endpoint_id}:
+    get:
+      tags: [Webhook Endpoints]
+      summary: 获取 webhook endpoint
+      operationId: getWebhookEndpoint
+      parameters:
+        - $ref: "#/components/parameters/EndpointId"
+      responses:
+        "200":
+          description: Webhook endpoint 详情。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/WebhookEndpoint"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "500":
+          $ref: "#/components/responses/InternalError"
+    patch:
+      tags: [Webhook Endpoints]
+      summary: 更新 webhook endpoint
+      operationId: updateWebhookEndpoint
+      parameters:
+        - $ref: "#/components/parameters/EndpointId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookEndpointRequest"
+      responses:
+        "200":
+          description: 更新后的 webhook endpoint。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/WebhookEndpoint"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+    delete:
+      tags: [Webhook Endpoints]
+      summary: 删除 webhook endpoint
+      operationId: deleteWebhookEndpoint
+      parameters:
+        - $ref: "#/components/parameters/EndpointId"
+      responses:
+        "204":
+          description: 删除成功，无响应体。
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /v1/webhook-endpoints/{endpoint_id}/deactivate:
+    post:
+      tags: [Webhook Endpoints]
+      summary: 停用 webhook endpoint
+      operationId: deactivateWebhookEndpoint
+      parameters:
+        - $ref: "#/components/parameters/EndpointId"
+      responses:
+        "200":
+          description: 停用后的 webhook endpoint。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ResponseMeta"
+                  - type: object
+                    required: [data]
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/WebhookEndpoint"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: 当前 workspace 的 API Key。
+
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Device API 签发的账号 public_id，例如 `acc_xxx`。
+    KeyId:
+      name: key_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: API Key public_id，例如 `ak_xxx`。
+    EndpointId:
+      name: endpoint_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Webhook endpoint public_id，例如 `we_xxx`。
+    Provider:
+      name: provider
+      in: path
+      required: true
+      schema:
+        $ref: "#/components/schemas/ProviderName"
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 上一次响应返回的 `next_cursor`。
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+      description: 每页数量；未提供时的默认值可能因 provider 而异。
+    ConversationType:
+      name: type
+      in: query
+      required: false
+      schema:
+        $ref: "#/components/schemas/ConversationType"
+      description: 会话类型。
+    ConversationTypeFilter:
+      name: type
+      in: query
+      required: false
+      schema:
+        type: string
+        examples: [user, group, "user,group"]
+      description: 会话类型过滤，支持逗号分隔多选。
+    ConversationIdQuery:
+      name: conversation_id
+      in: query
+      required: true
+      schema:
+        type: string
+      description: provider 侧会话 ID，因可能包含 `@`、`:` 等字符，固定走 query。
+
+  requestBodies:
+    ActionParams:
+      description: provider 动作参数。不同 provider 可能支持不同字段；空对象表示不传额外参数。
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/FreeFormObject"
+          examples:
+            empty:
+              value: {}
+    ConversationId:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ConversationIdRequest"
+    ContactId:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ContactIdRequest"
+    GroupId:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/GroupIdRequest"
+
+  responses:
+    BadRequest:
+      description: 请求体或参数非法。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    Unauthorized:
+      description: 缺少或无法校验 API Key。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          examples:
+            missingApiKey:
+              value:
+                request_id: req_xxx
+                error:
+                  code: missing_api_key
+                  message: Missing X-Api-Key header
+    NotFound:
+      description: 资源不存在或路由不存在。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    Conflict:
+      description: 请求与当前资源状态冲突。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    InternalError:
+      description: 服务端内部错误或 provider 链路未映射错误。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    ServiceUnavailable:
+      description: 服务暂不可用。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    UnsupportedByProvider:
+      description: 当前 provider 不支持该能力。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          examples:
+            unsupported:
+              value:
+                request_id: req_xxx
+                error:
+                  code: unsupported_by_provider
+                  message: Operation not supported by this provider
+    BadGateway:
+      description: 当前 provider 能力不可用。
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    OkResult:
+      description: 操作成功。
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/ResponseMeta"
+              - type: object
+                required: [data]
+                properties:
+                  data:
+                    $ref: "#/components/schemas/OkData"
+    ActionResult:
+      description: provider 动作结果。字段随 action 与 provider 不同而变化。
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/ResponseMeta"
+              - type: object
+                required: [data]
+                properties:
+                  data:
+                    $ref: "#/components/schemas/FreeFormObject"
+    RuntimeActionResult:
+      description: 账号运行态动作结果。
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/ResponseMeta"
+              - type: object
+                required: [data]
+                properties:
+                  data:
+                    $ref: "#/components/schemas/RuntimeActionResult"
+
+  schemas:
+    ResponseMeta:
+      type: object
+      properties:
+        request_id:
+          type: string
+          description: 服务端生成的请求 ID。
+        client_request_id:
+          type: string
+          description: 当客户端请求头传入合法 `X-Request-Id` 时回显。
+
+    ErrorEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/ResponseMeta"
+        - type: object
+          required: [error]
+          properties:
+            error:
+              $ref: "#/components/schemas/Error"
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          description: 稳定的机器可读错误码。
+          examples: [invalid_request]
+        message:
+          type: string
+          description: 面向开发者的错误说明，不建议作为客户端分支依据。
+
+    FreeFormObject:
+      type: object
+      additionalProperties: true
+
+    OkData:
+      type: object
+      required: [ok]
+      properties:
+        ok:
+          type: boolean
+          const: true
+
+    ProviderName:
+      type: string
+      # TikTok 依当前产品口径保留在公开枚举，具体可用性仍以区域接口和账号权限为准。
+      enum: [telegram, whatsapp, line, twitter, x, zalo, tiktok]
+      description: 正式对外开放的 provider 名称；实际可分配区域以 provider regions 接口为准。
+
+    Workspace:
+      type: object
+      required: [name, status, account_quota, account_quota_unlimited]
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        account_quota:
+          type: integer
+          format: uint64
+        account_quota_unlimited:
+          type: boolean
+
+    WorkspaceUpdateRequest:
+      type: object
+      required: [name, status]
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+
+    APIKey:
+      type: object
+      required: [id, name, key_prefix, status]
+      properties:
+        id:
+          type: string
+          examples: [ak_xxx]
+        name:
+          type: string
+        key_prefix:
+          type: string
+          description: 可展示的 Key 前缀，不是完整 API Key。
+        status:
+          type: string
+          enum: [active, inactive]
+
+    APIKeyCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        prefix:
+          type: string
+          description: 生成 API Key 时使用的前缀。
+
+    APIKeyCreateResult:
+      type: object
+      required: [key, api_key]
+      properties:
+        key:
+          $ref: "#/components/schemas/APIKey"
+        api_key:
+          type: string
+          description: 完整明文 API Key，仅创建或轮换响应中出现一次。
+
+    APIKeyStatusUpdateRequest:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [active, inactive]
+
+    Account:
+      type: object
+      required: [id, name, provider, region, status]
+      properties:
+        id:
+          type: string
+          examples: [acc_xxx]
+        name:
+          type: string
+        provider:
+          $ref: "#/components/schemas/ProviderName"
+        region:
+          type: string
+        status:
+          type: string
+          description: 账号资源状态，例如 active、inactive、disabled。
+        runtime_status:
+          $ref: "#/components/schemas/RuntimeStatus"
+        auth_mode:
+          type: string
+          description: 授权模式，例如 qrcode、code、session。
+        capabilities:
+          type: array
+          items:
+            type: string
+        metadata:
+          $ref: "#/components/schemas/FreeFormObject"
+        provider_account_ref:
+          type: string
+          description: provider 侧账号公开标识。
+        proxy:
+          $ref: "#/components/schemas/FreeFormObject"
+        provider_profile:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    AccountRequest:
+      type: object
+      required: [provider, region]
+      properties:
+        name:
+          type: string
+        provider:
+          $ref: "#/components/schemas/ProviderName"
+        region:
+          type: string
+        status:
+          type: string
+        runtime_status:
+          $ref: "#/components/schemas/RuntimeStatus"
+        auth_mode:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+        metadata:
+          $ref: "#/components/schemas/FreeFormObject"
+        provider_account_ref:
+          type: string
+        provider_data:
+          $ref: "#/components/schemas/FreeFormObject"
+        proxy:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    AccountSession:
+      type: object
+      required: [account_id, status]
+      properties:
+        account_id:
+          type: string
+        status:
+          type: string
+          description: 授权流程状态，例如 pending_auth、awaiting_qr_scan、authorized、failed。
+        auth_fields:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuthField"
+        auth_payload:
+          $ref: "#/components/schemas/FreeFormObject"
+        expires_at:
+          type: string
+        last_error:
+          type: string
+
+    AuthField:
+      type: object
+      required: [type, required]
+      properties:
+        type:
+          type: string
+        required:
+          type: boolean
+        label:
+          type: string
+        placeholder:
+          type: string
+
+    RuntimeStatus:
+      type: string
+      enum: [unknown, starting, running, stopping, stopped, reconnecting, disconnected, error]
+
+    RuntimeActionResult:
+      type: object
+      required: [account_id, provider, action, operation_status, runtime_status, runtime_error]
+      properties:
+        account_id:
+          type: string
+        provider:
+          $ref: "#/components/schemas/ProviderName"
+        action:
+          type: string
+          enum: [refresh_status, start, stop, reconnect]
+        operation_status:
+          type: string
+          examples: [succeeded]
+        runtime_status:
+          $ref: "#/components/schemas/RuntimeStatus"
+        runtime_error:
+          type: string
+
+    ProviderRegionsResponse:
+      type: object
+      required: [provider, regions]
+      properties:
+        provider:
+          $ref: "#/components/schemas/ProviderName"
+        regions:
+          type: array
+          items:
+            $ref: "#/components/schemas/RegionAvailability"
+
+    RegionAvailability:
+      type: object
+      required: [region, supported, allocatable]
+      properties:
+        region:
+          type: string
+        supported:
+          type: boolean
+        allocatable:
+          type: boolean
+
+    ConversationType:
+      type: string
+      enum: [user, group, channel]
+
+    Conversation:
+      type: object
+      required: [conversation_id, type, title, avatar_url, unread_count, is_pinned, is_muted]
+      properties:
+        conversation_id:
+          type: string
+        type:
+          $ref: "#/components/schemas/ConversationType"
+        title:
+          type: string
+        username:
+          type: string
+        avatar_url:
+          type: string
+        description:
+          type: string
+        last_message_at:
+          type: string
+          format: date-time
+        last_message_text:
+          type: string
+        unread_count:
+          type: integer
+          format: int64
+        members_count:
+          type: integer
+          format: int64
+        subscribers_count:
+          type: integer
+          format: int64
+        is_pinned:
+          type: boolean
+        is_muted:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        extra:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    ConversationListResult:
+      type: object
+      required: [items, has_more]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Conversation"
+        next_cursor:
+          type: string
+        has_more:
+          type: boolean
+
+    ConversationMember:
+      type: object
+      required: [peer_id, display_name, avatar_url]
+      properties:
+        peer_id:
+          type: string
+          description: 成员的 provider 侧稳定标识。WhatsApp 优先返回 LID，缺少 LID 映射时回退 JID；纯手机号位于 `extra.phone`。
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar_url:
+          type: string
+        role:
+          type: string
+        joined_at:
+          type: string
+          format: date-time
+        extra:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    ConversationMemberListResult:
+      type: object
+      required: [items, has_more]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ConversationMember"
+        next_cursor:
+          type: string
+        has_more:
+          type: boolean
+
+    ConversationIdRequest:
+      type: object
+      required: [conversation_id]
+      properties:
+        conversation_id:
+          type: string
+
+    ConversationReadRequest:
+      allOf:
+        - $ref: "#/components/schemas/ConversationIdRequest"
+        - type: object
+          dependentRequired:
+            up_to_message_id: [up_to_message_sender_id]
+            up_to_message_sender_id: [up_to_message_id]
+          properties:
+            up_to_message_id:
+              type: string
+              description: 可选。WhatsApp 中与 up_to_message_sender_id 一起发送目标消息的 read receipt；省略两者时标记整个会话已读。
+            up_to_message_sender_id:
+              type: string
+              description: up_to_message_id 对应消息的 provider 原始发送者 ID；群聊应传 webhook data.sender.id。与 up_to_message_id 成对必填。
+
+    ConversationMuteRequest:
+      allOf:
+        - $ref: "#/components/schemas/ConversationIdRequest"
+        - type: object
+          properties:
+            duration:
+              type: integer
+              format: int64
+              minimum: 0
+              description: 相对静音时长，单位秒；0 表示永久静音。
+            mute_until:
+              type: string
+              format: date-time
+              description: RFC3339 绝对结束时间，与 `duration` 互斥。
+
+    ConversationLabel:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+
+    ConversationLabelListResult:
+      type: object
+      required: [items, has_more]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ConversationLabel"
+        next_cursor:
+          type: string
+        has_more:
+          type: boolean
+
+    ConversationLabelUpsertRequest:
+      type: object
+      required: [name]
+      properties:
+        label_id:
+          type: string
+          description: 为空表示新建，非空表示更新。
+        name:
+          type: string
+
+    ConversationLabelDeleteRequest:
+      type: object
+      required: [label_id]
+      properties:
+        label_id:
+          type: string
+
+    ConversationLabelDeleteResult:
+      type: object
+      required: [label_id, deleted]
+      properties:
+        label_id:
+          type: string
+        deleted:
+          type: boolean
+          const: true
+
+    ConversationLabelMembersRequest:
+      type: object
+      required: [label_id, action, conversation_ids]
+      properties:
+        label_id:
+          type: string
+        action:
+          type: string
+          enum: [add, remove]
+        conversation_ids:
+          type: array
+          minItems: 1
+          items:
+            type: string
+
+    ConversationLabelMembersResult:
+      type: object
+      required: [label_id, action, conversation_ids]
+      properties:
+        label_id:
+          type: string
+        action:
+          type: string
+          enum: [add, remove]
+        conversation_ids:
+          type: array
+          items:
+            type: string
+
+    Contact:
+      type: object
+      required: [id, conversation_id, display_name, avatar_url, provider_user_id]
+      properties:
+        id:
+          type: string
+        conversation_id:
+          type: string
+        display_name:
+          type: string
+        avatar_url:
+          type: string
+        provider_user_id:
+          type: string
+        is_blocked:
+          type: boolean
+        extra:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    ContactListResult:
+      type: object
+      required: [items, has_more]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Contact"
+        next_cursor:
+          type: string
+        has_more:
+          type: boolean
+
+    ContactIdRequest:
+      type: object
+      required: [contact_id]
+      properties:
+        contact_id:
+          type: string
+
+    ContactBlocklistResult:
+      type: object
+      required: [blocklist]
+      properties:
+        blocklist:
+          type: array
+          items:
+            type: string
+        dhash:
+          type: string
+
+    ContactNoteRequest:
+      type: object
+      required: [contact_id, note]
+      properties:
+        contact_id:
+          type: string
+        note:
+          type: string
+          description: 传空字符串表示清空备注。
+
+    Group:
+      type: object
+      required: [id, conversation_id, name, avatar_url]
+      properties:
+        id:
+          type: string
+        conversation_id:
+          type: string
+        name:
+          type: string
+        avatar_url:
+          type: string
+        member_count:
+          type: integer
+          format: int64
+        joined_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        extra:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    GroupListResult:
+      type: object
+      required: [items, has_more]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Group"
+        next_cursor:
+          type: string
+        has_more:
+          type: boolean
+
+    GroupIdRequest:
+      type: object
+      required: [group_id]
+      properties:
+        group_id:
+          type: string
+
+    GroupCreateRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        members:
+          type: array
+          items:
+            type: string
+
+    GroupCreateResult:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+
+    GroupMemberUpdateRequest:
+      type: object
+      required: [group_id, action, member_id]
+      properties:
+        group_id:
+          type: string
+        action:
+          type: string
+          enum: [add, remove, promote, demote]
+        member_id:
+          type: string
+
+    GroupInfoUpdateRequest:
+      type: object
+      required: [group_id]
+      properties:
+        group_id:
+          type: string
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          description: 传空字符串表示清空描述。
+        avatar_url:
+          type: string
+          format: uri
+
+    GroupJoinRequest:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+        phone:
+          type: string
+        lid:
+          type: string
+        requested_at:
+          type: string
+          format: date-time
+
+    GroupJoinRequestsResult:
+      type: object
+      required: [group_id, items]
+      properties:
+        group_id:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GroupJoinRequest"
+
+    GroupJoinRequestsUpdateRequest:
+      type: object
+      required: [group_id, action, member_ids]
+      properties:
+        group_id:
+          type: string
+        action:
+          type: string
+          enum: [approve, reject]
+        member_ids:
+          type: array
+          minItems: 1
+          items:
+            type: string
+
+    GroupJoinApprovalModeRequest:
+      type: object
+      required: [group_id, enabled]
+      properties:
+        group_id:
+          type: string
+        enabled:
+          type: boolean
+
+    GroupInviteCode:
+      type: object
+      required: [invite_url, invite_code]
+      properties:
+        invite_url:
+          type: string
+        invite_code:
+          type: string
+
+    Recipient:
+      type: object
+      required: [id, type]
+      properties:
+        id:
+          type: string
+          description: provider 侧接收方 ID。
+        type:
+          $ref: "#/components/schemas/ConversationType"
+
+    SendMessageRequest:
+      type: object
+      required: [account_id, to, message]
+      properties:
+        account_id:
+          type: string
+        to:
+          $ref: "#/components/schemas/Recipient"
+        message:
+          $ref: "#/components/schemas/MessagePayload"
+        provider_data:
+          $ref: "#/components/schemas/FreeFormObject"
+        reply_to:
+          $ref: "#/components/schemas/ReplyTo"
+        mentions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Mention"
+
+    MessagePayload:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [text, image, video, audio, document, file, contact]
+        text:
+          type: string
+        url:
+          type: string
+          format: uri
+        file_url:
+          type: string
+          format: uri
+        file_key:
+          type: string
+        caption:
+          type: string
+        contacts:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactCard"
+
+    ContactCard:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        phones:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactPhone"
+        emails:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactEmail"
+        organization:
+          type: string
+        title:
+          type: string
+
+    ContactPhone:
+      type: object
+      required: [number]
+      properties:
+        number:
+          type: string
+        type:
+          type: string
+
+    ContactEmail:
+      type: object
+      required: [address]
+      properties:
+        address:
+          type: string
+          format: email
+        type:
+          type: string
+
+    ReplyTo:
+      type: object
+      required: [reply_token]
+      properties:
+        reply_token:
+          type: string
+          description: 来自入站事件 `data.message.reply_token` 的不透明句柄。
+
+    Mention:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+
+    SendMessageResult:
+      type: object
+      required: [message_id, account_id, status]
+      properties:
+        message_id:
+          type: string
+        account_id:
+          type: string
+        status:
+          type: string
+          examples: [accepted]
+        provider_ref:
+          type: string
+
+    MessageTargetRequest:
+      type: object
+      required: [account_id, conversation_id, message_id]
+      properties:
+        account_id:
+          type: string
+        conversation_id:
+          type: string
+        message_id:
+          type: string
+        sender_id:
+          type: string
+          description: 目标消息作者标识；缺省通常表示账号自身。
+
+    MessagePinRequest:
+      allOf:
+        - $ref: "#/components/schemas/MessageTargetRequest"
+        - type: object
+          required: [pinned]
+          properties:
+            pinned:
+              type: boolean
+            duration_seconds:
+              type: integer
+              format: uint32
+
+    MessageRevokeRequest:
+      $ref: "#/components/schemas/MessageTargetRequest"
+
+    MessageReactionRequest:
+      allOf:
+        - $ref: "#/components/schemas/MessageTargetRequest"
+        - type: object
+          properties:
+            emoji:
+              type: string
+              description: 空字符串表示取消回应。
+
+    MessageEditRequest:
+      type: object
+      required: [account_id, conversation_id, message_id, content]
+      properties:
+        account_id:
+          type: string
+        conversation_id:
+          type: string
+        message_id:
+          type: string
+        content:
+          type: string
+
+    WebhookEndpoint:
+      type: object
+      required: [id, url, status, signing_enabled]
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        status:
+          type: string
+        subscribed_events:
+          type: array
+          items:
+            $ref: "#/components/schemas/StandardEventType"
+        signing_enabled:
+          type: boolean
+        retry_policy:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    WebhookEndpointRequest:
+      type: object
+      required: [url, status]
+      properties:
+        url:
+          type: string
+          format: uri
+        status:
+          type: string
+        subscribed_events:
+          type: array
+          items:
+            $ref: "#/components/schemas/StandardEventType"
+          description: 为空或省略表示接收全部事件。
+        signing_secret:
+          type: string
+          description: 用于签名 webhook 投递的密钥；仅请求中提交，不会在响应中返回。
+        retry_policy:
+          $ref: "#/components/schemas/FreeFormObject"
+
+    StandardEventType:
+      type: string
+      enum:
+        - "*"
+        - message.received
+        - message.updated
+        - message.deleted
+        - message.read
+        - message.reaction
+        - message.delivered
+        - conversation.updated
+        - conversation.deleted
+        - conversation.cleared
+        - conversation.history
+        - group.updated
+        - group.join_request
+        - account.status.updated
+        - account.started
+        - account.history.synced
+        - account.auth.required
+        - account.auth.succeeded
+        - account.auth.failed

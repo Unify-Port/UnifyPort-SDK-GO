@@ -1,0 +1,10 @@
+overlay: 1.0.0
+info:
+  title: UnifyPort Go code generation names
+  version: 0.1.0
+actions:
+  # 仅调整 Go 类型名，保留批准契约的 method、path、字段和响应语义不变。
+  - target: $.components.responses.RuntimeActionResult
+    description: Avoid the response/schema component name collision in Go.
+    update:
+      x-go-name: RuntimeActionResponse

@@ -1,0 +1,133 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# 公开 SDK 的 CI 只读仓库内容，避免默认 token 获得不需要的写权限。
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Go ${{ matrix.go-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      # 同时覆盖最低支持版本和当前支持线，避免只在开发机版本上成立。
+      matrix:
+        go-version: ["1.25.x", "1.26.x"]
+
+    steps:
+      - name: Checkout
+        # 固定完整 commit，避免公开仓库 CI 在 action tag 移动后静默改变执行代码。
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache: true
+          cache-dependency-path: |
+            go.sum
+            internal/generator/go.sum
+
+      - name: Download modules
+        run: |
+          go mod download
+          go -C internal/generator mod download
+
+      - name: Verify module files and formatting
+        shell: bash
+        run: |
+          go mod tidy -diff
+          go -C internal/generator mod tidy -diff
+          unformatted="$(gofmt -l $(git ls-files '*.go'))"
+          if [[ -n "$unformatted" ]]; then
+            printf '%s\n' "$unformatted"
+            exit 1
+          fi
+
+      - name: Verify deterministic generation
+        shell: bash
+        run: |
+          go generate ./...
+          git diff --exit-code
+          # git diff 看不到新的未跟踪生成物，因此额外检查完整工作树状态。
+          if [[ -n "$(git status --porcelain --untracked-files=all)" ]]; then
+            git status --short
+            exit 1
+          fi
+
+      - name: Run tests
+        run: |
+          go test ./...
+          go -C internal/generator test ./...
+
+      - name: Run race tests
+        run: |
+          go test -race ./...
+          go -C internal/generator test -race ./...
+
+      - name: Run vet
+        run: |
+          go vet ./...
+          go -C internal/generator vet ./...
+
+  analysis:
+    name: Static, vulnerability, and public checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@7a3fe6cf4cb3a834922a1244abfce67bcef6a0c5 # v6.2.0
+        with:
+          go-version: "1.26.x"
+          cache: true
+          cache-dependency-path: |
+            go.sum
+            internal/generator/go.sum
+
+      - name: Install pinned analysis tools
+        # 工具版本显式固定，避免 latest 在无代码变更时改变 release gate。
+        run: |
+          go install honnef.co/go/tools/cmd/staticcheck@v0.7.0
+          go install golang.org/x/vuln/cmd/govulncheck@v1.6.0
+
+      - name: Download modules
+        run: |
+          go mod download
+          go -C internal/generator mod download
+
+      - name: Run staticcheck
+        run: |
+          staticcheck ./...
+          (cd internal/generator && staticcheck ./...)
+
+      - name: Run govulncheck
+        run: |
+          govulncheck ./...
+          (cd internal/generator && govulncheck ./...)
+
+      - name: Check public repository boundary
+        run: |
+          bash scripts/check-public-test.sh
+          bash scripts/check-public-docs.sh
+          bash scripts/check-public.sh
+
+      - name: Check whitespace
+        run: git diff --check

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "defaults": {
+    "retryable": false,
+    "secretInput": false,
+    "secretOutput": false,
+    "mcpExposure": "never"
+  },
+  "retryAllowlist": [
+    "getAccount",
+    "getAccountAuthState",
+    "getContact",
+    "getConversation",
+    "getGroup",
+    "getGroupInviteCode",
+    "getWebhookEndpoint",
+    "getWorkspace",
+    "listAccounts",
+    "listApiKeys",
+    "listContactBlocklist",
+    "listContacts",
+    "listConversationLabels",
+    "listConversationMembers",
+    "listConversations",
+    "listGroupJoinRequests",
+    "listGroups",
+    "listProviderRegions",
+    "listWebhookEndpoints"
+  ],
+  "mutabilityOverrides": {
+    "deleteAccount": "destructive",
+    "deleteConversationLabel": "destructive",
+    "deleteWebhookEndpoint": "destructive",
+    "leaveGroup": "destructive",
+    "revokeMessage": "destructive",
+    "updateGroupJoinRequests": "destructive",
+    "updateGroupMembers": "destructive"
+  },
+  "secretInput": [
+    "createAccount",
+    "createWebhookEndpoint",
+    "importAccountAuthSession",
+    "sendMessage",
+    "submitAccountAuthCode",
+    "submitAccountAuthPassword",
+    "updateAccount",
+    "updateWebhookEndpoint"
+  ],
+  "secretOutput": [
+    "checkAccountQrAuth",
+    "createApiKey",
+    "getAccount",
+    "getAccountAuthState",
+    "getGroupInviteCode",
+    "rotateApiKey",
+    "startAccountAuth",
+    "startAccountQrAuth"
+  ],
+  "mcpExposure": {
+    "getWorkspace": "read",
+    "listApiKeys": "read",
+    "listProviderRegions": "read",
+    "updateApiKeyStatus": "write"
+  }
+}

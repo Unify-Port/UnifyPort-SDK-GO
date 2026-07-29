@@ -1,0 +1,3772 @@
+{
+  "schemaVersion": 1,
+  "nodeSdk": {
+    "package": "@unifyport/sdk-node",
+    "version": "0.3.0",
+    "repository": "https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git",
+    "commit": "235f40c46a25ffac6dd6bc89e054d6ce56081cb0"
+  },
+  "contractSha256": "513fd190e4c1df911c616d199bc083ef0968cd1f2a25e1aafd7124c94a42aa44",
+  "operationCount": 64,
+  "schemaCount": 69,
+  "policyCounts": {
+    "retryable": 19,
+    "destructive": 7,
+    "secretInput": 8,
+    "secretOutput": 8
+  },
+  "operations": {
+    "blockContact": {
+      "operationId": "blockContact",
+      "goMethod": "BlockContact",
+      "requestFunction": "NewBlockContactRequest",
+      "responseType": "BlockContactResponse",
+      "parseResponseFunction": "ParseBlockContactResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/contacts/block",
+      "tag": "Contacts",
+      "summary": "封锁联系人",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "BlockContactJSONRequestBody",
+        "schemaRefs": [
+          "ContactIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "BlockContactInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "BlockContactRequestBody",
+          "wireName": "body",
+          "wireType": "BlockContactJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "cancelAccountAuth": {
+      "operationId": "cancelAccountAuth",
+      "goMethod": "CancelAccountAuth",
+      "requestFunction": "NewCancelAccountAuthRequest",
+      "responseType": "CancelAccountAuthResponse",
+      "parseResponseFunction": "ParseCancelAccountAuthResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/cancel",
+      "tag": "Account Auth",
+      "summary": "取消授权流程",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "CancelAccountAuthJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "CancelAccountAuthInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*CancelAccountAuthRequestBody",
+          "wireName": "body",
+          "wireType": "CancelAccountAuthJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "checkAccountQrAuth": {
+      "operationId": "checkAccountQrAuth",
+      "goMethod": "CheckAccountQRAuth",
+      "requestFunction": "NewCheckAccountQRAuthRequest",
+      "responseType": "CheckAccountQRAuthResponse",
+      "parseResponseFunction": "ParseCheckAccountQRAuthResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/qr/check",
+      "tag": "Account Auth",
+      "summary": "检查二维码授权结果",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "CheckAccountQRAuthJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "CheckAccountQRAuthInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*CheckAccountQRAuthRequestBody",
+          "wireName": "body",
+          "wireType": "CheckAccountQRAuthJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "createAccount": {
+      "operationId": "createAccount",
+      "goMethod": "CreateAccount",
+      "requestFunction": "NewCreateAccountRequest",
+      "responseType": "CreateAccountResponse",
+      "parseResponseFunction": "ParseCreateAccountResponse",
+      "method": "POST",
+      "path": "/v1/accounts",
+      "tag": "Accounts",
+      "summary": "创建账号",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateAccountJSONRequestBody",
+        "schemaRefs": [
+          "AccountRequest"
+        ]
+      },
+      "successStatuses": [
+        "201"
+      ],
+      "responseSchemas": [
+        "Account",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Account",
+      "inputGoType": "CreateAccountInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateAccountRequestBody",
+          "wireName": "body",
+          "wireType": "CreateAccountJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createApiKey": {
+      "operationId": "createApiKey",
+      "goMethod": "CreateAPIKey",
+      "requestFunction": "NewCreateAPIKeyRequest",
+      "responseType": "CreateAPIKeyResponse",
+      "parseResponseFunction": "ParseCreateAPIKeyResponse",
+      "method": "POST",
+      "path": "/v1/api-keys",
+      "tag": "API Keys",
+      "summary": "创建 API Key",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateAPIKeyJSONRequestBody",
+        "schemaRefs": [
+          "APIKeyCreateRequest"
+        ]
+      },
+      "successStatuses": [
+        "201"
+      ],
+      "responseSchemas": [
+        "APIKeyCreateResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "APIKeyCreateResult",
+      "inputGoType": "CreateAPIKeyInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateAPIKeyRequestBody",
+          "wireName": "body",
+          "wireType": "CreateAPIKeyJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createGroup": {
+      "operationId": "createGroup",
+      "goMethod": "CreateGroup",
+      "requestFunction": "NewCreateGroupRequest",
+      "responseType": "CreateGroupResponse",
+      "parseResponseFunction": "ParseCreateGroupResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/create",
+      "tag": "Groups",
+      "summary": "创建群组",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateGroupJSONRequestBody",
+        "schemaRefs": [
+          "GroupCreateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "GroupCreateResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "GroupCreateResult",
+      "inputGoType": "CreateGroupInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateGroupRequestBody",
+          "wireName": "body",
+          "wireType": "CreateGroupJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createWebhookEndpoint": {
+      "operationId": "createWebhookEndpoint",
+      "goMethod": "CreateWebhookEndpoint",
+      "requestFunction": "NewCreateWebhookEndpointRequest",
+      "responseType": "CreateWebhookEndpointResponse",
+      "parseResponseFunction": "ParseCreateWebhookEndpointResponse",
+      "method": "POST",
+      "path": "/v1/webhook-endpoints",
+      "tag": "Webhook Endpoints",
+      "summary": "创建 webhook endpoint",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateWebhookEndpointJSONRequestBody",
+        "schemaRefs": [
+          "WebhookEndpointRequest"
+        ]
+      },
+      "successStatuses": [
+        "201"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "WebhookEndpoint"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "WebhookEndpoint",
+      "inputGoType": "CreateWebhookEndpointInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateWebhookEndpointRequestBody",
+          "wireName": "body",
+          "wireType": "CreateWebhookEndpointJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "deactivateWebhookEndpoint": {
+      "operationId": "deactivateWebhookEndpoint",
+      "goMethod": "DeactivateWebhookEndpoint",
+      "requestFunction": "NewDeactivateWebhookEndpointRequest",
+      "responseType": "DeactivateWebhookEndpointResponse",
+      "parseResponseFunction": "ParseDeactivateWebhookEndpointResponse",
+      "method": "POST",
+      "path": "/v1/webhook-endpoints/{endpoint_id}/deactivate",
+      "tag": "Webhook Endpoints",
+      "summary": "停用 webhook endpoint",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "endpoint_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "WebhookEndpoint"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "WebhookEndpoint",
+      "inputGoType": "DeactivateWebhookEndpointInput",
+      "requestArguments": [
+        {
+          "field": "EndpointID",
+          "kind": "path",
+          "goType": "EndpointID",
+          "wireName": "endpointID",
+          "wireType": "EndpointID",
+          "required": true
+        }
+      ]
+    },
+    "deleteAccount": {
+      "operationId": "deleteAccount",
+      "goMethod": "DeleteAccount",
+      "requestFunction": "NewDeleteAccountRequest",
+      "responseType": "DeleteAccountResponse",
+      "parseResponseFunction": "ParseDeleteAccountResponse",
+      "method": "DELETE",
+      "path": "/v1/accounts/{account_id}",
+      "tag": "Accounts",
+      "summary": "删除账号",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "204"
+      ],
+      "responseSchemas": [],
+      "hasSuccessContent": false,
+      "dataGoType": "NoContent",
+      "inputGoType": "DeleteAccountInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        }
+      ]
+    },
+    "deleteConversationLabel": {
+      "operationId": "deleteConversationLabel",
+      "goMethod": "DeleteConversationLabel",
+      "requestFunction": "NewDeleteConversationLabelRequest",
+      "responseType": "DeleteConversationLabelResponse",
+      "parseResponseFunction": "ParseDeleteConversationLabelResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/labels/delete",
+      "tag": "Conversations",
+      "summary": "删除会话标签",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "DeleteConversationLabelJSONRequestBody",
+        "schemaRefs": [
+          "ConversationLabelDeleteRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationLabelDeleteResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationLabelDeleteResult",
+      "inputGoType": "DeleteConversationLabelInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "DeleteConversationLabelRequestBody",
+          "wireName": "body",
+          "wireType": "DeleteConversationLabelJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "deleteWebhookEndpoint": {
+      "operationId": "deleteWebhookEndpoint",
+      "goMethod": "DeleteWebhookEndpoint",
+      "requestFunction": "NewDeleteWebhookEndpointRequest",
+      "responseType": "DeleteWebhookEndpointResponse",
+      "parseResponseFunction": "ParseDeleteWebhookEndpointResponse",
+      "method": "DELETE",
+      "path": "/v1/webhook-endpoints/{endpoint_id}",
+      "tag": "Webhook Endpoints",
+      "summary": "删除 webhook endpoint",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "endpoint_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "204"
+      ],
+      "responseSchemas": [],
+      "hasSuccessContent": false,
+      "dataGoType": "NoContent",
+      "inputGoType": "DeleteWebhookEndpointInput",
+      "requestArguments": [
+        {
+          "field": "EndpointID",
+          "kind": "path",
+          "goType": "EndpointID",
+          "wireName": "endpointID",
+          "wireType": "EndpointID",
+          "required": true
+        }
+      ]
+    },
+    "editMessage": {
+      "operationId": "editMessage",
+      "goMethod": "EditMessage",
+      "requestFunction": "NewEditMessageRequest",
+      "responseType": "EditMessageResponse",
+      "parseResponseFunction": "ParseEditMessageResponse",
+      "method": "POST",
+      "path": "/v1/messages/edit",
+      "tag": "Messages",
+      "summary": "编辑消息文本",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "EditMessageJSONRequestBody",
+        "schemaRefs": [
+          "MessageEditRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "EditMessageInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "EditMessageRequestBody",
+          "wireName": "body",
+          "wireType": "EditMessageJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "getAccount": {
+      "operationId": "getAccount",
+      "goMethod": "GetAccount",
+      "requestFunction": "NewGetAccountRequest",
+      "responseType": "GetAccountResponse",
+      "parseResponseFunction": "ParseGetAccountResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}",
+      "tag": "Accounts",
+      "summary": "获取账号详情",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Account",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Account",
+      "inputGoType": "GetAccountInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        }
+      ]
+    },
+    "getAccountAuthState": {
+      "operationId": "getAccountAuthState",
+      "goMethod": "GetAccountAuthState",
+      "requestFunction": "NewGetAccountAuthStateRequest",
+      "responseType": "GetAccountAuthStateResponse",
+      "parseResponseFunction": "ParseGetAccountAuthStateResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/auth",
+      "tag": "Account Auth",
+      "summary": "获取账号授权状态",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "AccountSession",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "AccountSession",
+      "inputGoType": "GetAccountAuthStateInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        }
+      ]
+    },
+    "getContact": {
+      "operationId": "getContact",
+      "goMethod": "GetContact",
+      "requestFunction": "NewGetContactRequest",
+      "responseType": "GetContactResponse",
+      "parseResponseFunction": "ParseGetContactResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/contacts/info",
+      "tag": "Contacts",
+      "summary": "获取联系人详情",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "contact_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "GetContactParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Contact",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Contact",
+      "inputGoType": "GetContactInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetContactParams",
+          "wireName": "params",
+          "wireType": "*GetContactParams",
+          "required": true
+        }
+      ]
+    },
+    "getConversation": {
+      "operationId": "getConversation",
+      "goMethod": "GetConversation",
+      "requestFunction": "NewGetConversationRequest",
+      "responseType": "GetConversationResponse",
+      "parseResponseFunction": "ParseGetConversationResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/conversations/info",
+      "tag": "Conversations",
+      "summary": "获取会话详情",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "conversation_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": false,
+          "schemaRefs": [
+            "ConversationType"
+          ]
+        }
+      ],
+      "paramsGoType": "GetConversationParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Conversation",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Conversation",
+      "inputGoType": "GetConversationInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetConversationParams",
+          "wireName": "params",
+          "wireType": "*GetConversationParams",
+          "required": true
+        }
+      ]
+    },
+    "getGroup": {
+      "operationId": "getGroup",
+      "goMethod": "GetGroup",
+      "requestFunction": "NewGetGroupRequest",
+      "responseType": "GetGroupResponse",
+      "parseResponseFunction": "ParseGetGroupResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/groups/info",
+      "tag": "Groups",
+      "summary": "获取群组详情",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "group_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "GetGroupParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Group",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Group",
+      "inputGoType": "GetGroupInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetGroupParams",
+          "wireName": "params",
+          "wireType": "*GetGroupParams",
+          "required": true
+        }
+      ]
+    },
+    "getGroupInviteCode": {
+      "operationId": "getGroupInviteCode",
+      "goMethod": "GetGroupInviteCode",
+      "requestFunction": "NewGetGroupInviteCodeRequest",
+      "responseType": "GetGroupInviteCodeResponse",
+      "parseResponseFunction": "ParseGetGroupInviteCodeResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/groups/invite-code",
+      "tag": "Groups",
+      "summary": "获取群邀请链接或邀请码",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "group_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "GetGroupInviteCodeParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "GroupInviteCode",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "GroupInviteCode",
+      "inputGoType": "GetGroupInviteCodeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetGroupInviteCodeParams",
+          "wireName": "params",
+          "wireType": "*GetGroupInviteCodeParams",
+          "required": true
+        }
+      ]
+    },
+    "getWebhookEndpoint": {
+      "operationId": "getWebhookEndpoint",
+      "goMethod": "GetWebhookEndpoint",
+      "requestFunction": "NewGetWebhookEndpointRequest",
+      "responseType": "GetWebhookEndpointResponse",
+      "parseResponseFunction": "ParseGetWebhookEndpointResponse",
+      "method": "GET",
+      "path": "/v1/webhook-endpoints/{endpoint_id}",
+      "tag": "Webhook Endpoints",
+      "summary": "获取 webhook endpoint",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "endpoint_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "WebhookEndpoint"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "WebhookEndpoint",
+      "inputGoType": "GetWebhookEndpointInput",
+      "requestArguments": [
+        {
+          "field": "EndpointID",
+          "kind": "path",
+          "goType": "EndpointID",
+          "wireName": "endpointID",
+          "wireType": "EndpointID",
+          "required": true
+        }
+      ]
+    },
+    "getWorkspace": {
+      "operationId": "getWorkspace",
+      "goMethod": "GetWorkspace",
+      "requestFunction": "NewGetWorkspaceRequest",
+      "responseType": "GetWorkspaceResponse",
+      "parseResponseFunction": "ParseGetWorkspaceResponse",
+      "method": "GET",
+      "path": "/v1/workspace",
+      "tag": "Workspace",
+      "summary": "获取当前 workspace",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "read",
+      "parameters": [],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "Workspace"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Workspace",
+      "requestArguments": []
+    },
+    "importAccountAuthSession": {
+      "operationId": "importAccountAuthSession",
+      "goMethod": "ImportAccountAuthSession",
+      "requestFunction": "NewImportAccountAuthSessionRequest",
+      "responseType": "ImportAccountAuthSessionResponse",
+      "parseResponseFunction": "ParseImportAccountAuthSessionResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/session",
+      "tag": "Account Auth",
+      "summary": "导入会话授权",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "ImportAccountAuthSessionJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "ImportAccountAuthSessionInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*ImportAccountAuthSessionRequestBody",
+          "wireName": "body",
+          "wireType": "ImportAccountAuthSessionJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "leaveGroup": {
+      "operationId": "leaveGroup",
+      "goMethod": "LeaveGroup",
+      "requestFunction": "NewLeaveGroupRequest",
+      "responseType": "LeaveGroupResponse",
+      "parseResponseFunction": "ParseLeaveGroupResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/leave",
+      "tag": "Groups",
+      "summary": "退出群组",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "LeaveGroupJSONRequestBody",
+        "schemaRefs": [
+          "GroupIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "LeaveGroupInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "LeaveGroupRequestBody",
+          "wireName": "body",
+          "wireType": "LeaveGroupJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "listAccounts": {
+      "operationId": "listAccounts",
+      "goMethod": "ListAccounts",
+      "requestFunction": "NewListAccountsRequest",
+      "responseType": "ListAccountsResponse",
+      "parseResponseFunction": "ParseListAccountsResponse",
+      "method": "GET",
+      "path": "/v1/accounts",
+      "tag": "Accounts",
+      "summary": "列出账号",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Account",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "[]Account",
+      "requestArguments": []
+    },
+    "listApiKeys": {
+      "operationId": "listApiKeys",
+      "goMethod": "ListAPIKeys",
+      "requestFunction": "NewListAPIKeysRequest",
+      "responseType": "ListAPIKeysResponse",
+      "parseResponseFunction": "ParseListAPIKeysResponse",
+      "method": "GET",
+      "path": "/v1/api-keys",
+      "tag": "API Keys",
+      "summary": "列出 API Key",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "read",
+      "parameters": [],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "APIKey",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "[]APIKey",
+      "requestArguments": []
+    },
+    "listContactBlocklist": {
+      "operationId": "listContactBlocklist",
+      "goMethod": "ListContactBlocklist",
+      "requestFunction": "NewListContactBlocklistRequest",
+      "responseType": "ListContactBlocklistResponse",
+      "parseResponseFunction": "ParseListContactBlocklistResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/contacts/blocklist",
+      "tag": "Contacts",
+      "summary": "查询联系人黑名单",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ContactBlocklistResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ContactBlocklistResult",
+      "inputGoType": "ListContactBlocklistInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        }
+      ]
+    },
+    "listContacts": {
+      "operationId": "listContacts",
+      "goMethod": "ListContacts",
+      "requestFunction": "NewListContactsRequest",
+      "responseType": "ListContactsResponse",
+      "parseResponseFunction": "ParseListContactsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/contacts",
+      "tag": "Contacts",
+      "summary": "列出联系人",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "updated_since",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListContactsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ContactListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ContactListResult",
+      "inputGoType": "ListContactsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListContactsParams",
+          "wireName": "params",
+          "wireType": "*ListContactsParams",
+          "required": false
+        }
+      ]
+    },
+    "listConversationLabels": {
+      "operationId": "listConversationLabels",
+      "goMethod": "ListConversationLabels",
+      "requestFunction": "NewListConversationLabelsRequest",
+      "responseType": "ListConversationLabelsResponse",
+      "parseResponseFunction": "ParseListConversationLabelsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/conversations/labels",
+      "tag": "Conversations",
+      "summary": "列出会话标签",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListConversationLabelsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationLabelListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationLabelListResult",
+      "inputGoType": "ListConversationLabelsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListConversationLabelsParams",
+          "wireName": "params",
+          "wireType": "*ListConversationLabelsParams",
+          "required": false
+        }
+      ]
+    },
+    "listConversationMembers": {
+      "operationId": "listConversationMembers",
+      "goMethod": "ListConversationMembers",
+      "requestFunction": "NewListConversationMembersRequest",
+      "responseType": "ListConversationMembersResponse",
+      "parseResponseFunction": "ParseListConversationMembersResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/conversations/members",
+      "tag": "Conversations",
+      "summary": "列出会话成员",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "conversation_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": false,
+          "schemaRefs": [
+            "ConversationType"
+          ]
+        }
+      ],
+      "paramsGoType": "ListConversationMembersParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationMemberListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationMemberListResult",
+      "inputGoType": "ListConversationMembersInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "ListConversationMembersParams",
+          "wireName": "params",
+          "wireType": "*ListConversationMembersParams",
+          "required": true
+        }
+      ]
+    },
+    "listConversations": {
+      "operationId": "listConversations",
+      "goMethod": "ListConversations",
+      "requestFunction": "NewListConversationsRequest",
+      "responseType": "ListConversationsResponse",
+      "parseResponseFunction": "ParseListConversationsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/conversations",
+      "tag": "Conversations",
+      "summary": "列出会话",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "label_id",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListConversationsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationListResult",
+      "inputGoType": "ListConversationsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListConversationsParams",
+          "wireName": "params",
+          "wireType": "*ListConversationsParams",
+          "required": false
+        }
+      ]
+    },
+    "listGroupJoinRequests": {
+      "operationId": "listGroupJoinRequests",
+      "goMethod": "ListGroupJoinRequests",
+      "requestFunction": "NewListGroupJoinRequestsRequest",
+      "responseType": "ListGroupJoinRequestsResponse",
+      "parseResponseFunction": "ParseListGroupJoinRequestsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/groups/join-requests",
+      "tag": "Groups",
+      "summary": "列出待审批入群申请",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "group_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListGroupJoinRequestsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "GroupJoinRequestsResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "GroupJoinRequestsResult",
+      "inputGoType": "ListGroupJoinRequestsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "ListGroupJoinRequestsParams",
+          "wireName": "params",
+          "wireType": "*ListGroupJoinRequestsParams",
+          "required": true
+        }
+      ]
+    },
+    "listGroups": {
+      "operationId": "listGroups",
+      "goMethod": "ListGroups",
+      "requestFunction": "NewListGroupsRequest",
+      "responseType": "ListGroupsResponse",
+      "parseResponseFunction": "ParseListGroupsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/groups",
+      "tag": "Groups",
+      "summary": "列出群组",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListGroupsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "GroupListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "GroupListResult",
+      "inputGoType": "ListGroupsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListGroupsParams",
+          "wireName": "params",
+          "wireType": "*ListGroupsParams",
+          "required": false
+        }
+      ]
+    },
+    "listProviderRegions": {
+      "operationId": "listProviderRegions",
+      "goMethod": "ListProviderRegions",
+      "requestFunction": "NewListProviderRegionsRequest",
+      "responseType": "ListProviderRegionsResponse",
+      "parseResponseFunction": "ParseListProviderRegionsResponse",
+      "method": "GET",
+      "path": "/v1/providers/{provider}/regions",
+      "tag": "Providers",
+      "summary": "查询 provider 地区可用性",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "read",
+      "parameters": [
+        {
+          "name": "provider",
+          "in": "path",
+          "required": true,
+          "schemaRefs": [
+            "ProviderName"
+          ]
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ProviderRegionsResponse",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ProviderRegionsResponse",
+      "inputGoType": "ListProviderRegionsInput",
+      "requestArguments": [
+        {
+          "field": "Provider",
+          "kind": "path",
+          "goType": "Provider",
+          "wireName": "provider",
+          "wireType": "Provider",
+          "required": true
+        }
+      ]
+    },
+    "listWebhookEndpoints": {
+      "operationId": "listWebhookEndpoints",
+      "goMethod": "ListWebhookEndpoints",
+      "requestFunction": "NewListWebhookEndpointsRequest",
+      "responseType": "ListWebhookEndpointsResponse",
+      "parseResponseFunction": "ParseListWebhookEndpointsResponse",
+      "method": "GET",
+      "path": "/v1/webhook-endpoints",
+      "tag": "Webhook Endpoints",
+      "summary": "列出 webhook endpoint",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": true,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "WebhookEndpoint"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "[]WebhookEndpoint",
+      "requestArguments": []
+    },
+    "markConversationRead": {
+      "operationId": "markConversationRead",
+      "goMethod": "MarkConversationRead",
+      "requestFunction": "NewMarkConversationReadRequest",
+      "responseType": "MarkConversationReadResponse",
+      "parseResponseFunction": "ParseMarkConversationReadResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/read",
+      "tag": "Conversations",
+      "summary": "标记会话已读",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "MarkConversationReadJSONRequestBody",
+        "schemaRefs": [
+          "ConversationReadRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "MarkConversationReadInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "MarkConversationReadRequestBody",
+          "wireName": "body",
+          "wireType": "MarkConversationReadJSONRequestBody",
+          "required": true
+        }
+      ],
+      "dependentRequirements": [
+        {
+          "ifJsonField": "up_to_message_id",
+          "ifGoField": "UpToMessageID",
+          "requiresJsonField": "up_to_message_sender_id",
+          "requiresGoField": "UpToMessageSenderID"
+        },
+        {
+          "ifJsonField": "up_to_message_sender_id",
+          "ifGoField": "UpToMessageSenderID",
+          "requiresJsonField": "up_to_message_id",
+          "requiresGoField": "UpToMessageID"
+        }
+      ]
+    },
+    "markConversationUnread": {
+      "operationId": "markConversationUnread",
+      "goMethod": "MarkConversationUnread",
+      "requestFunction": "NewMarkConversationUnreadRequest",
+      "responseType": "MarkConversationUnreadResponse",
+      "parseResponseFunction": "ParseMarkConversationUnreadResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/unread",
+      "tag": "Conversations",
+      "summary": "标记会话未读",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "MarkConversationUnreadJSONRequestBody",
+        "schemaRefs": [
+          "ConversationIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "MarkConversationUnreadInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "MarkConversationUnreadRequestBody",
+          "wireName": "body",
+          "wireType": "MarkConversationUnreadJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "muteConversation": {
+      "operationId": "muteConversation",
+      "goMethod": "MuteConversation",
+      "requestFunction": "NewMuteConversationRequest",
+      "responseType": "MuteConversationResponse",
+      "parseResponseFunction": "ParseMuteConversationResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/mute",
+      "tag": "Conversations",
+      "summary": "静音会话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "MuteConversationJSONRequestBody",
+        "schemaRefs": [
+          "ConversationMuteRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "MuteConversationInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "MuteConversationRequestBody",
+          "wireName": "body",
+          "wireType": "MuteConversationJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "pinConversation": {
+      "operationId": "pinConversation",
+      "goMethod": "PinConversation",
+      "requestFunction": "NewPinConversationRequest",
+      "responseType": "PinConversationResponse",
+      "parseResponseFunction": "ParsePinConversationResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/pin",
+      "tag": "Conversations",
+      "summary": "置顶会话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "PinConversationJSONRequestBody",
+        "schemaRefs": [
+          "ConversationIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "PinConversationInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "PinConversationRequestBody",
+          "wireName": "body",
+          "wireType": "PinConversationJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "pinMessage": {
+      "operationId": "pinMessage",
+      "goMethod": "PinMessage",
+      "requestFunction": "NewPinMessageRequest",
+      "responseType": "PinMessageResponse",
+      "parseResponseFunction": "ParsePinMessageResponse",
+      "method": "POST",
+      "path": "/v1/messages/pin",
+      "tag": "Messages",
+      "summary": "置顶或取消置顶消息",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "PinMessageJSONRequestBody",
+        "schemaRefs": [
+          "MessagePinRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "PinMessageInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "PinMessageRequestBody",
+          "wireName": "body",
+          "wireType": "PinMessageJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "reactMessage": {
+      "operationId": "reactMessage",
+      "goMethod": "ReactMessage",
+      "requestFunction": "NewReactMessageRequest",
+      "responseType": "ReactMessageResponse",
+      "parseResponseFunction": "ParseReactMessageResponse",
+      "method": "POST",
+      "path": "/v1/messages/reaction",
+      "tag": "Messages",
+      "summary": "给消息加表情回应或取消回应",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "ReactMessageJSONRequestBody",
+        "schemaRefs": [
+          "MessageReactionRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "ReactMessageInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "ReactMessageRequestBody",
+          "wireName": "body",
+          "wireType": "ReactMessageJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "reconnectAccountRuntime": {
+      "operationId": "reconnectAccountRuntime",
+      "goMethod": "ReconnectAccountRuntime",
+      "requestFunction": "NewReconnectAccountRuntimeRequest",
+      "responseType": "ReconnectAccountRuntimeResponse",
+      "parseResponseFunction": "ParseReconnectAccountRuntimeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/runtime/reconnect",
+      "tag": "Account Runtime",
+      "summary": "重连账号运行态",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "ReconnectAccountRuntimeJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "RuntimeActionResult"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "RuntimeActionResult",
+      "inputGoType": "ReconnectAccountRuntimeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*ReconnectAccountRuntimeRequestBody",
+          "wireName": "body",
+          "wireType": "ReconnectAccountRuntimeJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "refreshAccountRuntime": {
+      "operationId": "refreshAccountRuntime",
+      "goMethod": "RefreshAccountRuntime",
+      "requestFunction": "NewRefreshAccountRuntimeRequest",
+      "responseType": "RefreshAccountRuntimeResponse",
+      "parseResponseFunction": "ParseRefreshAccountRuntimeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/runtime/refresh",
+      "tag": "Account Runtime",
+      "summary": "刷新账号运行态",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "RefreshAccountRuntimeJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "RuntimeActionResult"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "RuntimeActionResult",
+      "inputGoType": "RefreshAccountRuntimeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*RefreshAccountRuntimeRequestBody",
+          "wireName": "body",
+          "wireType": "RefreshAccountRuntimeJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "revokeMessage": {
+      "operationId": "revokeMessage",
+      "goMethod": "RevokeMessage",
+      "requestFunction": "NewRevokeMessageRequest",
+      "responseType": "RevokeMessageResponse",
+      "parseResponseFunction": "ParseRevokeMessageResponse",
+      "method": "POST",
+      "path": "/v1/messages/revoke",
+      "tag": "Messages",
+      "summary": "撤回消息",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "RevokeMessageJSONRequestBody",
+        "schemaRefs": [
+          "MessageRevokeRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "RevokeMessageInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "RevokeMessageRequestBody",
+          "wireName": "body",
+          "wireType": "RevokeMessageJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "rotateApiKey": {
+      "operationId": "rotateApiKey",
+      "goMethod": "RotateAPIKey",
+      "requestFunction": "NewRotateAPIKeyRequest",
+      "responseType": "RotateAPIKeyResponse",
+      "parseResponseFunction": "ParseRotateAPIKeyResponse",
+      "method": "POST",
+      "path": "/v1/api-keys/{key_id}/rotate",
+      "tag": "API Keys",
+      "summary": "轮换 API Key",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "key_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "RotateAPIKeyJSONRequestBody",
+        "schemaRefs": [
+          "APIKeyCreateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "APIKeyCreateResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "APIKeyCreateResult",
+      "inputGoType": "RotateAPIKeyInput",
+      "requestArguments": [
+        {
+          "field": "KeyID",
+          "kind": "path",
+          "goType": "KeyID",
+          "wireName": "keyID",
+          "wireType": "KeyID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "RotateAPIKeyRequestBody",
+          "wireName": "body",
+          "wireType": "RotateAPIKeyJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "sendMessage": {
+      "operationId": "sendMessage",
+      "goMethod": "SendMessage",
+      "requestFunction": "NewSendMessageRequest",
+      "responseType": "SendMessageResponse",
+      "parseResponseFunction": "ParseSendMessageResponse",
+      "method": "POST",
+      "path": "/v1/messages",
+      "tag": "Messages",
+      "summary": "发送消息",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "SendMessageJSONRequestBody",
+        "schemaRefs": [
+          "SendMessageRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "SendMessageResult"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "SendMessageResult",
+      "inputGoType": "SendMessageInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "SendMessageRequestBody",
+          "wireName": "body",
+          "wireType": "SendMessageJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "setContactNote": {
+      "operationId": "setContactNote",
+      "goMethod": "SetContactNote",
+      "requestFunction": "NewSetContactNoteRequest",
+      "responseType": "SetContactNoteResponse",
+      "parseResponseFunction": "ParseSetContactNoteResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/contacts/note",
+      "tag": "Contacts",
+      "summary": "设置或清空联系人备注",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "SetContactNoteJSONRequestBody",
+        "schemaRefs": [
+          "ContactNoteRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "SetContactNoteInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "SetContactNoteRequestBody",
+          "wireName": "body",
+          "wireType": "SetContactNoteJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "setConversationLabelMembers": {
+      "operationId": "setConversationLabelMembers",
+      "goMethod": "SetConversationLabelMembers",
+      "requestFunction": "NewSetConversationLabelMembersRequest",
+      "responseType": "SetConversationLabelMembersResponse",
+      "parseResponseFunction": "ParseSetConversationLabelMembersResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/labels",
+      "tag": "Conversations",
+      "summary": "给会话打标或移除标签",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "SetConversationLabelMembersJSONRequestBody",
+        "schemaRefs": [
+          "ConversationLabelMembersRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationLabelMembersResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationLabelMembersResult",
+      "inputGoType": "SetConversationLabelMembersInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "SetConversationLabelMembersRequestBody",
+          "wireName": "body",
+          "wireType": "SetConversationLabelMembersJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "setGroupJoinApprovalMode": {
+      "operationId": "setGroupJoinApprovalMode",
+      "goMethod": "SetGroupJoinApprovalMode",
+      "requestFunction": "NewSetGroupJoinApprovalModeRequest",
+      "responseType": "SetGroupJoinApprovalModeResponse",
+      "parseResponseFunction": "ParseSetGroupJoinApprovalModeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/join-approval-mode",
+      "tag": "Groups",
+      "summary": "设置入群审批模式",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "SetGroupJoinApprovalModeJSONRequestBody",
+        "schemaRefs": [
+          "GroupJoinApprovalModeRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "SetGroupJoinApprovalModeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "SetGroupJoinApprovalModeRequestBody",
+          "wireName": "body",
+          "wireType": "SetGroupJoinApprovalModeJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "startAccountAuth": {
+      "operationId": "startAccountAuth",
+      "goMethod": "StartAccountAuth",
+      "requestFunction": "NewStartAccountAuthRequest",
+      "responseType": "StartAccountAuthResponse",
+      "parseResponseFunction": "ParseStartAccountAuthResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/start",
+      "tag": "Account Auth",
+      "summary": "启动验证码类授权",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "StartAccountAuthJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "StartAccountAuthInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*StartAccountAuthRequestBody",
+          "wireName": "body",
+          "wireType": "StartAccountAuthJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "startAccountQrAuth": {
+      "operationId": "startAccountQrAuth",
+      "goMethod": "StartAccountQRAuth",
+      "requestFunction": "NewStartAccountQRAuthRequest",
+      "responseType": "StartAccountQRAuthResponse",
+      "parseResponseFunction": "ParseStartAccountQRAuthResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/qr/start",
+      "tag": "Account Auth",
+      "summary": "启动二维码授权",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "StartAccountQRAuthJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "StartAccountQRAuthInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*StartAccountQRAuthRequestBody",
+          "wireName": "body",
+          "wireType": "StartAccountQRAuthJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "startAccountRuntime": {
+      "operationId": "startAccountRuntime",
+      "goMethod": "StartAccountRuntime",
+      "requestFunction": "NewStartAccountRuntimeRequest",
+      "responseType": "StartAccountRuntimeResponse",
+      "parseResponseFunction": "ParseStartAccountRuntimeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/runtime/start",
+      "tag": "Account Runtime",
+      "summary": "启动账号运行态",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "StartAccountRuntimeJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "RuntimeActionResult"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "RuntimeActionResult",
+      "inputGoType": "StartAccountRuntimeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*StartAccountRuntimeRequestBody",
+          "wireName": "body",
+          "wireType": "StartAccountRuntimeJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "stopAccountRuntime": {
+      "operationId": "stopAccountRuntime",
+      "goMethod": "StopAccountRuntime",
+      "requestFunction": "NewStopAccountRuntimeRequest",
+      "responseType": "StopAccountRuntimeResponse",
+      "parseResponseFunction": "ParseStopAccountRuntimeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/runtime/stop",
+      "tag": "Account Runtime",
+      "summary": "停止账号运行态",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "StopAccountRuntimeJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "RuntimeActionResult"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "RuntimeActionResult",
+      "inputGoType": "StopAccountRuntimeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*StopAccountRuntimeRequestBody",
+          "wireName": "body",
+          "wireType": "StopAccountRuntimeJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "submitAccountAuthCode": {
+      "operationId": "submitAccountAuthCode",
+      "goMethod": "SubmitAccountAuthCode",
+      "requestFunction": "NewSubmitAccountAuthCodeRequest",
+      "responseType": "SubmitAccountAuthCodeResponse",
+      "parseResponseFunction": "ParseSubmitAccountAuthCodeResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/code",
+      "tag": "Account Auth",
+      "summary": "提交验证码",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "SubmitAccountAuthCodeJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "SubmitAccountAuthCodeInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*SubmitAccountAuthCodeRequestBody",
+          "wireName": "body",
+          "wireType": "SubmitAccountAuthCodeJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "submitAccountAuthPassword": {
+      "operationId": "submitAccountAuthPassword",
+      "goMethod": "SubmitAccountAuthPassword",
+      "requestFunction": "NewSubmitAccountAuthPasswordRequest",
+      "responseType": "SubmitAccountAuthPasswordResponse",
+      "parseResponseFunction": "ParseSubmitAccountAuthPasswordResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/password",
+      "tag": "Account Auth",
+      "summary": "提交二次密码",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": false,
+        "goType": "SubmitAccountAuthPasswordJSONRequestBody",
+        "schemaRefs": [
+          "FreeFormObject"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "SubmitAccountAuthPasswordInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "*SubmitAccountAuthPasswordRequestBody",
+          "wireName": "body",
+          "wireType": "SubmitAccountAuthPasswordJSONRequestBody",
+          "required": false
+        }
+      ]
+    },
+    "unblockContact": {
+      "operationId": "unblockContact",
+      "goMethod": "UnblockContact",
+      "requestFunction": "NewUnblockContactRequest",
+      "responseType": "UnblockContactResponse",
+      "parseResponseFunction": "ParseUnblockContactResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/contacts/unblock",
+      "tag": "Contacts",
+      "summary": "解封联系人",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UnblockContactJSONRequestBody",
+        "schemaRefs": [
+          "ContactIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UnblockContactInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UnblockContactRequestBody",
+          "wireName": "body",
+          "wireType": "UnblockContactJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "unmuteConversation": {
+      "operationId": "unmuteConversation",
+      "goMethod": "UnmuteConversation",
+      "requestFunction": "NewUnmuteConversationRequest",
+      "responseType": "UnmuteConversationResponse",
+      "parseResponseFunction": "ParseUnmuteConversationResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/unmute",
+      "tag": "Conversations",
+      "summary": "取消静音会话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UnmuteConversationJSONRequestBody",
+        "schemaRefs": [
+          "ConversationIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UnmuteConversationInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UnmuteConversationRequestBody",
+          "wireName": "body",
+          "wireType": "UnmuteConversationJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "unpinConversation": {
+      "operationId": "unpinConversation",
+      "goMethod": "UnpinConversation",
+      "requestFunction": "NewUnpinConversationRequest",
+      "responseType": "UnpinConversationResponse",
+      "parseResponseFunction": "ParseUnpinConversationResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/unpin",
+      "tag": "Conversations",
+      "summary": "取消置顶会话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UnpinConversationJSONRequestBody",
+        "schemaRefs": [
+          "ConversationIdRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UnpinConversationInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UnpinConversationRequestBody",
+          "wireName": "body",
+          "wireType": "UnpinConversationJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateAccount": {
+      "operationId": "updateAccount",
+      "goMethod": "UpdateAccount",
+      "requestFunction": "NewUpdateAccountRequest",
+      "responseType": "UpdateAccountResponse",
+      "parseResponseFunction": "ParseUpdateAccountResponse",
+      "method": "PATCH",
+      "path": "/v1/accounts/{account_id}",
+      "tag": "Accounts",
+      "summary": "更新账号",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateAccountJSONRequestBody",
+        "schemaRefs": [
+          "AccountRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Account",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Account",
+      "inputGoType": "UpdateAccountInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateAccountRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateAccountJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateApiKeyStatus": {
+      "operationId": "updateApiKeyStatus",
+      "goMethod": "UpdateAPIKeyStatus",
+      "requestFunction": "NewUpdateAPIKeyStatusRequest",
+      "responseType": "UpdateAPIKeyStatusResponse",
+      "parseResponseFunction": "ParseUpdateAPIKeyStatusResponse",
+      "method": "PATCH",
+      "path": "/v1/api-keys/{key_id}",
+      "tag": "API Keys",
+      "summary": "更新 API Key 状态",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "write",
+      "parameters": [
+        {
+          "name": "key_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateAPIKeyStatusJSONRequestBody",
+        "schemaRefs": [
+          "APIKeyStatusUpdateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "APIKey",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "APIKey",
+      "inputGoType": "UpdateAPIKeyStatusInput",
+      "requestArguments": [
+        {
+          "field": "KeyID",
+          "kind": "path",
+          "goType": "KeyID",
+          "wireName": "keyID",
+          "wireType": "KeyID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateAPIKeyStatusRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateAPIKeyStatusJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateGroupInfo": {
+      "operationId": "updateGroupInfo",
+      "goMethod": "UpdateGroupInfo",
+      "requestFunction": "NewUpdateGroupInfoRequest",
+      "responseType": "UpdateGroupInfoResponse",
+      "parseResponseFunction": "ParseUpdateGroupInfoResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/update-info",
+      "tag": "Groups",
+      "summary": "修改群信息",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateGroupInfoJSONRequestBody",
+        "schemaRefs": [
+          "GroupInfoUpdateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UpdateGroupInfoInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateGroupInfoRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateGroupInfoJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateGroupJoinRequests": {
+      "operationId": "updateGroupJoinRequests",
+      "goMethod": "UpdateGroupJoinRequests",
+      "requestFunction": "NewUpdateGroupJoinRequestsRequest",
+      "responseType": "UpdateGroupJoinRequestsResponse",
+      "parseResponseFunction": "ParseUpdateGroupJoinRequestsResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/join-requests/update",
+      "tag": "Groups",
+      "summary": "处理入群申请",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateGroupJoinRequestsJSONRequestBody",
+        "schemaRefs": [
+          "GroupJoinRequestsUpdateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UpdateGroupJoinRequestsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateGroupJoinRequestsRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateGroupJoinRequestsJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateGroupMembers": {
+      "operationId": "updateGroupMembers",
+      "goMethod": "UpdateGroupMembers",
+      "requestFunction": "NewUpdateGroupMembersRequest",
+      "responseType": "UpdateGroupMembersResponse",
+      "parseResponseFunction": "ParseUpdateGroupMembersResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/groups/members",
+      "tag": "Groups",
+      "summary": "管理群成员",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateGroupMembersJSONRequestBody",
+        "schemaRefs": [
+          "GroupMemberUpdateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "OkData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "OkData",
+      "inputGoType": "UpdateGroupMembersInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateGroupMembersRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateGroupMembersJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateWebhookEndpoint": {
+      "operationId": "updateWebhookEndpoint",
+      "goMethod": "UpdateWebhookEndpoint",
+      "requestFunction": "NewUpdateWebhookEndpointRequest",
+      "responseType": "UpdateWebhookEndpointResponse",
+      "parseResponseFunction": "ParseUpdateWebhookEndpointResponse",
+      "method": "PATCH",
+      "path": "/v1/webhook-endpoints/{endpoint_id}",
+      "tag": "Webhook Endpoints",
+      "summary": "更新 webhook endpoint",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "endpoint_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateWebhookEndpointJSONRequestBody",
+        "schemaRefs": [
+          "WebhookEndpointRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "WebhookEndpoint"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "WebhookEndpoint",
+      "inputGoType": "UpdateWebhookEndpointInput",
+      "requestArguments": [
+        {
+          "field": "EndpointID",
+          "kind": "path",
+          "goType": "EndpointID",
+          "wireName": "endpointID",
+          "wireType": "EndpointID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateWebhookEndpointRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateWebhookEndpointJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "updateWorkspace": {
+      "operationId": "updateWorkspace",
+      "goMethod": "UpdateWorkspace",
+      "requestFunction": "NewUpdateWorkspaceRequest",
+      "responseType": "UpdateWorkspaceResponse",
+      "parseResponseFunction": "ParseUpdateWorkspaceResponse",
+      "method": "PATCH",
+      "path": "/v1/workspace",
+      "tag": "Workspace",
+      "summary": "更新当前 workspace",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "UpdateWorkspaceJSONRequestBody",
+        "schemaRefs": [
+          "WorkspaceUpdateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ResponseMeta",
+        "Workspace"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Workspace",
+      "inputGoType": "UpdateWorkspaceInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpdateWorkspaceRequestBody",
+          "wireName": "body",
+          "wireType": "UpdateWorkspaceJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "upsertConversationLabel": {
+      "operationId": "upsertConversationLabel",
+      "goMethod": "UpsertConversationLabel",
+      "requestFunction": "NewUpsertConversationLabelRequest",
+      "responseType": "UpsertConversationLabelResponse",
+      "parseResponseFunction": "ParseUpsertConversationLabelResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/labels/upsert",
+      "tag": "Conversations",
+      "summary": "新建或更新会话标签",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "UpsertConversationLabelJSONRequestBody",
+        "schemaRefs": [
+          "ConversationLabelUpsertRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ConversationLabel",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationLabel",
+      "inputGoType": "UpsertConversationLabelInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "UpsertConversationLabelRequestBody",
+          "wireName": "body",
+          "wireType": "UpsertConversationLabelJSONRequestBody",
+          "required": true
+        }
+      ]
+    }
+  },
+  "schemas": {
+    "APIKey": {
+      "goType": "APIKey"
+    },
+    "APIKeyCreateRequest": {
+      "goType": "APIKeyCreateRequest"
+    },
+    "APIKeyCreateResult": {
+      "goType": "APIKeyCreateResult"
+    },
+    "APIKeyStatusUpdateRequest": {
+      "goType": "APIKeyStatusUpdateRequest"
+    },
+    "Account": {
+      "goType": "Account"
+    },
+    "AccountRequest": {
+      "goType": "AccountRequest"
+    },
+    "AccountSession": {
+      "goType": "AccountSession"
+    },
+    "AuthField": {
+      "goType": "AuthField"
+    },
+    "Contact": {
+      "goType": "Contact"
+    },
+    "ContactBlocklistResult": {
+      "goType": "ContactBlocklistResult"
+    },
+    "ContactCard": {
+      "goType": "ContactCard"
+    },
+    "ContactEmail": {
+      "goType": "ContactEmail"
+    },
+    "ContactIdRequest": {
+      "goType": "ContactIDRequest"
+    },
+    "ContactListResult": {
+      "goType": "ContactListResult"
+    },
+    "ContactNoteRequest": {
+      "goType": "ContactNoteRequest"
+    },
+    "ContactPhone": {
+      "goType": "ContactPhone"
+    },
+    "Conversation": {
+      "goType": "Conversation"
+    },
+    "ConversationIdRequest": {
+      "goType": "ConversationIDRequest"
+    },
+    "ConversationLabel": {
+      "goType": "ConversationLabel"
+    },
+    "ConversationLabelDeleteRequest": {
+      "goType": "ConversationLabelDeleteRequest"
+    },
+    "ConversationLabelDeleteResult": {
+      "goType": "ConversationLabelDeleteResult"
+    },
+    "ConversationLabelListResult": {
+      "goType": "ConversationLabelListResult"
+    },
+    "ConversationLabelMembersRequest": {
+      "goType": "ConversationLabelMembersRequest"
+    },
+    "ConversationLabelMembersResult": {
+      "goType": "ConversationLabelMembersResult"
+    },
+    "ConversationLabelUpsertRequest": {
+      "goType": "ConversationLabelUpsertRequest"
+    },
+    "ConversationListResult": {
+      "goType": "ConversationListResult"
+    },
+    "ConversationMember": {
+      "goType": "ConversationMember"
+    },
+    "ConversationMemberListResult": {
+      "goType": "ConversationMemberListResult"
+    },
+    "ConversationMuteRequest": {
+      "goType": "ConversationMuteRequest"
+    },
+    "ConversationReadRequest": {
+      "goType": "ConversationReadRequest"
+    },
+    "ConversationType": {
+      "goType": "ConversationType"
+    },
+    "Error": {
+      "goType": "Error"
+    },
+    "ErrorEnvelope": {
+      "goType": "ErrorEnvelope"
+    },
+    "FreeFormObject": {
+      "goType": "FreeFormObject"
+    },
+    "Group": {
+      "goType": "Group"
+    },
+    "GroupCreateRequest": {
+      "goType": "GroupCreateRequest"
+    },
+    "GroupCreateResult": {
+      "goType": "GroupCreateResult"
+    },
+    "GroupIdRequest": {
+      "goType": "GroupIDRequest"
+    },
+    "GroupInfoUpdateRequest": {
+      "goType": "GroupInfoUpdateRequest"
+    },
+    "GroupInviteCode": {
+      "goType": "GroupInviteCode"
+    },
+    "GroupJoinApprovalModeRequest": {
+      "goType": "GroupJoinApprovalModeRequest"
+    },
+    "GroupJoinRequest": {
+      "goType": "GroupJoinRequest"
+    },
+    "GroupJoinRequestsResult": {
+      "goType": "GroupJoinRequestsResult"
+    },
+    "GroupJoinRequestsUpdateRequest": {
+      "goType": "GroupJoinRequestsUpdateRequest"
+    },
+    "GroupListResult": {
+      "goType": "GroupListResult"
+    },
+    "GroupMemberUpdateRequest": {
+      "goType": "GroupMemberUpdateRequest"
+    },
+    "Mention": {
+      "goType": "Mention"
+    },
+    "MessageEditRequest": {
+      "goType": "MessageEditRequest"
+    },
+    "MessagePayload": {
+      "goType": "MessagePayload"
+    },
+    "MessagePinRequest": {
+      "goType": "MessagePinRequest"
+    },
+    "MessageReactionRequest": {
+      "goType": "MessageReactionRequest"
+    },
+    "MessageRevokeRequest": {
+      "goType": "MessageRevokeRequest"
+    },
+    "MessageTargetRequest": {
+      "goType": "MessageTargetRequest"
+    },
+    "OkData": {
+      "goType": "OkData"
+    },
+    "ProviderName": {
+      "goType": "ProviderName"
+    },
+    "ProviderRegionsResponse": {
+      "goType": "ProviderRegionsResponse"
+    },
+    "Recipient": {
+      "goType": "Recipient"
+    },
+    "RegionAvailability": {
+      "goType": "RegionAvailability"
+    },
+    "ReplyTo": {
+      "goType": "ReplyTo"
+    },
+    "ResponseMeta": {
+      "goType": "ResponseMeta"
+    },
+    "RuntimeActionResult": {
+      "goType": "RuntimeActionResult"
+    },
+    "RuntimeStatus": {
+      "goType": "RuntimeStatus"
+    },
+    "SendMessageRequest": {
+      "goType": "SendMessageRequest"
+    },
+    "SendMessageResult": {
+      "goType": "SendMessageResult"
+    },
+    "StandardEventType": {
+      "goType": "StandardEventType"
+    },
+    "WebhookEndpoint": {
+      "goType": "WebhookEndpoint"
+    },
+    "WebhookEndpointRequest": {
+      "goType": "WebhookEndpointRequest"
+    },
+    "Workspace": {
+      "goType": "Workspace"
+    },
+    "WorkspaceUpdateRequest": {
+      "goType": "WorkspaceUpdateRequest"
+    }
+  }
+}

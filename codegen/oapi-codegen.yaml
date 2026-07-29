@@ -1,0 +1,14 @@
+# 生成物仅留在 internal，避免调用方绕过公开 Client 的鉴权与安全边界。
+package: wire
+# 本配置由 internal/generator nested module 执行，输出仍严格留在 root internal。
+output: ../wire/device.gen.go
+generate:
+  models: true
+  client: true
+output-options:
+  name-normalizer: ToCamelCaseWithInitialisms
+  additional-initialisms:
+    - QR
+  overlay:
+    path: ../../codegen/go.overlay.yaml
+    strict: true
