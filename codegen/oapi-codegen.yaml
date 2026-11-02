@@ -6,6 +6,8 @@ generate:
   models: true
   client: true
 output-options:
+  # Webhook schema 不是 HTTP 请求的可达节点，仍需保留公开类型。
+  skip-prune: true
   name-normalizer: ToCamelCaseWithInitialisms
   additional-initialisms:
     - QR

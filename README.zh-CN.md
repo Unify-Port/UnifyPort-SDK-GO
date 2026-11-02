@@ -8,7 +8,7 @@
 面向公开 UnifyPort Device API 的 contract-first Go SDK。它提供符合 Go 习惯的 `Client`、生成的 operation/model
 覆盖、安全优先 HTTP runtime、typed error、安全 response 元数据和有界 cursor pagination。
 
-当前公开 baseline 覆盖 64 个 operation、69 个 component schema 和 11 个资源组。`/v1/accounts/...` 下的路由
+当前公开 baseline 覆盖 78 个 operation、218 个 component schema 和 13 个资源组。`/v1/accounts/...` 下的路由
 管理 provider 账号资源，但仍属于同一个 Device API client。
 
 ## 能力与边界
@@ -120,9 +120,9 @@ Typed configuration、network、timeout、cancellation、API、response-parse �
 
 ## API 与 model 查找
 
-- [API coverage](docs/zh-CN/api-coverage.md)把全部 64 个 operation ID 映射到 Go method、path、retry 和数据
+- [API coverage](docs/zh-CN/api-coverage.md)把全部 78 个 operation ID 映射到 Go method、path、retry 和数据
   分类。
-- `parity/manifest.gen.json` 记录生成 request/response type、status、schema reference，以及全部 69 个
+- `parity/manifest.gen.json` 记录生成 request/response type、status、schema reference，以及全部 218 个
   component-to-Go 映射。
 - `contracts/device.openapi.yaml` 是协议字段和描述的权威来源。
 - `go doc github.com/Unify-Port/UnifyPort-SDK-GO` 显示公开 Go declaration。
@@ -196,3 +196,5 @@ consumer module graph。
 
 真实 staging/provider E2E 是独立 release gate。离线测试、生成 coverage 或 health response 不能证明账号已授权
 或 provider workflow 成功。
+
+当前同步基线是已批准的 Node 源码 `5901244`，不代表 npm 已发布同等能力。本轮未发布任何包。详见 [本次契约更新](docs/zh-CN/contract-update.md)。

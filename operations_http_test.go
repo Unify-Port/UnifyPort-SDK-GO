@@ -79,7 +79,7 @@ func TestGeneratedParserRejectsUndeclaredSuccessStatus(t *testing.T) {
 	}
 }
 
-func TestMarkConversationReadValidatesDependentRequiredBeforeExternalWork(t *testing.T) {
+func TestMarkConversationReadSupportsProviderSpecificMessageBoundaries(t *testing.T) {
 	t.Parallel()
 	var providerCalls atomic.Int32
 	var requestCalls atomic.Int32
@@ -127,23 +127,13 @@ func TestMarkConversationReadValidatesDependentRequiredBeforeExternalWork(t *tes
 		t.Fatalf("valid calls did not reach credential and HTTP exactly once each: provider=%d HTTP=%d", providerCalls.Load(), requestCalls.Load())
 	}
 
-	invalidBodies := []MarkConversationReadRequestBody{
-		{ConversationID: "conv_test", UpToMessageID: &messageID},
-		{ConversationID: "conv_test", UpToMessageSenderID: &senderID},
+	// Telegram 只发送消息 ID；provider 规则不应在未知 provider 时提升为本地成对校验。
+	messageID = "12345"
+	_, callErr := client.MarkConversationRead(context.Background(), MarkConversationReadInput{
+		AccountID: "acc_test", Body: MarkConversationReadRequestBody{ConversationID: "conv_test", UpToMessageID: &messageID},
+	})
+	if callErr != nil || providerCalls.Load() != 3 || requestCalls.Load() != 3 {
+		t.Fatalf("Telegram boundary rejected: %v", callErr)
 	}
-	for _, body := range invalidBodies {
-		providerBefore, requestsBefore := providerCalls.Load(), requestCalls.Load()
-		_, callErr := client.MarkConversationRead(context.Background(), MarkConversationReadInput{
-			AccountID: "acc_test",
-			Body:      body,
-		})
-		var configurationError *ConfigurationError
-		if !errors.As(callErr, &configurationError) || configurationError.Field != "MarkConversationReadInput.Body" {
-			t.Fatalf("incomplete message boundary error = %#v, want ConfigurationError", callErr)
-		}
-		// 本地契约错误不得解析 credential 或创建网络请求，避免无效输入产生外部副作用。
-		if providerCalls.Load() != providerBefore || requestCalls.Load() != requestsBefore {
-			t.Fatalf("invalid call reached external work: provider=%d HTTP=%d", providerCalls.Load(), requestCalls.Load())
-		}
-	}
+
 }

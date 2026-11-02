@@ -60,14 +60,15 @@ while IFS= read -r -d '' markdown; do
   done < <(LC_ALL=C grep -Eo '\]\([^)]+' "${markdown}" || true)
 done < <(find "${ROOT}" -type f -name '*.md' -not -path "${ROOT}/.git/*" -print0)
 
+# 批准基线扩展到 78 个 HTTP operation；Webhook 声明仍不进入可调用清单。
 # Manifest 是 coverage 的唯一枚举来源，文档只允许完整映射而不能维护另一份子集。
 sed -n 's/^[[:space:]]*"operationId": "\([^"]*\)",/\1/p' "${MANIFEST}" | LC_ALL=C sort >"${TEMP_DIR}/manifest"
 sed -n 's/^| `\([^`]*\)` |.*/\1/p' "${ENGLISH}" | LC_ALL=C sort >"${TEMP_DIR}/english"
 sed -n 's/^| `\([^`]*\)` |.*/\1/p' "${CHINESE}" | LC_ALL=C sort >"${TEMP_DIR}/chinese"
 
 operation_count="$(wc -l <"${TEMP_DIR}/manifest" | tr -d '[:space:]')"
-if [[ "${operation_count}" != "64" ]]; then
-  printf '[public:docs] manifest operation count is %s, want 64\n' "${operation_count}" >&2
+if [[ "${operation_count}" != "78" ]]; then
+  printf '[public:docs] manifest operation count is %s, want 78\n' "${operation_count}" >&2
   exit 1
 fi
 

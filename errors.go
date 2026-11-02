@@ -26,8 +26,10 @@ type ResponseParseError = transport.ResponseParseError
 
 // APIError 只保留稳定 HTTP 元数据；服务端 message、details、body 和 headers 不会公开。
 type APIError struct {
-	StatusCode  int
-	Code        string
+	StatusCode int
+	Code       string
+	// NumericCode 是可选的五位数字字符串，空值兼容旧服务响应。
+	NumericCode string
 	RequestID   string
 	OperationID string
 }
@@ -92,19 +94,34 @@ func (e *PaginationError) Is(target error) bool {
 }
 
 type errorPayload struct {
-	Code      string        `json:"code"`
-	RequestID string        `json:"request_id"`
-	Error     *errorPayload `json:"error"`
+	Code        string          `json:"code"`
+	NumericCode json.RawMessage `json:"numeric_code"`
+	RequestID   string          `json:"request_id"`
+	Error       *errorPayload   `json:"error"`
 }
 
 func newAPIError(operationID string, statusCode int, header http.Header, body []byte) *APIError {
 	code := fmt.Sprintf("HTTP_%d", statusCode)
+	numericCode := ""
 	requestID := safePublicDiagnostic(header.Get("X-Request-Id"), 128)
 	var payload errorPayload
 	if json.Unmarshal(body, &payload) == nil {
 		diagnostic := payload
 		if payload.Error != nil {
 			diagnostic = *payload.Error
+		}
+		var numeric string
+		// 错误元数据独立校验，错误类型不能破坏旧 code 和 request ID。
+		if json.Unmarshal(diagnostic.NumericCode, &numeric) == nil && len(numeric) == 5 && numeric[0] >= '1' && numeric[0] <= '9' {
+			valid := true
+			for _, digit := range numeric {
+				if digit < '0' || digit > '9' {
+					valid = false
+				}
+			}
+			if valid {
+				numericCode = numeric
+			}
 		}
 		if candidate := safePublicDiagnostic(diagnostic.Code, 64); candidate != "" {
 			code = candidate
@@ -116,6 +133,7 @@ func newAPIError(operationID string, statusCode int, header http.Header, body []
 	return &APIError{
 		StatusCode:  statusCode,
 		Code:        code,
+		NumericCode: numericCode,
 		RequestID:   requestID,
 		OperationID: safePublicDiagnostic(operationID, 128),
 	}

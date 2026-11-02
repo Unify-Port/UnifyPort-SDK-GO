@@ -2,18 +2,19 @@
   "schemaVersion": 1,
   "nodeSdk": {
     "package": "@unifyport/sdk-node",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "repository": "https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git",
-    "commit": "235f40c46a25ffac6dd6bc89e054d6ce56081cb0"
+    "commit": "5901244c409f63fd6b77a899c239ebc9ee96dd50",
+    "baselineKind": "approved-source"
   },
-  "contractSha256": "513fd190e4c1df911c616d199bc083ef0968cd1f2a25e1aafd7124c94a42aa44",
-  "operationCount": 64,
-  "schemaCount": 69,
+  "contractSha256": "47face9790a454fb0d6204721785846427ca7ead23cf854061ab54646682e904",
+  "operationCount": 78,
+  "schemaCount": 218,
   "policyCounts": {
     "retryable": 19,
-    "destructive": 7,
-    "secretInput": 8,
-    "secretOutput": 8
+    "destructive": 8,
+    "secretInput": 9,
+    "secretOutput": 16
   },
   "operations": {
     "blockContact": {
@@ -171,11 +172,11 @@
         "200"
       ],
       "responseSchemas": [
-        "FreeFormObject",
+        "QRAuthCheckData",
         "ResponseMeta"
       ],
       "hasSuccessContent": true,
-      "dataGoType": "FreeFormObject",
+      "dataGoType": "QRAuthCheckData",
       "inputGoType": "CheckAccountQRAuthInput",
       "requestArguments": [
         {
@@ -196,6 +197,51 @@
         }
       ]
     },
+    "confirmAccountPasskey": {
+      "operationId": "confirmAccountPasskey",
+      "goMethod": "ConfirmAccountPasskey",
+      "requestFunction": "NewConfirmAccountPasskeyRequest",
+      "responseType": "ConfirmAccountPasskeyResponse",
+      "parseResponseFunction": "ParseConfirmAccountPasskeyResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/passkey-confirm",
+      "tag": "Account Auth",
+      "summary": "确认 Passkey 授权",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "ConfirmAccountPasskeyInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        }
+      ]
+    },
     "createAccount": {
       "operationId": "createAccount",
       "goMethod": "CreateAccount",
@@ -210,14 +256,22 @@
       "mutability": "write",
       "retryable": false,
       "secretInput": true,
-      "secretOutput": false,
+      "secretOutput": true,
       "mcpExposure": "never",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "CreateAccountParams",
       "requestBody": {
         "required": true,
         "goType": "CreateAccountJSONRequestBody",
         "schemaRefs": [
-          "AccountRequest"
+          "AccountCreateRequest"
         ]
       },
       "successStatuses": [
@@ -232,11 +286,64 @@
       "inputGoType": "CreateAccountInput",
       "requestArguments": [
         {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*CreateAccountParams",
+          "wireName": "params",
+          "wireType": "*CreateAccountParams",
+          "required": false
+        },
+        {
           "field": "Body",
           "kind": "body",
           "goType": "CreateAccountRequestBody",
           "wireName": "body",
           "wireType": "CreateAccountJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createAccountAuthSession": {
+      "operationId": "createAccountAuthSession",
+      "goMethod": "CreateAccountAuthSession",
+      "requestFunction": "NewCreateAccountAuthSessionRequest",
+      "responseType": "CreateAccountAuthSessionResponse",
+      "parseResponseFunction": "ParseCreateAccountAuthSessionResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth-sessions",
+      "tag": "Account Auth",
+      "summary": "创建 Provider 授权会话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "201"
+      ],
+      "responseSchemas": [
+        "ProviderAuthSession",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ProviderAuthSession",
+      "inputGoType": "CreateAccountAuthSessionInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
           "required": true
         }
       ]
@@ -282,6 +389,111 @@
           "goType": "CreateAPIKeyRequestBody",
           "wireName": "body",
           "wireType": "CreateAPIKeyJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createCall": {
+      "operationId": "createCall",
+      "goMethod": "CreateCall",
+      "requestFunction": "NewCreateCallRequest",
+      "responseType": "CreateCallResponse",
+      "parseResponseFunction": "ParseCreateCallResponse",
+      "method": "POST",
+      "path": "/v1/calls",
+      "tag": "Calls",
+      "summary": "准备主动通话",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateCallJSONRequestBody",
+        "schemaRefs": [
+          "CreateCallRequest"
+        ]
+      },
+      "successStatuses": [
+        "201"
+      ],
+      "responseSchemas": [
+        "CreateCallData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "CreateCallData",
+      "inputGoType": "CreateCallInput",
+      "requestArguments": [
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateCallRequestBody",
+          "wireName": "body",
+          "wireType": "CreateCallJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "createContact": {
+      "operationId": "createContact",
+      "goMethod": "CreateContact",
+      "requestFunction": "NewCreateContactRequest",
+      "responseType": "CreateContactResponse",
+      "parseResponseFunction": "ParseCreateContactResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/contacts/add",
+      "tag": "Contacts",
+      "summary": "添加联系人",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "CreateContactJSONRequestBody",
+        "schemaRefs": [
+          "ContactCreateRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Contact",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Contact",
+      "inputGoType": "CreateContactInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "CreateContactRequestBody",
+          "wireName": "body",
+          "wireType": "CreateContactJSONRequestBody",
           "required": true
         }
       ]
@@ -413,8 +625,15 @@
           "in": "path",
           "required": true,
           "schemaRefs": []
+        },
+        {
+          "name": "account_id",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
         }
       ],
+      "paramsGoType": "DeactivateWebhookEndpointParams",
       "successStatuses": [
         "200"
       ],
@@ -433,6 +652,14 @@
           "wireName": "endpointID",
           "wireType": "EndpointID",
           "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*DeactivateWebhookEndpointParams",
+          "wireName": "params",
+          "wireType": "*DeactivateWebhookEndpointParams",
+          "required": false
         }
       ]
     },
@@ -460,12 +687,19 @@
           "schemaRefs": []
         }
       ],
-      "successStatuses": [
+      "noContentStatuses": [
         "204"
       ],
-      "responseSchemas": [],
-      "hasSuccessContent": false,
-      "dataGoType": "NoContent",
+      "successStatuses": [
+        "202",
+        "204"
+      ],
+      "responseSchemas": [
+        "AccountOperation",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "*AccountOperation",
       "inputGoType": "DeleteAccountInput",
       "requestArguments": [
         {
@@ -560,7 +794,17 @@
           "in": "path",
           "required": true,
           "schemaRefs": []
+        },
+        {
+          "name": "account_id",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
         }
+      ],
+      "paramsGoType": "DeleteWebhookEndpointParams",
+      "noContentStatuses": [
+        "204"
       ],
       "successStatuses": [
         "204"
@@ -577,6 +821,14 @@
           "wireName": "endpointID",
           "wireType": "EndpointID",
           "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*DeleteWebhookEndpointParams",
+          "wireName": "params",
+          "wireType": "*DeleteWebhookEndpointParams",
+          "required": false
         }
       ]
     },
@@ -715,6 +967,97 @@
         }
       ]
     },
+    "getAccountOperation": {
+      "operationId": "getAccountOperation",
+      "goMethod": "GetAccountOperation",
+      "requestFunction": "NewGetAccountOperationRequest",
+      "responseType": "GetAccountOperationResponse",
+      "parseResponseFunction": "ParseGetAccountOperationResponse",
+      "method": "GET",
+      "path": "/v1/account-operations/{operation_id}",
+      "tag": "Accounts",
+      "summary": "查询账号计费操作",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "operation_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "AccountOperation",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "AccountOperation",
+      "inputGoType": "GetAccountOperationInput",
+      "requestArguments": [
+        {
+          "field": "OperationID",
+          "kind": "path",
+          "goType": "string",
+          "wireName": "operationID",
+          "wireType": "string",
+          "required": true
+        }
+      ]
+    },
+    "getActiveCall": {
+      "operationId": "getActiveCall",
+      "goMethod": "GetActiveCall",
+      "requestFunction": "NewGetActiveCallRequest",
+      "responseType": "GetActiveCallResponse",
+      "parseResponseFunction": "ParseGetActiveCallResponse",
+      "method": "GET",
+      "path": "/v1/calls/active",
+      "tag": "Calls",
+      "summary": "查询账号当前活动通话",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "GetActiveCallParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ActiveCallData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "GetActiveCall200JSONResponseBody_Data",
+      "inputGoType": "GetActiveCallInput",
+      "requestArguments": [
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetActiveCallParams",
+          "wireName": "params",
+          "wireType": "*GetActiveCallParams",
+          "required": true
+        }
+      ]
+    },
     "getContact": {
       "operationId": "getContact",
       "goMethod": "GetContact",
@@ -771,6 +1114,66 @@
           "goType": "GetContactParams",
           "wireName": "params",
           "wireType": "*GetContactParams",
+          "required": true
+        }
+      ]
+    },
+    "getContactMembership": {
+      "operationId": "getContactMembership",
+      "goMethod": "GetContactMembership",
+      "requestFunction": "NewGetContactMembershipRequest",
+      "responseType": "GetContactMembershipResponse",
+      "parseResponseFunction": "ParseGetContactMembershipResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/contacts/membership",
+      "tag": "Contacts",
+      "summary": "查询联系人是否在联系人列表中",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "contact_id",
+          "in": "query",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "GetContactMembershipParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "ContactMembership",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ContactMembership",
+      "inputGoType": "GetContactMembershipInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "GetContactMembershipParams",
+          "wireName": "params",
+          "wireType": "*GetContactMembershipParams",
           "required": true
         }
       ]
@@ -963,6 +1366,66 @@
         }
       ]
     },
+    "getPost": {
+      "operationId": "getPost",
+      "goMethod": "GetPost",
+      "requestFunction": "NewGetPostRequest",
+      "responseType": "GetPostResponse",
+      "parseResponseFunction": "ParseGetPostResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/posts/info",
+      "tag": "Posts",
+      "summary": "获取帖子详情",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "GetPostJSONRequestBody",
+        "schemaRefs": [
+          "PostInfoRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "Post",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "Post",
+      "inputGoType": "GetPostInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "GetPostRequestBody",
+          "wireName": "body",
+          "wireType": "GetPostJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
     "getWebhookEndpoint": {
       "operationId": "getWebhookEndpoint",
       "goMethod": "GetWebhookEndpoint",
@@ -985,8 +1448,15 @@
           "in": "path",
           "required": true,
           "schemaRefs": []
+        },
+        {
+          "name": "account_id",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
         }
       ],
+      "paramsGoType": "GetWebhookEndpointParams",
       "successStatuses": [
         "200"
       ],
@@ -1005,6 +1475,14 @@
           "wireName": "endpointID",
           "wireType": "EndpointID",
           "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*GetWebhookEndpointParams",
+          "wireName": "params",
+          "wireType": "*GetWebhookEndpointParams",
+          "required": false
         }
       ]
     },
@@ -1036,6 +1514,64 @@
       "dataGoType": "Workspace",
       "requestArguments": []
     },
+    "hangupCall": {
+      "operationId": "hangupCall",
+      "goMethod": "HangupCall",
+      "requestFunction": "NewHangupCallRequest",
+      "responseType": "HangupCallResponse",
+      "parseResponseFunction": "ParseHangupCallResponse",
+      "method": "POST",
+      "path": "/v1/calls/{call_id}/hangup",
+      "tag": "Calls",
+      "summary": "挂断指定通话",
+      "authRequired": true,
+      "mutability": "destructive",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "call_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "HangupCallJSONRequestBody",
+        "schemaRefs": []
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "EndedCallData",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "EndedCallData",
+      "inputGoType": "HangupCallInput",
+      "requestArguments": [
+        {
+          "field": "CallID",
+          "kind": "path",
+          "goType": "string",
+          "wireName": "callID",
+          "wireType": "string",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "HangupCallRequestBody",
+          "wireName": "body",
+          "wireType": "HangupCallJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
     "importAccountAuthSession": {
       "operationId": "importAccountAuthSession",
       "goMethod": "ImportAccountAuthSession",
@@ -1064,7 +1600,7 @@
         "required": false,
         "goType": "ImportAccountAuthSessionJSONRequestBody",
         "schemaRefs": [
-          "FreeFormObject"
+          "SessionImportRequest"
         ]
       },
       "successStatuses": [
@@ -1170,19 +1706,43 @@
       "mutability": "read",
       "retryable": true,
       "secretInput": false,
-      "secretOutput": false,
+      "secretOutput": true,
       "mcpExposure": "never",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListAccountsParams",
       "successStatuses": [
         "200"
       ],
       "responseSchemas": [
-        "Account",
+        "AccountListResult",
         "ResponseMeta"
       ],
       "hasSuccessContent": true,
-      "dataGoType": "[]Account",
-      "requestArguments": []
+      "dataGoType": "AccountListResult",
+      "inputGoType": "ListAccountsInput",
+      "requestArguments": [
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListAccountsParams",
+          "wireName": "params",
+          "wireType": "*ListAccountsParams",
+          "required": false
+        }
+      ]
     },
     "listApiKeys": {
       "operationId": "listApiKeys",
@@ -1685,6 +2245,132 @@
         }
       ]
     },
+    "listPostComments": {
+      "operationId": "listPostComments",
+      "goMethod": "ListPostComments",
+      "requestFunction": "NewListPostCommentsRequest",
+      "responseType": "ListPostCommentsResponse",
+      "parseResponseFunction": "ParseListPostCommentsResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/posts/comments/list",
+      "tag": "Posts",
+      "summary": "列出帖子的一级评论",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "ListPostCommentsJSONRequestBody",
+        "schemaRefs": [
+          "PostCommentListRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "PostCommentListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "PostCommentListResult",
+      "inputGoType": "ListPostCommentsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "ListPostCommentsRequestBody",
+          "wireName": "body",
+          "wireType": "ListPostCommentsJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "listPosts": {
+      "operationId": "listPosts",
+      "goMethod": "ListPosts",
+      "requestFunction": "NewListPostsRequest",
+      "responseType": "ListPostsResponse",
+      "parseResponseFunction": "ParseListPostsResponse",
+      "method": "GET",
+      "path": "/v1/accounts/{account_id}/posts",
+      "tag": "Posts",
+      "summary": "列出本账号帖子",
+      "authRequired": true,
+      "mutability": "read",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListPostsParams",
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "PostListResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "PostListResult",
+      "inputGoType": "ListPostsInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListPostsParams",
+          "wireName": "params",
+          "wireType": "*ListPostsParams",
+          "required": false
+        }
+      ]
+    },
     "listProviderRegions": {
       "operationId": "listProviderRegions",
       "goMethod": "ListProviderRegions",
@@ -1707,7 +2393,7 @@
           "in": "path",
           "required": true,
           "schemaRefs": [
-            "ProviderName"
+            "ProviderInputName"
           ]
         }
       ],
@@ -1748,7 +2434,15 @@
       "secretInput": false,
       "secretOutput": false,
       "mcpExposure": "never",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "query",
+          "required": false,
+          "schemaRefs": []
+        }
+      ],
+      "paramsGoType": "ListWebhookEndpointsParams",
       "successStatuses": [
         "200"
       ],
@@ -1758,7 +2452,17 @@
       ],
       "hasSuccessContent": true,
       "dataGoType": "[]WebhookEndpoint",
-      "requestArguments": []
+      "inputGoType": "ListWebhookEndpointsInput",
+      "requestArguments": [
+        {
+          "field": "Params",
+          "kind": "params",
+          "goType": "*ListWebhookEndpointsParams",
+          "wireName": "params",
+          "wireType": "*ListWebhookEndpointsParams",
+          "required": false
+        }
+      ]
     },
     "markConversationRead": {
       "operationId": "markConversationRead",
@@ -1817,20 +2521,6 @@
           "wireName": "body",
           "wireType": "MarkConversationReadJSONRequestBody",
           "required": true
-        }
-      ],
-      "dependentRequirements": [
-        {
-          "ifJsonField": "up_to_message_id",
-          "ifGoField": "UpToMessageID",
-          "requiresJsonField": "up_to_message_sender_id",
-          "requiresGoField": "UpToMessageSenderID"
-        },
-        {
-          "ifJsonField": "up_to_message_sender_id",
-          "ifGoField": "UpToMessageSenderID",
-          "requiresJsonField": "up_to_message_id",
-          "requiresGoField": "UpToMessageID"
         }
       ]
     },
@@ -2224,6 +2914,126 @@
         }
       ]
     },
+    "replyPostComment": {
+      "operationId": "replyPostComment",
+      "goMethod": "ReplyPostComment",
+      "requestFunction": "NewReplyPostCommentRequest",
+      "responseType": "ReplyPostCommentResponse",
+      "parseResponseFunction": "ParseReplyPostCommentResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/posts/comments/reply",
+      "tag": "Posts",
+      "summary": "发布一级评论或回复一级评论",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "ReplyPostCommentJSONRequestBody",
+        "schemaRefs": [
+          "PostCommentReplyRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "PostCommentReplyResult",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "PostCommentReplyResult",
+      "inputGoType": "ReplyPostCommentInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "ReplyPostCommentRequestBody",
+          "wireName": "body",
+          "wireType": "ReplyPostCommentJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
+    "requestConversationHistory": {
+      "operationId": "requestConversationHistory",
+      "goMethod": "RequestConversationHistory",
+      "requestFunction": "NewRequestConversationHistoryRequest",
+      "responseType": "RequestConversationHistoryResponse",
+      "parseResponseFunction": "ParseRequestConversationHistoryResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/conversations/history/request",
+      "tag": "Conversations",
+      "summary": "请求补拉会话历史消息",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": false,
+      "secretOutput": false,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "RequestConversationHistoryJSONRequestBody",
+        "schemaRefs": [
+          "ConversationHistoryRequest"
+        ]
+      },
+      "successStatuses": [
+        "202"
+      ],
+      "responseSchemas": [
+        "ConversationHistoryAccepted",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "ConversationHistoryAccepted",
+      "inputGoType": "RequestConversationHistoryInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "RequestConversationHistoryRequestBody",
+          "wireName": "body",
+          "wireType": "RequestConversationHistoryJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
     "revokeMessage": {
       "operationId": "revokeMessage",
       "goMethod": "RevokeMessage",
@@ -2343,7 +3153,7 @@
       "mutability": "write",
       "retryable": false,
       "secretInput": true,
-      "secretOutput": false,
+      "secretOutput": true,
       "mcpExposure": "never",
       "parameters": [],
       "requestBody": {
@@ -2589,11 +3399,11 @@
         "200"
       ],
       "responseSchemas": [
-        "FreeFormObject",
-        "ResponseMeta"
+        "ResponseMeta",
+        "StartCodeAuthData"
       ],
       "hasSuccessContent": true,
-      "dataGoType": "FreeFormObject",
+      "dataGoType": "StartCodeAuthData",
       "inputGoType": "StartAccountAuthInput",
       "requestArguments": [
         {
@@ -2914,6 +3724,66 @@
         }
       ]
     },
+    "submitAccountPasskeyResponse": {
+      "operationId": "submitAccountPasskeyResponse",
+      "goMethod": "SubmitAccountPasskeyResponse",
+      "requestFunction": "NewSubmitAccountPasskeyResponseRequest",
+      "responseType": "SubmitAccountPasskeyResponseResponse",
+      "parseResponseFunction": "ParseSubmitAccountPasskeyResponseResponse",
+      "method": "POST",
+      "path": "/v1/accounts/{account_id}/auth/passkey-response",
+      "tag": "Account Auth",
+      "summary": "提交 Passkey 凭证响应",
+      "authRequired": true,
+      "mutability": "write",
+      "retryable": false,
+      "secretInput": true,
+      "secretOutput": true,
+      "mcpExposure": "never",
+      "parameters": [
+        {
+          "name": "account_id",
+          "in": "path",
+          "required": true,
+          "schemaRefs": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "goType": "SubmitAccountPasskeyResponseJSONRequestBody",
+        "schemaRefs": [
+          "PasskeyResponseRequest"
+        ]
+      },
+      "successStatuses": [
+        "200"
+      ],
+      "responseSchemas": [
+        "FreeFormObject",
+        "ResponseMeta"
+      ],
+      "hasSuccessContent": true,
+      "dataGoType": "FreeFormObject",
+      "inputGoType": "SubmitAccountPasskeyResponseInput",
+      "requestArguments": [
+        {
+          "field": "AccountID",
+          "kind": "path",
+          "goType": "AccountID",
+          "wireName": "accountID",
+          "wireType": "AccountID",
+          "required": true
+        },
+        {
+          "field": "Body",
+          "kind": "body",
+          "goType": "SubmitAccountPasskeyResponseRequestBody",
+          "wireName": "body",
+          "wireType": "SubmitAccountPasskeyResponseJSONRequestBody",
+          "required": true
+        }
+      ]
+    },
     "unblockContact": {
       "operationId": "unblockContact",
       "goMethod": "UnblockContact",
@@ -3108,7 +3978,7 @@
       "mutability": "write",
       "retryable": false,
       "secretInput": true,
-      "secretOutput": false,
+      "secretOutput": true,
       "mcpExposure": "never",
       "parameters": [
         {
@@ -3122,7 +3992,7 @@
         "required": true,
         "goType": "UpdateAccountJSONRequestBody",
         "schemaRefs": [
-          "AccountRequest"
+          "AccountUpdateRequest"
         ]
       },
       "successStatuses": [
@@ -3576,17 +4446,74 @@
     "Account": {
       "goType": "Account"
     },
-    "AccountRequest": {
-      "goType": "AccountRequest"
+    "AccountBilling": {
+      "goType": "AccountBilling"
+    },
+    "AccountCreateRequest": {
+      "goType": "AccountCreateRequest"
+    },
+    "AccountListResult": {
+      "goType": "AccountListResult"
+    },
+    "AccountOperation": {
+      "goType": "AccountOperation"
+    },
+    "AccountProfileUpdatedWebhookEvent": {
+      "goType": "AccountProfileUpdatedWebhookEvent"
     },
     "AccountSession": {
       "goType": "AccountSession"
     },
+    "AccountStartedWebhookEvent": {
+      "goType": "AccountStartedWebhookEvent"
+    },
+    "AccountUpdateRequest": {
+      "goType": "AccountUpdateRequest"
+    },
+    "AccountWebhookError": {
+      "goType": "AccountWebhookError"
+    },
+    "ActiveCallData": {
+      "goType": "ActiveCallData"
+    },
     "AuthField": {
       "goType": "AuthField"
     },
+    "CallAnsweredWebhookEvent": {
+      "goType": "CallAnsweredWebhookEvent"
+    },
+    "CallEndedWebhookEvent": {
+      "goType": "CallEndedWebhookEvent"
+    },
+    "CallEventCall": {
+      "goType": "CallEventCall"
+    },
+    "CallEventSender": {
+      "goType": "CallEventSender"
+    },
+    "CallIncomingWebhookEvent": {
+      "goType": "CallIncomingWebhookEvent"
+    },
+    "CallMessage": {
+      "goType": "CallMessage"
+    },
+    "CallMessageCall": {
+      "goType": "CallMessageCall"
+    },
+    "CallMessageReceivedWebhookEvent": {
+      "goType": "CallMessageReceivedWebhookEvent"
+    },
+    "CallMessageUpdatedWebhookEvent": {
+      "goType": "CallMessageUpdatedWebhookEvent"
+    },
+    "CallMessageWebhookEvent": {
+      "goType": "CallMessageWebhookEvent"
+    },
     "Contact": {
       "goType": "Contact"
+    },
+    "ContactAddressBook": {
+      "goType": "ContactAddressBook"
     },
     "ContactBlocklistResult": {
       "goType": "ContactBlocklistResult"
@@ -3594,8 +4521,14 @@
     "ContactCard": {
       "goType": "ContactCard"
     },
+    "ContactCreateRequest": {
+      "goType": "ContactCreateRequest"
+    },
     "ContactEmail": {
       "goType": "ContactEmail"
+    },
+    "ContactExtra": {
+      "goType": "ContactExtra"
     },
     "ContactIdRequest": {
       "goType": "ContactIDRequest"
@@ -3603,14 +4536,59 @@
     "ContactListResult": {
       "goType": "ContactListResult"
     },
+    "ContactMembership": {
+      "goType": "ContactMembership"
+    },
+    "ContactMessagePayload": {
+      "goType": "ContactMessagePayload"
+    },
     "ContactNoteRequest": {
       "goType": "ContactNoteRequest"
     },
     "ContactPhone": {
       "goType": "ContactPhone"
     },
+    "ContactUpdateChange": {
+      "goType": "ContactUpdateChange"
+    },
+    "ContactUpdateReference": {
+      "goType": "ContactUpdateReference"
+    },
+    "ContactUpdatedData": {
+      "goType": "ContactUpdatedData"
+    },
+    "ContactUpdatedWebhookEvent": {
+      "goType": "ContactUpdatedWebhookEvent"
+    },
     "Conversation": {
       "goType": "Conversation"
+    },
+    "ConversationDisappearingMessagesChange": {
+      "goType": "ConversationDisappearingMessagesChange"
+    },
+    "ConversationDisappearingMessagesState": {
+      "goType": "ConversationDisappearingMessagesState"
+    },
+    "ConversationDisappearingMessagesUpdatedWebhookEvent": {
+      "goType": "ConversationDisappearingMessagesUpdatedWebhookEvent"
+    },
+    "ConversationHistoryAccepted": {
+      "goType": "ConversationHistoryAccepted"
+    },
+    "ConversationHistoryBefore": {
+      "goType": "ConversationHistoryBefore"
+    },
+    "ConversationHistoryMessage": {
+      "goType": "ConversationHistoryMessage"
+    },
+    "ConversationHistoryRequest": {
+      "goType": "ConversationHistoryRequest"
+    },
+    "ConversationHistorySource": {
+      "goType": "ConversationHistorySource"
+    },
+    "ConversationHistoryWebhookEvent": {
+      "goType": "ConversationHistoryWebhookEvent"
     },
     "ConversationIdRequest": {
       "goType": "ConversationIDRequest"
@@ -3651,8 +4629,26 @@
     "ConversationReadRequest": {
       "goType": "ConversationReadRequest"
     },
+    "ConversationStateAccount": {
+      "goType": "ConversationStateAccount"
+    },
+    "ConversationStateActor": {
+      "goType": "ConversationStateActor"
+    },
+    "ConversationStateReference": {
+      "goType": "ConversationStateReference"
+    },
     "ConversationType": {
       "goType": "ConversationType"
+    },
+    "CreateCallData": {
+      "goType": "CreateCallData"
+    },
+    "CreateCallRequest": {
+      "goType": "CreateCallRequest"
+    },
+    "EndedCallData": {
+      "goType": "EndedCallData"
     },
     "Error": {
       "goType": "Error"
@@ -3665,6 +4661,9 @@
     },
     "Group": {
       "goType": "Group"
+    },
+    "GroupAnnouncementChange": {
+      "goType": "GroupAnnouncementChange"
     },
     "GroupCreateRequest": {
       "goType": "GroupCreateRequest"
@@ -3680,6 +4679,9 @@
     },
     "GroupInviteCode": {
       "goType": "GroupInviteCode"
+    },
+    "GroupInviteLinkChange": {
+      "goType": "GroupInviteLinkChange"
     },
     "GroupJoinApprovalModeRequest": {
       "goType": "GroupJoinApprovalModeRequest"
@@ -3699,20 +4701,209 @@
     "GroupMemberUpdateRequest": {
       "goType": "GroupMemberUpdateRequest"
     },
+    "GroupPermissions": {
+      "goType": "GroupPermissions"
+    },
+    "GroupSettingsEvent": {
+      "goType": "GroupSettingsEvent"
+    },
+    "GroupSettingsUpdatedWebhookEvent": {
+      "goType": "GroupSettingsUpdatedWebhookEvent"
+    },
+    "GroupUpdatedChange": {
+      "goType": "GroupUpdatedChange"
+    },
+    "LinkPreviewMessagePayload": {
+      "goType": "LinkPreviewMessagePayload"
+    },
+    "MediaMessagePayload": {
+      "goType": "MediaMessagePayload"
+    },
     "Mention": {
       "goType": "Mention"
+    },
+    "MessageCommerce": {
+      "goType": "MessageCommerce"
+    },
+    "MessageCommerceHTTPURL": {
+      "goType": "MessageCommerceHTTPURL"
+    },
+    "MessageCommerceHistoryWebhookEvent": {
+      "goType": "MessageCommerceHistoryWebhookEvent"
+    },
+    "MessageCommerceMoney": {
+      "goType": "MessageCommerceMoney"
+    },
+    "MessageCommerceReceivedWebhookEvent": {
+      "goType": "MessageCommerceReceivedWebhookEvent"
+    },
+    "MessageCommerceUpdatedWebhookEvent": {
+      "goType": "MessageCommerceUpdatedWebhookEvent"
+    },
+    "MessageCommerceWebhookEvent": {
+      "goType": "MessageCommerceWebhookEvent"
+    },
+    "MessageContactCards": {
+      "goType": "MessageContactCards"
+    },
+    "MessageContactCardsHistoryWebhookEvent": {
+      "goType": "MessageContactCardsHistoryWebhookEvent"
+    },
+    "MessageContactCardsReceivedWebhookEvent": {
+      "goType": "MessageContactCardsReceivedWebhookEvent"
+    },
+    "MessageContactCardsUpdatedWebhookEvent": {
+      "goType": "MessageContactCardsUpdatedWebhookEvent"
     },
     "MessageEditRequest": {
       "goType": "MessageEditRequest"
     },
+    "MessageInteractive": {
+      "goType": "MessageInteractive"
+    },
+    "MessageInteractiveAttachment": {
+      "goType": "MessageInteractiveAttachment"
+    },
+    "MessageInteractiveAttachmentMetadata": {
+      "goType": "MessageInteractiveAttachmentMetadata"
+    },
+    "MessageInteractiveButton": {
+      "goType": "MessageInteractiveButton"
+    },
+    "MessageInteractiveHeader": {
+      "goType": "MessageInteractiveHeader"
+    },
+    "MessageInteractiveHistoryWebhookEvent": {
+      "goType": "MessageInteractiveHistoryWebhookEvent"
+    },
+    "MessageInteractiveMessage": {
+      "goType": "MessageInteractiveMessage"
+    },
+    "MessageInteractiveReceivedWebhookEvent": {
+      "goType": "MessageInteractiveReceivedWebhookEvent"
+    },
+    "MessageInteractiveResponse": {
+      "goType": "MessageInteractiveResponse"
+    },
+    "MessageInteractiveUpdatedWebhookEvent": {
+      "goType": "MessageInteractiveUpdatedWebhookEvent"
+    },
+    "MessageInteractiveWebhookEvent": {
+      "goType": "MessageInteractiveWebhookEvent"
+    },
+    "MessageLinkPreview": {
+      "goType": "MessageLinkPreview"
+    },
+    "MessageLinkPreviewHTTPURL": {
+      "goType": "MessageLinkPreviewHTTPURL"
+    },
+    "MessageLinkPreviewHistoryWebhookEvent": {
+      "goType": "MessageLinkPreviewHistoryWebhookEvent"
+    },
+    "MessageLinkPreviewMessage": {
+      "goType": "MessageLinkPreviewMessage"
+    },
+    "MessageLinkPreviewReceivedWebhookEvent": {
+      "goType": "MessageLinkPreviewReceivedWebhookEvent"
+    },
+    "MessageLinkPreviewTextUpdate": {
+      "goType": "MessageLinkPreviewTextUpdate"
+    },
+    "MessageLinkPreviewUpdatedWebhookEvent": {
+      "goType": "MessageLinkPreviewUpdatedWebhookEvent"
+    },
+    "MessageLinkPreviewWebhookEvent": {
+      "goType": "MessageLinkPreviewWebhookEvent"
+    },
+    "MessageLiveLocation": {
+      "goType": "MessageLiveLocation"
+    },
+    "MessageLiveLocationHistoryWebhookEvent": {
+      "goType": "MessageLiveLocationHistoryWebhookEvent"
+    },
+    "MessageLiveLocationReceivedWebhookEvent": {
+      "goType": "MessageLiveLocationReceivedWebhookEvent"
+    },
+    "MessageLiveLocationUpdatedWebhookEvent": {
+      "goType": "MessageLiveLocationUpdatedWebhookEvent"
+    },
+    "MessageOrder": {
+      "goType": "MessageOrder"
+    },
     "MessagePayload": {
       "goType": "MessagePayload"
+    },
+    "MessagePinChange": {
+      "goType": "MessagePinChange"
+    },
+    "MessagePinMessage": {
+      "goType": "MessagePinMessage"
+    },
+    "MessagePinParticipant": {
+      "goType": "MessagePinParticipant"
     },
     "MessagePinRequest": {
       "goType": "MessagePinRequest"
     },
+    "MessagePinState": {
+      "goType": "MessagePinState"
+    },
+    "MessagePinUpdatedWebhookEvent": {
+      "goType": "MessagePinUpdatedWebhookEvent"
+    },
+    "MessagePoll": {
+      "goType": "MessagePoll"
+    },
+    "MessagePollHistoryWebhookEvent": {
+      "goType": "MessagePollHistoryWebhookEvent"
+    },
+    "MessagePollMessage": {
+      "goType": "MessagePollMessage"
+    },
+    "MessagePollOption": {
+      "goType": "MessagePollOption"
+    },
+    "MessagePollReceivedWebhookEvent": {
+      "goType": "MessagePollReceivedWebhookEvent"
+    },
+    "MessagePollVote": {
+      "goType": "MessagePollVote"
+    },
+    "MessagePollVoteChange": {
+      "goType": "MessagePollVoteChange"
+    },
+    "MessagePollVoteMessage": {
+      "goType": "MessagePollVoteMessage"
+    },
+    "MessagePollVoteUpdatedWebhookEvent": {
+      "goType": "MessagePollVoteUpdatedWebhookEvent"
+    },
+    "MessagePollWebhookEvent": {
+      "goType": "MessagePollWebhookEvent"
+    },
+    "MessageProduct": {
+      "goType": "MessageProduct"
+    },
     "MessageReactionRequest": {
       "goType": "MessageReactionRequest"
+    },
+    "MessageReferral": {
+      "goType": "MessageReferral"
+    },
+    "MessageReferralHistoryWebhookEvent": {
+      "goType": "MessageReferralHistoryWebhookEvent"
+    },
+    "MessageReferralProviderExtensions": {
+      "goType": "MessageReferralProviderExtensions"
+    },
+    "MessageReferralReceivedWebhookEvent": {
+      "goType": "MessageReferralReceivedWebhookEvent"
+    },
+    "MessageReferralUpdatedWebhookEvent": {
+      "goType": "MessageReferralUpdatedWebhookEvent"
+    },
+    "MessageReferralWebhookEvent": {
+      "goType": "MessageReferralWebhookEvent"
     },
     "MessageRevokeRequest": {
       "goType": "MessageRevokeRequest"
@@ -3720,14 +4911,92 @@
     "MessageTargetRequest": {
       "goType": "MessageTargetRequest"
     },
+    "MessageWithOptionalCommerce": {
+      "goType": "MessageWithOptionalCommerce"
+    },
+    "MessageWithOptionalContactCards": {
+      "goType": "MessageWithOptionalContactCards"
+    },
+    "MessageWithOptionalInteractive": {
+      "goType": "MessageWithOptionalInteractive"
+    },
+    "MessageWithOptionalLinkPreview": {
+      "goType": "MessageWithOptionalLinkPreview"
+    },
+    "MessageWithOptionalLiveLocation": {
+      "goType": "MessageWithOptionalLiveLocation"
+    },
+    "MessageWithOptionalPoll": {
+      "goType": "MessageWithOptionalPoll"
+    },
+    "MessageWithOptionalReferral": {
+      "goType": "MessageWithOptionalReferral"
+    },
     "OkData": {
       "goType": "OkData"
+    },
+    "PasskeyResponseRequest": {
+      "goType": "PasskeyResponseRequest"
+    },
+    "PollMessagePayload": {
+      "goType": "PollMessagePayload"
+    },
+    "Post": {
+      "goType": "Post"
+    },
+    "PostAuthor": {
+      "goType": "PostAuthor"
+    },
+    "PostComment": {
+      "goType": "PostComment"
+    },
+    "PostCommentCreatedWebhookEvent": {
+      "goType": "PostCommentCreatedWebhookEvent"
+    },
+    "PostCommentListRequest": {
+      "goType": "PostCommentListRequest"
+    },
+    "PostCommentListResult": {
+      "goType": "PostCommentListResult"
+    },
+    "PostCommentReplyRequest": {
+      "goType": "PostCommentReplyRequest"
+    },
+    "PostCommentReplyResult": {
+      "goType": "PostCommentReplyResult"
+    },
+    "PostInfoRequest": {
+      "goType": "PostInfoRequest"
+    },
+    "PostListResult": {
+      "goType": "PostListResult"
+    },
+    "PostResourceID": {
+      "goType": "PostResourceID"
+    },
+    "ProviderAuthSession": {
+      "goType": "ProviderAuthSession"
+    },
+    "ProviderInputName": {
+      "goType": "ProviderInputName"
     },
     "ProviderName": {
       "goType": "ProviderName"
     },
+    "ProviderProfile": {
+      "goType": "ProviderProfile"
+    },
     "ProviderRegionsResponse": {
       "goType": "ProviderRegionsResponse"
+    },
+    "QRAuthCheckData": {
+      "goType": "QRAuthCheckData"
+    },
+    "QRAuthCheckPayload": {
+      "goType": "QRAuthCheckPayload"
+    },
+    "ReceivedContactCard": {
+      "goType": "ReceivedContactCard"
     },
     "Recipient": {
       "goType": "Recipient"
@@ -3747,14 +5016,38 @@
     "RuntimeStatus": {
       "goType": "RuntimeStatus"
     },
+    "SendMessageLinkPreview": {
+      "goType": "SendMessageLinkPreview"
+    },
+    "SendMessagePoll": {
+      "goType": "SendMessagePoll"
+    },
+    "SendMessagePollOption": {
+      "goType": "SendMessagePollOption"
+    },
+    "SendMessageProviderData": {
+      "goType": "SendMessageProviderData"
+    },
     "SendMessageRequest": {
       "goType": "SendMessageRequest"
     },
     "SendMessageResult": {
       "goType": "SendMessageResult"
     },
+    "SessionImportRequest": {
+      "goType": "SessionImportRequest"
+    },
     "StandardEventType": {
       "goType": "StandardEventType"
+    },
+    "StartCodeAuthData": {
+      "goType": "StartCodeAuthData"
+    },
+    "StickerMessagePayload": {
+      "goType": "StickerMessagePayload"
+    },
+    "TextMessagePayload": {
+      "goType": "TextMessagePayload"
     },
     "WebhookEndpoint": {
       "goType": "WebhookEndpoint"
@@ -3762,8 +5055,32 @@
     "WebhookEndpointRequest": {
       "goType": "WebhookEndpointRequest"
     },
+    "WhatsAppAccountAuthFailedWebhookEvent": {
+      "goType": "WhatsAppAccountAuthFailedWebhookEvent"
+    },
+    "WhatsAppContactCreateOptions": {
+      "goType": "WhatsAppContactCreateOptions"
+    },
+    "WhatsAppDeviceID": {
+      "goType": "WhatsAppDeviceID"
+    },
+    "WhatsAppMessageDeviceSender": {
+      "goType": "WhatsAppMessageDeviceSender"
+    },
+    "WhatsAppMessageDeviceWebhookEvent": {
+      "goType": "WhatsAppMessageDeviceWebhookEvent"
+    },
+    "WhatsAppMessageReferralExtension": {
+      "goType": "WhatsAppMessageReferralExtension"
+    },
+    "WhatsAppProtocolSessionImportParams": {
+      "goType": "WhatsAppProtocolSessionImportParams"
+    },
     "Workspace": {
       "goType": "Workspace"
+    },
+    "WorkspaceStatus": {
+      "goType": "WorkspaceStatus"
     },
     "WorkspaceUpdateRequest": {
       "goType": "WorkspaceUpdateRequest"

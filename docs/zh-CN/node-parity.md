@@ -8,20 +8,22 @@
 
 | 项目 | 值 |
 | --- | --- |
-| Node package | `@unifyport/sdk-node` `0.3.0` |
+| Node package | `@unifyport/sdk-node` `0.4.0` |
 | 公开 Node repository | `https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git` |
-| 公开 Node commit | `235f40c46a25ffac6dd6bc89e054d6ce56081cb0` |
-| Contract SHA-256 | `513fd190e4c1df911c616d199bc083ef0968cd1f2a25e1aafd7124c94a42aa44` |
-| Operation | 64 |
-| Component schema | 69 |
-| Resource tag | 11 |
+| 公开 Node commit | `5901244c409f63fd6b77a899c239ebc9ee96dd50` |
+| Contract SHA-256 | `47face9790a454fb0d6204721785846427ca7ead23cf854061ab54646682e904` |
+| Operation | 78 |
+| Component schema | 218 |
+| Resource tag | 13 |
 
 仓库内契约和生成 manifest 是权威信息。本文数量是验收预期；baseline 变化时必须重新生成。
+
+Baseline kind 为 `approved-source`。表中的包版本是该 commit 的源码元数据，不表示 npm 该版本已发布本次能力。
 
 ## 覆盖预期
 
 Go SDK 必须保留 workspace、API key、provider、account、account authorization、account runtime、
-conversation、contact、group、message 和 webhook endpoint 的全部 64 个公开 operation。不能因为路由属于
+conversation、contact、group、message 和 webhook endpoint 的全部 78 个公开 operation。不能因为路由属于
 provider 账号或安全策略保守而遗漏 operation。
 
 Policy baseline 包含：
@@ -29,9 +31,9 @@ Policy baseline 包含：
 | 分类 | 预期数量 |
 | --- | ---: |
 | 显式 retryable operation | 19 |
-| Destructive operation | 7 |
-| Secret-input operation | 8 |
-| Secret-output operation | 8 |
+| Destructive operation | 8 |
+| Secret-input operation | 9 |
+| Secret-output operation | 16 |
 
 每个 operation 的 method、path、tag、Go method、request/response type、retry flag、mutability 和 secret flag
 应由生成 parity manifest 枚举，不能只依赖本文数量。
@@ -41,8 +43,8 @@ Policy baseline 包含：
 | Node SDK 概念 | Go SDK 概念 | Parity 规则 |
 | --- | --- | --- |
 | `contracts/device.openapi.yaml` | `contracts/device.openapi.yaml` | 精确已批准公开快照 |
-| `UnifyPortDeviceClient` | `Client` | 同样 64 个 operation ID，使用 Go 风格名称 |
-| 生成 schema | 生成 public model 和 `internal/wire` model | 69 个 schema 全部可追踪 |
+| `UnifyPortDeviceClient` | `Client` | 同样 78 个 operation ID，使用 Go 风格名称 |
+| 生成 schema | 生成 public model 和 `internal/wire` model | 218 个 schema 全部可追踪 |
 | 生成 operation catalog | 生成 Go operation 和 parity manifest | Method/path/policy 精确一致 |
 | `DeviceClientConfig` | `Config` | 相同安全默认值和有限上限 |
 | `RetryConfig` | `RetryConfig` | 相同默认值与硬上限意图 |

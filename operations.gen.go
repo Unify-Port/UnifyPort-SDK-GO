@@ -68,14 +68,34 @@ var operationCheckAccountQRAuth = Operation{
 	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
+var operationConfirmAccountPasskey = Operation{
+	ID: "confirmAccountPasskey", Method: "POST", Path: "/v1/accounts/{account_id}/auth/passkey-confirm", Tag: "Account Auth", Summary: "确认 Passkey 授权",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
+}
+
 var operationCreateAccount = Operation{
 	ID: "createAccount", Method: "POST", Path: "/v1/accounts", Tag: "Accounts", Summary: "创建账号",
-	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: false, MCPExposure: MCPExposureNever,
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: true, MCPExposure: MCPExposureNever,
+}
+
+var operationCreateAccountAuthSession = Operation{
+	ID: "createAccountAuthSession", Method: "POST", Path: "/v1/accounts/{account_id}/auth-sessions", Tag: "Account Auth", Summary: "创建 Provider 授权会话",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
 var operationCreateAPIKey = Operation{
 	ID: "createApiKey", Method: "POST", Path: "/v1/api-keys", Tag: "API Keys", Summary: "创建 API Key",
 	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
+}
+
+var operationCreateCall = Operation{
+	ID: "createCall", Method: "POST", Path: "/v1/calls", Tag: "Calls", Summary: "准备主动通话",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
+}
+
+var operationCreateContact = Operation{
+	ID: "createContact", Method: "POST", Path: "/v1/accounts/{account_id}/contacts/add", Tag: "Contacts", Summary: "添加联系人",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
 var operationCreateGroup = Operation{
@@ -123,9 +143,24 @@ var operationGetAccountAuthState = Operation{
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
+var operationGetAccountOperation = Operation{
+	ID: "getAccountOperation", Method: "GET", Path: "/v1/account-operations/{operation_id}", Tag: "Accounts", Summary: "查询账号计费操作",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
+var operationGetActiveCall = Operation{
+	ID: "getActiveCall", Method: "GET", Path: "/v1/calls/active", Tag: "Calls", Summary: "查询账号当前活动通话",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
 var operationGetContact = Operation{
 	ID: "getContact", Method: "GET", Path: "/v1/accounts/{account_id}/contacts/info", Tag: "Contacts", Summary: "获取联系人详情",
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
+var operationGetContactMembership = Operation{
+	ID: "getContactMembership", Method: "GET", Path: "/v1/accounts/{account_id}/contacts/membership", Tag: "Contacts", Summary: "查询联系人是否在联系人列表中",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
 var operationGetConversation = Operation{
@@ -143,6 +178,11 @@ var operationGetGroupInviteCode = Operation{
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
+var operationGetPost = Operation{
+	ID: "getPost", Method: "POST", Path: "/v1/accounts/{account_id}/posts/info", Tag: "Posts", Summary: "获取帖子详情",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
 var operationGetWebhookEndpoint = Operation{
 	ID: "getWebhookEndpoint", Method: "GET", Path: "/v1/webhook-endpoints/{endpoint_id}", Tag: "Webhook Endpoints", Summary: "获取 webhook endpoint",
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
@@ -151,6 +191,11 @@ var operationGetWebhookEndpoint = Operation{
 var operationGetWorkspace = Operation{
 	ID: "getWorkspace", Method: "GET", Path: "/v1/workspace", Tag: "Workspace", Summary: "获取当前 workspace",
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureRead,
+}
+
+var operationHangupCall = Operation{
+	ID: "hangupCall", Method: "POST", Path: "/v1/calls/{call_id}/hangup", Tag: "Calls", Summary: "挂断指定通话",
+	Mutability: MutabilityDestructive, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
 var operationImportAccountAuthSession = Operation{
@@ -165,7 +210,7 @@ var operationLeaveGroup = Operation{
 
 var operationListAccounts = Operation{
 	ID: "listAccounts", Method: "GET", Path: "/v1/accounts", Tag: "Accounts", Summary: "列出账号",
-	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
 var operationListAPIKeys = Operation{
@@ -206,6 +251,16 @@ var operationListGroupJoinRequests = Operation{
 var operationListGroups = Operation{
 	ID: "listGroups", Method: "GET", Path: "/v1/accounts/{account_id}/groups", Tag: "Groups", Summary: "列出群组",
 	Mutability: MutabilityRead, Retryable: true, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
+var operationListPostComments = Operation{
+	ID: "listPostComments", Method: "POST", Path: "/v1/accounts/{account_id}/posts/comments/list", Tag: "Posts", Summary: "列出帖子的一级评论",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
+var operationListPosts = Operation{
+	ID: "listPosts", Method: "GET", Path: "/v1/accounts/{account_id}/posts", Tag: "Posts", Summary: "列出本账号帖子",
+	Mutability: MutabilityRead, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
 var operationListProviderRegions = Operation{
@@ -258,6 +313,16 @@ var operationRefreshAccountRuntime = Operation{
 	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
+var operationReplyPostComment = Operation{
+	ID: "replyPostComment", Method: "POST", Path: "/v1/accounts/{account_id}/posts/comments/reply", Tag: "Posts", Summary: "发布一级评论或回复一级评论",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
+var operationRequestConversationHistory = Operation{
+	ID: "requestConversationHistory", Method: "POST", Path: "/v1/accounts/{account_id}/conversations/history/request", Tag: "Conversations", Summary: "请求补拉会话历史消息",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
+}
+
 var operationRevokeMessage = Operation{
 	ID: "revokeMessage", Method: "POST", Path: "/v1/messages/revoke", Tag: "Messages", Summary: "撤回消息",
 	Mutability: MutabilityDestructive, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
@@ -270,7 +335,7 @@ var operationRotateAPIKey = Operation{
 
 var operationSendMessage = Operation{
 	ID: "sendMessage", Method: "POST", Path: "/v1/messages", Tag: "Messages", Summary: "发送消息",
-	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: false, MCPExposure: MCPExposureNever,
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
 var operationSetContactNote = Operation{
@@ -318,6 +383,11 @@ var operationSubmitAccountAuthPassword = Operation{
 	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: false, MCPExposure: MCPExposureNever,
 }
 
+var operationSubmitAccountPasskeyResponse = Operation{
+	ID: "submitAccountPasskeyResponse", Method: "POST", Path: "/v1/accounts/{account_id}/auth/passkey-response", Tag: "Account Auth", Summary: "提交 Passkey 凭证响应",
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: true, MCPExposure: MCPExposureNever,
+}
+
 var operationUnblockContact = Operation{
 	ID: "unblockContact", Method: "POST", Path: "/v1/accounts/{account_id}/contacts/unblock", Tag: "Contacts", Summary: "解封联系人",
 	Mutability: MutabilityWrite, Retryable: false, SecretInput: false, SecretOutput: false, MCPExposure: MCPExposureNever,
@@ -335,7 +405,7 @@ var operationUnpinConversation = Operation{
 
 var operationUpdateAccount = Operation{
 	ID: "updateAccount", Method: "PATCH", Path: "/v1/accounts/{account_id}", Tag: "Accounts", Summary: "更新账号",
-	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: false, MCPExposure: MCPExposureNever,
+	Mutability: MutabilityWrite, Retryable: false, SecretInput: true, SecretOutput: true, MCPExposure: MCPExposureNever,
 }
 
 var operationUpdateAPIKeyStatus = Operation{
@@ -377,8 +447,12 @@ var operationCatalog = [...]Operation{
 	operationBlockContact,
 	operationCancelAccountAuth,
 	operationCheckAccountQRAuth,
+	operationConfirmAccountPasskey,
 	operationCreateAccount,
+	operationCreateAccountAuthSession,
 	operationCreateAPIKey,
+	operationCreateCall,
+	operationCreateContact,
 	operationCreateGroup,
 	operationCreateWebhookEndpoint,
 	operationDeactivateWebhookEndpoint,
@@ -388,12 +462,17 @@ var operationCatalog = [...]Operation{
 	operationEditMessage,
 	operationGetAccount,
 	operationGetAccountAuthState,
+	operationGetAccountOperation,
+	operationGetActiveCall,
 	operationGetContact,
+	operationGetContactMembership,
 	operationGetConversation,
 	operationGetGroup,
 	operationGetGroupInviteCode,
+	operationGetPost,
 	operationGetWebhookEndpoint,
 	operationGetWorkspace,
+	operationHangupCall,
 	operationImportAccountAuthSession,
 	operationLeaveGroup,
 	operationListAccounts,
@@ -405,6 +484,8 @@ var operationCatalog = [...]Operation{
 	operationListConversations,
 	operationListGroupJoinRequests,
 	operationListGroups,
+	operationListPostComments,
+	operationListPosts,
 	operationListProviderRegions,
 	operationListWebhookEndpoints,
 	operationMarkConversationRead,
@@ -415,6 +496,8 @@ var operationCatalog = [...]Operation{
 	operationReactMessage,
 	operationReconnectAccountRuntime,
 	operationRefreshAccountRuntime,
+	operationReplyPostComment,
+	operationRequestConversationHistory,
 	operationRevokeMessage,
 	operationRotateAPIKey,
 	operationSendMessage,
@@ -427,6 +510,7 @@ var operationCatalog = [...]Operation{
 	operationStopAccountRuntime,
 	operationSubmitAccountAuthCode,
 	operationSubmitAccountAuthPassword,
+	operationSubmitAccountPasskeyResponse,
 	operationUnblockContact,
 	operationUnmuteConversation,
 	operationUnpinConversation,
@@ -525,7 +609,7 @@ type CheckAccountQRAuthInput struct {
 }
 
 // CheckAccountQRAuth 检查二维码授权结果。
-func (c *Client) CheckAccountQRAuth(ctx context.Context, input CheckAccountQRAuthInput, options ...CallOption) (Result[FreeFormObject], error) {
+func (c *Client) CheckAccountQRAuth(ctx context.Context, input CheckAccountQRAuthInput, options ...CallOption) (Result[QRAuthCheckData], error) {
 	return executeOperation(ctx, c, operationCheckAccountQRAuth, func(baseURL string) (*http.Request, error) {
 		if input.Body == nil {
 			return wire.NewCheckAccountQRAuthRequestWithBody(baseURL, input.AccountID, "application/json", nil)
@@ -534,9 +618,35 @@ func (c *Client) CheckAccountQRAuth(ctx context.Context, input CheckAccountQRAut
 	}, parseCheckAccountQRAuthResponse, options...)
 }
 
-func parseCheckAccountQRAuthResponse(response *http.Response) (operationData[FreeFormObject], error) {
-	var zero operationData[FreeFormObject]
+func parseCheckAccountQRAuthResponse(response *http.Response) (operationData[QRAuthCheckData], error) {
+	var zero operationData[QRAuthCheckData]
 	parsed, err := wire.ParseCheckAccountQRAuthResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[QRAuthCheckData]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// ConfirmAccountPasskeyInput 汇集 ConfirmAccountPasskey 所需的 path、query/header 与 body 输入。
+type ConfirmAccountPasskeyInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+}
+
+// ConfirmAccountPasskey 确认 Passkey 授权。
+func (c *Client) ConfirmAccountPasskey(ctx context.Context, input ConfirmAccountPasskeyInput, options ...CallOption) (Result[FreeFormObject], error) {
+	return executeOperation(ctx, c, operationConfirmAccountPasskey, func(baseURL string) (*http.Request, error) {
+		return wire.NewConfirmAccountPasskeyRequest(baseURL, input.AccountID)
+	}, parseConfirmAccountPasskeyResponse, options...)
+}
+
+func parseConfirmAccountPasskeyResponse(response *http.Response) (operationData[FreeFormObject], error) {
+	var zero operationData[FreeFormObject]
+	parsed, err := wire.ParseConfirmAccountPasskeyResponse(response)
 	if err != nil {
 		return zero, err
 	}
@@ -549,6 +659,8 @@ func parseCheckAccountQRAuthResponse(response *http.Response) (operationData[Fre
 
 // CreateAccountInput 汇集 CreateAccount 所需的 path、query/header 与 body 输入。
 type CreateAccountInput struct {
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *CreateAccountParams
 	// Body 对应 application/json request body。
 	Body CreateAccountRequestBody
 }
@@ -556,7 +668,7 @@ type CreateAccountInput struct {
 // CreateAccount 创建账号。
 func (c *Client) CreateAccount(ctx context.Context, input CreateAccountInput, options ...CallOption) (Result[Account], error) {
 	return executeOperation(ctx, c, operationCreateAccount, func(baseURL string) (*http.Request, error) {
-		return wire.NewCreateAccountRequest(baseURL, input.Body)
+		return wire.NewCreateAccountRequest(baseURL, input.Params, input.Body)
 	}, parseCreateAccountResponse, options...)
 }
 
@@ -569,6 +681,32 @@ func parseCreateAccountResponse(response *http.Response) (operationData[Account]
 	if parsed.JSON201 != nil {
 		payload := parsed.JSON201
 		return operationData[Account]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// CreateAccountAuthSessionInput 汇集 CreateAccountAuthSession 所需的 path、query/header 与 body 输入。
+type CreateAccountAuthSessionInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+}
+
+// CreateAccountAuthSession 创建 Provider 授权会话。
+func (c *Client) CreateAccountAuthSession(ctx context.Context, input CreateAccountAuthSessionInput, options ...CallOption) (Result[ProviderAuthSession], error) {
+	return executeOperation(ctx, c, operationCreateAccountAuthSession, func(baseURL string) (*http.Request, error) {
+		return wire.NewCreateAccountAuthSessionRequest(baseURL, input.AccountID)
+	}, parseCreateAccountAuthSessionResponse, options...)
+}
+
+func parseCreateAccountAuthSessionResponse(response *http.Response) (operationData[ProviderAuthSession], error) {
+	var zero operationData[ProviderAuthSession]
+	parsed, err := wire.ParseCreateAccountAuthSessionResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON201 != nil {
+		payload := parsed.JSON201
+		return operationData[ProviderAuthSession]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -595,6 +733,60 @@ func parseCreateAPIKeyResponse(response *http.Response) (operationData[APIKeyCre
 	if parsed.JSON201 != nil {
 		payload := parsed.JSON201
 		return operationData[APIKeyCreateResult]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// CreateCallInput 汇集 CreateCall 所需的 path、query/header 与 body 输入。
+type CreateCallInput struct {
+	// Body 对应 application/json request body。
+	Body CreateCallRequestBody
+}
+
+// CreateCall 准备主动通话。
+func (c *Client) CreateCall(ctx context.Context, input CreateCallInput, options ...CallOption) (Result[CreateCallData], error) {
+	return executeOperation(ctx, c, operationCreateCall, func(baseURL string) (*http.Request, error) {
+		return wire.NewCreateCallRequest(baseURL, input.Body)
+	}, parseCreateCallResponse, options...)
+}
+
+func parseCreateCallResponse(response *http.Response) (operationData[CreateCallData], error) {
+	var zero operationData[CreateCallData]
+	parsed, err := wire.ParseCreateCallResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON201 != nil {
+		payload := parsed.JSON201
+		return operationData[CreateCallData]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// CreateContactInput 汇集 CreateContact 所需的 path、query/header 与 body 输入。
+type CreateContactInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body CreateContactRequestBody
+}
+
+// CreateContact 添加联系人。
+func (c *Client) CreateContact(ctx context.Context, input CreateContactInput, options ...CallOption) (Result[Contact], error) {
+	return executeOperation(ctx, c, operationCreateContact, func(baseURL string) (*http.Request, error) {
+		return wire.NewCreateContactRequest(baseURL, input.AccountID, input.Body)
+	}, parseCreateContactResponse, options...)
+}
+
+func parseCreateContactResponse(response *http.Response) (operationData[Contact], error) {
+	var zero operationData[Contact]
+	parsed, err := wire.ParseCreateContactResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[Contact]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -657,12 +849,14 @@ func parseCreateWebhookEndpointResponse(response *http.Response) (operationData[
 type DeactivateWebhookEndpointInput struct {
 	// EndpointID 对应必填 path parameter。
 	EndpointID EndpointID
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *DeactivateWebhookEndpointParams
 }
 
 // DeactivateWebhookEndpoint 停用 webhook endpoint。
 func (c *Client) DeactivateWebhookEndpoint(ctx context.Context, input DeactivateWebhookEndpointInput, options ...CallOption) (Result[WebhookEndpoint], error) {
 	return executeOperation(ctx, c, operationDeactivateWebhookEndpoint, func(baseURL string) (*http.Request, error) {
-		return wire.NewDeactivateWebhookEndpointRequest(baseURL, input.EndpointID)
+		return wire.NewDeactivateWebhookEndpointRequest(baseURL, input.EndpointID, input.Params)
 	}, parseDeactivateWebhookEndpointResponse, options...)
 }
 
@@ -686,20 +880,24 @@ type DeleteAccountInput struct {
 }
 
 // DeleteAccount 删除账号。
-func (c *Client) DeleteAccount(ctx context.Context, input DeleteAccountInput, options ...CallOption) (Result[NoContent], error) {
+func (c *Client) DeleteAccount(ctx context.Context, input DeleteAccountInput, options ...CallOption) (Result[*AccountOperation], error) {
 	return executeOperation(ctx, c, operationDeleteAccount, func(baseURL string) (*http.Request, error) {
 		return wire.NewDeleteAccountRequest(baseURL, input.AccountID)
 	}, parseDeleteAccountResponse, options...)
 }
 
-func parseDeleteAccountResponse(response *http.Response) (operationData[NoContent], error) {
-	var zero operationData[NoContent]
+func parseDeleteAccountResponse(response *http.Response) (operationData[*AccountOperation], error) {
+	var zero operationData[*AccountOperation]
 	parsed, err := wire.ParseDeleteAccountResponse(response)
 	if err != nil {
 		return zero, err
 	}
+	if parsed.JSON202 != nil {
+		payload := parsed.JSON202
+		return operationData[*AccountOperation]{Data: &payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
 	if parsed.StatusCode() == 204 {
-		return operationData[NoContent]{Data: NoContent{}}, nil
+		return operationData[*AccountOperation]{}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -736,12 +934,14 @@ func parseDeleteConversationLabelResponse(response *http.Response) (operationDat
 type DeleteWebhookEndpointInput struct {
 	// EndpointID 对应必填 path parameter。
 	EndpointID EndpointID
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *DeleteWebhookEndpointParams
 }
 
 // DeleteWebhookEndpoint 删除 webhook endpoint。
 func (c *Client) DeleteWebhookEndpoint(ctx context.Context, input DeleteWebhookEndpointInput, options ...CallOption) (Result[NoContent], error) {
 	return executeOperation(ctx, c, operationDeleteWebhookEndpoint, func(baseURL string) (*http.Request, error) {
-		return wire.NewDeleteWebhookEndpointRequest(baseURL, input.EndpointID)
+		return wire.NewDeleteWebhookEndpointRequest(baseURL, input.EndpointID, input.Params)
 	}, parseDeleteWebhookEndpointResponse, options...)
 }
 
@@ -835,6 +1035,58 @@ func parseGetAccountAuthStateResponse(response *http.Response) (operationData[Ac
 	return zero, errUnexpectedSuccessResponse
 }
 
+// GetAccountOperationInput 汇集 GetAccountOperation 所需的 path、query/header 与 body 输入。
+type GetAccountOperationInput struct {
+	// OperationID 对应必填 path parameter。
+	OperationID string
+}
+
+// GetAccountOperation 查询账号计费操作。
+func (c *Client) GetAccountOperation(ctx context.Context, input GetAccountOperationInput, options ...CallOption) (Result[AccountOperation], error) {
+	return executeOperation(ctx, c, operationGetAccountOperation, func(baseURL string) (*http.Request, error) {
+		return wire.NewGetAccountOperationRequest(baseURL, input.OperationID)
+	}, parseGetAccountOperationResponse, options...)
+}
+
+func parseGetAccountOperationResponse(response *http.Response) (operationData[AccountOperation], error) {
+	var zero operationData[AccountOperation]
+	parsed, err := wire.ParseGetAccountOperationResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[AccountOperation]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// GetActiveCallInput 汇集 GetActiveCall 所需的 path、query/header 与 body 输入。
+type GetActiveCallInput struct {
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params GetActiveCallParams
+}
+
+// GetActiveCall 查询账号当前活动通话。
+func (c *Client) GetActiveCall(ctx context.Context, input GetActiveCallInput, options ...CallOption) (Result[GetActiveCall200JSONResponseBody_Data], error) {
+	return executeOperation(ctx, c, operationGetActiveCall, func(baseURL string) (*http.Request, error) {
+		return wire.NewGetActiveCallRequest(baseURL, &input.Params)
+	}, parseGetActiveCallResponse, options...)
+}
+
+func parseGetActiveCallResponse(response *http.Response) (operationData[GetActiveCall200JSONResponseBody_Data], error) {
+	var zero operationData[GetActiveCall200JSONResponseBody_Data]
+	parsed, err := wire.ParseGetActiveCallResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[GetActiveCall200JSONResponseBody_Data]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
 // GetContactInput 汇集 GetContact 所需的 path、query/header 与 body 输入。
 type GetContactInput struct {
 	// AccountID 对应必填 path parameter。
@@ -859,6 +1111,34 @@ func parseGetContactResponse(response *http.Response) (operationData[Contact], e
 	if parsed.JSON200 != nil {
 		payload := parsed.JSON200
 		return operationData[Contact]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// GetContactMembershipInput 汇集 GetContactMembership 所需的 path、query/header 与 body 输入。
+type GetContactMembershipInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params GetContactMembershipParams
+}
+
+// GetContactMembership 查询联系人是否在联系人列表中。
+func (c *Client) GetContactMembership(ctx context.Context, input GetContactMembershipInput, options ...CallOption) (Result[ContactMembership], error) {
+	return executeOperation(ctx, c, operationGetContactMembership, func(baseURL string) (*http.Request, error) {
+		return wire.NewGetContactMembershipRequest(baseURL, input.AccountID, &input.Params)
+	}, parseGetContactMembershipResponse, options...)
+}
+
+func parseGetContactMembershipResponse(response *http.Response) (operationData[ContactMembership], error) {
+	var zero operationData[ContactMembership]
+	parsed, err := wire.ParseGetContactMembershipResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[ContactMembership]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -947,16 +1227,46 @@ func parseGetGroupInviteCodeResponse(response *http.Response) (operationData[Gro
 	return zero, errUnexpectedSuccessResponse
 }
 
+// GetPostInput 汇集 GetPost 所需的 path、query/header 与 body 输入。
+type GetPostInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body GetPostRequestBody
+}
+
+// GetPost 获取帖子详情。
+func (c *Client) GetPost(ctx context.Context, input GetPostInput, options ...CallOption) (Result[Post], error) {
+	return executeOperation(ctx, c, operationGetPost, func(baseURL string) (*http.Request, error) {
+		return wire.NewGetPostRequest(baseURL, input.AccountID, input.Body)
+	}, parseGetPostResponse, options...)
+}
+
+func parseGetPostResponse(response *http.Response) (operationData[Post], error) {
+	var zero operationData[Post]
+	parsed, err := wire.ParseGetPostResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[Post]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
 // GetWebhookEndpointInput 汇集 GetWebhookEndpoint 所需的 path、query/header 与 body 输入。
 type GetWebhookEndpointInput struct {
 	// EndpointID 对应必填 path parameter。
 	EndpointID EndpointID
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *GetWebhookEndpointParams
 }
 
 // GetWebhookEndpoint 获取 webhook endpoint。
 func (c *Client) GetWebhookEndpoint(ctx context.Context, input GetWebhookEndpointInput, options ...CallOption) (Result[WebhookEndpoint], error) {
 	return executeOperation(ctx, c, operationGetWebhookEndpoint, func(baseURL string) (*http.Request, error) {
-		return wire.NewGetWebhookEndpointRequest(baseURL, input.EndpointID)
+		return wire.NewGetWebhookEndpointRequest(baseURL, input.EndpointID, input.Params)
 	}, parseGetWebhookEndpointResponse, options...)
 }
 
@@ -989,6 +1299,34 @@ func parseGetWorkspaceResponse(response *http.Response) (operationData[Workspace
 	if parsed.JSON200 != nil {
 		payload := parsed.JSON200
 		return operationData[Workspace]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// HangupCallInput 汇集 HangupCall 所需的 path、query/header 与 body 输入。
+type HangupCallInput struct {
+	// CallID 对应必填 path parameter。
+	CallID string
+	// Body 对应 application/json request body。
+	Body HangupCallRequestBody
+}
+
+// HangupCall 挂断指定通话。
+func (c *Client) HangupCall(ctx context.Context, input HangupCallInput, options ...CallOption) (Result[EndedCallData], error) {
+	return executeOperation(ctx, c, operationHangupCall, func(baseURL string) (*http.Request, error) {
+		return wire.NewHangupCallRequest(baseURL, input.CallID, input.Body)
+	}, parseHangupCallResponse, options...)
+}
+
+func parseHangupCallResponse(response *http.Response) (operationData[EndedCallData], error) {
+	var zero operationData[EndedCallData]
+	parsed, err := wire.ParseHangupCallResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[EndedCallData]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -1052,22 +1390,28 @@ func parseLeaveGroupResponse(response *http.Response) (operationData[OkData], er
 	return zero, errUnexpectedSuccessResponse
 }
 
+// ListAccountsInput 汇集 ListAccounts 所需的 path、query/header 与 body 输入。
+type ListAccountsInput struct {
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *ListAccountsParams
+}
+
 // ListAccounts 列出账号。
-func (c *Client) ListAccounts(ctx context.Context, options ...CallOption) (Result[[]Account], error) {
+func (c *Client) ListAccounts(ctx context.Context, input ListAccountsInput, options ...CallOption) (Result[AccountListResult], error) {
 	return executeOperation(ctx, c, operationListAccounts, func(baseURL string) (*http.Request, error) {
-		return wire.NewListAccountsRequest(baseURL)
+		return wire.NewListAccountsRequest(baseURL, input.Params)
 	}, parseListAccountsResponse, options...)
 }
 
-func parseListAccountsResponse(response *http.Response) (operationData[[]Account], error) {
-	var zero operationData[[]Account]
+func parseListAccountsResponse(response *http.Response) (operationData[AccountListResult], error) {
+	var zero operationData[AccountListResult]
 	parsed, err := wire.ParseListAccountsResponse(response)
 	if err != nil {
 		return zero, err
 	}
 	if parsed.JSON200 != nil {
 		payload := parsed.JSON200
-		return operationData[[]Account]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+		return operationData[AccountListResult]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -1286,6 +1630,62 @@ func parseListGroupsResponse(response *http.Response) (operationData[GroupListRe
 	return zero, errUnexpectedSuccessResponse
 }
 
+// ListPostCommentsInput 汇集 ListPostComments 所需的 path、query/header 与 body 输入。
+type ListPostCommentsInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body ListPostCommentsRequestBody
+}
+
+// ListPostComments 列出帖子的一级评论。
+func (c *Client) ListPostComments(ctx context.Context, input ListPostCommentsInput, options ...CallOption) (Result[PostCommentListResult], error) {
+	return executeOperation(ctx, c, operationListPostComments, func(baseURL string) (*http.Request, error) {
+		return wire.NewListPostCommentsRequest(baseURL, input.AccountID, input.Body)
+	}, parseListPostCommentsResponse, options...)
+}
+
+func parseListPostCommentsResponse(response *http.Response) (operationData[PostCommentListResult], error) {
+	var zero operationData[PostCommentListResult]
+	parsed, err := wire.ParseListPostCommentsResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[PostCommentListResult]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// ListPostsInput 汇集 ListPosts 所需的 path、query/header 与 body 输入。
+type ListPostsInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *ListPostsParams
+}
+
+// ListPosts 列出本账号帖子。
+func (c *Client) ListPosts(ctx context.Context, input ListPostsInput, options ...CallOption) (Result[PostListResult], error) {
+	return executeOperation(ctx, c, operationListPosts, func(baseURL string) (*http.Request, error) {
+		return wire.NewListPostsRequest(baseURL, input.AccountID, input.Params)
+	}, parseListPostsResponse, options...)
+}
+
+func parseListPostsResponse(response *http.Response) (operationData[PostListResult], error) {
+	var zero operationData[PostListResult]
+	parsed, err := wire.ParseListPostsResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[PostListResult]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
 // ListProviderRegionsInput 汇集 ListProviderRegions 所需的 path、query/header 与 body 输入。
 type ListProviderRegionsInput struct {
 	// Provider 对应必填 path parameter。
@@ -1312,10 +1712,16 @@ func parseListProviderRegionsResponse(response *http.Response) (operationData[Pr
 	return zero, errUnexpectedSuccessResponse
 }
 
+// ListWebhookEndpointsInput 汇集 ListWebhookEndpoints 所需的 path、query/header 与 body 输入。
+type ListWebhookEndpointsInput struct {
+	// Params 保留生成器对 query/header 参数的 required 约束。
+	Params *ListWebhookEndpointsParams
+}
+
 // ListWebhookEndpoints 列出 webhook endpoint。
-func (c *Client) ListWebhookEndpoints(ctx context.Context, options ...CallOption) (Result[[]WebhookEndpoint], error) {
+func (c *Client) ListWebhookEndpoints(ctx context.Context, input ListWebhookEndpointsInput, options ...CallOption) (Result[[]WebhookEndpoint], error) {
 	return executeOperation(ctx, c, operationListWebhookEndpoints, func(baseURL string) (*http.Request, error) {
-		return wire.NewListWebhookEndpointsRequest(baseURL)
+		return wire.NewListWebhookEndpointsRequest(baseURL, input.Params)
 	}, parseListWebhookEndpointsResponse, options...)
 }
 
@@ -1342,13 +1748,6 @@ type MarkConversationReadInput struct {
 
 // MarkConversationRead 标记会话已读。
 func (c *Client) MarkConversationRead(ctx context.Context, input MarkConversationReadInput, options ...CallOption) (Result[OkData], error) {
-	// OpenAPI dependentRequired 必须先于 credential 与网络访问执行，避免无效请求触发外部副作用。
-	if input.Body.UpToMessageID != nil && input.Body.UpToMessageSenderID == nil {
-		return Result[OkData]{}, &ConfigurationError{Field: "MarkConversationReadInput.Body", Reason: "up_to_message_sender_id is required when up_to_message_id is provided"}
-	}
-	if input.Body.UpToMessageSenderID != nil && input.Body.UpToMessageID == nil {
-		return Result[OkData]{}, &ConfigurationError{Field: "MarkConversationReadInput.Body", Reason: "up_to_message_id is required when up_to_message_sender_id is provided"}
-	}
 	return executeOperation(ctx, c, operationMarkConversationRead, func(baseURL string) (*http.Request, error) {
 		return wire.NewMarkConversationReadRequest(baseURL, input.AccountID, input.Body)
 	}, parseMarkConversationReadResponse, options...)
@@ -1565,6 +1964,62 @@ func parseRefreshAccountRuntimeResponse(response *http.Response) (operationData[
 	return zero, errUnexpectedSuccessResponse
 }
 
+// ReplyPostCommentInput 汇集 ReplyPostComment 所需的 path、query/header 与 body 输入。
+type ReplyPostCommentInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body ReplyPostCommentRequestBody
+}
+
+// ReplyPostComment 发布一级评论或回复一级评论。
+func (c *Client) ReplyPostComment(ctx context.Context, input ReplyPostCommentInput, options ...CallOption) (Result[PostCommentReplyResult], error) {
+	return executeOperation(ctx, c, operationReplyPostComment, func(baseURL string) (*http.Request, error) {
+		return wire.NewReplyPostCommentRequest(baseURL, input.AccountID, input.Body)
+	}, parseReplyPostCommentResponse, options...)
+}
+
+func parseReplyPostCommentResponse(response *http.Response) (operationData[PostCommentReplyResult], error) {
+	var zero operationData[PostCommentReplyResult]
+	parsed, err := wire.ParseReplyPostCommentResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[PostCommentReplyResult]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// RequestConversationHistoryInput 汇集 RequestConversationHistory 所需的 path、query/header 与 body 输入。
+type RequestConversationHistoryInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body RequestConversationHistoryRequestBody
+}
+
+// RequestConversationHistory 请求补拉会话历史消息。
+func (c *Client) RequestConversationHistory(ctx context.Context, input RequestConversationHistoryInput, options ...CallOption) (Result[ConversationHistoryAccepted], error) {
+	return executeOperation(ctx, c, operationRequestConversationHistory, func(baseURL string) (*http.Request, error) {
+		return wire.NewRequestConversationHistoryRequest(baseURL, input.AccountID, input.Body)
+	}, parseRequestConversationHistoryResponse, options...)
+}
+
+func parseRequestConversationHistoryResponse(response *http.Response) (operationData[ConversationHistoryAccepted], error) {
+	var zero operationData[ConversationHistoryAccepted]
+	parsed, err := wire.ParseRequestConversationHistoryResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON202 != nil {
+		payload := parsed.JSON202
+		return operationData[ConversationHistoryAccepted]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
 // RevokeMessageInput 汇集 RevokeMessage 所需的 path、query/header 与 body 输入。
 type RevokeMessageInput struct {
 	// Body 对应 application/json request body。
@@ -1738,7 +2193,7 @@ type StartAccountAuthInput struct {
 }
 
 // StartAccountAuth 启动验证码类授权。
-func (c *Client) StartAccountAuth(ctx context.Context, input StartAccountAuthInput, options ...CallOption) (Result[FreeFormObject], error) {
+func (c *Client) StartAccountAuth(ctx context.Context, input StartAccountAuthInput, options ...CallOption) (Result[StartCodeAuthData], error) {
 	return executeOperation(ctx, c, operationStartAccountAuth, func(baseURL string) (*http.Request, error) {
 		if input.Body == nil {
 			return wire.NewStartAccountAuthRequestWithBody(baseURL, input.AccountID, "application/json", nil)
@@ -1747,15 +2202,15 @@ func (c *Client) StartAccountAuth(ctx context.Context, input StartAccountAuthInp
 	}, parseStartAccountAuthResponse, options...)
 }
 
-func parseStartAccountAuthResponse(response *http.Response) (operationData[FreeFormObject], error) {
-	var zero operationData[FreeFormObject]
+func parseStartAccountAuthResponse(response *http.Response) (operationData[StartCodeAuthData], error) {
+	var zero operationData[StartCodeAuthData]
 	parsed, err := wire.ParseStartAccountAuthResponse(response)
 	if err != nil {
 		return zero, err
 	}
 	if parsed.JSON200 != nil {
 		payload := parsed.JSON200
-		return operationData[FreeFormObject]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+		return operationData[StartCodeAuthData]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
 	}
 	return zero, errUnexpectedSuccessResponse
 }
@@ -1905,6 +2360,34 @@ func (c *Client) SubmitAccountAuthPassword(ctx context.Context, input SubmitAcco
 func parseSubmitAccountAuthPasswordResponse(response *http.Response) (operationData[FreeFormObject], error) {
 	var zero operationData[FreeFormObject]
 	parsed, err := wire.ParseSubmitAccountAuthPasswordResponse(response)
+	if err != nil {
+		return zero, err
+	}
+	if parsed.JSON200 != nil {
+		payload := parsed.JSON200
+		return operationData[FreeFormObject]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil
+	}
+	return zero, errUnexpectedSuccessResponse
+}
+
+// SubmitAccountPasskeyResponseInput 汇集 SubmitAccountPasskeyResponse 所需的 path、query/header 与 body 输入。
+type SubmitAccountPasskeyResponseInput struct {
+	// AccountID 对应必填 path parameter。
+	AccountID AccountID
+	// Body 对应 application/json request body。
+	Body SubmitAccountPasskeyResponseRequestBody
+}
+
+// SubmitAccountPasskeyResponse 提交 Passkey 凭证响应。
+func (c *Client) SubmitAccountPasskeyResponse(ctx context.Context, input SubmitAccountPasskeyResponseInput, options ...CallOption) (Result[FreeFormObject], error) {
+	return executeOperation(ctx, c, operationSubmitAccountPasskeyResponse, func(baseURL string) (*http.Request, error) {
+		return wire.NewSubmitAccountPasskeyResponseRequest(baseURL, input.AccountID, input.Body)
+	}, parseSubmitAccountPasskeyResponseResponse, options...)
+}
+
+func parseSubmitAccountPasskeyResponseResponse(response *http.Response) (operationData[FreeFormObject], error) {
+	var zero operationData[FreeFormObject]
+	parsed, err := wire.ParseSubmitAccountPasskeyResponseResponse(response)
 	if err != nil {
 		return zero, err
 	}

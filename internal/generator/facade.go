@@ -1,10 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"go/ast"
 	"go/format"
+	"go/printer"
+	"go/token"
 	"sort"
 	"strings"
 	"unicode"
@@ -197,6 +200,7 @@ func successDataGoType(operation *openapi3.Operation, wire wireIndex) (string, e
 		return "", errors.New("responses are missing")
 	}
 	dataType := ""
+	hasEmpty := false
 	for _, status := range operation.Responses.Keys() {
 		if !isSuccessStatus(status) {
 			continue
@@ -205,7 +209,11 @@ func successDataGoType(operation *openapi3.Operation, wire wireIndex) (string, e
 		if responseRef == nil || responseRef.Value == nil {
 			return "", fmt.Errorf("success response %q is unresolved", status)
 		}
-		current := "NoContent"
+		current := ""
+		if len(responseRef.Value.Content) == 0 {
+			hasEmpty = true
+			continue
+		}
 		if len(responseRef.Value.Content) > 0 {
 			mediaType := responseRef.Value.Content["application/json"]
 			if mediaType == nil || mediaType.Schema == nil {
@@ -217,6 +225,9 @@ func successDataGoType(operation *openapi3.Operation, wire wireIndex) (string, e
 			}
 			current, err = schemaGoType(dataSchema, wire)
 			if err != nil {
+				current, err = responseDataWireType(operation.OperationID, status, wire)
+			}
+			if err != nil {
 				return "", fmt.Errorf("success response %q data: %w", status, err)
 			}
 		}
@@ -225,8 +236,15 @@ func successDataGoType(operation *openapi3.Operation, wire wireIndex) (string, e
 		}
 		dataType = current
 	}
-	if dataType == "" {
+	if dataType == "" && !hasEmpty {
 		return "", errors.New("no success response data type")
+	}
+	// 混合 202/204 用指针保留空响应，不能把异步删除误报为已完成。
+	if hasEmpty && dataType != "" {
+		return "*" + dataType, nil
+	}
+	if dataType == "" {
+		return "NoContent", nil
 	}
 	return dataType, nil
 }
@@ -330,6 +348,13 @@ func generateModels(value *manifest) ([]byte, error) {
 		}
 	}
 	for _, operation := range value.Operations {
+		if name := baseNamedType(operation.DataGoType); name != "NoContent" {
+			if _, exists := value.wire.TypeDeclarations[name]; exists {
+				if err := addAlias(name, name); err != nil {
+					return nil, err
+				}
+			}
+		}
 		for _, argument := range operation.RequestArguments {
 			wireType := baseNamedType(argument.WireType)
 			switch argument.Kind {
@@ -338,6 +363,10 @@ func generateModels(value *manifest) ([]byte, error) {
 					return nil, err
 				}
 			case "params", "path":
+				// 内置类型不属于 wire 声明，不能生成遮蔽 string 等预声明标识符的 alias。
+				if _, exists := value.wire.TypeDeclarations[wireType]; !exists {
+					continue
+				}
 				if err := addAlias(wireType, wireType); err != nil {
 					return nil, err
 				}
@@ -519,13 +548,21 @@ func writeOperationFacade(output *strings.Builder, operation operationManifest) 
 	fmt.Fprintf(output, "\tparsed, err := wire.Parse%sResponse(response)\n", operation.GoMethod)
 	output.WriteString("\tif err != nil { return zero, err }\n")
 	for _, status := range operation.SuccessStatuses {
-		if operation.HasSuccessContent {
+		if operation.HasSuccessContent && !containsStatus(operation.NoContentStatuses, status) {
 			fmt.Fprintf(output, "\tif parsed.JSON%s != nil {\n", status)
 			fmt.Fprintf(output, "\t\tpayload := parsed.JSON%s\n", status)
-			fmt.Fprintf(output, "\t\treturn operationData[%s]{Data: payload.Data, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil\n", operation.DataGoType)
+			dataExpression := "payload.Data"
+			if strings.HasPrefix(operation.DataGoType, "*") {
+				dataExpression = "&payload.Data"
+			}
+			fmt.Fprintf(output, "\t\treturn operationData[%s]{Data: %s, RequestID: payload.RequestID, ClientRequestID: payload.ClientRequestID}, nil\n", operation.DataGoType, dataExpression)
 			output.WriteString("\t}\n")
 		} else {
-			fmt.Fprintf(output, "\tif parsed.StatusCode() == %s { return operationData[NoContent]{Data: NoContent{}}, nil }\n", status)
+			if operation.DataGoType == "NoContent" {
+				fmt.Fprintf(output, "\tif parsed.StatusCode() == %s { return operationData[NoContent]{Data: NoContent{}}, nil }\n", status)
+			} else {
+				fmt.Fprintf(output, "\tif parsed.StatusCode() == %s { return operationData[%s]{}, nil }\n", status, operation.DataGoType)
+			}
 		}
 	}
 	output.WriteString("\treturn zero, errUnexpectedSuccessResponse\n")
@@ -609,4 +646,62 @@ func publicEnumConstantName(publicType, wireType, wireName string) string {
 		return wireName
 	}
 	return publicType + wireName
+}
+
+// 每个成功状态独立判断内容，防止混合响应引用不存在的 JSON204 字段。
+func noContentStatuses(operation *openapi3.Operation) []string {
+	var statuses []string
+	for _, status := range operation.Responses.Keys() {
+		if isSuccessStatus(status) && len(operation.Responses.Value(status).Value.Content) == 0 {
+			statuses = append(statuses, status)
+		}
+	}
+	sort.Strings(statuses)
+	return statuses
+}
+func containsStatus(statuses []string, value string) bool {
+	for _, status := range statuses {
+		if status == value {
+			return true
+		}
+	}
+	return false
+}
+
+// 内联 union 使用生成器真实标识符，不根据命名惯例猜测或降级成 map。
+func responseDataWireType(operationID, status string, wire wireIndex) (string, error) {
+	var resolve func(ast.Expr) ast.Expr
+	resolve = func(expression ast.Expr) ast.Expr {
+		switch typed := expression.(type) {
+		case *ast.StarExpr:
+			return resolve(typed.X)
+		case *ast.Ident:
+			if next, ok := wire.TypeDeclarations[typed.Name]; ok {
+				return resolve(next)
+			}
+		}
+		return expression
+	}
+	response, ok := resolve(wire.TypeDeclarations[wire.GoMethods[foldIdentifier(operationID)]+"Response"]).(*ast.StructType)
+	if !ok {
+		return "", errors.New("response type is not a struct")
+	}
+	for _, field := range response.Fields.List {
+		if len(field.Names) == 1 && field.Names[0].Name == "JSON"+status {
+			payload, ok := resolve(field.Type).(*ast.StructType)
+			if !ok {
+				break
+			}
+			for _, data := range payload.Fields.List {
+				if len(data.Names) == 1 && data.Names[0].Name == "Data" {
+					var buffer bytes.Buffer
+					if err := printer.Fprint(&buffer, token.NewFileSet(), data.Type); err != nil {
+						return "", err
+					}
+					return buffer.String(), nil
+				}
+			}
+		}
+	}
+	return "", errors.New("response data wire type is missing")
 }
