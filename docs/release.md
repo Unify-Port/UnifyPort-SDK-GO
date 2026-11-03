@@ -2,6 +2,9 @@
 
 [English](release.md) | [简体中文](zh-CN/release.md)
 
+
+Current source preparation targets `v0.2.0` (unreleased); see [release notes](release-notes.md) and [migration](migration.md). Module versions come from reviewed tags, not a `go.mod` version field. The original `v0.1.0` examples below explain the release procedure; substitute the approved version. The controlled staging/provider E2E gate remains pending for this candidate and must pass before a stable publication; it must not be described as passed during preparation.
+
 ## Release model
 
 This repository publishes a Go module through reviewed Git tags. It does not upload a separate binary

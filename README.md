@@ -13,6 +13,9 @@ The current public baseline covers 78 operations, 225 component schemas, and 13 
 under `/v1/accounts/...` manage provider-account resources but remain part of the same Device API
 client.
 
+
+Prepared SDK version: `0.2.0` (unreleased). See [release notes](docs/release-notes.md) and the [migration guide](docs/migration.md).
+
 ## Capabilities and boundaries
 
 | Asset | Purpose | Boundary |

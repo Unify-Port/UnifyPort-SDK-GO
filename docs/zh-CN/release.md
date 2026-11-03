@@ -2,6 +2,9 @@
 
 [English](../release.md) | [简体中文](release.md)
 
+
+当前源码准备目标为 `v0.2.0`，尚未发布；详见[发布说明](release-notes.md)和[迁移指南](migration.md)。Module 版本来自已审查 tag，不是 `go.mod` 版本字段。下文原有 `v0.1.0` 示例说明发布流程，执行时使用已批准版本。本 candidate 的受控 staging/provider E2E 门禁仍待完成，正式发布前必须通过，准备阶段不得宣称已通过。
+
 ## Release 模型
 
 本仓库通过经过审查的 Git tag 发布 Go module，不上传独立 binary，也不把源码复制到其他 registry。Tag 遵循
