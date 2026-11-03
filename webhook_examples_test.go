@@ -10,7 +10,7 @@ import (
 )
 
 func TestPublicWebhookExamplesPreserveEveryField(t *testing.T) {
-	// 同一批公开样例覆盖 false、0、空字符串与稀疏 call update，避免 omitempty 静默丢字段。
+	// 统一样例覆盖 FB 有序媒体、false、0 与稀疏状态，避免 omitempty 静默丢字段。
 	payloads, err := os.ReadFile("testdata/webhook-examples.json")
 	if err != nil {
 		t.Fatal(err)
@@ -23,10 +23,14 @@ func TestPublicWebhookExamplesPreserveEveryField(t *testing.T) {
 	if err := json.Unmarshal(payloads, &cases); err != nil {
 		t.Fatal(err)
 	}
-	if len(cases) != 49 {
+	if len(cases) != 57 {
 		t.Fatalf("example coverage: %d", len(cases))
 	}
 	factories := map[string]func() any{
+		"FacebookMessageReceivedWebhookEvent":                 func() any { return new(FacebookMessageReceivedWebhookEvent) },
+		"FacebookAccountAuthSucceededWebhookEvent":            func() any { return new(FacebookAccountAuthSucceededWebhookEvent) },
+		"FacebookAccountStatusUpdatedWebhookEvent":            func() any { return new(FacebookAccountStatusUpdatedWebhookEvent) },
+		"FacebookAccountAuthFailedWebhookEvent":               func() any { return new(FacebookAccountAuthFailedWebhookEvent) },
 		"AccountProfileUpdatedWebhookEvent":                   func() any { return new(AccountProfileUpdatedWebhookEvent) },
 		"AccountStartedWebhookEvent":                          func() any { return new(AccountStartedWebhookEvent) },
 		"CallMessageReceivedWebhookEvent":                     func() any { return new(CallMessageReceivedWebhookEvent) },

@@ -5,7 +5,7 @@
 This table maps every public Device API `operationId` in `parity/manifest.gen.json` to its Go method
 and reviewed operation policy. The checked-in contract is authoritative for parameters, request and
 response fields, statuses, and schema descriptions. The manifest records generated Go request/response
-types and all 218 component-schema mappings.
+types and all 225 component-schema mappings.
 
 `bash scripts/check-public-docs.sh` fails unless both language tables contain exactly the same 78
 operation IDs as the generated manifest.

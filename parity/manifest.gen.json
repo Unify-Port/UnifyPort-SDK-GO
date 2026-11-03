@@ -4,12 +4,12 @@
     "package": "@unifyport/sdk-node",
     "version": "0.4.0",
     "repository": "https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git",
-    "commit": "5901244c409f63fd6b77a899c239ebc9ee96dd50",
+    "commit": "ce60499d7169c860ed3f64a686e04bff44316f35",
     "baselineKind": "approved-source"
   },
-  "contractSha256": "47face9790a454fb0d6204721785846427ca7ead23cf854061ab54646682e904",
+  "contractSha256": "8190a34dc8ed60476f79e00b37d9dea418082886724ee6d64efa389f440adffc",
   "operationCount": 78,
-  "schemaCount": 218,
+  "schemaCount": 225,
   "policyCounts": {
     "retryable": 19,
     "destructive": 8,
@@ -4655,6 +4655,27 @@
     },
     "ErrorEnvelope": {
       "goType": "ErrorEnvelope"
+    },
+    "FacebookAccountAuthFailedWebhookEvent": {
+      "goType": "FacebookAccountAuthFailedWebhookEvent"
+    },
+    "FacebookAccountAuthSucceededWebhookEvent": {
+      "goType": "FacebookAccountAuthSucceededWebhookEvent"
+    },
+    "FacebookAccountStatusUpdatedWebhookEvent": {
+      "goType": "FacebookAccountStatusUpdatedWebhookEvent"
+    },
+    "FacebookAttachmentMetadata": {
+      "goType": "FacebookAttachmentMetadata"
+    },
+    "FacebookMessage": {
+      "goType": "FacebookMessage"
+    },
+    "FacebookMessageAttachment": {
+      "goType": "FacebookMessageAttachment"
+    },
+    "FacebookMessageReceivedWebhookEvent": {
+      "goType": "FacebookMessageReceivedWebhookEvent"
     },
     "FreeFormObject": {
       "goType": "FreeFormObject"

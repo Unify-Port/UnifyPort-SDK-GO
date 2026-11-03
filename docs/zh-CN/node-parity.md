@@ -10,10 +10,10 @@
 | --- | --- |
 | Node package | `@unifyport/sdk-node` `0.4.0` |
 | 公开 Node repository | `https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git` |
-| 公开 Node commit | `5901244c409f63fd6b77a899c239ebc9ee96dd50` |
-| Contract SHA-256 | `47face9790a454fb0d6204721785846427ca7ead23cf854061ab54646682e904` |
+| 公开 Node commit | `ce60499d7169c860ed3f64a686e04bff44316f35` |
+| Contract SHA-256 | `8190a34dc8ed60476f79e00b37d9dea418082886724ee6d64efa389f440adffc` |
 | Operation | 78 |
-| Component schema | 218 |
+| Component schema | 225 |
 | Resource tag | 13 |
 
 仓库内契约和生成 manifest 是权威信息。本文数量是验收预期；baseline 变化时必须重新生成。
@@ -44,7 +44,7 @@ Policy baseline 包含：
 | --- | --- | --- |
 | `contracts/device.openapi.yaml` | `contracts/device.openapi.yaml` | 精确已批准公开快照 |
 | `UnifyPortDeviceClient` | `Client` | 同样 78 个 operation ID，使用 Go 风格名称 |
-| 生成 schema | 生成 public model 和 `internal/wire` model | 218 个 schema 全部可追踪 |
+| 生成 schema | 生成 public model 和 `internal/wire` model | 225 个 schema 全部可追踪 |
 | 生成 operation catalog | 生成 Go operation 和 parity manifest | Method/path/policy 精确一致 |
 | `DeviceClientConfig` | `Config` | 相同安全默认值和有限上限 |
 | `RetryConfig` | `RetryConfig` | 相同默认值与硬上限意图 |

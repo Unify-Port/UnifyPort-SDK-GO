@@ -1611,6 +1611,318 @@ func (e EndedCallDataState) Valid() bool {
 	}
 }
 
+// Defines values for FacebookAccountAuthFailedWebhookEventDataAuthStatus.
+const (
+	FacebookAccountAuthFailedWebhookEventDataAuthStatusFailed FacebookAccountAuthFailedWebhookEventDataAuthStatus = "failed"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthFailedWebhookEventDataAuthStatus enum.
+func (e FacebookAccountAuthFailedWebhookEventDataAuthStatus) Valid() bool {
+	switch e {
+	case FacebookAccountAuthFailedWebhookEventDataAuthStatusFailed:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthFailedWebhookEventDataRuntimeStatus.
+const (
+	FacebookAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected FacebookAccountAuthFailedWebhookEventDataRuntimeStatus = "disconnected"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthFailedWebhookEventDataRuntimeStatus enum.
+func (e FacebookAccountAuthFailedWebhookEventDataRuntimeStatus) Valid() bool {
+	switch e {
+	case FacebookAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthFailedWebhookEventProvider.
+const (
+	FacebookAccountAuthFailedWebhookEventProviderFacebook FacebookAccountAuthFailedWebhookEventProvider = "facebook"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthFailedWebhookEventProvider enum.
+func (e FacebookAccountAuthFailedWebhookEventProvider) Valid() bool {
+	switch e {
+	case FacebookAccountAuthFailedWebhookEventProviderFacebook:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthFailedWebhookEventType.
+const (
+	FacebookAccountAuthFailedWebhookEventTypeAccountAuthFailed FacebookAccountAuthFailedWebhookEventType = "account.auth.failed"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthFailedWebhookEventType enum.
+func (e FacebookAccountAuthFailedWebhookEventType) Valid() bool {
+	switch e {
+	case FacebookAccountAuthFailedWebhookEventTypeAccountAuthFailed:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthSucceededWebhookEventDataAuthStatus.
+const (
+	Authorized FacebookAccountAuthSucceededWebhookEventDataAuthStatus = "authorized"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthSucceededWebhookEventDataAuthStatus enum.
+func (e FacebookAccountAuthSucceededWebhookEventDataAuthStatus) Valid() bool {
+	switch e {
+	case Authorized:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus.
+const (
+	FacebookAccountAuthSucceededWebhookEventDataRuntimeStatusRunning FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus = "running"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus enum.
+func (e FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus) Valid() bool {
+	switch e {
+	case FacebookAccountAuthSucceededWebhookEventDataRuntimeStatusRunning:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthSucceededWebhookEventProvider.
+const (
+	FacebookAccountAuthSucceededWebhookEventProviderFacebook FacebookAccountAuthSucceededWebhookEventProvider = "facebook"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthSucceededWebhookEventProvider enum.
+func (e FacebookAccountAuthSucceededWebhookEventProvider) Valid() bool {
+	switch e {
+	case FacebookAccountAuthSucceededWebhookEventProviderFacebook:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountAuthSucceededWebhookEventType.
+const (
+	FacebookAccountAuthSucceededWebhookEventTypeAccountAuthSucceeded FacebookAccountAuthSucceededWebhookEventType = "account.auth.succeeded"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountAuthSucceededWebhookEventType enum.
+func (e FacebookAccountAuthSucceededWebhookEventType) Valid() bool {
+	switch e {
+	case FacebookAccountAuthSucceededWebhookEventTypeAccountAuthSucceeded:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus.
+const (
+	FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatusError FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus = "error"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus enum.
+func (e FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus) Valid() bool {
+	switch e {
+	case FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatusError:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountStatusUpdatedWebhookEventProvider.
+const (
+	FacebookAccountStatusUpdatedWebhookEventProviderFacebook FacebookAccountStatusUpdatedWebhookEventProvider = "facebook"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountStatusUpdatedWebhookEventProvider enum.
+func (e FacebookAccountStatusUpdatedWebhookEventProvider) Valid() bool {
+	switch e {
+	case FacebookAccountStatusUpdatedWebhookEventProviderFacebook:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAccountStatusUpdatedWebhookEventType.
+const (
+	FacebookAccountStatusUpdatedWebhookEventTypeAccountStatusUpdated FacebookAccountStatusUpdatedWebhookEventType = "account.status.updated"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAccountStatusUpdatedWebhookEventType enum.
+func (e FacebookAccountStatusUpdatedWebhookEventType) Valid() bool {
+	switch e {
+	case FacebookAccountStatusUpdatedWebhookEventTypeAccountStatusUpdated:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookAttachmentMetadataDownloadStatus.
+const (
+	FacebookAttachmentMetadataDownloadStatusExpired     FacebookAttachmentMetadataDownloadStatus = "expired"
+	FacebookAttachmentMetadataDownloadStatusFailed      FacebookAttachmentMetadataDownloadStatus = "failed"
+	FacebookAttachmentMetadataDownloadStatusPending     FacebookAttachmentMetadataDownloadStatus = "pending"
+	FacebookAttachmentMetadataDownloadStatusReady       FacebookAttachmentMetadataDownloadStatus = "ready"
+	FacebookAttachmentMetadataDownloadStatusRestricted  FacebookAttachmentMetadataDownloadStatus = "restricted"
+	FacebookAttachmentMetadataDownloadStatusUnavailable FacebookAttachmentMetadataDownloadStatus = "unavailable"
+)
+
+// Valid indicates whether the value is a known member of the FacebookAttachmentMetadataDownloadStatus enum.
+func (e FacebookAttachmentMetadataDownloadStatus) Valid() bool {
+	switch e {
+	case FacebookAttachmentMetadataDownloadStatusExpired:
+		return true
+	case FacebookAttachmentMetadataDownloadStatusFailed:
+		return true
+	case FacebookAttachmentMetadataDownloadStatusPending:
+		return true
+	case FacebookAttachmentMetadataDownloadStatusReady:
+		return true
+	case FacebookAttachmentMetadataDownloadStatusRestricted:
+		return true
+	case FacebookAttachmentMetadataDownloadStatusUnavailable:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageDirection.
+const (
+	FacebookMessageDirectionInbound  FacebookMessageDirection = "inbound"
+	FacebookMessageDirectionOutbound FacebookMessageDirection = "outbound"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageDirection enum.
+func (e FacebookMessageDirection) Valid() bool {
+	switch e {
+	case FacebookMessageDirectionInbound:
+		return true
+	case FacebookMessageDirectionOutbound:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageType.
+const (
+	FacebookMessageTypeSticker FacebookMessageType = "sticker"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageType enum.
+func (e FacebookMessageType) Valid() bool {
+	switch e {
+	case FacebookMessageTypeSticker:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageAttachmentType.
+const (
+	FacebookMessageAttachmentTypeAudio    FacebookMessageAttachmentType = "audio"
+	FacebookMessageAttachmentTypeDocument FacebookMessageAttachmentType = "document"
+	FacebookMessageAttachmentTypeImage    FacebookMessageAttachmentType = "image"
+	FacebookMessageAttachmentTypeVideo    FacebookMessageAttachmentType = "video"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageAttachmentType enum.
+func (e FacebookMessageAttachmentType) Valid() bool {
+	switch e {
+	case FacebookMessageAttachmentTypeAudio:
+		return true
+	case FacebookMessageAttachmentTypeDocument:
+		return true
+	case FacebookMessageAttachmentTypeImage:
+		return true
+	case FacebookMessageAttachmentTypeVideo:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageReceivedWebhookEventDataConversationType.
+const (
+	FacebookMessageReceivedWebhookEventDataConversationTypeUser FacebookMessageReceivedWebhookEventDataConversationType = "user"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageReceivedWebhookEventDataConversationType enum.
+func (e FacebookMessageReceivedWebhookEventDataConversationType) Valid() bool {
+	switch e {
+	case FacebookMessageReceivedWebhookEventDataConversationTypeUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageReceivedWebhookEventDataSenderType.
+const (
+	FacebookMessageReceivedWebhookEventDataSenderTypeUser FacebookMessageReceivedWebhookEventDataSenderType = "user"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageReceivedWebhookEventDataSenderType enum.
+func (e FacebookMessageReceivedWebhookEventDataSenderType) Valid() bool {
+	switch e {
+	case FacebookMessageReceivedWebhookEventDataSenderTypeUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageReceivedWebhookEventProvider.
+const (
+	FacebookMessageReceivedWebhookEventProviderFacebook FacebookMessageReceivedWebhookEventProvider = "facebook"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageReceivedWebhookEventProvider enum.
+func (e FacebookMessageReceivedWebhookEventProvider) Valid() bool {
+	switch e {
+	case FacebookMessageReceivedWebhookEventProviderFacebook:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for FacebookMessageReceivedWebhookEventType.
+const (
+	FacebookMessageReceivedWebhookEventTypeMessageReceived FacebookMessageReceivedWebhookEventType = "message.received"
+)
+
+// Valid indicates whether the value is a known member of the FacebookMessageReceivedWebhookEventType enum.
+func (e FacebookMessageReceivedWebhookEventType) Valid() bool {
+	switch e {
+	case FacebookMessageReceivedWebhookEventTypeMessageReceived:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GroupAnnouncementChangeKind.
 const (
 	AnnouncementChanged GroupAnnouncementChangeKind = "announcement_changed"
@@ -2663,16 +2975,16 @@ func (e MessagePollVoteReason) Valid() bool {
 
 // Defines values for MessagePollVoteStatus.
 const (
-	Decoded     MessagePollVoteStatus = "decoded"
-	Unavailable MessagePollVoteStatus = "unavailable"
+	MessagePollVoteStatusDecoded     MessagePollVoteStatus = "decoded"
+	MessagePollVoteStatusUnavailable MessagePollVoteStatus = "unavailable"
 )
 
 // Valid indicates whether the value is a known member of the MessagePollVoteStatus enum.
 func (e MessagePollVoteStatus) Valid() bool {
 	switch e {
-	case Decoded:
+	case MessagePollVoteStatusDecoded:
 		return true
-	case Unavailable:
+	case MessagePollVoteStatusUnavailable:
 		return true
 	default:
 		return false
@@ -3062,6 +3374,7 @@ func (e PostListResult1HasMore) Valid() bool {
 
 // Defines values for ProviderInputName.
 const (
+	ProviderInputNameFacebook         ProviderInputName = "facebook"
 	ProviderInputNameLine             ProviderInputName = "line"
 	ProviderInputNameTelegram         ProviderInputName = "telegram"
 	ProviderInputNameTiktok           ProviderInputName = "tiktok"
@@ -3077,6 +3390,8 @@ const (
 // Valid indicates whether the value is a known member of the ProviderInputName enum.
 func (e ProviderInputName) Valid() bool {
 	switch e {
+	case ProviderInputNameFacebook:
+		return true
 	case ProviderInputNameLine:
 		return true
 	case ProviderInputNameTelegram:
@@ -3104,6 +3419,7 @@ func (e ProviderInputName) Valid() bool {
 
 // Defines values for ProviderName.
 const (
+	ProviderNameFacebook         ProviderName = "facebook"
 	ProviderNameLine             ProviderName = "line"
 	ProviderNameTelegram         ProviderName = "telegram"
 	ProviderNameTiktok           ProviderName = "tiktok"
@@ -3116,6 +3432,8 @@ const (
 // Valid indicates whether the value is a known member of the ProviderName enum.
 func (e ProviderName) Valid() bool {
 	switch e {
+	case ProviderNameFacebook:
+		return true
 	case ProviderNameLine:
 		return true
 	case ProviderNameTelegram:
@@ -3314,13 +3632,13 @@ func (e StartCodeAuthDataAction) Valid() bool {
 
 // Defines values for StickerMessagePayloadType.
 const (
-	Sticker StickerMessagePayloadType = "sticker"
+	StickerMessagePayloadTypeSticker StickerMessagePayloadType = "sticker"
 )
 
 // Valid indicates whether the value is a known member of the StickerMessagePayloadType enum.
 func (e StickerMessagePayloadType) Valid() bool {
 	switch e {
-	case Sticker:
+	case StickerMessagePayloadTypeSticker:
 		return true
 	default:
 		return false
@@ -4935,6 +5253,266 @@ type ErrorEnvelope struct {
 	// RequestID 服务端生成的请求 ID。
 	RequestID *string `json:"request_id,omitempty"`
 }
+
+// FacebookAccountAuthFailedWebhookEvent defines model for FacebookAccountAuthFailedWebhookEvent.
+type FacebookAccountAuthFailedWebhookEvent struct {
+	AccountID string                                     `json:"account_id"`
+	Data      FacebookAccountAuthFailedWebhookEvent_Data `json:"data"`
+
+	// ID 不透明事件 ID；重试保留原值，SDK 不重算。
+	ID                   string                                        `json:"id"`
+	OccurredAt           time.Time                                     `json:"occurred_at"`
+	Provider             FacebookAccountAuthFailedWebhookEventProvider `json:"provider"`
+	Type                 FacebookAccountAuthFailedWebhookEventType     `json:"type"`
+	AdditionalProperties map[string]interface{}                        `json:"-"`
+}
+
+// FacebookAccountAuthFailedWebhookEvent_Data_Account defines model for FacebookAccountAuthFailedWebhookEvent.Data.Account.
+type FacebookAccountAuthFailedWebhookEvent_Data_Account struct {
+	ProviderAccountRef   *string                `json:"provider_account_ref,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountAuthFailedWebhookEventDataAuthStatus defines model for FacebookAccountAuthFailedWebhookEvent.Data.AuthStatus.
+type FacebookAccountAuthFailedWebhookEventDataAuthStatus string
+
+// FacebookAccountAuthFailedWebhookEvent_Data_Event defines model for FacebookAccountAuthFailedWebhookEvent.Data.Event.
+type FacebookAccountAuthFailedWebhookEvent_Data_Event struct {
+	Kind                 *string                `json:"kind,omitempty"`
+	RuntimeStatus        *string                `json:"runtime_status,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountAuthFailedWebhookEventDataRuntimeStatus defines model for FacebookAccountAuthFailedWebhookEvent.Data.RuntimeStatus.
+type FacebookAccountAuthFailedWebhookEventDataRuntimeStatus string
+
+// FacebookAccountAuthFailedWebhookEvent_Data defines model for FacebookAccountAuthFailedWebhookEvent.Data.
+type FacebookAccountAuthFailedWebhookEvent_Data struct {
+	Account              *FacebookAccountAuthFailedWebhookEvent_Data_Account    `json:"account,omitempty"`
+	AuthStatus           FacebookAccountAuthFailedWebhookEventDataAuthStatus    `json:"auth_status"`
+	Event                *FacebookAccountAuthFailedWebhookEvent_Data_Event      `json:"event,omitempty"`
+	LastError            *string                                                `json:"last_error,omitempty"`
+	RuntimeStatus        FacebookAccountAuthFailedWebhookEventDataRuntimeStatus `json:"runtime_status"`
+	AdditionalProperties map[string]interface{}                                 `json:"-"`
+}
+
+// FacebookAccountAuthFailedWebhookEventProvider defines model for FacebookAccountAuthFailedWebhookEvent.Provider.
+type FacebookAccountAuthFailedWebhookEventProvider string
+
+// FacebookAccountAuthFailedWebhookEventType defines model for FacebookAccountAuthFailedWebhookEvent.Type.
+type FacebookAccountAuthFailedWebhookEventType string
+
+// FacebookAccountAuthSucceededWebhookEvent defines model for FacebookAccountAuthSucceededWebhookEvent.
+type FacebookAccountAuthSucceededWebhookEvent struct {
+	AccountID string                                        `json:"account_id"`
+	Data      FacebookAccountAuthSucceededWebhookEvent_Data `json:"data"`
+
+	// ID 不透明事件 ID；重试保留原值，SDK 不重算。
+	ID                   string                                           `json:"id"`
+	OccurredAt           time.Time                                        `json:"occurred_at"`
+	Provider             FacebookAccountAuthSucceededWebhookEventProvider `json:"provider"`
+	Type                 FacebookAccountAuthSucceededWebhookEventType     `json:"type"`
+	AdditionalProperties map[string]interface{}                           `json:"-"`
+}
+
+// FacebookAccountAuthSucceededWebhookEvent_Data_Account defines model for FacebookAccountAuthSucceededWebhookEvent.Data.Account.
+type FacebookAccountAuthSucceededWebhookEvent_Data_Account struct {
+	ProviderAccountRef   *string                `json:"provider_account_ref,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountAuthSucceededWebhookEventDataAuthStatus defines model for FacebookAccountAuthSucceededWebhookEvent.Data.AuthStatus.
+type FacebookAccountAuthSucceededWebhookEventDataAuthStatus string
+
+// FacebookAccountAuthSucceededWebhookEvent_Data_Event defines model for FacebookAccountAuthSucceededWebhookEvent.Data.Event.
+type FacebookAccountAuthSucceededWebhookEvent_Data_Event struct {
+	Kind                 *string                `json:"kind,omitempty"`
+	RuntimeStatus        *string                `json:"runtime_status,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus defines model for FacebookAccountAuthSucceededWebhookEvent.Data.RuntimeStatus.
+type FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus string
+
+// FacebookAccountAuthSucceededWebhookEvent_Data defines model for FacebookAccountAuthSucceededWebhookEvent.Data.
+type FacebookAccountAuthSucceededWebhookEvent_Data struct {
+	Account              *FacebookAccountAuthSucceededWebhookEvent_Data_Account    `json:"account,omitempty"`
+	AuthStatus           FacebookAccountAuthSucceededWebhookEventDataAuthStatus    `json:"auth_status"`
+	Event                *FacebookAccountAuthSucceededWebhookEvent_Data_Event      `json:"event,omitempty"`
+	RuntimeStatus        FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus `json:"runtime_status"`
+	AdditionalProperties map[string]interface{}                                    `json:"-"`
+}
+
+// FacebookAccountAuthSucceededWebhookEventProvider defines model for FacebookAccountAuthSucceededWebhookEvent.Provider.
+type FacebookAccountAuthSucceededWebhookEventProvider string
+
+// FacebookAccountAuthSucceededWebhookEventType defines model for FacebookAccountAuthSucceededWebhookEvent.Type.
+type FacebookAccountAuthSucceededWebhookEventType string
+
+// FacebookAccountStatusUpdatedWebhookEvent defines model for FacebookAccountStatusUpdatedWebhookEvent.
+type FacebookAccountStatusUpdatedWebhookEvent struct {
+	AccountID string                                        `json:"account_id"`
+	Data      FacebookAccountStatusUpdatedWebhookEvent_Data `json:"data"`
+
+	// ID 不透明事件 ID；重试保留原值，SDK 不重算。
+	ID                   string                                           `json:"id"`
+	OccurredAt           time.Time                                        `json:"occurred_at"`
+	Provider             FacebookAccountStatusUpdatedWebhookEventProvider `json:"provider"`
+	Type                 FacebookAccountStatusUpdatedWebhookEventType     `json:"type"`
+	AdditionalProperties map[string]interface{}                           `json:"-"`
+}
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data_Account defines model for FacebookAccountStatusUpdatedWebhookEvent.Data.Account.
+type FacebookAccountStatusUpdatedWebhookEvent_Data_Account struct {
+	ProviderAccountRef   *string                `json:"provider_account_ref,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data_Event defines model for FacebookAccountStatusUpdatedWebhookEvent.Data.Event.
+type FacebookAccountStatusUpdatedWebhookEvent_Data_Event struct {
+	Kind                 *string                `json:"kind,omitempty"`
+	RuntimeStatus        *string                `json:"runtime_status,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus defines model for FacebookAccountStatusUpdatedWebhookEvent.Data.RuntimeStatus.
+type FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus string
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data defines model for FacebookAccountStatusUpdatedWebhookEvent.Data.
+type FacebookAccountStatusUpdatedWebhookEvent_Data struct {
+	Account              *FacebookAccountStatusUpdatedWebhookEvent_Data_Account    `json:"account,omitempty"`
+	Event                *FacebookAccountStatusUpdatedWebhookEvent_Data_Event      `json:"event,omitempty"`
+	LastError            *string                                                   `json:"last_error,omitempty"`
+	RuntimeStatus        FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus `json:"runtime_status"`
+	AdditionalProperties map[string]interface{}                                    `json:"-"`
+}
+
+// FacebookAccountStatusUpdatedWebhookEventProvider defines model for FacebookAccountStatusUpdatedWebhookEvent.Provider.
+type FacebookAccountStatusUpdatedWebhookEventProvider string
+
+// FacebookAccountStatusUpdatedWebhookEventType defines model for FacebookAccountStatusUpdatedWebhookEvent.Type.
+type FacebookAccountStatusUpdatedWebhookEventType string
+
+// FacebookAttachmentMetadata defines model for FacebookAttachmentMetadata.
+type FacebookAttachmentMetadata struct {
+	Animated       *bool                                     `json:"animated,omitempty"`
+	DownloadStatus *FacebookAttachmentMetadataDownloadStatus `json:"download_status,omitempty"`
+
+	// Duration 原生媒体时长，单位尚未确认；不得按 duration_ms 解读或转换。
+	Duration               *float64               `json:"duration,omitempty"`
+	ErrorCode              *string                `json:"error_code,omitempty"`
+	Filename               *string                `json:"filename,omitempty"`
+	Height                 *float64               `json:"height,omitempty"`
+	PreviewErrorCode       *string                `json:"preview_error_code,omitempty"`
+	PreviewUploadErrorCode *string                `json:"preview_upload_error_code,omitempty"`
+	Ptt                    *bool                  `json:"ptt,omitempty"`
+	StickerID              *string                `json:"sticker_id,omitempty"`
+	UploadErrorCode        *string                `json:"upload_error_code,omitempty"`
+	Width                  *float64               `json:"width,omitempty"`
+	AdditionalProperties   map[string]interface{} `json:"-"`
+}
+
+// FacebookAttachmentMetadataDownloadStatus defines model for FacebookAttachmentMetadata.DownloadStatus.
+type FacebookAttachmentMetadataDownloadStatus string
+
+// FacebookMessage 普通文本和媒体消息省略 type，单个无正文贴纸可为 sticker。ID 是字符串；reply_to_message_id 不表示支持引用发送。
+type FacebookMessage struct {
+	Attachments          *[]FacebookMessageAttachment `json:"attachments,omitempty"`
+	Direction            FacebookMessageDirection     `json:"direction"`
+	ID                   string                       `json:"id"`
+	ReplyToMessageID     *string                      `json:"reply_to_message_id,omitempty"`
+	SentAt               *time.Time                   `json:"sent_at,omitempty"`
+	Text                 *string                      `json:"text,omitempty"`
+	Type                 *FacebookMessageType         `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}       `json:"-"`
+}
+
+// FacebookMessageDirection defines model for FacebookMessage.Direction.
+type FacebookMessageDirection string
+
+// FacebookMessageType defines model for FacebookMessage.Type.
+type FacebookMessageType string
+
+// FacebookMessageAttachment FB 单条消息中的有序附件。媒体 URL 可缺失；加密或下载失败的地址不作为可用明文地址。
+type FacebookMessageAttachment struct {
+	Description          *string                       `json:"description,omitempty"`
+	ID                   *string                       `json:"id,omitempty"`
+	Metadata             *FacebookAttachmentMetadata   `json:"metadata,omitempty"`
+	Mimetype             *string                       `json:"mimetype,omitempty"`
+	Size                 *int                          `json:"size,omitempty"`
+	ThumbnailURL         *string                       `json:"thumbnail_url,omitempty"`
+	Title                *string                       `json:"title,omitempty"`
+	Type                 FacebookMessageAttachmentType `json:"type"`
+	URL                  *string                       `json:"url,omitempty"`
+	AdditionalProperties map[string]interface{}        `json:"-"`
+}
+
+// FacebookMessageAttachmentType defines model for FacebookMessageAttachment.Type.
+type FacebookMessageAttachmentType string
+
+// FacebookMessageReceivedWebhookEvent defines model for FacebookMessageReceivedWebhookEvent.
+type FacebookMessageReceivedWebhookEvent struct {
+	AccountID string                                   `json:"account_id"`
+	Data      FacebookMessageReceivedWebhookEvent_Data `json:"data"`
+
+	// ID 不透明事件 ID；重试保留原值，SDK 不重算。
+	ID                   string                                      `json:"id"`
+	OccurredAt           time.Time                                   `json:"occurred_at"`
+	Provider             FacebookMessageReceivedWebhookEventProvider `json:"provider"`
+	Type                 FacebookMessageReceivedWebhookEventType     `json:"type"`
+	AdditionalProperties map[string]interface{}                      `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEvent_Data_Account defines model for FacebookMessageReceivedWebhookEvent.Data.Account.
+type FacebookMessageReceivedWebhookEvent_Data_Account struct {
+	ProviderAccountRef   *string                `json:"provider_account_ref,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEventDataConversationType defines model for FacebookMessageReceivedWebhookEvent.Data.Conversation.Type.
+type FacebookMessageReceivedWebhookEventDataConversationType string
+
+// FacebookMessageReceivedWebhookEvent_Data_Conversation defines model for FacebookMessageReceivedWebhookEvent.Data.Conversation.
+type FacebookMessageReceivedWebhookEvent_Data_Conversation struct {
+	ID                   string                                                  `json:"id"`
+	Type                 FacebookMessageReceivedWebhookEventDataConversationType `json:"type"`
+	AdditionalProperties map[string]interface{}                                  `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEvent_Data_Event defines model for FacebookMessageReceivedWebhookEvent.Data.Event.
+type FacebookMessageReceivedWebhookEvent_Data_Event struct {
+	Kind                 *string                `json:"kind,omitempty"`
+	RuntimeStatus        *string                `json:"runtime_status,omitempty"`
+	AdditionalProperties map[string]interface{} `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEventDataSenderType defines model for FacebookMessageReceivedWebhookEvent.Data.Sender.Type.
+type FacebookMessageReceivedWebhookEventDataSenderType string
+
+// FacebookMessageReceivedWebhookEvent_Data_Sender defines model for FacebookMessageReceivedWebhookEvent.Data.Sender.
+type FacebookMessageReceivedWebhookEvent_Data_Sender struct {
+	ID                   string                                            `json:"id"`
+	Type                 FacebookMessageReceivedWebhookEventDataSenderType `json:"type"`
+	AdditionalProperties map[string]interface{}                            `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEvent_Data defines model for FacebookMessageReceivedWebhookEvent.Data.
+type FacebookMessageReceivedWebhookEvent_Data struct {
+	Account      *FacebookMessageReceivedWebhookEvent_Data_Account     `json:"account,omitempty"`
+	Conversation FacebookMessageReceivedWebhookEvent_Data_Conversation `json:"conversation"`
+	Event        *FacebookMessageReceivedWebhookEvent_Data_Event       `json:"event,omitempty"`
+
+	// Message 普通文本和媒体消息省略 type，单个无正文贴纸可为 sticker。ID 是字符串；reply_to_message_id 不表示支持引用发送。
+	Message              FacebookMessage                                 `json:"message"`
+	Sender               FacebookMessageReceivedWebhookEvent_Data_Sender `json:"sender"`
+	AdditionalProperties map[string]interface{}                          `json:"-"`
+}
+
+// FacebookMessageReceivedWebhookEventProvider defines model for FacebookMessageReceivedWebhookEvent.Provider.
+type FacebookMessageReceivedWebhookEventProvider string
+
+// FacebookMessageReceivedWebhookEventType defines model for FacebookMessageReceivedWebhookEvent.Type.
+type FacebookMessageReceivedWebhookEventType string
 
 // FreeFormObject defines model for FreeFormObject.
 type FreeFormObject map[string]interface{}
@@ -8371,6 +8949,18 @@ type ReceiveConversationDisappearingMessagesUpdatedWebhookJSONRequestBody = Conv
 // ReceiveConversationHistoryWebhookJSONRequestBody defines body for ReceiveConversationHistoryWebhook for application/json ContentType.
 type ReceiveConversationHistoryWebhookJSONRequestBody = ConversationHistoryWebhookEvent
 
+// ReceiveFacebookAccountAuthFailedWebhookEventJSONRequestBody defines body for ReceiveFacebookAccountAuthFailedWebhookEvent for application/json ContentType.
+type ReceiveFacebookAccountAuthFailedWebhookEventJSONRequestBody = FacebookAccountAuthFailedWebhookEvent
+
+// ReceiveFacebookAccountAuthSucceededWebhookEventJSONRequestBody defines body for ReceiveFacebookAccountAuthSucceededWebhookEvent for application/json ContentType.
+type ReceiveFacebookAccountAuthSucceededWebhookEventJSONRequestBody = FacebookAccountAuthSucceededWebhookEvent
+
+// ReceiveFacebookAccountStatusUpdatedWebhookEventJSONRequestBody defines body for ReceiveFacebookAccountStatusUpdatedWebhookEvent for application/json ContentType.
+type ReceiveFacebookAccountStatusUpdatedWebhookEventJSONRequestBody = FacebookAccountStatusUpdatedWebhookEvent
+
+// ReceiveFacebookMessageReceivedWebhookEventJSONRequestBody defines body for ReceiveFacebookMessageReceivedWebhookEvent for application/json ContentType.
+type ReceiveFacebookMessageReceivedWebhookEventJSONRequestBody = FacebookMessageReceivedWebhookEvent
+
 // ReceiveGroupSettingsUpdatedWebhookEventJSONRequestBody defines body for ReceiveGroupSettingsUpdatedWebhookEvent for application/json ContentType.
 type ReceiveGroupSettingsUpdatedWebhookEventJSONRequestBody = GroupSettingsUpdatedWebhookEvent
 
@@ -9293,6 +9883,2331 @@ func (a ConversationHistoryWebhookEvent_Data) MarshalJSON() ([]byte, error) {
 		if err != nil {
 			return nil, fmt.Errorf("error marshaling 'messages': %w", err)
 		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthFailedWebhookEvent. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthFailedWebhookEvent) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthFailedWebhookEvent
+func (a *FacebookAccountAuthFailedWebhookEvent) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent to handle AdditionalProperties
+func (a *FacebookAccountAuthFailedWebhookEvent) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account_id"]; found {
+		err = json.Unmarshal(raw, &a.AccountID)
+		if err != nil {
+			return fmt.Errorf("error reading 'account_id': %w", err)
+		}
+		delete(object, "account_id")
+	}
+
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
+		if err != nil {
+			return fmt.Errorf("error reading 'data': %w", err)
+		}
+		delete(object, "data")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["occurred_at"]; found {
+		err = json.Unmarshal(raw, &a.OccurredAt)
+		if err != nil {
+			return fmt.Errorf("error reading 'occurred_at': %w", err)
+		}
+		delete(object, "occurred_at")
+	}
+
+	if raw, found := object["provider"]; found {
+		err = json.Unmarshal(raw, &a.Provider)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider': %w", err)
+		}
+		delete(object, "provider")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent to handle AdditionalProperties
+func (a FacebookAccountAuthFailedWebhookEvent) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["account_id"], err = json.Marshal(a.AccountID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'account_id': %w", err)
+	}
+
+	object["data"], err = json.Marshal(a.Data)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'data': %w", err)
+	}
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["occurred_at"], err = json.Marshal(a.OccurredAt)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'occurred_at': %w", err)
+	}
+
+	object["provider"], err = json.Marshal(a.Provider)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'provider': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data_Account. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthFailedWebhookEvent_Data_Account) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data_Account
+func (a *FacebookAccountAuthFailedWebhookEvent_Data_Account) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a *FacebookAccountAuthFailedWebhookEvent_Data_Account) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["provider_account_ref"]; found {
+		err = json.Unmarshal(raw, &a.ProviderAccountRef)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider_account_ref': %w", err)
+		}
+		delete(object, "provider_account_ref")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a FacebookAccountAuthFailedWebhookEvent_Data_Account) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.ProviderAccountRef != nil {
+		object["provider_account_ref"], err = json.Marshal(a.ProviderAccountRef)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'provider_account_ref': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data_Event. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthFailedWebhookEvent_Data_Event) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data_Event
+func (a *FacebookAccountAuthFailedWebhookEvent_Data_Event) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a *FacebookAccountAuthFailedWebhookEvent_Data_Event) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["kind"]; found {
+		err = json.Unmarshal(raw, &a.Kind)
+		if err != nil {
+			return fmt.Errorf("error reading 'kind': %w", err)
+		}
+		delete(object, "kind")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a FacebookAccountAuthFailedWebhookEvent_Data_Event) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Kind != nil {
+		object["kind"], err = json.Marshal(a.Kind)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'kind': %w", err)
+		}
+	}
+
+	if a.RuntimeStatus != nil {
+		object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthFailedWebhookEvent_Data) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthFailedWebhookEvent_Data
+func (a *FacebookAccountAuthFailedWebhookEvent_Data) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data to handle AdditionalProperties
+func (a *FacebookAccountAuthFailedWebhookEvent_Data) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account"]; found {
+		err = json.Unmarshal(raw, &a.Account)
+		if err != nil {
+			return fmt.Errorf("error reading 'account': %w", err)
+		}
+		delete(object, "account")
+	}
+
+	if raw, found := object["auth_status"]; found {
+		err = json.Unmarshal(raw, &a.AuthStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'auth_status': %w", err)
+		}
+		delete(object, "auth_status")
+	}
+
+	if raw, found := object["event"]; found {
+		err = json.Unmarshal(raw, &a.Event)
+		if err != nil {
+			return fmt.Errorf("error reading 'event': %w", err)
+		}
+		delete(object, "event")
+	}
+
+	if raw, found := object["last_error"]; found {
+		err = json.Unmarshal(raw, &a.LastError)
+		if err != nil {
+			return fmt.Errorf("error reading 'last_error': %w", err)
+		}
+		delete(object, "last_error")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthFailedWebhookEvent_Data to handle AdditionalProperties
+func (a FacebookAccountAuthFailedWebhookEvent_Data) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Account != nil {
+		object["account"], err = json.Marshal(a.Account)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'account': %w", err)
+		}
+	}
+
+	object["auth_status"], err = json.Marshal(a.AuthStatus)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'auth_status': %w", err)
+	}
+
+	if a.Event != nil {
+		object["event"], err = json.Marshal(a.Event)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'event': %w", err)
+		}
+	}
+
+	if a.LastError != nil {
+		object["last_error"], err = json.Marshal(a.LastError)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'last_error': %w", err)
+		}
+	}
+
+	object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthSucceededWebhookEvent. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthSucceededWebhookEvent) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthSucceededWebhookEvent
+func (a *FacebookAccountAuthSucceededWebhookEvent) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent to handle AdditionalProperties
+func (a *FacebookAccountAuthSucceededWebhookEvent) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account_id"]; found {
+		err = json.Unmarshal(raw, &a.AccountID)
+		if err != nil {
+			return fmt.Errorf("error reading 'account_id': %w", err)
+		}
+		delete(object, "account_id")
+	}
+
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
+		if err != nil {
+			return fmt.Errorf("error reading 'data': %w", err)
+		}
+		delete(object, "data")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["occurred_at"]; found {
+		err = json.Unmarshal(raw, &a.OccurredAt)
+		if err != nil {
+			return fmt.Errorf("error reading 'occurred_at': %w", err)
+		}
+		delete(object, "occurred_at")
+	}
+
+	if raw, found := object["provider"]; found {
+		err = json.Unmarshal(raw, &a.Provider)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider': %w", err)
+		}
+		delete(object, "provider")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent to handle AdditionalProperties
+func (a FacebookAccountAuthSucceededWebhookEvent) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["account_id"], err = json.Marshal(a.AccountID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'account_id': %w", err)
+	}
+
+	object["data"], err = json.Marshal(a.Data)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'data': %w", err)
+	}
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["occurred_at"], err = json.Marshal(a.OccurredAt)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'occurred_at': %w", err)
+	}
+
+	object["provider"], err = json.Marshal(a.Provider)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'provider': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data_Account. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthSucceededWebhookEvent_Data_Account) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data_Account
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data_Account) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data_Account to handle AdditionalProperties
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data_Account) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["provider_account_ref"]; found {
+		err = json.Unmarshal(raw, &a.ProviderAccountRef)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider_account_ref': %w", err)
+		}
+		delete(object, "provider_account_ref")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data_Account to handle AdditionalProperties
+func (a FacebookAccountAuthSucceededWebhookEvent_Data_Account) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.ProviderAccountRef != nil {
+		object["provider_account_ref"], err = json.Marshal(a.ProviderAccountRef)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'provider_account_ref': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data_Event. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthSucceededWebhookEvent_Data_Event) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data_Event
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data_Event) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data_Event to handle AdditionalProperties
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data_Event) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["kind"]; found {
+		err = json.Unmarshal(raw, &a.Kind)
+		if err != nil {
+			return fmt.Errorf("error reading 'kind': %w", err)
+		}
+		delete(object, "kind")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data_Event to handle AdditionalProperties
+func (a FacebookAccountAuthSucceededWebhookEvent_Data_Event) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Kind != nil {
+		object["kind"], err = json.Marshal(a.Kind)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'kind': %w", err)
+		}
+	}
+
+	if a.RuntimeStatus != nil {
+		object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data. Returns the specified
+// element and whether it was found
+func (a FacebookAccountAuthSucceededWebhookEvent_Data) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountAuthSucceededWebhookEvent_Data
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data to handle AdditionalProperties
+func (a *FacebookAccountAuthSucceededWebhookEvent_Data) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account"]; found {
+		err = json.Unmarshal(raw, &a.Account)
+		if err != nil {
+			return fmt.Errorf("error reading 'account': %w", err)
+		}
+		delete(object, "account")
+	}
+
+	if raw, found := object["auth_status"]; found {
+		err = json.Unmarshal(raw, &a.AuthStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'auth_status': %w", err)
+		}
+		delete(object, "auth_status")
+	}
+
+	if raw, found := object["event"]; found {
+		err = json.Unmarshal(raw, &a.Event)
+		if err != nil {
+			return fmt.Errorf("error reading 'event': %w", err)
+		}
+		delete(object, "event")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountAuthSucceededWebhookEvent_Data to handle AdditionalProperties
+func (a FacebookAccountAuthSucceededWebhookEvent_Data) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Account != nil {
+		object["account"], err = json.Marshal(a.Account)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'account': %w", err)
+		}
+	}
+
+	object["auth_status"], err = json.Marshal(a.AuthStatus)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'auth_status': %w", err)
+	}
+
+	if a.Event != nil {
+		object["event"], err = json.Marshal(a.Event)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'event': %w", err)
+		}
+	}
+
+	object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountStatusUpdatedWebhookEvent. Returns the specified
+// element and whether it was found
+func (a FacebookAccountStatusUpdatedWebhookEvent) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountStatusUpdatedWebhookEvent
+func (a *FacebookAccountStatusUpdatedWebhookEvent) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent to handle AdditionalProperties
+func (a *FacebookAccountStatusUpdatedWebhookEvent) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account_id"]; found {
+		err = json.Unmarshal(raw, &a.AccountID)
+		if err != nil {
+			return fmt.Errorf("error reading 'account_id': %w", err)
+		}
+		delete(object, "account_id")
+	}
+
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
+		if err != nil {
+			return fmt.Errorf("error reading 'data': %w", err)
+		}
+		delete(object, "data")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["occurred_at"]; found {
+		err = json.Unmarshal(raw, &a.OccurredAt)
+		if err != nil {
+			return fmt.Errorf("error reading 'occurred_at': %w", err)
+		}
+		delete(object, "occurred_at")
+	}
+
+	if raw, found := object["provider"]; found {
+		err = json.Unmarshal(raw, &a.Provider)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider': %w", err)
+		}
+		delete(object, "provider")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent to handle AdditionalProperties
+func (a FacebookAccountStatusUpdatedWebhookEvent) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["account_id"], err = json.Marshal(a.AccountID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'account_id': %w", err)
+	}
+
+	object["data"], err = json.Marshal(a.Data)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'data': %w", err)
+	}
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["occurred_at"], err = json.Marshal(a.OccurredAt)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'occurred_at': %w", err)
+	}
+
+	object["provider"], err = json.Marshal(a.Provider)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'provider': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data_Account. Returns the specified
+// element and whether it was found
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data_Account) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data_Account
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data_Account) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data_Account) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["provider_account_ref"]; found {
+		err = json.Unmarshal(raw, &a.ProviderAccountRef)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider_account_ref': %w", err)
+		}
+		delete(object, "provider_account_ref")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data_Account) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.ProviderAccountRef != nil {
+		object["provider_account_ref"], err = json.Marshal(a.ProviderAccountRef)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'provider_account_ref': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data_Event. Returns the specified
+// element and whether it was found
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data_Event) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data_Event
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data_Event) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data_Event) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["kind"]; found {
+		err = json.Unmarshal(raw, &a.Kind)
+		if err != nil {
+			return fmt.Errorf("error reading 'kind': %w", err)
+		}
+		delete(object, "kind")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data_Event) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Kind != nil {
+		object["kind"], err = json.Marshal(a.Kind)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'kind': %w", err)
+		}
+	}
+
+	if a.RuntimeStatus != nil {
+		object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data. Returns the specified
+// element and whether it was found
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAccountStatusUpdatedWebhookEvent_Data
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data to handle AdditionalProperties
+func (a *FacebookAccountStatusUpdatedWebhookEvent_Data) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account"]; found {
+		err = json.Unmarshal(raw, &a.Account)
+		if err != nil {
+			return fmt.Errorf("error reading 'account': %w", err)
+		}
+		delete(object, "account")
+	}
+
+	if raw, found := object["event"]; found {
+		err = json.Unmarshal(raw, &a.Event)
+		if err != nil {
+			return fmt.Errorf("error reading 'event': %w", err)
+		}
+		delete(object, "event")
+	}
+
+	if raw, found := object["last_error"]; found {
+		err = json.Unmarshal(raw, &a.LastError)
+		if err != nil {
+			return fmt.Errorf("error reading 'last_error': %w", err)
+		}
+		delete(object, "last_error")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAccountStatusUpdatedWebhookEvent_Data to handle AdditionalProperties
+func (a FacebookAccountStatusUpdatedWebhookEvent_Data) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Account != nil {
+		object["account"], err = json.Marshal(a.Account)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'account': %w", err)
+		}
+	}
+
+	if a.Event != nil {
+		object["event"], err = json.Marshal(a.Event)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'event': %w", err)
+		}
+	}
+
+	if a.LastError != nil {
+		object["last_error"], err = json.Marshal(a.LastError)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'last_error': %w", err)
+		}
+	}
+
+	object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookAttachmentMetadata. Returns the specified
+// element and whether it was found
+func (a FacebookAttachmentMetadata) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookAttachmentMetadata
+func (a *FacebookAttachmentMetadata) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookAttachmentMetadata to handle AdditionalProperties
+func (a *FacebookAttachmentMetadata) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["animated"]; found {
+		err = json.Unmarshal(raw, &a.Animated)
+		if err != nil {
+			return fmt.Errorf("error reading 'animated': %w", err)
+		}
+		delete(object, "animated")
+	}
+
+	if raw, found := object["download_status"]; found {
+		err = json.Unmarshal(raw, &a.DownloadStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'download_status': %w", err)
+		}
+		delete(object, "download_status")
+	}
+
+	if raw, found := object["duration"]; found {
+		err = json.Unmarshal(raw, &a.Duration)
+		if err != nil {
+			return fmt.Errorf("error reading 'duration': %w", err)
+		}
+		delete(object, "duration")
+	}
+
+	if raw, found := object["error_code"]; found {
+		err = json.Unmarshal(raw, &a.ErrorCode)
+		if err != nil {
+			return fmt.Errorf("error reading 'error_code': %w", err)
+		}
+		delete(object, "error_code")
+	}
+
+	if raw, found := object["filename"]; found {
+		err = json.Unmarshal(raw, &a.Filename)
+		if err != nil {
+			return fmt.Errorf("error reading 'filename': %w", err)
+		}
+		delete(object, "filename")
+	}
+
+	if raw, found := object["height"]; found {
+		err = json.Unmarshal(raw, &a.Height)
+		if err != nil {
+			return fmt.Errorf("error reading 'height': %w", err)
+		}
+		delete(object, "height")
+	}
+
+	if raw, found := object["preview_error_code"]; found {
+		err = json.Unmarshal(raw, &a.PreviewErrorCode)
+		if err != nil {
+			return fmt.Errorf("error reading 'preview_error_code': %w", err)
+		}
+		delete(object, "preview_error_code")
+	}
+
+	if raw, found := object["preview_upload_error_code"]; found {
+		err = json.Unmarshal(raw, &a.PreviewUploadErrorCode)
+		if err != nil {
+			return fmt.Errorf("error reading 'preview_upload_error_code': %w", err)
+		}
+		delete(object, "preview_upload_error_code")
+	}
+
+	if raw, found := object["ptt"]; found {
+		err = json.Unmarshal(raw, &a.Ptt)
+		if err != nil {
+			return fmt.Errorf("error reading 'ptt': %w", err)
+		}
+		delete(object, "ptt")
+	}
+
+	if raw, found := object["sticker_id"]; found {
+		err = json.Unmarshal(raw, &a.StickerID)
+		if err != nil {
+			return fmt.Errorf("error reading 'sticker_id': %w", err)
+		}
+		delete(object, "sticker_id")
+	}
+
+	if raw, found := object["upload_error_code"]; found {
+		err = json.Unmarshal(raw, &a.UploadErrorCode)
+		if err != nil {
+			return fmt.Errorf("error reading 'upload_error_code': %w", err)
+		}
+		delete(object, "upload_error_code")
+	}
+
+	if raw, found := object["width"]; found {
+		err = json.Unmarshal(raw, &a.Width)
+		if err != nil {
+			return fmt.Errorf("error reading 'width': %w", err)
+		}
+		delete(object, "width")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookAttachmentMetadata to handle AdditionalProperties
+func (a FacebookAttachmentMetadata) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Animated != nil {
+		object["animated"], err = json.Marshal(a.Animated)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'animated': %w", err)
+		}
+	}
+
+	if a.DownloadStatus != nil {
+		object["download_status"], err = json.Marshal(a.DownloadStatus)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'download_status': %w", err)
+		}
+	}
+
+	if a.Duration != nil {
+		object["duration"], err = json.Marshal(a.Duration)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'duration': %w", err)
+		}
+	}
+
+	if a.ErrorCode != nil {
+		object["error_code"], err = json.Marshal(a.ErrorCode)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'error_code': %w", err)
+		}
+	}
+
+	if a.Filename != nil {
+		object["filename"], err = json.Marshal(a.Filename)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'filename': %w", err)
+		}
+	}
+
+	if a.Height != nil {
+		object["height"], err = json.Marshal(a.Height)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'height': %w", err)
+		}
+	}
+
+	if a.PreviewErrorCode != nil {
+		object["preview_error_code"], err = json.Marshal(a.PreviewErrorCode)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'preview_error_code': %w", err)
+		}
+	}
+
+	if a.PreviewUploadErrorCode != nil {
+		object["preview_upload_error_code"], err = json.Marshal(a.PreviewUploadErrorCode)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'preview_upload_error_code': %w", err)
+		}
+	}
+
+	if a.Ptt != nil {
+		object["ptt"], err = json.Marshal(a.Ptt)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'ptt': %w", err)
+		}
+	}
+
+	if a.StickerID != nil {
+		object["sticker_id"], err = json.Marshal(a.StickerID)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'sticker_id': %w", err)
+		}
+	}
+
+	if a.UploadErrorCode != nil {
+		object["upload_error_code"], err = json.Marshal(a.UploadErrorCode)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'upload_error_code': %w", err)
+		}
+	}
+
+	if a.Width != nil {
+		object["width"], err = json.Marshal(a.Width)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'width': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessage. Returns the specified
+// element and whether it was found
+func (a FacebookMessage) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessage
+func (a *FacebookMessage) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessage to handle AdditionalProperties
+func (a *FacebookMessage) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["attachments"]; found {
+		err = json.Unmarshal(raw, &a.Attachments)
+		if err != nil {
+			return fmt.Errorf("error reading 'attachments': %w", err)
+		}
+		delete(object, "attachments")
+	}
+
+	if raw, found := object["direction"]; found {
+		err = json.Unmarshal(raw, &a.Direction)
+		if err != nil {
+			return fmt.Errorf("error reading 'direction': %w", err)
+		}
+		delete(object, "direction")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["reply_to_message_id"]; found {
+		err = json.Unmarshal(raw, &a.ReplyToMessageID)
+		if err != nil {
+			return fmt.Errorf("error reading 'reply_to_message_id': %w", err)
+		}
+		delete(object, "reply_to_message_id")
+	}
+
+	if raw, found := object["sent_at"]; found {
+		err = json.Unmarshal(raw, &a.SentAt)
+		if err != nil {
+			return fmt.Errorf("error reading 'sent_at': %w", err)
+		}
+		delete(object, "sent_at")
+	}
+
+	if raw, found := object["text"]; found {
+		err = json.Unmarshal(raw, &a.Text)
+		if err != nil {
+			return fmt.Errorf("error reading 'text': %w", err)
+		}
+		delete(object, "text")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessage to handle AdditionalProperties
+func (a FacebookMessage) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Attachments != nil {
+		object["attachments"], err = json.Marshal(a.Attachments)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'attachments': %w", err)
+		}
+	}
+
+	object["direction"], err = json.Marshal(a.Direction)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'direction': %w", err)
+	}
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	if a.ReplyToMessageID != nil {
+		object["reply_to_message_id"], err = json.Marshal(a.ReplyToMessageID)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'reply_to_message_id': %w", err)
+		}
+	}
+
+	if a.SentAt != nil {
+		object["sent_at"], err = json.Marshal(a.SentAt)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'sent_at': %w", err)
+		}
+	}
+
+	if a.Text != nil {
+		object["text"], err = json.Marshal(a.Text)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'text': %w", err)
+		}
+	}
+
+	if a.Type != nil {
+		object["type"], err = json.Marshal(a.Type)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'type': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageAttachment. Returns the specified
+// element and whether it was found
+func (a FacebookMessageAttachment) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageAttachment
+func (a *FacebookMessageAttachment) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageAttachment to handle AdditionalProperties
+func (a *FacebookMessageAttachment) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["description"]; found {
+		err = json.Unmarshal(raw, &a.Description)
+		if err != nil {
+			return fmt.Errorf("error reading 'description': %w", err)
+		}
+		delete(object, "description")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["metadata"]; found {
+		err = json.Unmarshal(raw, &a.Metadata)
+		if err != nil {
+			return fmt.Errorf("error reading 'metadata': %w", err)
+		}
+		delete(object, "metadata")
+	}
+
+	if raw, found := object["mimetype"]; found {
+		err = json.Unmarshal(raw, &a.Mimetype)
+		if err != nil {
+			return fmt.Errorf("error reading 'mimetype': %w", err)
+		}
+		delete(object, "mimetype")
+	}
+
+	if raw, found := object["size"]; found {
+		err = json.Unmarshal(raw, &a.Size)
+		if err != nil {
+			return fmt.Errorf("error reading 'size': %w", err)
+		}
+		delete(object, "size")
+	}
+
+	if raw, found := object["thumbnail_url"]; found {
+		err = json.Unmarshal(raw, &a.ThumbnailURL)
+		if err != nil {
+			return fmt.Errorf("error reading 'thumbnail_url': %w", err)
+		}
+		delete(object, "thumbnail_url")
+	}
+
+	if raw, found := object["title"]; found {
+		err = json.Unmarshal(raw, &a.Title)
+		if err != nil {
+			return fmt.Errorf("error reading 'title': %w", err)
+		}
+		delete(object, "title")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if raw, found := object["url"]; found {
+		err = json.Unmarshal(raw, &a.URL)
+		if err != nil {
+			return fmt.Errorf("error reading 'url': %w", err)
+		}
+		delete(object, "url")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageAttachment to handle AdditionalProperties
+func (a FacebookMessageAttachment) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Description != nil {
+		object["description"], err = json.Marshal(a.Description)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'description': %w", err)
+		}
+	}
+
+	if a.ID != nil {
+		object["id"], err = json.Marshal(a.ID)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'id': %w", err)
+		}
+	}
+
+	if a.Metadata != nil {
+		object["metadata"], err = json.Marshal(a.Metadata)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'metadata': %w", err)
+		}
+	}
+
+	if a.Mimetype != nil {
+		object["mimetype"], err = json.Marshal(a.Mimetype)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'mimetype': %w", err)
+		}
+	}
+
+	if a.Size != nil {
+		object["size"], err = json.Marshal(a.Size)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'size': %w", err)
+		}
+	}
+
+	if a.ThumbnailURL != nil {
+		object["thumbnail_url"], err = json.Marshal(a.ThumbnailURL)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'thumbnail_url': %w", err)
+		}
+	}
+
+	if a.Title != nil {
+		object["title"], err = json.Marshal(a.Title)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'title': %w", err)
+		}
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	if a.URL != nil {
+		object["url"], err = json.Marshal(a.URL)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'url': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent
+func (a *FacebookMessageReceivedWebhookEvent) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account_id"]; found {
+		err = json.Unmarshal(raw, &a.AccountID)
+		if err != nil {
+			return fmt.Errorf("error reading 'account_id': %w", err)
+		}
+		delete(object, "account_id")
+	}
+
+	if raw, found := object["data"]; found {
+		err = json.Unmarshal(raw, &a.Data)
+		if err != nil {
+			return fmt.Errorf("error reading 'data': %w", err)
+		}
+		delete(object, "data")
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["occurred_at"]; found {
+		err = json.Unmarshal(raw, &a.OccurredAt)
+		if err != nil {
+			return fmt.Errorf("error reading 'occurred_at': %w", err)
+		}
+		delete(object, "occurred_at")
+	}
+
+	if raw, found := object["provider"]; found {
+		err = json.Unmarshal(raw, &a.Provider)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider': %w", err)
+		}
+		delete(object, "provider")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["account_id"], err = json.Marshal(a.AccountID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'account_id': %w", err)
+	}
+
+	object["data"], err = json.Marshal(a.Data)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'data': %w", err)
+	}
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["occurred_at"], err = json.Marshal(a.OccurredAt)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'occurred_at': %w", err)
+	}
+
+	object["provider"], err = json.Marshal(a.Provider)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'provider': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Account. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent_Data_Account) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Account
+func (a *FacebookMessageReceivedWebhookEvent_Data_Account) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent_Data_Account) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["provider_account_ref"]; found {
+		err = json.Unmarshal(raw, &a.ProviderAccountRef)
+		if err != nil {
+			return fmt.Errorf("error reading 'provider_account_ref': %w", err)
+		}
+		delete(object, "provider_account_ref")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Account to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent_Data_Account) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.ProviderAccountRef != nil {
+		object["provider_account_ref"], err = json.Marshal(a.ProviderAccountRef)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'provider_account_ref': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Conversation. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent_Data_Conversation) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Conversation
+func (a *FacebookMessageReceivedWebhookEvent_Data_Conversation) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Conversation to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent_Data_Conversation) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Conversation to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent_Data_Conversation) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Event. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent_Data_Event) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Event
+func (a *FacebookMessageReceivedWebhookEvent_Data_Event) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent_Data_Event) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["kind"]; found {
+		err = json.Unmarshal(raw, &a.Kind)
+		if err != nil {
+			return fmt.Errorf("error reading 'kind': %w", err)
+		}
+		delete(object, "kind")
+	}
+
+	if raw, found := object["runtime_status"]; found {
+		err = json.Unmarshal(raw, &a.RuntimeStatus)
+		if err != nil {
+			return fmt.Errorf("error reading 'runtime_status': %w", err)
+		}
+		delete(object, "runtime_status")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Event to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent_Data_Event) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Kind != nil {
+		object["kind"], err = json.Marshal(a.Kind)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'kind': %w", err)
+		}
+	}
+
+	if a.RuntimeStatus != nil {
+		object["runtime_status"], err = json.Marshal(a.RuntimeStatus)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'runtime_status': %w", err)
+		}
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Sender. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent_Data_Sender) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent_Data_Sender
+func (a *FacebookMessageReceivedWebhookEvent_Data_Sender) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Sender to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent_Data_Sender) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["id"]; found {
+		err = json.Unmarshal(raw, &a.ID)
+		if err != nil {
+			return fmt.Errorf("error reading 'id': %w", err)
+		}
+		delete(object, "id")
+	}
+
+	if raw, found := object["type"]; found {
+		err = json.Unmarshal(raw, &a.Type)
+		if err != nil {
+			return fmt.Errorf("error reading 'type': %w", err)
+		}
+		delete(object, "type")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data_Sender to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent_Data_Sender) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	object["id"], err = json.Marshal(a.ID)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'id': %w", err)
+	}
+
+	object["type"], err = json.Marshal(a.Type)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'type': %w", err)
+	}
+
+	for fieldName, field := range a.AdditionalProperties {
+		object[fieldName], err = json.Marshal(field)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling '%s': %w", fieldName, err)
+		}
+	}
+	return json.Marshal(object)
+}
+
+// Getter for additional properties for FacebookMessageReceivedWebhookEvent_Data. Returns the specified
+// element and whether it was found
+func (a FacebookMessageReceivedWebhookEvent_Data) Get(fieldName string) (value interface{}, found bool) {
+	if a.AdditionalProperties != nil {
+		value, found = a.AdditionalProperties[fieldName]
+	}
+	return
+}
+
+// Setter for additional properties for FacebookMessageReceivedWebhookEvent_Data
+func (a *FacebookMessageReceivedWebhookEvent_Data) Set(fieldName string, value interface{}) {
+	if a.AdditionalProperties == nil {
+		a.AdditionalProperties = make(map[string]interface{})
+	}
+	a.AdditionalProperties[fieldName] = value
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data to handle AdditionalProperties
+func (a *FacebookMessageReceivedWebhookEvent_Data) UnmarshalJSON(b []byte) error {
+	object := make(map[string]json.RawMessage)
+	err := json.Unmarshal(b, &object)
+	if err != nil {
+		return err
+	}
+
+	if raw, found := object["account"]; found {
+		err = json.Unmarshal(raw, &a.Account)
+		if err != nil {
+			return fmt.Errorf("error reading 'account': %w", err)
+		}
+		delete(object, "account")
+	}
+
+	if raw, found := object["conversation"]; found {
+		err = json.Unmarshal(raw, &a.Conversation)
+		if err != nil {
+			return fmt.Errorf("error reading 'conversation': %w", err)
+		}
+		delete(object, "conversation")
+	}
+
+	if raw, found := object["event"]; found {
+		err = json.Unmarshal(raw, &a.Event)
+		if err != nil {
+			return fmt.Errorf("error reading 'event': %w", err)
+		}
+		delete(object, "event")
+	}
+
+	if raw, found := object["message"]; found {
+		err = json.Unmarshal(raw, &a.Message)
+		if err != nil {
+			return fmt.Errorf("error reading 'message': %w", err)
+		}
+		delete(object, "message")
+	}
+
+	if raw, found := object["sender"]; found {
+		err = json.Unmarshal(raw, &a.Sender)
+		if err != nil {
+			return fmt.Errorf("error reading 'sender': %w", err)
+		}
+		delete(object, "sender")
+	}
+
+	if len(object) != 0 {
+		a.AdditionalProperties = make(map[string]interface{})
+		for fieldName, fieldBuf := range object {
+			var fieldVal interface{}
+			err := json.Unmarshal(fieldBuf, &fieldVal)
+			if err != nil {
+				return fmt.Errorf("error unmarshaling field %s: %w", fieldName, err)
+			}
+			a.AdditionalProperties[fieldName] = fieldVal
+		}
+	}
+	return nil
+}
+
+// Override default JSON handling for FacebookMessageReceivedWebhookEvent_Data to handle AdditionalProperties
+func (a FacebookMessageReceivedWebhookEvent_Data) MarshalJSON() ([]byte, error) {
+	var err error
+	object := make(map[string]json.RawMessage)
+
+	if a.Account != nil {
+		object["account"], err = json.Marshal(a.Account)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'account': %w", err)
+		}
+	}
+
+	object["conversation"], err = json.Marshal(a.Conversation)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'conversation': %w", err)
+	}
+
+	if a.Event != nil {
+		object["event"], err = json.Marshal(a.Event)
+		if err != nil {
+			return nil, fmt.Errorf("error marshaling 'event': %w", err)
+		}
+	}
+
+	object["message"], err = json.Marshal(a.Message)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'message': %w", err)
+	}
+
+	object["sender"], err = json.Marshal(a.Sender)
+	if err != nil {
+		return nil, fmt.Errorf("error marshaling 'sender': %w", err)
 	}
 
 	for fieldName, field := range a.AdditionalProperties {
@@ -47473,6 +50388,26 @@ type WebhookInitiatorInterface interface {
 
 	ReceiveConversationHistoryWebhook(ctx context.Context, targetURL string, body ReceiveConversationHistoryWebhookJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// ReceiveFacebookAccountAuthFailedWebhookEventWithBody fires the facebookAccountAuthFailed webhook with any body
+	ReceiveFacebookAccountAuthFailedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	ReceiveFacebookAccountAuthFailedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountAuthFailedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ReceiveFacebookAccountAuthSucceededWebhookEventWithBody fires the facebookAccountAuthSucceeded webhook with any body
+	ReceiveFacebookAccountAuthSucceededWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	ReceiveFacebookAccountAuthSucceededWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountAuthSucceededWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ReceiveFacebookAccountStatusUpdatedWebhookEventWithBody fires the facebookAccountStatusUpdated webhook with any body
+	ReceiveFacebookAccountStatusUpdatedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	ReceiveFacebookAccountStatusUpdatedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountStatusUpdatedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// ReceiveFacebookMessageReceivedWebhookEventWithBody fires the facebookMessageReceived webhook with any body
+	ReceiveFacebookMessageReceivedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	ReceiveFacebookMessageReceivedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookMessageReceivedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// ReceiveGroupSettingsUpdatedWebhookEventWithBody fires the groupSettingsUpdated webhook with any body
 	ReceiveGroupSettingsUpdatedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -47853,6 +50788,102 @@ func (p *WebhookInitiator) ReceiveConversationHistoryWebhookWithBody(ctx context
 
 func (p *WebhookInitiator) ReceiveConversationHistoryWebhook(ctx context.Context, targetURL string, body ReceiveConversationHistoryWebhookJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewReceiveConversationHistoryWebhookWebhookRequest(targetURL, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountAuthFailedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequestWithBody(targetURL, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountAuthFailedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountAuthFailedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequest(targetURL, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountAuthSucceededWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequestWithBody(targetURL, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountAuthSucceededWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountAuthSucceededWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequest(targetURL, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountStatusUpdatedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequestWithBody(targetURL, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookAccountStatusUpdatedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookAccountStatusUpdatedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequest(targetURL, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookMessageReceivedWebhookEventWithBody(ctx context.Context, targetURL string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookMessageReceivedWebhookEventWebhookRequestWithBody(targetURL, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := p.applyWebhookEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return p.Client.Do(req)
+}
+
+func (p *WebhookInitiator) ReceiveFacebookMessageReceivedWebhookEvent(ctx context.Context, targetURL string, body ReceiveFacebookMessageReceivedWebhookEventJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReceiveFacebookMessageReceivedWebhookEventWebhookRequest(targetURL, body)
 	if err != nil {
 		return nil, err
 	}
@@ -48786,6 +51817,130 @@ func NewReceiveConversationHistoryWebhookWebhookRequest(targetURL string, body R
 
 // NewReceiveConversationHistoryWebhookWebhookRequestWithBody builds a POST request for the conversationHistory webhook with any body
 func NewReceiveConversationHistoryWebhookWebhookRequestWithBody(targetURL string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+	_ = err
+
+	reqURL, err := url.Parse(targetURL)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, reqURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequest builds a application/json POST request for the facebookAccountAuthFailed webhook
+func NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequest(targetURL string, body ReceiveFacebookAccountAuthFailedWebhookEventJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequestWithBody(targetURL, "application/json", bodyReader)
+}
+
+// NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequestWithBody builds a POST request for the facebookAccountAuthFailed webhook with any body
+func NewReceiveFacebookAccountAuthFailedWebhookEventWebhookRequestWithBody(targetURL string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+	_ = err
+
+	reqURL, err := url.Parse(targetURL)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, reqURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequest builds a application/json POST request for the facebookAccountAuthSucceeded webhook
+func NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequest(targetURL string, body ReceiveFacebookAccountAuthSucceededWebhookEventJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequestWithBody(targetURL, "application/json", bodyReader)
+}
+
+// NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequestWithBody builds a POST request for the facebookAccountAuthSucceeded webhook with any body
+func NewReceiveFacebookAccountAuthSucceededWebhookEventWebhookRequestWithBody(targetURL string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+	_ = err
+
+	reqURL, err := url.Parse(targetURL)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, reqURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequest builds a application/json POST request for the facebookAccountStatusUpdated webhook
+func NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequest(targetURL string, body ReceiveFacebookAccountStatusUpdatedWebhookEventJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequestWithBody(targetURL, "application/json", bodyReader)
+}
+
+// NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequestWithBody builds a POST request for the facebookAccountStatusUpdated webhook with any body
+func NewReceiveFacebookAccountStatusUpdatedWebhookEventWebhookRequestWithBody(targetURL string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+	_ = err
+
+	reqURL, err := url.Parse(targetURL)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, reqURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewReceiveFacebookMessageReceivedWebhookEventWebhookRequest builds a application/json POST request for the facebookMessageReceived webhook
+func NewReceiveFacebookMessageReceivedWebhookEventWebhookRequest(targetURL string, body ReceiveFacebookMessageReceivedWebhookEventJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewReceiveFacebookMessageReceivedWebhookEventWebhookRequestWithBody(targetURL, "application/json", bodyReader)
+}
+
+// NewReceiveFacebookMessageReceivedWebhookEventWebhookRequestWithBody builds a POST request for the facebookMessageReceived webhook with any body
+func NewReceiveFacebookMessageReceivedWebhookEventWebhookRequestWithBody(targetURL string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 	_ = err
 

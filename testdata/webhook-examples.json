@@ -1,327 +1,593 @@
 [
   {
+    "name": "facebookMessageReceived/inbound",
+    "schema": "FacebookMessageReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "conversation": {
+          "id": "9007199254740995",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "9007199254740993",
+          "reply_to_message_id": "9007199254740991",
+          "sent_at": "2026-01-01T00:00:00.123456789Z",
+          "text": "Hello"
+        },
+        "sender": {
+          "id": "9007199254740995",
+          "type": "user"
+        }
+      },
+      "id": "evt_facebook_example_1",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "facebookMessageReceived/outbound",
+    "schema": "FacebookMessageReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "conversation": {
+          "id": "9007199254740995",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "direction": "outbound",
+          "id": "9007199254740994",
+          "text": ""
+        },
+        "sender": {
+          "id": "9007199254740997",
+          "type": "user"
+        }
+      },
+      "id": "evt_facebook_example_2",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "facebookMessageReceived/orderedMedia",
+    "schema": "FacebookMessageReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "conversation": {
+          "id": "9007199254740995",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "attachments": [
+            {
+              "id": "image_example",
+              "metadata": {
+                "animated": false,
+                "download_status": "ready",
+                "filename": "example.jpg",
+                "height": 0,
+                "width": 0
+              },
+              "size": 0,
+              "thumbnail_url": "https://media.example.com/preview.jpg",
+              "type": "image",
+              "url": "https://media.example.com/image.jpg"
+            },
+            {
+              "id": "audio_example",
+              "metadata": {
+                "download_status": "failed",
+                "duration": 0,
+                "error_code": "download_failed",
+                "ptt": false
+              },
+              "type": "audio"
+            }
+          ],
+          "direction": "inbound",
+          "id": "9007199254740996"
+        },
+        "sender": {
+          "id": "9007199254740995",
+          "type": "user"
+        }
+      },
+      "id": "evt_facebook_example_3",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "facebookMessageReceived/sticker",
+    "schema": "FacebookMessageReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "conversation": {
+          "id": "9007199254740995",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "attachments": [
+            {
+              "metadata": {
+                "animated": false,
+                "sticker_id": "sticker_example"
+              },
+              "type": "image"
+            }
+          ],
+          "direction": "inbound",
+          "id": "9007199254740998",
+          "type": "sticker"
+        },
+        "sender": {
+          "id": "9007199254740995",
+          "type": "user"
+        }
+      },
+      "id": "evt_facebook_example_4",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "facebookMessageReceived/missingMedia",
+    "schema": "FacebookMessageReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "conversation": {
+          "id": "9007199254740995",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "attachments": [
+            {
+              "metadata": {
+                "download_status": "restricted",
+                "filename": "example.pdf"
+              },
+              "type": "document"
+            }
+          ],
+          "direction": "inbound",
+          "id": "9007199254740999"
+        },
+        "sender": {
+          "id": "9007199254740995",
+          "type": "user"
+        }
+      },
+      "id": "evt_facebook_example_5",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "facebookAccountAuthSucceeded/example",
+    "schema": "FacebookAccountAuthSucceededWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "auth_status": "authorized",
+        "event": {
+          "kind": "account_auth_succeeded",
+          "runtime_status": "running"
+        },
+        "runtime_status": "running"
+      },
+      "id": "evt_facebook_example_6",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "account.auth.succeeded"
+    }
+  },
+  {
+    "name": "facebookAccountStatusUpdated/example",
+    "schema": "FacebookAccountStatusUpdatedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "event": {
+          "kind": "account_status_updated",
+          "runtime_status": "error"
+        },
+        "last_error": "network_timeout",
+        "runtime_status": "error"
+      },
+      "id": "evt_facebook_example_7",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "account.status.updated"
+    }
+  },
+  {
+    "name": "facebookAccountAuthFailed/example",
+    "schema": "FacebookAccountAuthFailedWebhookEvent",
+    "body": {
+      "account_id": "acc_example",
+      "data": {
+        "account": {
+          "provider_account_ref": "9007199254740997"
+        },
+        "auth_status": "failed",
+        "event": {
+          "kind": "account_auth_failed",
+          "runtime_status": "disconnected"
+        },
+        "last_error": "cookie_expired",
+        "runtime_status": "disconnected"
+      },
+      "id": "evt_facebook_example_8",
+      "occurred_at": "2026-01-01T00:00:00.123456789Z",
+      "provider": "facebook",
+      "type": "account.auth.failed"
+    }
+  },
+  {
     "name": "contactUpdated/renamed",
     "schema": "ContactUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_127019",
-      "type": "contact.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-20T03:00:00Z",
       "data": {
         "contact": {
-          "id": "15550000002@s.whatsapp.net",
-          "conversation_id": "100000000000002@lid",
           "address_book": {
-            "full_name": "Example customer",
-            "first_name": "Example"
-          }
+            "first_name": "Example",
+            "full_name": "Example customer"
+          },
+          "conversation_id": "100000000000002@lid",
+          "id": "15550000002@s.whatsapp.net"
         },
         "event": {
-          "kind": "contact_updated",
-          "source": "address_book",
+          "changed_at": "2026-09-20T03:00:00Z",
           "changed_fields": [
             "address_book.full_name",
             "address_book.first_name"
           ],
-          "changed_at": "2026-09-20T03:00:00Z"
+          "kind": "contact_updated",
+          "source": "address_book"
         }
-      }
+      },
+      "id": "evt_example_127019",
+      "occurred_at": "2026-09-20T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "contact.updated"
     }
   },
   {
     "name": "contactUpdated/clearedWithoutConversation",
     "schema": "ContactUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_127947",
-      "type": "contact.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-20T03:05:00Z",
       "data": {
         "contact": {
-          "id": "15550000002@s.whatsapp.net",
           "address_book": {
             "full_name": ""
-          }
+          },
+          "id": "15550000002@s.whatsapp.net"
         },
         "event": {
-          "kind": "contact_updated",
-          "source": "address_book",
+          "changed_at": "2026-09-20T03:05:00Z",
           "changed_fields": [
             "address_book.full_name"
           ],
-          "changed_at": "2026-09-20T03:05:00Z"
+          "kind": "contact_updated",
+          "source": "address_book"
         }
-      }
+      },
+      "id": "evt_example_127947",
+      "occurred_at": "2026-09-20T03:05:00Z",
+      "provider": "whatsapp",
+      "type": "contact.updated"
     }
   },
   {
     "name": "contactUpdated/fullSyncWithoutChangedAt",
     "schema": "ContactUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_128706",
-      "type": "contact.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-20T03:10:00Z",
       "data": {
         "contact": {
-          "id": "100000000000002@lid",
-          "conversation_id": "100000000000002@lid",
           "address_book": {
             "first_name": "Example"
-          }
+          },
+          "conversation_id": "100000000000002@lid",
+          "id": "100000000000002@lid"
         },
         "event": {
-          "kind": "contact_updated",
-          "source": "full_sync",
           "changed_fields": [
             "address_book.first_name"
-          ]
+          ],
+          "kind": "contact_updated",
+          "source": "full_sync"
         }
-      }
+      },
+      "id": "evt_example_128706",
+      "occurred_at": "2026-09-20T03:10:00Z",
+      "provider": "whatsapp",
+      "type": "contact.updated"
     }
   },
   {
     "name": "conversationDisappearingMessagesUpdated/enabled",
     "schema": "ConversationDisappearingMessagesUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_130476",
-      "type": "conversation.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00.123000Z",
       "data": {
+        "actor": {
+          "id": "100000000000003@lid",
+          "name": "Example contact",
+          "type": "user"
+        },
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
         "disappearing_messages": {
-          "enabled": true,
-          "duration_seconds": 86400
-        },
-        "actor": {
-          "id": "100000000000003@lid",
-          "type": "user",
-          "name": "Example contact"
+          "duration_seconds": 86400,
+          "enabled": true
         },
         "event": {
-          "kind": "conversation_updated",
           "change_type": "disappearing_messages",
-          "changed_at": "2026-09-21T03:00:00.123000Z"
+          "changed_at": "2026-09-21T03:00:00.123Z",
+          "kind": "conversation_updated"
         }
-      }
+      },
+      "id": "evt_example_130476",
+      "occurred_at": "2026-09-21T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "conversation.updated"
     }
   },
   {
     "name": "conversationDisappearingMessagesUpdated/durationChanged",
     "schema": "ConversationDisappearingMessagesUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_131405",
-      "type": "conversation.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:05:00Z",
       "data": {
+        "actor": {
+          "id": "100000000000003@lid",
+          "name": "Example contact",
+          "type": "user"
+        },
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
         "disappearing_messages": {
-          "enabled": true,
-          "duration_seconds": 604800
-        },
-        "actor": {
-          "id": "100000000000003@lid",
-          "type": "user",
-          "name": "Example contact"
+          "duration_seconds": 604800,
+          "enabled": true
         },
         "event": {
-          "kind": "conversation_updated",
           "change_type": "disappearing_messages",
-          "changed_at": "2026-09-21T03:05:00Z"
+          "changed_at": "2026-09-21T03:05:00Z",
+          "kind": "conversation_updated"
         }
-      }
+      },
+      "id": "evt_example_131405",
+      "occurred_at": "2026-09-21T03:05:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.updated"
     }
   },
   {
     "name": "conversationDisappearingMessagesUpdated/disabled",
     "schema": "ConversationDisappearingMessagesUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_132320",
-      "type": "conversation.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:10:00Z",
       "data": {
+        "actor": {
+          "id": "100000000000003@lid",
+          "name": "Example contact",
+          "type": "user"
+        },
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
         "disappearing_messages": {
-          "enabled": false,
-          "duration_seconds": 0
-        },
-        "actor": {
-          "id": "100000000000003@lid",
-          "type": "user",
-          "name": "Example contact"
+          "duration_seconds": 0,
+          "enabled": false
         },
         "event": {
-          "kind": "conversation_updated",
           "change_type": "disappearing_messages",
-          "changed_at": "2026-09-21T03:10:00Z"
+          "changed_at": "2026-09-21T03:10:00Z",
+          "kind": "conversation_updated"
         }
-      }
+      },
+      "id": "evt_example_132320",
+      "occurred_at": "2026-09-21T03:10:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.updated"
     }
   },
   {
     "name": "conversationDisappearingMessagesUpdated/groupWithoutKnownActorOrTime",
     "schema": "ConversationDisappearingMessagesUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_133252",
-      "type": "conversation.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:15:00Z",
       "data": {
         "conversation": {
           "id": "120000000000001@g.us",
           "type": "group"
         },
         "disappearing_messages": {
-          "enabled": true,
-          "duration_seconds": 86400
+          "duration_seconds": 86400,
+          "enabled": true
         },
         "event": {
-          "kind": "conversation_updated",
-          "change_type": "disappearing_messages"
+          "change_type": "disappearing_messages",
+          "kind": "conversation_updated"
         }
-      }
+      },
+      "id": "evt_example_133252",
+      "occurred_at": "2026-09-21T03:15:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.updated"
     }
   },
   {
     "name": "messagePinUpdated/pinned",
     "schema": "MessagePinUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_134940",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00.123000Z",
       "data": {
-        "conversation": {
-          "id": "120000000000001@g.us",
-          "type": "group"
-        },
-        "message": {
-          "id": "MSG_PIN_TARGET",
-          "pin": {
-            "pinned": true,
-            "duration_seconds": 86400,
-            "expires_at": "2026-09-22T03:00:00.123000Z"
-          }
-        },
         "actor": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "conversation": {
+          "id": "120000000000001@g.us",
+          "type": "group"
+        },
+        "event": {
+          "change_type": "message_pin",
+          "changed_at": "2026-09-21T03:00:00.123Z",
+          "kind": "message_updated"
+        },
+        "message": {
+          "id": "MSG_PIN_TARGET",
+          "pin": {
+            "duration_seconds": 86400,
+            "expires_at": "2026-09-22T03:00:00.123Z",
+            "pinned": true
+          }
+        },
         "sender": {
           "id": "100000000000003@lid",
           "type": "user"
-        },
-        "event": {
-          "kind": "message_updated",
-          "change_type": "message_pin",
-          "changed_at": "2026-09-21T03:00:00.123000Z"
         }
-      }
+      },
+      "id": "evt_example_134940",
+      "occurred_at": "2026-09-21T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePinUpdated/unpinned",
     "schema": "MessagePinUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_136025",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:05:00Z",
       "data": {
+        "actor": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
         "conversation": {
           "id": "120000000000001@g.us",
           "type": "group"
+        },
+        "event": {
+          "change_type": "message_pin",
+          "changed_at": "2026-09-21T03:05:00Z",
+          "kind": "message_updated"
         },
         "message": {
           "id": "MSG_PIN_TARGET",
           "pin": {
             "pinned": false
           }
-        },
-        "actor": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "event": {
-          "kind": "message_updated",
-          "change_type": "message_pin",
-          "changed_at": "2026-09-21T03:05:00Z"
         }
-      }
+      },
+      "id": "evt_example_136025",
+      "occurred_at": "2026-09-21T03:05:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePinUpdated/pinnedWithoutKnownTime",
     "schema": "MessagePinUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_136901",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:10:00Z",
       "data": {
         "conversation": {
           "id": "120000000000001@g.us",
           "type": "group"
         },
+        "event": {
+          "change_type": "message_pin",
+          "kind": "message_updated"
+        },
         "message": {
           "id": "MSG_PIN_TARGET",
           "pin": {
-            "pinned": true,
-            "duration_seconds": 0
+            "duration_seconds": 0,
+            "pinned": true
           }
-        },
-        "event": {
-          "kind": "message_updated",
-          "change_type": "message_pin"
         }
-      }
+      },
+      "id": "evt_example_136901",
+      "occurred_at": "2026-09-21T03:10:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePollReceived/pollCreated",
     "schema": "MessagePollReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_138228",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
         "conversation": {
           "id": "120000000000001@g.us",
           "type": "group"
         },
-        "sender": {
-          "id": "100000000000001@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
+          "direction": "outbound",
           "id": "POLL_EXAMPLE",
-          "type": "poll",
           "poll": {
-            "question": "Which date works?",
+            "max_selections": 1,
             "options": [
               {
                 "id": "option_monday",
@@ -332,180 +598,184 @@
                 "title": "Tuesday"
               }
             ],
-            "max_selections": 1
+            "question": "Which date works?"
           },
-          "direction": "outbound"
+          "type": "poll"
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000001@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_138228",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messagePollVoteUpdated/selected",
     "schema": "MessagePollVoteUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_140068",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
-        "conversation": {
-          "id": "120000000000001@g.us",
-          "type": "group"
-        },
-        "message": {
-          "id": "POLL_EXAMPLE",
-          "type": "poll",
-          "poll_vote": {
-            "status": "decoded",
-            "voter_id": "100000000000002@lid",
-            "voted_at": "2026-09-22T03:00:00.123000Z",
-            "selected_option_ids": [
-              "option_monday"
-            ]
-          }
-        },
         "actor": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "conversation": {
+          "id": "120000000000001@g.us",
+          "type": "group"
+        },
         "event": {
-          "kind": "message_updated",
-          "change_type": "poll_vote"
+          "change_type": "poll_vote",
+          "kind": "message_updated"
+        },
+        "message": {
+          "id": "POLL_EXAMPLE",
+          "poll_vote": {
+            "selected_option_ids": [
+              "option_monday"
+            ],
+            "status": "decoded",
+            "voted_at": "2026-09-22T03:00:00.123Z",
+            "voter_id": "100000000000002@lid"
+          },
+          "type": "poll"
         }
-      }
+      },
+      "id": "evt_example_140068",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePollVoteUpdated/changedSelection",
     "schema": "MessagePollVoteUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_141122",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
-        "conversation": {
-          "id": "120000000000001@g.us",
-          "type": "group"
-        },
-        "message": {
-          "id": "POLL_EXAMPLE",
-          "type": "poll",
-          "poll_vote": {
-            "status": "decoded",
-            "voter_id": "100000000000002@lid",
-            "voted_at": "2026-09-22T03:00:00.123000Z",
-            "selected_option_ids": [
-              "option_tuesday"
-            ]
-          }
-        },
         "actor": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "conversation": {
+          "id": "120000000000001@g.us",
+          "type": "group"
+        },
         "event": {
-          "kind": "message_updated",
-          "change_type": "poll_vote"
+          "change_type": "poll_vote",
+          "kind": "message_updated"
+        },
+        "message": {
+          "id": "POLL_EXAMPLE",
+          "poll_vote": {
+            "selected_option_ids": [
+              "option_tuesday"
+            ],
+            "status": "decoded",
+            "voted_at": "2026-09-22T03:00:00.123Z",
+            "voter_id": "100000000000002@lid"
+          },
+          "type": "poll"
         }
-      }
+      },
+      "id": "evt_example_141122",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePollVoteUpdated/withdrawn",
     "schema": "MessagePollVoteUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_142170",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
-        "conversation": {
-          "id": "120000000000001@g.us",
-          "type": "group"
-        },
-        "message": {
-          "id": "POLL_EXAMPLE",
-          "type": "poll",
-          "poll_vote": {
-            "status": "decoded",
-            "voter_id": "100000000000002@lid",
-            "voted_at": "2026-09-22T03:00:00.123000Z",
-            "selected_option_ids": []
-          }
-        },
         "actor": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "conversation": {
+          "id": "120000000000001@g.us",
+          "type": "group"
+        },
         "event": {
-          "kind": "message_updated",
-          "change_type": "poll_vote"
+          "change_type": "poll_vote",
+          "kind": "message_updated"
+        },
+        "message": {
+          "id": "POLL_EXAMPLE",
+          "poll_vote": {
+            "selected_option_ids": [],
+            "status": "decoded",
+            "voted_at": "2026-09-22T03:00:00.123Z",
+            "voter_id": "100000000000002@lid"
+          },
+          "type": "poll"
         }
-      }
+      },
+      "id": "evt_example_142170",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePollVoteUpdated/unavailable",
     "schema": "MessagePollVoteUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_143180",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
-        "conversation": {
-          "id": "120000000000001@g.us",
-          "type": "group"
-        },
-        "message": {
-          "id": "POLL_EXAMPLE",
-          "type": "poll",
-          "poll_vote": {
-            "status": "unavailable",
-            "voter_id": "100000000000002@lid",
-            "voted_at": "2026-09-22T03:00:00.123000Z",
-            "reason": "unknown"
-          }
-        },
         "actor": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "conversation": {
+          "id": "120000000000001@g.us",
+          "type": "group"
+        },
         "event": {
-          "kind": "message_updated",
-          "change_type": "poll_vote"
+          "change_type": "poll_vote",
+          "kind": "message_updated"
+        },
+        "message": {
+          "id": "POLL_EXAMPLE",
+          "poll_vote": {
+            "reason": "unknown",
+            "status": "unavailable",
+            "voted_at": "2026-09-22T03:00:00.123Z",
+            "voter_id": "100000000000002@lid"
+          },
+          "type": "poll"
         }
-      }
+      },
+      "id": "evt_example_143180",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messagePollHistory/mixedHistory",
     "schema": "MessagePollHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_144750",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00.123000Z",
       "data": {
         "conversation": {
           "id": "120000000000001@g.us",
           "type": "group"
         },
+        "event": {
+          "kind": "conversation_history"
+        },
         "messages": [
           {
+            "direction": "outbound",
             "id": "POLL_EXAMPLE",
-            "type": "poll",
             "poll": {
-              "question": "Which date works?",
+              "max_selections": 1,
               "options": [
                 {
                   "id": "option_monday",
@@ -516,177 +786,174 @@
                   "title": "Tuesday"
                 }
               ],
-              "max_selections": 1
+              "question": "Which date works?"
             },
-            "direction": "outbound"
+            "type": "poll"
           },
           {
             "id": "TEXT_EXAMPLE",
-            "type": "text",
-            "text": "Ordinary message"
+            "text": "Ordinary message",
+            "type": "text"
           }
-        ],
-        "event": {
-          "kind": "conversation_history"
-        }
-      }
+        ]
+      },
+      "id": "evt_example_144750",
+      "occurred_at": "2026-09-22T03:00:00.123Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "messageLinkPreviewReceived/previewSelfSync",
     "schema": "MessageLinkPreviewReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_146824",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "direction": "outbound",
+          "id": "MSG_PREVIEW_EXAMPLE",
+          "link_preview": {
+            "description": "Product introduction",
+            "title": "Example product",
+            "url": "https://example.com/product"
+          },
+          "text": "See https://example.com/product",
+          "type": "link_preview"
+        },
         "sender": {
           "id": "100000000000001@lid",
           "type": "user"
-        },
-        "message": {
-          "id": "MSG_PREVIEW_EXAMPLE",
-          "type": "link_preview",
-          "text": "See https://example.com/product",
-          "direction": "outbound",
-          "link_preview": {
-            "url": "https://example.com/product",
-            "title": "Example product",
-            "description": "Product introduction"
-          }
-        },
-        "event": {
-          "kind": "message_received"
         }
-      }
+      },
+      "id": "evt_example_146824",
+      "occurred_at": "2026-09-22T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageLinkPreviewReceived/previewWithOnlyURL",
     "schema": "MessageLinkPreviewReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_147918",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:01:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "message": {
-          "id": "MSG_PREVIEW_PARTIAL",
-          "type": "link_preview",
-          "text": "See https://example.com/details",
-          "direction": "inbound",
-          "link_preview": {
-            "url": "https://example.com/details"
-          }
-        },
         "event": {
           "kind": "message_received"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_PREVIEW_PARTIAL",
+          "link_preview": {
+            "url": "https://example.com/details"
+          },
+          "text": "See https://example.com/details",
+          "type": "link_preview"
         }
-      }
+      },
+      "id": "evt_example_147918",
+      "occurred_at": "2026-09-22T03:01:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageLinkPreviewUpdated/previewUpdated",
     "schema": "MessageLinkPreviewUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_149615",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:02:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "message": {
-          "id": "MSG_PREVIEW_EXAMPLE",
-          "type": "link_preview",
-          "link_preview": {
-            "url": "https://example.com/product",
-            "title": "Updated product title"
-          }
-        },
         "event": {
           "kind": "message_updated"
+        },
+        "message": {
+          "id": "MSG_PREVIEW_EXAMPLE",
+          "link_preview": {
+            "title": "Updated product title",
+            "url": "https://example.com/product"
+          },
+          "type": "link_preview"
         }
-      }
+      },
+      "id": "evt_example_149615",
+      "occurred_at": "2026-09-22T03:02:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messageLinkPreviewUpdated/previewTextFieldsCleared",
     "schema": "MessageLinkPreviewUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_150448",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:04:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "message": {
-          "id": "MSG_PREVIEW_EXAMPLE",
-          "type": "link_preview",
-          "link_preview": {
-            "url": "https://example.com/product",
-            "title": "",
-            "description": ""
-          }
-        },
         "event": {
           "kind": "message_updated"
+        },
+        "message": {
+          "id": "MSG_PREVIEW_EXAMPLE",
+          "link_preview": {
+            "description": "",
+            "title": "",
+            "url": "https://example.com/product"
+          },
+          "type": "link_preview"
         }
-      }
+      },
+      "id": "evt_example_150448",
+      "occurred_at": "2026-09-22T03:04:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messageLinkPreviewUpdated/previewChangedToText",
     "schema": "MessageLinkPreviewUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_151301",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T03:03:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "message": {
-          "id": "MSG_PREVIEW_EXAMPLE",
-          "type": "text",
-          "text": "Product information is being updated."
-        },
         "event": {
           "kind": "message_updated"
+        },
+        "message": {
+          "id": "MSG_PREVIEW_EXAMPLE",
+          "text": "Product information is being updated.",
+          "type": "text"
         }
-      }
+      },
+      "id": "evt_example_151301",
+      "occurred_at": "2026-09-22T03:03:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messageLinkPreviewHistory/previewHistory",
     "schema": "MessageLinkPreviewHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_152781",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-22T04:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
@@ -694,274 +961,274 @@
         },
         "messages": [
           {
-            "id": "MSG_PREVIEW_EXAMPLE",
-            "type": "link_preview",
-            "text": "See https://example.com/product",
             "direction": "outbound",
+            "id": "MSG_PREVIEW_EXAMPLE",
             "link_preview": {
-              "url": "https://example.com/product",
-              "title": "Example product"
+              "title": "Example product",
+              "url": "https://example.com/product"
             },
             "referral": {
               "source": "ad",
               "source_id": "ad_example"
             },
-            "sent_at": "2026-09-22T03:00:00Z"
+            "sent_at": "2026-09-22T03:00:00Z",
+            "text": "See https://example.com/product",
+            "type": "link_preview"
           },
           {
             "id": "MSG_PLAIN_URL_EXAMPLE",
-            "type": "text",
+            "sent_at": "2026-09-22T03:01:00Z",
             "text": "https://example.com/plain",
-            "sent_at": "2026-09-22T03:01:00Z"
+            "type": "text"
           },
           {
             "id": "MSG_PRODUCT_EXAMPLE",
-            "type": "product",
             "product": {
               "id": "product_example",
               "title": "Example product"
-            }
+            },
+            "type": "product"
           },
           {
             "id": "MSG_RESPONSE_EXAMPLE",
-            "type": "interactive_response",
             "interactive_response": {
               "kind": "button",
               "selected_id": "details"
-            }
+            },
+            "type": "interactive_response"
           }
         ]
-      }
+      },
+      "id": "evt_example_152781",
+      "occurred_at": "2026-09-22T04:00:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "messageInteractiveReceived/buttonsReceived",
     "schema": "MessageInteractiveReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_155214",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "id": "MSG_BUTTONS_EXAMPLE",
-          "type": "interactive",
           "direction": "inbound",
-          "text": "How can we help?",
+          "id": "MSG_BUTTONS_EXAMPLE",
           "interactive": {
-            "kind": "buttons",
-            "header": {
-              "type": "text",
-              "text": "Choose a topic"
-            },
             "body": "How can we help?",
-            "footer": "Select one option",
             "buttons": [
               {
-                "type": "reply",
                 "id": "sales",
-                "title": "Sales"
+                "title": "Sales",
+                "type": "reply"
               },
               {
-                "type": "reply",
                 "id": "support",
-                "title": "Support"
+                "title": "Support",
+                "type": "reply"
               }
-            ]
+            ],
+            "footer": "Select one option",
+            "header": {
+              "text": "Choose a topic",
+              "type": "text"
+            },
+            "kind": "buttons"
           },
           "referral": {
             "source": "ad",
             "source_id": "ad_example_001"
-          }
+          },
+          "text": "How can we help?",
+          "type": "interactive"
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_155214",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageInteractiveReceived/templateReceived",
     "schema": "MessageInteractiveReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_156729",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "id": "MSG_TEMPLATE_EXAMPLE",
-          "type": "interactive",
           "direction": "inbound",
+          "id": "MSG_TEMPLATE_EXAMPLE",
           "interactive": {
-            "kind": "template",
-            "header": {
-              "type": "image",
-              "attachment": {
-                "type": "image",
-                "mimetype": "image/jpeg",
-                "metadata": {
-                  "width": 640,
-                  "height": 480
-                }
-              }
-            },
             "body": "Choose how to continue",
             "buttons": [
               {
-                "type": "reply",
                 "id": "details",
-                "title": "Details"
+                "title": "Details",
+                "type": "reply"
               },
               {
-                "type": "url",
                 "title": "Website",
+                "type": "url",
                 "url": "https://example.com?campaign=example"
               },
               {
-                "type": "phone",
+                "phone_number": "+12025550123",
                 "title": "Call",
-                "phone_number": "+12025550123"
+                "type": "phone"
               }
-            ]
-          }
+            ],
+            "header": {
+              "attachment": {
+                "metadata": {
+                  "height": 480,
+                  "width": 640
+                },
+                "mimetype": "image/jpeg",
+                "type": "image"
+              },
+              "type": "image"
+            },
+            "kind": "template"
+          },
+          "type": "interactive"
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_156729",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageInteractiveReceived/buttonResponseReceived",
     "schema": "MessageInteractiveReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_158417",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "id": "MSG_BUTTON_RESPONSE_EXAMPLE",
-          "type": "interactive_response",
           "direction": "inbound",
-          "text": "Support",
-          "reply_to_message_id": "MSG_BUTTONS_EXAMPLE",
+          "id": "MSG_BUTTON_RESPONSE_EXAMPLE",
           "interactive_response": {
             "kind": "button",
             "selected_id": "support",
             "title": "Support"
-          }
+          },
+          "reply_to_message_id": "MSG_BUTTONS_EXAMPLE",
+          "text": "Support",
+          "type": "interactive_response"
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_158417",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageInteractiveReceived/templateResponseReceived",
     "schema": "MessageInteractiveReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_159498",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "id": "MSG_TEMPLATE_RESPONSE_EXAMPLE",
-          "type": "interactive_response",
           "direction": "inbound",
-          "text": "Details",
+          "id": "MSG_TEMPLATE_RESPONSE_EXAMPLE",
           "interactive_response": {
             "kind": "template_button",
             "title": "Details"
-          }
+          },
+          "text": "Details",
+          "type": "interactive_response"
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_159498",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageInteractiveUpdated/interactiveUpdated",
     "schema": "MessageInteractiveUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_161269",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
+        "event": {
+          "kind": "message_updated"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_BUTTONS_EXAMPLE",
+          "interactive": {
+            "footer": "Support is available",
+            "kind": "buttons"
+          },
+          "type": "interactive"
+        },
         "sender": {
           "id": "100000000000002@lid",
           "type": "user"
-        },
-        "message": {
-          "id": "MSG_BUTTONS_EXAMPLE",
-          "type": "interactive",
-          "direction": "inbound",
-          "interactive": {
-            "kind": "buttons",
-            "footer": "Support is available"
-          }
-        },
-        "event": {
-          "kind": "message_updated"
         }
-      }
+      },
+      "id": "evt_example_161269",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "messageInteractiveHistory/interactiveHistory",
     "schema": "MessageInteractiveHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_163002",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T04:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
@@ -969,460 +1236,460 @@
         },
         "messages": [
           {
-            "id": "MSG_BUTTONS_EXAMPLE",
-            "type": "interactive",
             "direction": "inbound",
-            "text": "How can we help?",
+            "id": "MSG_BUTTONS_EXAMPLE",
             "interactive": {
-              "kind": "buttons",
-              "header": {
-                "type": "text",
-                "text": "Choose a topic"
-              },
               "body": "How can we help?",
-              "footer": "Select one option",
               "buttons": [
                 {
-                  "type": "reply",
                   "id": "sales",
-                  "title": "Sales"
+                  "title": "Sales",
+                  "type": "reply"
                 },
                 {
-                  "type": "reply",
                   "id": "support",
-                  "title": "Support"
+                  "title": "Support",
+                  "type": "reply"
                 }
-              ]
-            },
-            "referral": {
-              "source": "ad",
-              "source_id": "ad_example_001"
-            },
-            "sent_at": "2026-09-21T03:00:00Z"
-          },
-          {
-            "id": "MSG_BUTTON_RESPONSE_EXAMPLE",
-            "type": "interactive_response",
-            "direction": "inbound",
-            "text": "Support",
-            "reply_to_message_id": "MSG_BUTTONS_EXAMPLE",
-            "interactive_response": {
-              "kind": "button",
-              "selected_id": "support",
-              "title": "Support"
-            },
-            "sent_at": "2026-09-21T03:01:00Z"
-          },
-          {
-            "id": "MSG_PRODUCT_EXAMPLE",
-            "type": "product",
-            "product": {
-              "id": "product_example",
-              "title": "Example product"
-            }
-          },
-          {
-            "id": "MSG_TEXT_EXAMPLE",
-            "type": "text",
-            "text": "Thank you."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "name": "messageCommerceReceived/productReceived",
-    "schema": "MessageCommerceReceivedWebhookEvent",
-    "body": {
-      "id": "evt_example_166040",
-      "type": "message.received",
-      "provider": "whatsapp",
-      "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
-      "data": {
-        "conversation": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "message": {
-          "id": "MSG_PRODUCT_EXAMPLE_001",
-          "type": "product",
-          "direction": "inbound",
-          "product": {
-            "id": "product_example_001",
-            "title": "Example product",
-            "description": "Product introduction",
-            "url": "https://example.com/product?campaign=example",
-            "image_url": "https://example.com/product.jpg",
-            "price": {
-              "amount": "12.345",
-              "currency": "USD"
-            }
-          },
-          "referral": {
-            "source": "ad",
-            "source_id": "ad_example_001"
-          }
-        },
-        "event": {
-          "kind": "message_received"
-        }
-      }
-    }
-  },
-  {
-    "name": "messageCommerceReceived/orderReceived",
-    "schema": "MessageCommerceReceivedWebhookEvent",
-    "body": {
-      "id": "evt_example_167385",
-      "type": "message.received",
-      "provider": "whatsapp",
-      "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
-      "data": {
-        "conversation": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "message": {
-          "id": "MSG_ORDER_EXAMPLE_001",
-          "type": "order",
-          "direction": "inbound",
-          "order": {
-            "id": "order_example_001",
-            "title": "Example order",
-            "item_count": 0,
-            "status": "inquiry",
-            "total": {
-              "amount": "0.000",
-              "currency": "USD"
-            }
-          }
-        },
-        "event": {
-          "kind": "message_received"
-        }
-      }
-    }
-  },
-  {
-    "name": "messageCommerceUpdated/productUpdated",
-    "schema": "MessageCommerceUpdatedWebhookEvent",
-    "body": {
-      "id": "evt_example_169196",
-      "type": "message.updated",
-      "provider": "whatsapp",
-      "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
-      "data": {
-        "conversation": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "message": {
-          "id": "MSG_PRODUCT_EXAMPLE_001",
-          "type": "product",
-          "direction": "inbound",
-          "product": {
-            "id": "product_example_001",
-            "title": "Updated product title"
-          }
-        },
-        "event": {
-          "kind": "message_updated"
-        }
-      }
-    }
-  },
-  {
-    "name": "messageCommerceUpdated/orderUpdated",
-    "schema": "MessageCommerceUpdatedWebhookEvent",
-    "body": {
-      "id": "evt_example_170114",
-      "type": "message.updated",
-      "provider": "whatsapp",
-      "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T03:00:00Z",
-      "data": {
-        "conversation": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "message": {
-          "id": "MSG_ORDER_EXAMPLE_001",
-          "type": "order",
-          "direction": "inbound",
-          "order": {
-            "id": "order_example_001",
-            "status": "accepted",
-            "total": {
-              "amount": "9007199254740.993"
-            }
-          }
-        },
-        "event": {
-          "kind": "message_updated"
-        }
-      }
-    }
-  },
-  {
-    "name": "messageCommerceHistory/commerceHistory",
-    "schema": "MessageCommerceHistoryWebhookEvent",
-    "body": {
-      "id": "evt_example_171797",
-      "type": "conversation.history",
-      "provider": "whatsapp",
-      "account_id": "acc_example_001",
-      "occurred_at": "2026-09-21T04:00:00Z",
-      "data": {
-        "conversation": {
-          "id": "100000000000002@lid",
-          "type": "user"
-        },
-        "messages": [
-          {
-            "id": "MSG_PRODUCT_EXAMPLE_001",
-            "type": "product",
-            "direction": "inbound",
-            "product": {
-              "id": "product_example_001",
-              "title": "Example product",
-              "description": "Product introduction",
-              "url": "https://example.com/product?campaign=example",
-              "image_url": "https://example.com/product.jpg",
-              "price": {
-                "amount": "12.345",
-                "currency": "USD"
-              }
+              ],
+              "footer": "Select one option",
+              "header": {
+                "text": "Choose a topic",
+                "type": "text"
+              },
+              "kind": "buttons"
             },
             "referral": {
               "source": "ad",
               "source_id": "ad_example_001"
             },
             "sent_at": "2026-09-21T03:00:00Z",
-            "sender": {
-              "id": "100000000000002@lid"
-            }
+            "text": "How can we help?",
+            "type": "interactive"
           },
           {
-            "id": "MSG_ORDER_EXAMPLE_001",
-            "type": "order",
             "direction": "inbound",
+            "id": "MSG_BUTTON_RESPONSE_EXAMPLE",
+            "interactive_response": {
+              "kind": "button",
+              "selected_id": "support",
+              "title": "Support"
+            },
+            "reply_to_message_id": "MSG_BUTTONS_EXAMPLE",
+            "sent_at": "2026-09-21T03:01:00Z",
+            "text": "Support",
+            "type": "interactive_response"
+          },
+          {
+            "id": "MSG_PRODUCT_EXAMPLE",
+            "product": {
+              "id": "product_example",
+              "title": "Example product"
+            },
+            "type": "product"
+          },
+          {
+            "id": "MSG_TEXT_EXAMPLE",
+            "text": "Thank you.",
+            "type": "text"
+          }
+        ]
+      },
+      "id": "evt_example_163002",
+      "occurred_at": "2026-09-21T04:00:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
+    }
+  },
+  {
+    "name": "messageCommerceReceived/productReceived",
+    "schema": "MessageCommerceReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example_001",
+      "data": {
+        "conversation": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_PRODUCT_EXAMPLE_001",
+          "product": {
+            "description": "Product introduction",
+            "id": "product_example_001",
+            "image_url": "https://example.com/product.jpg",
+            "price": {
+              "amount": "12.345",
+              "currency": "USD"
+            },
+            "title": "Example product",
+            "url": "https://example.com/product?campaign=example"
+          },
+          "referral": {
+            "source": "ad",
+            "source_id": "ad_example_001"
+          },
+          "type": "product"
+        },
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        }
+      },
+      "id": "evt_example_166040",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "messageCommerceReceived/orderReceived",
+    "schema": "MessageCommerceReceivedWebhookEvent",
+    "body": {
+      "account_id": "acc_example_001",
+      "data": {
+        "conversation": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_received"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_ORDER_EXAMPLE_001",
+          "order": {
+            "id": "order_example_001",
+            "item_count": 0,
+            "status": "inquiry",
+            "title": "Example order",
+            "total": {
+              "amount": "0.000",
+              "currency": "USD"
+            }
+          },
+          "type": "order"
+        },
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        }
+      },
+      "id": "evt_example_167385",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
+    }
+  },
+  {
+    "name": "messageCommerceUpdated/productUpdated",
+    "schema": "MessageCommerceUpdatedWebhookEvent",
+    "body": {
+      "account_id": "acc_example_001",
+      "data": {
+        "conversation": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_updated"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_PRODUCT_EXAMPLE_001",
+          "product": {
+            "id": "product_example_001",
+            "title": "Updated product title"
+          },
+          "type": "product"
+        },
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        }
+      },
+      "id": "evt_example_169196",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
+    }
+  },
+  {
+    "name": "messageCommerceUpdated/orderUpdated",
+    "schema": "MessageCommerceUpdatedWebhookEvent",
+    "body": {
+      "account_id": "acc_example_001",
+      "data": {
+        "conversation": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
+        "event": {
+          "kind": "message_updated"
+        },
+        "message": {
+          "direction": "inbound",
+          "id": "MSG_ORDER_EXAMPLE_001",
+          "order": {
+            "id": "order_example_001",
+            "status": "accepted",
+            "total": {
+              "amount": "9007199254740.993"
+            }
+          },
+          "type": "order"
+        },
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        }
+      },
+      "id": "evt_example_170114",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
+    }
+  },
+  {
+    "name": "messageCommerceHistory/commerceHistory",
+    "schema": "MessageCommerceHistoryWebhookEvent",
+    "body": {
+      "account_id": "acc_example_001",
+      "data": {
+        "conversation": {
+          "id": "100000000000002@lid",
+          "type": "user"
+        },
+        "messages": [
+          {
+            "direction": "inbound",
+            "id": "MSG_PRODUCT_EXAMPLE_001",
+            "product": {
+              "description": "Product introduction",
+              "id": "product_example_001",
+              "image_url": "https://example.com/product.jpg",
+              "price": {
+                "amount": "12.345",
+                "currency": "USD"
+              },
+              "title": "Example product",
+              "url": "https://example.com/product?campaign=example"
+            },
+            "referral": {
+              "source": "ad",
+              "source_id": "ad_example_001"
+            },
+            "sender": {
+              "id": "100000000000002@lid"
+            },
+            "sent_at": "2026-09-21T03:00:00Z",
+            "type": "product"
+          },
+          {
+            "direction": "inbound",
+            "id": "MSG_ORDER_EXAMPLE_001",
             "order": {
               "id": "order_example_001",
-              "title": "Example order",
               "item_count": 0,
               "status": "inquiry",
+              "title": "Example order",
               "total": {
                 "amount": "0.000",
                 "currency": "USD"
               }
             },
-            "sent_at": "2026-09-21T03:01:00Z",
             "sender": {
               "id": "100000000000002@lid"
-            }
+            },
+            "sent_at": "2026-09-21T03:01:00Z",
+            "type": "order"
           },
           {
-            "id": "MSG_TEXT_EXAMPLE_001",
-            "type": "text",
-            "text": "Thank you.",
             "direction": "inbound",
-            "sent_at": "2026-09-21T03:02:00Z",
+            "id": "MSG_TEXT_EXAMPLE_001",
             "sender": {
               "id": "100000000000002@lid"
-            }
+            },
+            "sent_at": "2026-09-21T03:02:00Z",
+            "text": "Thank you.",
+            "type": "text"
           }
         ]
-      }
+      },
+      "id": "evt_example_171797",
+      "occurred_at": "2026-09-21T04:00:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "messageDeviceIdentity/example",
     "schema": "WhatsAppMessageDeviceWebhookEvent",
     "body": {
-      "id": "evt_example_174750",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-23T08:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000001@lid",
-          "device_id": 8
-        },
         "message": {
-          "id": "wa_message_example_001",
           "direction": "outbound",
+          "id": "wa_message_example_001",
           "text": "Example"
+        },
+        "sender": {
+          "device_id": 8,
+          "id": "100000000000001@lid"
         }
-      }
+      },
+      "id": "evt_example_174750",
+      "occurred_at": "2026-09-23T08:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageReferralReceived/adReferral",
     "schema": "MessageReferralReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_176338",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-20T03:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "id": "MSG_AD_EXAMPLE_001",
-          "text": "I would like to know more.",
           "direction": "inbound",
+          "id": "MSG_AD_EXAMPLE_001",
           "referral": {
-            "source": "ad",
-            "source_id": "ad_example_001",
-            "source_url": "https://example.com/ad?campaign=demo&content=example",
-            "title": "Example promotion",
             "body": "Learn more about the product.",
             "media_type": "image",
-            "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
             "media_url": "https://example.com/ad-image.jpg",
             "provider_extensions": {
               "whatsapp": {
-                "ctwa_clid": "click_example_001",
-                "greeting_message_body": "Hello! How can we help?",
-                "automated_greeting_message_shown": true,
                 "automated_greeting_message_cta_type": "example_cta",
-                "source_app": "example_app",
+                "automated_greeting_message_shown": true,
                 "click_to_whatsapp_call": true,
                 "contains_auto_reply": false,
-                "contains_ctwa_flows_auto_reply": false
+                "contains_ctwa_flows_auto_reply": false,
+                "ctwa_clid": "click_example_001",
+                "greeting_message_body": "Hello! How can we help?",
+                "source_app": "example_app"
               }
-            }
-          }
+            },
+            "source": "ad",
+            "source_id": "ad_example_001",
+            "source_url": "https://example.com/ad?campaign=demo\u0026content=example",
+            "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
+            "title": "Example promotion"
+          },
+          "text": "I would like to know more."
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_176338",
+      "occurred_at": "2026-09-20T03:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageReferralReceived/adReferralWithoutMessageID",
     "schema": "MessageReferralReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_178242",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-20T03:02:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_received"
         },
         "message": {
-          "text": "Please send more details.",
           "direction": "inbound",
           "referral": {
             "source": "ad",
             "source_id": "ad_example_001"
-          }
+          },
+          "text": "Please send more details."
         },
-        "event": {
-          "kind": "message_received"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_178242",
+      "occurred_at": "2026-09-20T03:02:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "messageReferralUpdated/adReferralUpdated",
     "schema": "MessageReferralUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_179990",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-20T03:03:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000002@lid",
-          "type": "user"
+        "event": {
+          "kind": "message_updated"
         },
         "message": {
-          "id": "MSG_AD_EXAMPLE_001",
-          "text": "I would like to know the price.",
           "direction": "inbound",
+          "id": "MSG_AD_EXAMPLE_001",
           "referral": {
-            "source": "ad",
-            "source_id": "ad_example_001",
-            "source_url": "https://example.com/ad?campaign=demo&content=example",
-            "title": "Example promotion",
             "body": "Learn more about the product.",
             "media_type": "image",
-            "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
             "media_url": "https://example.com/ad-image.jpg",
             "provider_extensions": {
               "whatsapp": {
-                "ctwa_clid": "click_example_001",
-                "greeting_message_body": "Hello! How can we help?",
-                "automated_greeting_message_shown": true,
                 "automated_greeting_message_cta_type": "example_cta",
-                "source_app": "example_app",
+                "automated_greeting_message_shown": true,
                 "click_to_whatsapp_call": true,
                 "contains_auto_reply": false,
-                "contains_ctwa_flows_auto_reply": false
+                "contains_ctwa_flows_auto_reply": false,
+                "ctwa_clid": "click_example_001",
+                "greeting_message_body": "Hello! How can we help?",
+                "source_app": "example_app"
               }
-            }
-          }
+            },
+            "source": "ad",
+            "source_id": "ad_example_001",
+            "source_url": "https://example.com/ad?campaign=demo\u0026content=example",
+            "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
+            "title": "Example promotion"
+          },
+          "text": "I would like to know the price."
         },
-        "event": {
-          "kind": "message_updated"
+        "sender": {
+          "id": "100000000000002@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_179990",
+      "occurred_at": "2026-09-20T03:03:00Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "conversationHistory/onDemandHistory",
     "schema": "ConversationHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_183342",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-28T03:01:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
@@ -1433,28 +1700,28 @@
         },
         "messages": [
           {
-            "id": "MSG_HISTORY_EXAMPLE_001",
-            "type": "text",
-            "text": "Earlier message.",
             "direction": "inbound",
-            "sent_at": "2026-09-28T02:00:00Z",
+            "id": "MSG_HISTORY_EXAMPLE_001",
             "sender": {
               "id": "100000000000002@lid"
-            }
+            },
+            "sent_at": "2026-09-28T02:00:00Z",
+            "text": "Earlier message.",
+            "type": "text"
           }
         ]
-      }
+      },
+      "id": "evt_example_183342",
+      "occurred_at": "2026-09-28T03:01:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "conversationHistory/emptyOnDemandHistory",
     "schema": "ConversationHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_184219",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-28T03:02:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
@@ -1464,18 +1731,18 @@
           "source": "on_demand"
         },
         "messages": []
-      }
+      },
+      "id": "evt_example_184219",
+      "occurred_at": "2026-09-28T03:02:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "messageReferralHistory/historyWithAdReferral",
     "schema": "MessageReferralHistoryWebhookEvent",
     "body": {
-      "id": "evt_example_185631",
-      "type": "conversation.history",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-20T04:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000002@lid",
@@ -1483,286 +1750,290 @@
         },
         "messages": [
           {
-            "id": "MSG_AD_EXAMPLE_001",
-            "type": "text",
-            "text": "I would like to know more.",
             "direction": "inbound",
-            "sent_at": "2026-09-20T03:00:00Z",
+            "id": "MSG_AD_EXAMPLE_001",
+            "referral": {
+              "body": "Learn more about the product.",
+              "media_type": "image",
+              "media_url": "https://example.com/ad-image.jpg",
+              "provider_extensions": {
+                "whatsapp": {
+                  "automated_greeting_message_cta_type": "example_cta",
+                  "automated_greeting_message_shown": true,
+                  "click_to_whatsapp_call": true,
+                  "contains_auto_reply": false,
+                  "contains_ctwa_flows_auto_reply": false,
+                  "ctwa_clid": "click_example_001",
+                  "greeting_message_body": "Hello! How can we help?",
+                  "source_app": "example_app"
+                }
+              },
+              "source": "ad",
+              "source_id": "ad_example_001",
+              "source_url": "https://example.com/ad?campaign=demo\u0026content=example",
+              "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
+              "title": "Example promotion"
+            },
             "sender": {
               "id": "100000000000002@lid",
               "name": "Example customer"
             },
-            "referral": {
-              "source": "ad",
-              "source_id": "ad_example_001",
-              "source_url": "https://example.com/ad?campaign=demo&content=example",
-              "title": "Example promotion",
-              "body": "Learn more about the product.",
-              "media_type": "image",
-              "thumbnail_url": "https://example.com/ad-thumbnail.jpg",
-              "media_url": "https://example.com/ad-image.jpg",
-              "provider_extensions": {
-                "whatsapp": {
-                  "ctwa_clid": "click_example_001",
-                  "greeting_message_body": "Hello! How can we help?",
-                  "automated_greeting_message_shown": true,
-                  "automated_greeting_message_cta_type": "example_cta",
-                  "source_app": "example_app",
-                  "click_to_whatsapp_call": true,
-                  "contains_auto_reply": false,
-                  "contains_ctwa_flows_auto_reply": false
-                }
-              }
-            }
+            "sent_at": "2026-09-20T03:00:00Z",
+            "text": "I would like to know more.",
+            "type": "text"
           },
           {
-            "id": "MSG_NORMAL_EXAMPLE_002",
-            "type": "text",
-            "text": "Thank you.",
             "direction": "inbound",
-            "sent_at": "2026-09-20T03:01:00Z",
+            "id": "MSG_NORMAL_EXAMPLE_002",
             "sender": {
               "id": "100000000000002@lid"
-            }
+            },
+            "sent_at": "2026-09-20T03:01:00Z",
+            "text": "Thank you.",
+            "type": "text"
           }
         ]
-      }
+      },
+      "id": "evt_example_185631",
+      "occurred_at": "2026-09-20T04:00:00Z",
+      "provider": "whatsapp",
+      "type": "conversation.history"
     }
   },
   {
     "name": "callMessageReceived/audioInvitation",
     "schema": "CallMessageReceivedWebhookEvent",
     "body": {
-      "id": "evt_example_call_offered_001",
-      "type": "message.received",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-17T08:00:00Z",
       "data": {
         "conversation": {
           "id": "100000000000001@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000001@lid",
-          "type": "user"
-        },
         "message": {
-          "id": "call_record_example_001",
-          "type": "call",
-          "direction": "inbound",
           "call": {
             "id": "call_example_001",
             "media_type": "audio",
             "status": "offered"
-          }
+          },
+          "direction": "inbound",
+          "id": "call_record_example_001",
+          "type": "call"
+        },
+        "sender": {
+          "id": "100000000000001@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_call_offered_001",
+      "occurred_at": "2026-09-17T08:00:00Z",
+      "provider": "whatsapp",
+      "type": "message.received"
     }
   },
   {
     "name": "callMessageUpdated/acceptance",
     "schema": "CallMessageUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_call_accepted_001",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-17T08:00:05Z",
       "data": {
         "conversation": {
           "id": "100000000000001@lid",
           "type": "user"
         },
+        "message": {
+          "call": {
+            "accepted_at": "2026-09-17T08:00:05Z",
+            "id": "call_example_001",
+            "status": "accepted"
+          },
+          "id": "call_record_example_001",
+          "type": "call"
+        },
         "sender": {
           "id": "100000000000001@lid",
           "type": "user"
-        },
-        "message": {
-          "id": "call_record_example_001",
-          "type": "call",
-          "call": {
-            "id": "call_example_001",
-            "status": "accepted",
-            "accepted_at": "2026-09-17T08:00:05Z"
-          }
         }
-      }
+      },
+      "id": "evt_example_call_accepted_001",
+      "occurred_at": "2026-09-17T08:00:05Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "callMessageUpdated/termination",
     "schema": "CallMessageUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_call_ended_001",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-17T08:00:10Z",
       "data": {
         "conversation": {
           "id": "100000000000001@lid",
           "type": "user"
         },
-        "sender": {
-          "id": "100000000000001@lid",
-          "type": "user"
-        },
         "message": {
-          "id": "call_record_example_001",
-          "type": "call",
           "call": {
             "id": "call_example_001",
             "status": "ended"
-          }
+          },
+          "id": "call_record_example_001",
+          "type": "call"
+        },
+        "sender": {
+          "id": "100000000000001@lid",
+          "type": "user"
         }
-      }
+      },
+      "id": "evt_example_call_ended_001",
+      "occurred_at": "2026-09-17T08:00:10Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "callMessageUpdated/timeout",
     "schema": "CallMessageUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_call_ended_001",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-17T08:00:30Z",
       "data": {
         "message": {
-          "id": "call_record_example_001",
-          "type": "call",
           "call": {
+            "end_reason": "timeout",
             "id": "call_example_001",
-            "status": "ended",
-            "end_reason": "timeout"
-          }
+            "status": "ended"
+          },
+          "id": "call_record_example_001",
+          "type": "call"
         }
-      }
+      },
+      "id": "evt_example_call_ended_001",
+      "occurred_at": "2026-09-17T08:00:30Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "callMessageUpdated/rejectedElsewhere",
     "schema": "CallMessageUpdatedWebhookEvent",
     "body": {
-      "id": "evt_example_call_ended_002",
-      "type": "message.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example_001",
-      "occurred_at": "2026-09-17T08:01:10Z",
       "data": {
         "message": {
-          "id": "call_record_example_002",
-          "type": "call",
           "call": {
+            "end_reason": "rejected_elsewhere",
             "id": "call_example_002",
-            "status": "ended",
-            "end_reason": "rejected_elsewhere"
-          }
+            "status": "ended"
+          },
+          "id": "call_record_example_002",
+          "type": "call"
         }
-      }
+      },
+      "id": "evt_example_call_ended_002",
+      "occurred_at": "2026-09-17T08:01:10Z",
+      "provider": "whatsapp",
+      "type": "message.updated"
     }
   },
   {
     "name": "accountAuthFailed/accountError",
     "schema": "WhatsAppAccountAuthFailedWebhookEvent",
     "body": {
-      "id": "evt_whatsapp_example_auth_failed",
-      "type": "account.auth.failed",
-      "provider": "whatsapp",
       "account_id": "acc_example_account",
-      "occurred_at": "2026-09-07T01:00:00Z",
       "data": {
         "auth_status": "failed",
-        "runtime_status": "disconnected",
-        "event": {
-          "kind": "account_auth_status",
-          "auth_status": "failed",
-          "runtime_status": "disconnected"
-        },
         "error": {
           "code": "account_restricted",
-          "numeric_code": "20102",
-          "message": "Account login is restricted. Check the official WhatsApp app for details."
-        }
-      }
+          "message": "Account login is restricted. Check the official WhatsApp app for details.",
+          "numeric_code": "20102"
+        },
+        "event": {
+          "auth_status": "failed",
+          "kind": "account_auth_status",
+          "runtime_status": "disconnected"
+        },
+        "runtime_status": "disconnected"
+      },
+      "id": "evt_whatsapp_example_auth_failed",
+      "occurred_at": "2026-09-07T01:00:00Z",
+      "provider": "whatsapp",
+      "type": "account.auth.failed"
     }
   },
   {
     "name": "accountProfileUpdated/whatsappSelfRename",
     "schema": "AccountProfileUpdatedWebhookEvent",
     "body": {
-      "id": "evt_profile_7e91d2c4",
-      "type": "account.profile.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-08-28T09:51:51Z",
       "data": {
         "account": {
           "provider_account_ref": "provider_account_example"
         },
-        "profile": {
-          "display_name": "Example Business",
-          "business_name": "Example Business",
-          "push_name": "Example Account",
-          "avatar_url": "https://assets.example.com/accounts/avatar.jpg"
-        },
         "event": {
-          "kind": "account_profile_updated",
-          "source": "self_rename",
           "changed_fields": [
             "display_name",
             "push_name",
             "business_name"
-          ]
+          ],
+          "kind": "account_profile_updated",
+          "source": "self_rename"
+        },
+        "profile": {
+          "avatar_url": "https://assets.example.com/accounts/avatar.jpg",
+          "business_name": "Example Business",
+          "display_name": "Example Business",
+          "push_name": "Example Account"
         }
-      }
+      },
+      "id": "evt_profile_7e91d2c4",
+      "occurred_at": "2026-08-28T09:51:51Z",
+      "provider": "whatsapp",
+      "type": "account.profile.updated"
     }
   },
   {
     "name": "accountProfileUpdated/whatsappAvatarChange",
     "schema": "AccountProfileUpdatedWebhookEvent",
     "body": {
-      "id": "evt_profile_avatar_a21e7d9c",
-      "type": "account.profile.updated",
-      "provider": "whatsapp",
       "account_id": "acc_example",
-      "occurred_at": "2026-09-03T02:00:00Z",
       "data": {
         "account": {
           "provider_account_ref": "provider_account_example"
         },
-        "profile": {
-          "display_name": "Example Account",
-          "push_name": "Example Account",
-          "avatar_url": "https://assets.example.com/accounts/avatar-new.jpg"
-        },
         "event": {
-          "kind": "account_profile_updated",
-          "source": "avatar_change",
           "changed_fields": [
             "avatar_url"
-          ]
+          ],
+          "kind": "account_profile_updated",
+          "source": "avatar_change"
+        },
+        "profile": {
+          "avatar_url": "https://assets.example.com/accounts/avatar-new.jpg",
+          "display_name": "Example Account",
+          "push_name": "Example Account"
         }
-      }
+      },
+      "id": "evt_profile_avatar_a21e7d9c",
+      "occurred_at": "2026-09-03T02:00:00Z",
+      "provider": "whatsapp",
+      "type": "account.profile.updated"
     }
   },
   {
     "name": "accountStarted/whatsappStarted",
     "schema": "AccountStartedWebhookEvent",
     "body": {
-      "id": "evt_acc_2b3c4d5e6f",
-      "type": "account.started",
-      "provider": "whatsapp",
       "account_id": "acc_8c21d0",
-      "occurred_at": "2026-06-08T13:21:00Z",
       "data": {
-        "runtime_status": "running",
         "event": {
           "kind": "account_started",
           "runtime_status": "running"
-        }
-      }
+        },
+        "runtime_status": "running"
+      },
+      "id": "evt_acc_2b3c4d5e6f",
+      "occurred_at": "2026-06-08T13:21:00Z",
+      "provider": "whatsapp",
+      "type": "account.started"
     }
   }
 ]

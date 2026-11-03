@@ -9,7 +9,7 @@ The contract-first Go SDK for the public UnifyPort Device API. It provides an id
 generated operation/model coverage, a security-focused HTTP runtime, typed errors, safe response
 metadata, and bounded cursor pagination.
 
-The current public baseline covers 78 operations, 218 component schemas, and 13 resource groups. Routes
+The current public baseline covers 78 operations, 225 component schemas, and 13 resource groups. Routes
 under `/v1/accounts/...` manage provider-account resources but remain part of the same Device API
 client.
 
@@ -129,7 +129,7 @@ still contain business data or a one-time secret and must not be logged wholesal
 - [API coverage](docs/api-coverage.md) maps all 78 operation IDs to Go methods, paths, retry, and data
   classifications.
 - `parity/manifest.gen.json` records generated request/response types, statuses, schema references, and
-  all 218 component-to-Go mappings.
+  all 225 component-to-Go mappings.
 - `contracts/device.openapi.yaml` is authoritative for protocol fields and descriptions.
 - `go doc github.com/Unify-Port/UnifyPort-SDK-GO` shows the public Go declarations.
 
@@ -203,4 +203,6 @@ the OpenAPI document or add generator libraries to a consumer's module graph.
 Real staging/provider end-to-end verification is a separate release gate. Offline tests, generated
 coverage, or a health response do not prove account authorization or provider success.
 
-The synchronization baseline is approved Node source `5901244`, not a claim that npm has released these capabilities. No package is published by this update. See [Contract update](docs/contract-update.md).
+The synchronization baseline is approved Node source `ce60499`, not a claim that npm has released these capabilities. No package is published by this update. See [Contract update](docs/contract-update.md).
+
+[Facebook channel support](docs/facebook.md) covers session authorization, supported messages and standard callbacks.

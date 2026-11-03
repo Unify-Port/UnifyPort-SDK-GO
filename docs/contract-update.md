@@ -2,11 +2,11 @@
 
 [English](contract-update.md) | [简体中文](zh-CN/contract-update.md)
 
-The Go SDK tracks approved public Node source [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/5901244c409f63fd6b77a899c239ebc9ee96dd50). This is an approved-source baseline, not an npm release claim. The package version has not changed and nothing is published.
+The Go SDK tracks approved public Node source [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35). This is an approved-source baseline, not an npm release claim. The package version has not changed and nothing is published.
 
 ## Coverage and policy
 
-The snapshot contains 78 HTTP operations, 218 component schemas, 24 standard Webhook event names plus `*`, and 36 specialized Webhook declarations. The same 49 public examples cover 25 declarations. HTTP operations and receiver declarations remain separate.
+The snapshot contains 78 HTTP operations, 225 component schemas, 24 standard Webhook event names plus `*`, and 40 specialized Webhook declarations. The same 49 public examples cover 25 declarations. HTTP operations and receiver declarations remain separate.
 
 Added operations cover account-operation lookup, browser authorization sessions and Passkey response/confirmation, contact creation and membership lookup, conversation history requests, posts/comments, and gated calls. Existing account, workspace, provider, authorization and endpoint fields are synchronized too.
 

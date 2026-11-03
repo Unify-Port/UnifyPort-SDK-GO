@@ -4,7 +4,7 @@
 
 本表把 `parity/manifest.gen.json` 中每个公开 Device API `operationId` 映射到 Go method 和已审查 operation
 policy。仓库内契约是 parameter、request/response field、status 和 schema 描述的权威来源。Manifest 记录生成
-Go request/response type，以及全部 218 个 component-schema 映射。
+Go request/response type，以及全部 225 个 component-schema 映射。
 
 只有两种语言的表格都与生成 manifest 包含完全相同的 78 个 operation ID，
 `bash scripts/check-public-docs.sh` 才会通过。

@@ -236,10 +236,16 @@ func run(root string, check bool) error {
 	if err != nil {
 		return err
 	}
+	// 样例随模型原子生成，避免新增渠道只更新类型而没有契约回归输入。
+	fixtures, err := generateWebhookFixtures(root)
+	if err != nil {
+		return err
+	}
 	artifacts := map[string][]byte{
-		manifestRelativePath:   content,
-		modelsRelativePath:     models,
-		operationsRelativePath: operations,
+		"testdata/webhook-examples.json": fixtures,
+		manifestRelativePath:             content,
+		modelsRelativePath:               models,
+		operationsRelativePath:           operations,
 	}
 	paths := make([]string, 0, len(artifacts))
 	for relative := range artifacts {

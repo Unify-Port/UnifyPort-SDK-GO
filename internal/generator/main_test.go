@@ -21,8 +21,9 @@ func TestBuildManifestMatchesApprovedBaseline(t *testing.T) {
 	if result.OperationCount != 78 {
 		t.Fatalf("OperationCount = %d, want 78", result.OperationCount)
 	}
-	if result.SchemaCount != 218 {
-		t.Fatalf("SchemaCount = %d, want 218", result.SchemaCount)
+	// FB 接收模型增加覆盖量，不应扩大 HTTP operation 或放宽安全策略。
+	if result.SchemaCount != 225 {
+		t.Fatalf("SchemaCount = %d, want 225", result.SchemaCount)
 	}
 	wantCounts := policyCounts{Retryable: 19, Destructive: 8, SecretInput: 9, SecretOutput: 16}
 	if result.PolicyCounts != wantCounts {

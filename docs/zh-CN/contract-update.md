@@ -2,11 +2,11 @@
 
 [English](../contract-update.md) | [简体中文](contract-update.md)
 
-Go SDK 对齐已批准的公开 Node 源码 [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/5901244c409f63fd6b77a899c239ebc9ee96dd50)。这是 approved-source 基线，不代表 npm 已发布同等能力。本次未变更包版本，也未发布。
+Go SDK 对齐已批准的公开 Node 源码 [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35)。这是 approved-source 基线，不代表 npm 已发布同等能力。本次未变更包版本，也未发布。
 
 ## 覆盖与策略
 
-快照包含 78 个 HTTP operation、218 个 component schema、24 个标准 Webhook 事件名及订阅通配符 `*`、36 个专用 Webhook 声明。同一批 49 个公开示例覆盖其中 25 个声明。HTTP 调用与接收方声明继续分开维护。
+快照包含 78 个 HTTP operation、225 个 component schema、24 个标准 Webhook 事件名及订阅通配符 `*`、40 个专用 Webhook 声明。同一批 57 个公开示例覆盖其中 25 个声明。HTTP 调用与接收方声明继续分开维护。
 
 新增能力包括账号操作查询、浏览器授权会话及 Passkey 提交/确认、添加联系人及联系人关系查询、会话历史请求、帖子/评论和受内测权限限制的通话接口，同时同步账号、workspace、地区、授权及 endpoint 字段。
 

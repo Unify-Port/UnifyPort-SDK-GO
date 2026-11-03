@@ -11,10 +11,10 @@ SDK. At the current baseline:
 | --- | --- |
 | Node package | `@unifyport/sdk-node` `0.4.0` |
 | Public Node repository | `https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git` |
-| Public Node commit | `5901244c409f63fd6b77a899c239ebc9ee96dd50` |
-| Contract SHA-256 | `47face9790a454fb0d6204721785846427ca7ead23cf854061ab54646682e904` |
+| Public Node commit | `ce60499d7169c860ed3f64a686e04bff44316f35` |
+| Contract SHA-256 | `8190a34dc8ed60476f79e00b37d9dea418082886724ee6d64efa389f440adffc` |
 | Operations | 78 |
-| Component schemas | 218 |
+| Component schemas | 225 |
 | Resource tags | 13 |
 
 The checked-in contract and generated manifest are authoritative. Counts in this document are
@@ -47,7 +47,7 @@ method, path, tag, Go method, request/response type, retry flag, mutability, and
 | --- | --- | --- |
 | `contracts/device.openapi.yaml` | `contracts/device.openapi.yaml` | Exact approved public snapshot |
 | `UnifyPortDeviceClient` | `Client` | Same 78 operation IDs through Go-style names |
-| Generated schemas | Generated public models and `internal/wire` models | All 218 schemas traceable |
+| Generated schemas | Generated public models and `internal/wire` models | All 225 schemas traceable |
 | Generated operation catalog | Generated Go operations and parity manifest | Method/path/policy exact |
 | `DeviceClientConfig` | `Config` | Same security defaults and finite limits |
 | `RetryConfig` | `RetryConfig` | Same default and hard-limit intent |
