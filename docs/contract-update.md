@@ -1,18 +1,20 @@
-# Contract update (unreleased)
+# Contract update for 0.2.0 (unreleased)
 
 [English](contract-update.md) | [简体中文](zh-CN/contract-update.md)
 
-The Go SDK tracks approved public Node source [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35). This is an approved-source baseline, not an npm release claim. The package version has not changed and nothing is published.
+The Go SDK tracks approved public Node source [ce60499](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35). This is an approved-source baseline, not an npm release claim. Version `0.2.0` is prepared; nothing is tagged or published. See [release notes](release-notes.md) and the [migration guide](migration.md).
 
 ## Coverage and policy
 
-The snapshot contains 78 HTTP operations, 225 component schemas, 24 standard Webhook event names plus `*`, and 40 specialized Webhook declarations. The same 49 public examples cover 25 declarations. HTTP operations and receiver declarations remain separate.
+The snapshot contains 78 HTTP operations, 225 component schemas, 24 standard Webhook event names plus `*`, and 40 specialized Webhook declarations. The 57 public examples cover 29 of the 40 declarations. HTTP operations and receiver declarations remain separate.
 
 Added operations cover account-operation lookup, browser authorization sessions and Passkey response/confirmation, contact creation and membership lookup, conversation history requests, posts/comments, and gated calls. Existing account, workspace, provider, authorization and endpoint fields are synchronized too.
 
 There are 25 read, 45 write and 8 destructive operations. Only the existing 19 explicitly approved operations retry. Secret-input/output classifications cover 9/16 operations; a read classification alone does not enable retry. Unknown operations remain unavailable. Idempotency does not authorize automatic retries of account creation.
 
 ## Migration
+
+- Account lists now return `data.items/has_more/next_cursor` instead of an array; see the SDK-specific result access in the [migration guide](migration.md).
 
 - Account creation requires `provider`, `region`, and `auth_mode`; `name` is optional. Use the separate creation/update schemas where an older client used `AccountRequest`.
 - Workspace wallet fields are additive; legacy account-quota fields can be absent in wallet mode. Handle their absence explicitly.

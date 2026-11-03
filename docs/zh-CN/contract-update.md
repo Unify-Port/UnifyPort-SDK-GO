@@ -1,18 +1,20 @@
-# 本次契约更新（未发布）
+# 0.2.0 契约更新（未发布）
 
 [English](../contract-update.md) | [简体中文](contract-update.md)
 
-Go SDK 对齐已批准的公开 Node 源码 [5901244](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35)。这是 approved-source 基线，不代表 npm 已发布同等能力。本次未变更包版本，也未发布。
+Go SDK 对齐已批准的公开 Node 源码 [ce60499](https://github.com/Unify-Port/UnifyPort-SDK-Nodejs/commit/ce60499d7169c860ed3f64a686e04bff44316f35)。这是 approved-source 基线，不代表 npm 已发布同等能力。已准备版本 `0.2.0`，尚未打 tag 或发布。详见[发布说明](release-notes.md)和[迁移指南](migration.md)。
 
 ## 覆盖与策略
 
-快照包含 78 个 HTTP operation、225 个 component schema、24 个标准 Webhook 事件名及订阅通配符 `*`、40 个专用 Webhook 声明。同一批 57 个公开示例覆盖其中 25 个声明。HTTP 调用与接收方声明继续分开维护。
+快照包含 78 个 HTTP operation、225 个 component schema、24 个标准 Webhook 事件名及订阅通配符 `*`、40 个专用 Webhook 声明。57 个公开示例覆盖 40 个声明中的 29 个。HTTP 调用与接收方声明继续分开维护。
 
 新增能力包括账号操作查询、浏览器授权会话及 Passkey 提交/确认、添加联系人及联系人关系查询、会话历史请求、帖子/评论和受内测权限限制的通话接口，同时同步账号、workspace、地区、授权及 endpoint 字段。
 
 策略包含 read 25、write 45、destructive 8 个 operation。仍只有原有 19 个显式批准接口自动重试，secret input/output 分别覆盖 9/16 个接口。read 分类本身不授予重试权限，未知接口不可用。幂等能力不等于允许自动重试建号。
 
 ## 迁移
+
+- 账号列表从数组改为 `data.items/has_more/next_cursor`，各 SDK result 的读取方式见[迁移指南](migration.md)。
 
 - 创建账号必须提供 `provider`、`region`、`auth_mode`，`name` 可选。原先使用 `AccountRequest` 的位置应区分创建和更新 schema。
 - workspace 新增余额字段；余额模式可能缺少旧额度字段，应显式处理缺省。

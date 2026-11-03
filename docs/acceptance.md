@@ -4,7 +4,7 @@
 
 Report date: 2026-07-29
 
-This file retains the initial 2026-07-29 acceptance record. See [Contract update](contract-update.md) for the current unreleased 78-operation/218-schema update and compatibility notes; the historical gates below do not establish this update's release or current CI status.
+This file retains the initial 2026-07-29 acceptance record. See [Contract update](contract-update.md) for the current unreleased 78-operation/225-schema update and compatibility notes; the historical gates below do not establish this update's release or current CI status.
 
 ## Outcome
 

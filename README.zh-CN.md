@@ -11,6 +11,9 @@
 当前公开 baseline 覆盖 78 个 operation、225 个 component schema 和 13 个资源组。`/v1/accounts/...` 下的路由
 管理 provider 账号资源，但仍属于同一个 Device API client。
 
+
+当前准备的 SDK 版本为 `0.2.0`，尚未发布。详见[发布说明](docs/zh-CN/release-notes.md)和[迁移指南](docs/zh-CN/migration.md)。
+
 ## 能力与边界
 
 | 资产 | 用途 | 边界 |
