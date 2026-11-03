@@ -75,7 +75,7 @@ func TestClientFacadeAppliesPolicyAndPreservesSuccessEnvelope(t *testing.T) {
 	if providerCalls.Load() != 1 {
 		t.Fatalf("API key provider calls = %d, want 1 for one logical call", providerCalls.Load())
 	}
-	if workspace.Data.AccountQuota != ^uint64(0) || workspace.Data.Name != "example" {
+	if (workspace.Data.AccountQuota == nil || *workspace.Data.AccountQuota != ^uint64(0)) || workspace.Data.Name != "example" {
 		t.Fatalf("workspace data lost precision or fields: %#v", workspace.Data)
 	}
 	if workspace.StatusCode != http.StatusOK || workspace.RequestID != "req_body" || workspace.ClientRequestID != "client_123" {
@@ -106,7 +106,7 @@ func TestClientFacadeAppliesPolicyAndPreservesSuccessEnvelope(t *testing.T) {
 	if err != nil {
 		t.Fatalf("DeleteAccount() error = %v", err)
 	}
-	if deleted.StatusCode != http.StatusNoContent || deleted.Data != (NoContent{}) {
+	if deleted.StatusCode != http.StatusNoContent || deleted.Data != nil {
 		t.Fatalf("unexpected no-content result: %#v", deleted)
 	}
 }

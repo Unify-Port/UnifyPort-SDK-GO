@@ -115,3 +115,18 @@ func containsAny(value string, candidates ...string) bool {
 	}
 	return false
 }
+
+func TestAPIErrorNumericCodeIsIndependentAndFiltered(t *testing.T) {
+	// 错误类型不能使原 code/request ID 消失，也不能把任意上游诊断字符串暴露出去。
+	for _, raw := range []string{`"12345"`, `null`, `12345`, `"01234"`, `"123456"`, `"secret=value"`, `"１２３４５"`} {
+		body := []byte(`{"request_id":"req_example","error":{"code":"BAD_REQUEST","numeric_code":` + raw + `}}`)
+		result := newAPIError("getWorkspace", 400, nil, body)
+		expected := ""
+		if raw == `"12345"` {
+			expected = "12345"
+		}
+		if result.NumericCode != expected || result.Code != "BAD_REQUEST" || result.RequestID != "req_example" {
+			t.Fatalf("numeric metadata: %#v", result)
+		}
+	}
+}

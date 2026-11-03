@@ -25,7 +25,6 @@ import (
 	"strings"
 
 	"github.com/getkin/kin-openapi/openapi3"
-	"github.com/oapi-codegen/oapi-codegen/v2/pkg/util"
 )
 
 const (
@@ -47,10 +46,11 @@ type sourceFile struct {
 }
 
 type nodeSDK struct {
-	Package    string `json:"package"`
-	Version    string `json:"version"`
-	Repository string `json:"repository"`
-	Commit     string `json:"commit"`
+	Package      string `json:"package"`
+	Version      string `json:"version"`
+	Repository   string `json:"repository"`
+	Commit       string `json:"commit"`
+	BaselineKind string `json:"baselineKind,omitempty"`
 }
 
 type contractInfo struct {
@@ -113,6 +113,7 @@ type operationManifest struct {
 	Parameters            []parameterManifest       `json:"parameters"`
 	ParamsGoType          string                    `json:"paramsGoType,omitempty"`
 	RequestBody           *bodyManifest             `json:"requestBody,omitempty"`
+	NoContentStatuses     []string                  `json:"noContentStatuses,omitempty"`
 	SuccessStatuses       []string                  `json:"successStatuses"`
 	ResponseSchemas       []string                  `json:"responseSchemas"`
 	HasSuccessContent     bool                      `json:"hasSuccessContent"`
@@ -193,7 +194,15 @@ func main() {
 	root := flag.String("root", ".", "repository root")
 	check := flag.Bool("check", false, "verify generated output without writing")
 	validateOverlayOnly := flag.Bool("validate-overlay", false, "validate the Go-only overlay and exit")
+	generateWireOnly := flag.Bool("generate-wire", false, "generate wire through equivalent boolean schemas")
 	flag.Parse()
+	if *generateWireOnly {
+		if err := generateWire(*root); err != nil {
+			_, _ = fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
 
 	if *validateOverlayOnly {
 		if err := validateNamingOverlay(*root); err != nil {
@@ -227,10 +236,16 @@ func run(root string, check bool) error {
 	if err != nil {
 		return err
 	}
+	// 样例随模型原子生成，避免新增渠道只更新类型而没有契约回归输入。
+	fixtures, err := generateWebhookFixtures(root)
+	if err != nil {
+		return err
+	}
 	artifacts := map[string][]byte{
-		manifestRelativePath:   content,
-		modelsRelativePath:     models,
-		operationsRelativePath: operations,
+		"testdata/webhook-examples.json": fixtures,
+		manifestRelativePath:             content,
+		modelsRelativePath:               models,
+		operationsRelativePath:           operations,
 	}
 	paths := make([]string, 0, len(artifacts))
 	for relative := range artifacts {
@@ -288,7 +303,7 @@ func buildManifest(root string) (*manifest, error) {
 		return nil, err
 	}
 
-	document, err := util.LoadSwagger(contractPath)
+	document, err := loadCompatibleContract(contractPath)
 	if err != nil {
 		return nil, fmt.Errorf("load contract: %w", err)
 	}
@@ -433,6 +448,7 @@ func buildOperationManifest(document *openapi3.T, operationID string, source ope
 		MCPExposure:           mcpExposure,
 		Parameters:            parameters,
 		RequestBody:           requestBody,
+		NoContentStatuses:     noContentStatuses(source.Operation),
 		SuccessStatuses:       statuses,
 		ResponseSchemas:       responseSchemas,
 		HasSuccessContent:     hasContent,
@@ -763,6 +779,10 @@ func loadWireIndex(path string, componentSchemas openapi3.Schemas) (wireIndex, e
 }
 
 func validateSource(source sourceFile) error {
+	// 源码基线不代表同版本 npm 包已发布，保留旧 release 记录的兼容读取。
+	if source.NodeSDK.BaselineKind != "" && source.NodeSDK.BaselineKind != "approved-source" {
+		return fmt.Errorf("unsupported Node baseline kind")
+	}
 	if source.SchemaVersion != 1 {
 		return fmt.Errorf("%s schemaVersion must be 1", sourceRelativePath)
 	}

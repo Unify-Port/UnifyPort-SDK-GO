@@ -26,20 +26,269 @@ type APIKeyStatusUpdateRequestStatus = wire.APIKeyStatusUpdateRequestStatus
 // Account 是由公开 OpenAPI 契约生成的类型别名。
 type Account = wire.Account
 
+// AccountBilling 是由公开 OpenAPI 契约生成的类型别名。
+type AccountBilling = wire.AccountBilling
+
+// AccountBillingCurrency 是由公开 OpenAPI 契约生成的类型别名。
+type AccountBillingCurrency = wire.AccountBillingCurrency
+
+// AccountBillingState 是由公开 OpenAPI 契约生成的类型别名。
+type AccountBillingState = wire.AccountBillingState
+
+// AccountCreateRequest 是由公开 OpenAPI 契约生成的类型别名。
+type AccountCreateRequest = wire.AccountCreateRequest
+
+// AccountCreateRequestAuthMode 是由公开 OpenAPI 契约生成的类型别名。
+type AccountCreateRequestAuthMode = wire.AccountCreateRequestAuthMode
+
 // AccountID 是由公开 OpenAPI 契约生成的类型别名。
 type AccountID = wire.AccountID
 
-// AccountRequest 是由公开 OpenAPI 契约生成的类型别名。
-type AccountRequest = wire.AccountRequest
+// AccountListResult 是由公开 OpenAPI 契约生成的类型别名。
+type AccountListResult = wire.AccountListResult
+
+// AccountOperation 是由公开 OpenAPI 契约生成的类型别名。
+type AccountOperation = wire.AccountOperation
+
+// AccountOperationKind 是由公开 OpenAPI 契约生成的类型别名。
+type AccountOperationKind = wire.AccountOperationKind
+
+// AccountOperationState 是由公开 OpenAPI 契约生成的类型别名。
+type AccountOperationState = wire.AccountOperationState
+
+// AccountProfileUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type AccountProfileUpdatedWebhookEvent = wire.AccountProfileUpdatedWebhookEvent
+
+// AccountProfileUpdatedWebhookEventDataEventChangedFields 是由公开 OpenAPI 契约生成的类型别名。
+type AccountProfileUpdatedWebhookEventDataEventChangedFields = wire.AccountProfileUpdatedWebhookEventDataEventChangedFields
+
+// AccountProfileUpdatedWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type AccountProfileUpdatedWebhookEventDataEventKind = wire.AccountProfileUpdatedWebhookEventDataEventKind
+
+// AccountProfileUpdatedWebhookEventDataEventSource 是由公开 OpenAPI 契约生成的类型别名。
+type AccountProfileUpdatedWebhookEventDataEventSource = wire.AccountProfileUpdatedWebhookEventDataEventSource
+
+// AccountProfileUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type AccountProfileUpdatedWebhookEventType = wire.AccountProfileUpdatedWebhookEventType
 
 // AccountSession 是由公开 OpenAPI 契约生成的类型别名。
 type AccountSession = wire.AccountSession
+
+// AccountStartedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type AccountStartedWebhookEvent = wire.AccountStartedWebhookEvent
+
+// AccountStartedWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type AccountStartedWebhookEventDataEventKind = wire.AccountStartedWebhookEventDataEventKind
+
+// AccountStartedWebhookEventDataEventRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type AccountStartedWebhookEventDataEventRuntimeStatus = wire.AccountStartedWebhookEventDataEventRuntimeStatus
+
+// AccountStartedWebhookEventDataRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type AccountStartedWebhookEventDataRuntimeStatus = wire.AccountStartedWebhookEventDataRuntimeStatus
+
+// AccountStartedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type AccountStartedWebhookEventType = wire.AccountStartedWebhookEventType
+
+// AccountUpdateRequest 是由公开 OpenAPI 契约生成的类型别名。
+type AccountUpdateRequest = wire.AccountUpdateRequest
+
+// AccountUpdateRequestAuthMode 是由公开 OpenAPI 契约生成的类型别名。
+type AccountUpdateRequestAuthMode = wire.AccountUpdateRequestAuthMode
+
+// AccountWebhookError 是由公开 OpenAPI 契约生成的类型别名。
+type AccountWebhookError = wire.AccountWebhookError
+
+// AccountWebhookErrorCode 是由公开 OpenAPI 契约生成的类型别名。
+type AccountWebhookErrorCode = wire.AccountWebhookErrorCode
+
+// AccountWebhookErrorNumericCode 是由公开 OpenAPI 契约生成的类型别名。
+type AccountWebhookErrorNumericCode = wire.AccountWebhookErrorNumericCode
+
+// AccountsCursor 是由公开 OpenAPI 契约生成的类型别名。
+type AccountsCursor = wire.AccountsCursor
+
+// AccountsLimit 是由公开 OpenAPI 契约生成的类型别名。
+type AccountsLimit = wire.AccountsLimit
+
+// ActiveCallData 是由公开 OpenAPI 契约生成的类型别名。
+type ActiveCallData = wire.ActiveCallData
+
+// ActiveCallDataDirection 是由公开 OpenAPI 契约生成的类型别名。
+type ActiveCallDataDirection = wire.ActiveCallDataDirection
+
+// ActiveCallDataMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type ActiveCallDataMediaType = wire.ActiveCallDataMediaType
+
+// ActiveCallDataState 是由公开 OpenAPI 契约生成的类型别名。
+type ActiveCallDataState = wire.ActiveCallDataState
 
 // AuthField 是由公开 OpenAPI 契约生成的类型别名。
 type AuthField = wire.AuthField
 
 // BlockContactRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type BlockContactRequestBody = wire.BlockContactJSONRequestBody
+
+// CallAnsweredWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallAnsweredWebhookEvent = wire.CallAnsweredWebhookEvent
+
+// CallAnsweredWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallAnsweredWebhookEventType = wire.CallAnsweredWebhookEventType
+
+// CallEndedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallEndedWebhookEvent = wire.CallEndedWebhookEvent
+
+// CallEndedWebhookEventDataReason 是由公开 OpenAPI 契约生成的类型别名。
+type CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReason
+
+// CallEndedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallEndedWebhookEventType = wire.CallEndedWebhookEventType
+
+// CallEventCall 是由公开 OpenAPI 契约生成的类型别名。
+type CallEventCall = wire.CallEventCall
+
+// CallEventCallDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CallEventCallDirection = wire.CallEventCallDirection
+
+// CallEventCallMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CallEventCallMediaType = wire.CallEventCallMediaType
+
+// CallEventCallState 是由公开 OpenAPI 契约生成的类型别名。
+type CallEventCallState = wire.CallEventCallState
+
+// CallEventSender 是由公开 OpenAPI 契约生成的类型别名。
+type CallEventSender = wire.CallEventSender
+
+// CallIncomingWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallIncomingWebhookEvent = wire.CallIncomingWebhookEvent
+
+// CallIncomingWebhookEventDataCallDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CallIncomingWebhookEventDataCallDirection = wire.CallIncomingWebhookEventDataCallDirection
+
+// CallIncomingWebhookEventDataCallMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CallIncomingWebhookEventDataCallMediaType = wire.CallIncomingWebhookEventDataCallMediaType
+
+// CallIncomingWebhookEventDataCallState 是由公开 OpenAPI 契约生成的类型别名。
+type CallIncomingWebhookEventDataCallState = wire.CallIncomingWebhookEventDataCallState
+
+// CallIncomingWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallIncomingWebhookEventType = wire.CallIncomingWebhookEventType
+
+// CallMessage 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessage = wire.CallMessage
+
+// CallMessageCall 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageCall = wire.CallMessageCall
+
+// CallMessageCallEndReason 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageCallEndReason = wire.CallMessageCallEndReason
+
+// CallMessageCallEndedBy 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageCallEndedBy = wire.CallMessageCallEndedBy
+
+// CallMessageCallMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageCallMediaType = wire.CallMessageCallMediaType
+
+// CallMessageCallStatus 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageCallStatus = wire.CallMessageCallStatus
+
+// CallMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageDirection = wire.CallMessageDirection
+
+// CallMessageReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEvent = wire.CallMessageReceivedWebhookEvent
+
+// CallMessageReceivedWebhookEventDataConversationType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataConversationType = wire.CallMessageReceivedWebhookEventDataConversationType
+
+// CallMessageReceivedWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataEventKind = wire.CallMessageReceivedWebhookEventDataEventKind
+
+// CallMessageReceivedWebhookEventDataMessageCallEndReason 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageCallEndReason = wire.CallMessageReceivedWebhookEventDataMessageCallEndReason
+
+// CallMessageReceivedWebhookEventDataMessageCallEndedBy 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageCallEndedBy = wire.CallMessageReceivedWebhookEventDataMessageCallEndedBy
+
+// CallMessageReceivedWebhookEventDataMessageCallMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageCallMediaType = wire.CallMessageReceivedWebhookEventDataMessageCallMediaType
+
+// CallMessageReceivedWebhookEventDataMessageCallStatus 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageCallStatus = wire.CallMessageReceivedWebhookEventDataMessageCallStatus
+
+// CallMessageReceivedWebhookEventDataMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageDirection = wire.CallMessageReceivedWebhookEventDataMessageDirection
+
+// CallMessageReceivedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataMessageType = wire.CallMessageReceivedWebhookEventDataMessageType
+
+// CallMessageReceivedWebhookEventDataSenderType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventDataSenderType = wire.CallMessageReceivedWebhookEventDataSenderType
+
+// CallMessageReceivedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventProvider = wire.CallMessageReceivedWebhookEventProvider
+
+// CallMessageReceivedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageReceivedWebhookEventType = wire.CallMessageReceivedWebhookEventType
+
+// CallMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageType = wire.CallMessageType
+
+// CallMessageUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEvent = wire.CallMessageUpdatedWebhookEvent
+
+// CallMessageUpdatedWebhookEventDataConversationType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataConversationType = wire.CallMessageUpdatedWebhookEventDataConversationType
+
+// CallMessageUpdatedWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataEventKind = wire.CallMessageUpdatedWebhookEventDataEventKind
+
+// CallMessageUpdatedWebhookEventDataMessageCallEndReason 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageCallEndReason = wire.CallMessageUpdatedWebhookEventDataMessageCallEndReason
+
+// CallMessageUpdatedWebhookEventDataMessageCallEndedBy 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageCallEndedBy = wire.CallMessageUpdatedWebhookEventDataMessageCallEndedBy
+
+// CallMessageUpdatedWebhookEventDataMessageCallMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageCallMediaType = wire.CallMessageUpdatedWebhookEventDataMessageCallMediaType
+
+// CallMessageUpdatedWebhookEventDataMessageCallStatus 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageCallStatus = wire.CallMessageUpdatedWebhookEventDataMessageCallStatus
+
+// CallMessageUpdatedWebhookEventDataMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageDirection = wire.CallMessageUpdatedWebhookEventDataMessageDirection
+
+// CallMessageUpdatedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataMessageType = wire.CallMessageUpdatedWebhookEventDataMessageType
+
+// CallMessageUpdatedWebhookEventDataSenderType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventDataSenderType = wire.CallMessageUpdatedWebhookEventDataSenderType
+
+// CallMessageUpdatedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventProvider = wire.CallMessageUpdatedWebhookEventProvider
+
+// CallMessageUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEventType = wire.CallMessageUpdatedWebhookEventType
+
+// CallMessageUpdatedWebhookEvent_Data_Message_Call 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageUpdatedWebhookEvent_Data_Message_Call = wire.CallMessageUpdatedWebhookEvent_Data_Message_Call
+
+// CallMessageWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEvent = wire.CallMessageWebhookEvent
+
+// CallMessageWebhookEventDataConversationType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEventDataConversationType = wire.CallMessageWebhookEventDataConversationType
+
+// CallMessageWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEventDataEventKind = wire.CallMessageWebhookEventDataEventKind
+
+// CallMessageWebhookEventDataSenderType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEventDataSenderType = wire.CallMessageWebhookEventDataSenderType
+
+// CallMessageWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEventProvider = wire.CallMessageWebhookEventProvider
+
+// CallMessageWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type CallMessageWebhookEventType = wire.CallMessageWebhookEventType
 
 // CancelAccountAuthRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type CancelAccountAuthRequestBody = wire.CancelAccountAuthJSONRequestBody
@@ -50,14 +299,23 @@ type CheckAccountQRAuthRequestBody = wire.CheckAccountQRAuthJSONRequestBody
 // Contact 是由公开 OpenAPI 契约生成的类型别名。
 type Contact = wire.Contact
 
+// ContactAddressBook 是由公开 OpenAPI 契约生成的类型别名。
+type ContactAddressBook = wire.ContactAddressBook
+
 // ContactBlocklistResult 是由公开 OpenAPI 契约生成的类型别名。
 type ContactBlocklistResult = wire.ContactBlocklistResult
 
 // ContactCard 是由公开 OpenAPI 契约生成的类型别名。
 type ContactCard = wire.ContactCard
 
+// ContactCreateRequest 是由公开 OpenAPI 契约生成的类型别名。
+type ContactCreateRequest = wire.ContactCreateRequest
+
 // ContactEmail 是由公开 OpenAPI 契约生成的类型别名。
 type ContactEmail = wire.ContactEmail
+
+// ContactExtra 是由公开 OpenAPI 契约生成的类型别名。
+type ContactExtra = wire.ContactExtra
 
 // ContactID 是由公开 OpenAPI 契约生成的类型别名。
 type ContactID = wire.ContactID
@@ -68,14 +326,101 @@ type ContactIDRequest = wire.ContactIDRequest
 // ContactListResult 是由公开 OpenAPI 契约生成的类型别名。
 type ContactListResult = wire.ContactListResult
 
+// ContactMembership 是由公开 OpenAPI 契约生成的类型别名。
+type ContactMembership = wire.ContactMembership
+
+// ContactMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type ContactMessagePayload = wire.ContactMessagePayload
+
+// ContactMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type ContactMessagePayloadType = wire.ContactMessagePayloadType
+
 // ContactNoteRequest 是由公开 OpenAPI 契约生成的类型别名。
 type ContactNoteRequest = wire.ContactNoteRequest
 
 // ContactPhone 是由公开 OpenAPI 契约生成的类型别名。
 type ContactPhone = wire.ContactPhone
 
+// ContactUpdateChange 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdateChange = wire.ContactUpdateChange
+
+// ContactUpdateChangeChangedFields 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdateChangeChangedFields = wire.ContactUpdateChangeChangedFields
+
+// ContactUpdateChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdateChangeKind = wire.ContactUpdateChangeKind
+
+// ContactUpdateChangeSource 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdateChangeSource = wire.ContactUpdateChangeSource
+
+// ContactUpdateReference 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdateReference = wire.ContactUpdateReference
+
+// ContactUpdatedData 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdatedData = wire.ContactUpdatedData
+
+// ContactUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdatedWebhookEvent = wire.ContactUpdatedWebhookEvent
+
+// ContactUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type ContactUpdatedWebhookEventType = wire.ContactUpdatedWebhookEventType
+
 // Conversation 是由公开 OpenAPI 契约生成的类型别名。
 type Conversation = wire.Conversation
+
+// ConversationDisappearingMessagesChange 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesChange = wire.ConversationDisappearingMessagesChange
+
+// ConversationDisappearingMessagesChangeChangeType 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesChangeChangeType = wire.ConversationDisappearingMessagesChangeChangeType
+
+// ConversationDisappearingMessagesChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesChangeKind = wire.ConversationDisappearingMessagesChangeKind
+
+// ConversationDisappearingMessagesState 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesState = wire.ConversationDisappearingMessagesState
+
+// ConversationDisappearingMessagesUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesUpdatedWebhookEvent = wire.ConversationDisappearingMessagesUpdatedWebhookEvent
+
+// ConversationDisappearingMessagesUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationDisappearingMessagesUpdatedWebhookEventType = wire.ConversationDisappearingMessagesUpdatedWebhookEventType
+
+// ConversationHistoryAccepted 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryAccepted = wire.ConversationHistoryAccepted
+
+// ConversationHistoryAcceptedStatus 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryAcceptedStatus = wire.ConversationHistoryAcceptedStatus
+
+// ConversationHistoryBefore 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryBefore = wire.ConversationHistoryBefore
+
+// ConversationHistoryBeforeDirection 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryBeforeDirection = wire.ConversationHistoryBeforeDirection
+
+// ConversationHistoryMessage 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryMessage = wire.ConversationHistoryMessage
+
+// ConversationHistoryMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryMessageDirection = wire.ConversationHistoryMessageDirection
+
+// ConversationHistoryRequest 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryRequest = wire.ConversationHistoryRequest
+
+// ConversationHistorySource 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistorySource = wire.ConversationHistorySource
+
+// ConversationHistorySourceSource 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistorySourceSource = wire.ConversationHistorySourceSource
+
+// ConversationHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryWebhookEvent = wire.ConversationHistoryWebhookEvent
+
+// ConversationHistoryWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryWebhookEventType = wire.ConversationHistoryWebhookEventType
+
+// ConversationHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationHistoryWebhookEvent_Data = wire.ConversationHistoryWebhookEvent_Data
 
 // ConversationID 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationID = wire.ConversationID
@@ -125,11 +470,26 @@ type ConversationMember = wire.ConversationMember
 // ConversationMemberListResult 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationMemberListResult = wire.ConversationMemberListResult
 
+// ConversationMemberRole 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationMemberRole = wire.ConversationMemberRole
+
 // ConversationMuteRequest 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationMuteRequest = wire.ConversationMuteRequest
 
 // ConversationReadRequest 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationReadRequest = wire.ConversationReadRequest
+
+// ConversationStateAccount 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationStateAccount = wire.ConversationStateAccount
+
+// ConversationStateActor 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationStateActor = wire.ConversationStateActor
+
+// ConversationStateActorType 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationStateActorType = wire.ConversationStateActorType
+
+// ConversationStateReference 是由公开 OpenAPI 契约生成的类型别名。
+type ConversationStateReference = wire.ConversationStateReference
 
 // ConversationType 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationType = wire.ConversationType
@@ -137,11 +497,41 @@ type ConversationType = wire.ConversationType
 // ConversationTypeFilter 是由公开 OpenAPI 契约生成的类型别名。
 type ConversationTypeFilter = wire.ConversationTypeFilter
 
+// Conversation_Extra 是由公开 OpenAPI 契约生成的类型别名。
+type Conversation_Extra = wire.Conversation_Extra
+
 // CreateAPIKeyRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type CreateAPIKeyRequestBody = wire.CreateAPIKeyJSONRequestBody
 
+// CreateAccountParams 是由公开 OpenAPI 契约生成的类型别名。
+type CreateAccountParams = wire.CreateAccountParams
+
 // CreateAccountRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type CreateAccountRequestBody = wire.CreateAccountJSONRequestBody
+
+// CreateCallData 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallData = wire.CreateCallData
+
+// CreateCallDataDirection 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallDataDirection = wire.CreateCallDataDirection
+
+// CreateCallDataMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallDataMediaType = wire.CreateCallDataMediaType
+
+// CreateCallDataState 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallDataState = wire.CreateCallDataState
+
+// CreateCallRequest 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallRequest = wire.CreateCallRequest
+
+// CreateCallRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallRequestBody = wire.CreateCallJSONRequestBody
+
+// CreateCallRequestMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type CreateCallRequestMediaType = wire.CreateCallRequestMediaType
+
+// CreateContactRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type CreateContactRequestBody = wire.CreateContactJSONRequestBody
 
 // CreateGroupRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type CreateGroupRequestBody = wire.CreateGroupJSONRequestBody
@@ -152,11 +542,29 @@ type CreateWebhookEndpointRequestBody = wire.CreateWebhookEndpointJSONRequestBod
 // Cursor 是由公开 OpenAPI 契约生成的类型别名。
 type Cursor = wire.Cursor
 
+// DeactivateWebhookEndpointParams 是由公开 OpenAPI 契约生成的类型别名。
+type DeactivateWebhookEndpointParams = wire.DeactivateWebhookEndpointParams
+
 // DeleteConversationLabelRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type DeleteConversationLabelRequestBody = wire.DeleteConversationLabelJSONRequestBody
 
+// DeleteWebhookEndpointParams 是由公开 OpenAPI 契约生成的类型别名。
+type DeleteWebhookEndpointParams = wire.DeleteWebhookEndpointParams
+
 // EditMessageRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type EditMessageRequestBody = wire.EditMessageJSONRequestBody
+
+// EndedCallData 是由公开 OpenAPI 契约生成的类型别名。
+type EndedCallData = wire.EndedCallData
+
+// EndedCallDataDirection 是由公开 OpenAPI 契约生成的类型别名。
+type EndedCallDataDirection = wire.EndedCallDataDirection
+
+// EndedCallDataMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type EndedCallDataMediaType = wire.EndedCallDataMediaType
+
+// EndedCallDataState 是由公开 OpenAPI 契约生成的类型别名。
+type EndedCallDataState = wire.EndedCallDataState
 
 // EndpointID 是由公开 OpenAPI 契约生成的类型别名。
 type EndpointID = wire.EndpointID
@@ -167,8 +575,137 @@ type Error = wire.Error
 // ErrorEnvelope 是由公开 OpenAPI 契约生成的类型别名。
 type ErrorEnvelope = wire.ErrorEnvelope
 
+// FacebookAccountAuthFailedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEvent = wire.FacebookAccountAuthFailedWebhookEvent
+
+// FacebookAccountAuthFailedWebhookEventDataAuthStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEventDataAuthStatus = wire.FacebookAccountAuthFailedWebhookEventDataAuthStatus
+
+// FacebookAccountAuthFailedWebhookEventDataRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEventDataRuntimeStatus = wire.FacebookAccountAuthFailedWebhookEventDataRuntimeStatus
+
+// FacebookAccountAuthFailedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEventProvider = wire.FacebookAccountAuthFailedWebhookEventProvider
+
+// FacebookAccountAuthFailedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEventType = wire.FacebookAccountAuthFailedWebhookEventType
+
+// FacebookAccountAuthFailedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEvent_Data = wire.FacebookAccountAuthFailedWebhookEvent_Data
+
+// FacebookAccountAuthFailedWebhookEvent_Data_Account 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEvent_Data_Account = wire.FacebookAccountAuthFailedWebhookEvent_Data_Account
+
+// FacebookAccountAuthFailedWebhookEvent_Data_Event 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthFailedWebhookEvent_Data_Event = wire.FacebookAccountAuthFailedWebhookEvent_Data_Event
+
+// FacebookAccountAuthSucceededWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEvent = wire.FacebookAccountAuthSucceededWebhookEvent
+
+// FacebookAccountAuthSucceededWebhookEventDataAuthStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEventDataAuthStatus = wire.FacebookAccountAuthSucceededWebhookEventDataAuthStatus
+
+// FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus = wire.FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus
+
+// FacebookAccountAuthSucceededWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEventProvider = wire.FacebookAccountAuthSucceededWebhookEventProvider
+
+// FacebookAccountAuthSucceededWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEventType = wire.FacebookAccountAuthSucceededWebhookEventType
+
+// FacebookAccountAuthSucceededWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEvent_Data = wire.FacebookAccountAuthSucceededWebhookEvent_Data
+
+// FacebookAccountAuthSucceededWebhookEvent_Data_Account 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEvent_Data_Account = wire.FacebookAccountAuthSucceededWebhookEvent_Data_Account
+
+// FacebookAccountAuthSucceededWebhookEvent_Data_Event 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountAuthSucceededWebhookEvent_Data_Event = wire.FacebookAccountAuthSucceededWebhookEvent_Data_Event
+
+// FacebookAccountStatusUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEvent = wire.FacebookAccountStatusUpdatedWebhookEvent
+
+// FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus = wire.FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus
+
+// FacebookAccountStatusUpdatedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEventProvider = wire.FacebookAccountStatusUpdatedWebhookEventProvider
+
+// FacebookAccountStatusUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEventType = wire.FacebookAccountStatusUpdatedWebhookEventType
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEvent_Data = wire.FacebookAccountStatusUpdatedWebhookEvent_Data
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data_Account 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEvent_Data_Account = wire.FacebookAccountStatusUpdatedWebhookEvent_Data_Account
+
+// FacebookAccountStatusUpdatedWebhookEvent_Data_Event 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAccountStatusUpdatedWebhookEvent_Data_Event = wire.FacebookAccountStatusUpdatedWebhookEvent_Data_Event
+
+// FacebookAttachmentMetadata 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAttachmentMetadata = wire.FacebookAttachmentMetadata
+
+// FacebookAttachmentMetadataDownloadStatus 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatus
+
+// FacebookMessage 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessage = wire.FacebookMessage
+
+// FacebookMessageAttachment 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageAttachment = wire.FacebookMessageAttachment
+
+// FacebookMessageAttachmentType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageAttachmentType = wire.FacebookMessageAttachmentType
+
+// FacebookMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageDirection = wire.FacebookMessageDirection
+
+// FacebookMessageReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent = wire.FacebookMessageReceivedWebhookEvent
+
+// FacebookMessageReceivedWebhookEventDataConversationType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEventDataConversationType = wire.FacebookMessageReceivedWebhookEventDataConversationType
+
+// FacebookMessageReceivedWebhookEventDataSenderType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEventDataSenderType = wire.FacebookMessageReceivedWebhookEventDataSenderType
+
+// FacebookMessageReceivedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEventProvider = wire.FacebookMessageReceivedWebhookEventProvider
+
+// FacebookMessageReceivedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEventType = wire.FacebookMessageReceivedWebhookEventType
+
+// FacebookMessageReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent_Data = wire.FacebookMessageReceivedWebhookEvent_Data
+
+// FacebookMessageReceivedWebhookEvent_Data_Account 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent_Data_Account = wire.FacebookMessageReceivedWebhookEvent_Data_Account
+
+// FacebookMessageReceivedWebhookEvent_Data_Conversation 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent_Data_Conversation = wire.FacebookMessageReceivedWebhookEvent_Data_Conversation
+
+// FacebookMessageReceivedWebhookEvent_Data_Event 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent_Data_Event = wire.FacebookMessageReceivedWebhookEvent_Data_Event
+
+// FacebookMessageReceivedWebhookEvent_Data_Sender 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageReceivedWebhookEvent_Data_Sender = wire.FacebookMessageReceivedWebhookEvent_Data_Sender
+
+// FacebookMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type FacebookMessageType = wire.FacebookMessageType
+
 // FreeFormObject 是由公开 OpenAPI 契约生成的类型别名。
 type FreeFormObject = wire.FreeFormObject
+
+// GetActiveCall200JSONResponseBody_Data 是由公开 OpenAPI 契约生成的类型别名。
+type GetActiveCall200JSONResponseBody_Data = wire.GetActiveCall200JSONResponseBody_Data
+
+// GetActiveCallParams 是由公开 OpenAPI 契约生成的类型别名。
+type GetActiveCallParams = wire.GetActiveCallParams
+
+// GetContactMembershipParams 是由公开 OpenAPI 契约生成的类型别名。
+type GetContactMembershipParams = wire.GetContactMembershipParams
 
 // GetContactParams 是由公开 OpenAPI 契约生成的类型别名。
 type GetContactParams = wire.GetContactParams
@@ -182,8 +719,20 @@ type GetGroupInviteCodeParams = wire.GetGroupInviteCodeParams
 // GetGroupParams 是由公开 OpenAPI 契约生成的类型别名。
 type GetGroupParams = wire.GetGroupParams
 
+// GetPostRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type GetPostRequestBody = wire.GetPostJSONRequestBody
+
+// GetWebhookEndpointParams 是由公开 OpenAPI 契约生成的类型别名。
+type GetWebhookEndpointParams = wire.GetWebhookEndpointParams
+
 // Group 是由公开 OpenAPI 契约生成的类型别名。
 type Group = wire.Group
+
+// GroupAnnouncementChange 是由公开 OpenAPI 契约生成的类型别名。
+type GroupAnnouncementChange = wire.GroupAnnouncementChange
+
+// GroupAnnouncementChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type GroupAnnouncementChangeKind = wire.GroupAnnouncementChangeKind
 
 // GroupCreateRequest 是由公开 OpenAPI 契约生成的类型别名。
 type GroupCreateRequest = wire.GroupCreateRequest
@@ -202,6 +751,12 @@ type GroupInfoUpdateRequest = wire.GroupInfoUpdateRequest
 
 // GroupInviteCode 是由公开 OpenAPI 契约生成的类型别名。
 type GroupInviteCode = wire.GroupInviteCode
+
+// GroupInviteLinkChange 是由公开 OpenAPI 契约生成的类型别名。
+type GroupInviteLinkChange = wire.GroupInviteLinkChange
+
+// GroupInviteLinkChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type GroupInviteLinkChangeKind = wire.GroupInviteLinkChangeKind
 
 // GroupJoinApprovalModeRequest 是由公开 OpenAPI 契约生成的类型别名。
 type GroupJoinApprovalModeRequest = wire.GroupJoinApprovalModeRequest
@@ -227,6 +782,33 @@ type GroupMemberUpdateRequest = wire.GroupMemberUpdateRequest
 // GroupMemberUpdateRequestAction 是由公开 OpenAPI 契约生成的类型别名。
 type GroupMemberUpdateRequestAction = wire.GroupMemberUpdateRequestAction
 
+// GroupPermissions 是由公开 OpenAPI 契约生成的类型别名。
+type GroupPermissions = wire.GroupPermissions
+
+// GroupSettingsEvent 是由公开 OpenAPI 契约生成的类型别名。
+type GroupSettingsEvent = wire.GroupSettingsEvent
+
+// GroupSettingsEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type GroupSettingsEventKind = wire.GroupSettingsEventKind
+
+// GroupSettingsUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type GroupSettingsUpdatedWebhookEvent = wire.GroupSettingsUpdatedWebhookEvent
+
+// GroupSettingsUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type GroupSettingsUpdatedWebhookEventType = wire.GroupSettingsUpdatedWebhookEventType
+
+// GroupUpdatedChange 是由公开 OpenAPI 契约生成的类型别名。
+type GroupUpdatedChange = wire.GroupUpdatedChange
+
+// Group_Extra 是由公开 OpenAPI 契约生成的类型别名。
+type Group_Extra = wire.Group_Extra
+
+// HangupCallJSONBody 是由公开 OpenAPI 契约生成的类型别名。
+type HangupCallJSONBody = wire.HangupCallJSONBody
+
+// HangupCallRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type HangupCallRequestBody = wire.HangupCallJSONRequestBody
+
 // ImportAccountAuthSessionRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type ImportAccountAuthSessionRequestBody = wire.ImportAccountAuthSessionJSONRequestBody
 
@@ -238,6 +820,15 @@ type LeaveGroupRequestBody = wire.LeaveGroupJSONRequestBody
 
 // Limit 是由公开 OpenAPI 契约生成的类型别名。
 type Limit = wire.Limit
+
+// LinkPreviewMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type LinkPreviewMessagePayload = wire.LinkPreviewMessagePayload
+
+// LinkPreviewMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type LinkPreviewMessagePayloadType = wire.LinkPreviewMessagePayloadType
+
+// ListAccountsParams 是由公开 OpenAPI 契约生成的类型别名。
+type ListAccountsParams = wire.ListAccountsParams
 
 // ListContactsParams 是由公开 OpenAPI 契约生成的类型别名。
 type ListContactsParams = wire.ListContactsParams
@@ -257,35 +848,515 @@ type ListGroupJoinRequestsParams = wire.ListGroupJoinRequestsParams
 // ListGroupsParams 是由公开 OpenAPI 契约生成的类型别名。
 type ListGroupsParams = wire.ListGroupsParams
 
+// ListPostCommentsRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type ListPostCommentsRequestBody = wire.ListPostCommentsJSONRequestBody
+
+// ListPostsParams 是由公开 OpenAPI 契约生成的类型别名。
+type ListPostsParams = wire.ListPostsParams
+
+// ListWebhookEndpointsParams 是由公开 OpenAPI 契约生成的类型别名。
+type ListWebhookEndpointsParams = wire.ListWebhookEndpointsParams
+
 // MarkConversationReadRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type MarkConversationReadRequestBody = wire.MarkConversationReadJSONRequestBody
 
 // MarkConversationUnreadRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type MarkConversationUnreadRequestBody = wire.MarkConversationUnreadJSONRequestBody
 
+// MediaMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type MediaMessagePayload = wire.MediaMessagePayload
+
+// MediaMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type MediaMessagePayloadType = wire.MediaMessagePayloadType
+
 // Mention 是由公开 OpenAPI 契约生成的类型别名。
 type Mention = wire.Mention
+
+// MentionType 是由公开 OpenAPI 契约生成的类型别名。
+type MentionType = wire.MentionType
+
+// MessageCommerce 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerce = wire.MessageCommerce
+
+// MessageCommerceHTTPURL 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceHTTPURL = wire.MessageCommerceHTTPURL
+
+// MessageCommerceHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceHistoryWebhookEvent = wire.MessageCommerceHistoryWebhookEvent
+
+// MessageCommerceHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceHistoryWebhookEvent_Data = wire.MessageCommerceHistoryWebhookEvent_Data
+
+// MessageCommerceMoney 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceMoney = wire.MessageCommerceMoney
+
+// MessageCommerceReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceReceivedWebhookEvent = wire.MessageCommerceReceivedWebhookEvent
+
+// MessageCommerceReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceReceivedWebhookEvent_Data = wire.MessageCommerceReceivedWebhookEvent_Data
+
+// MessageCommerceType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceType = wire.MessageCommerceType
+
+// MessageCommerceUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceUpdatedWebhookEvent = wire.MessageCommerceUpdatedWebhookEvent
+
+// MessageCommerceUpdatedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceUpdatedWebhookEventDataMessageType = wire.MessageCommerceUpdatedWebhookEventDataMessageType
+
+// MessageCommerceUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceUpdatedWebhookEvent_Data = wire.MessageCommerceUpdatedWebhookEvent_Data
+
+// MessageCommerceUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceUpdatedWebhookEvent_Data_Message = wire.MessageCommerceUpdatedWebhookEvent_Data_Message
+
+// MessageCommerceWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceWebhookEvent = wire.MessageCommerceWebhookEvent
+
+// MessageCommerceWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceWebhookEventType = wire.MessageCommerceWebhookEventType
+
+// MessageCommerceWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceWebhookEvent_Data = wire.MessageCommerceWebhookEvent_Data
+
+// MessageCommerceWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageCommerceWebhookEvent_Data_Message = wire.MessageCommerceWebhookEvent_Data_Message
+
+// MessageContactCards 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCards = wire.MessageContactCards
+
+// MessageContactCardsHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsHistoryWebhookEvent = wire.MessageContactCardsHistoryWebhookEvent
+
+// MessageContactCardsHistoryWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsHistoryWebhookEventType = wire.MessageContactCardsHistoryWebhookEventType
+
+// MessageContactCardsHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsHistoryWebhookEvent_Data = wire.MessageContactCardsHistoryWebhookEvent_Data
+
+// MessageContactCardsReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsReceivedWebhookEvent = wire.MessageContactCardsReceivedWebhookEvent
+
+// MessageContactCardsReceivedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsReceivedWebhookEventDataMessageType = wire.MessageContactCardsReceivedWebhookEventDataMessageType
+
+// MessageContactCardsReceivedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsReceivedWebhookEventType = wire.MessageContactCardsReceivedWebhookEventType
+
+// MessageContactCardsReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsReceivedWebhookEvent_Data = wire.MessageContactCardsReceivedWebhookEvent_Data
+
+// MessageContactCardsReceivedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsReceivedWebhookEvent_Data_Message = wire.MessageContactCardsReceivedWebhookEvent_Data_Message
+
+// MessageContactCardsType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsType = wire.MessageContactCardsType
+
+// MessageContactCardsUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsUpdatedWebhookEvent = wire.MessageContactCardsUpdatedWebhookEvent
+
+// MessageContactCardsUpdatedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsUpdatedWebhookEventDataMessageType = wire.MessageContactCardsUpdatedWebhookEventDataMessageType
+
+// MessageContactCardsUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsUpdatedWebhookEventType = wire.MessageContactCardsUpdatedWebhookEventType
+
+// MessageContactCardsUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsUpdatedWebhookEvent_Data = wire.MessageContactCardsUpdatedWebhookEvent_Data
+
+// MessageContactCardsUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageContactCardsUpdatedWebhookEvent_Data_Message = wire.MessageContactCardsUpdatedWebhookEvent_Data_Message
 
 // MessageEditRequest 是由公开 OpenAPI 契约生成的类型别名。
 type MessageEditRequest = wire.MessageEditRequest
 
+// MessageInteractive 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractive = wire.MessageInteractive
+
+// MessageInteractiveAttachment 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveAttachment = wire.MessageInteractiveAttachment
+
+// MessageInteractiveAttachmentMetadata 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveAttachmentMetadata = wire.MessageInteractiveAttachmentMetadata
+
+// MessageInteractiveAttachmentType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveAttachmentType = wire.MessageInteractiveAttachmentType
+
+// MessageInteractiveButton 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveButton = wire.MessageInteractiveButton
+
+// MessageInteractiveButtonType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveButtonType = wire.MessageInteractiveButtonType
+
+// MessageInteractiveHeader 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveHeader = wire.MessageInteractiveHeader
+
+// MessageInteractiveHeaderType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveHeaderType = wire.MessageInteractiveHeaderType
+
+// MessageInteractiveHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveHistoryWebhookEvent = wire.MessageInteractiveHistoryWebhookEvent
+
+// MessageInteractiveHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveHistoryWebhookEvent_Data = wire.MessageInteractiveHistoryWebhookEvent_Data
+
+// MessageInteractiveKind 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveKind = wire.MessageInteractiveKind
+
+// MessageInteractiveMessage 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveMessage = wire.MessageInteractiveMessage
+
+// MessageInteractiveMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveMessageType = wire.MessageInteractiveMessageType
+
+// MessageInteractiveReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveReceivedWebhookEvent = wire.MessageInteractiveReceivedWebhookEvent
+
+// MessageInteractiveReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveReceivedWebhookEvent_Data = wire.MessageInteractiveReceivedWebhookEvent_Data
+
+// MessageInteractiveResponse 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveResponse = wire.MessageInteractiveResponse
+
+// MessageInteractiveResponseKind 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveResponseKind = wire.MessageInteractiveResponseKind
+
+// MessageInteractiveUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveUpdatedWebhookEvent = wire.MessageInteractiveUpdatedWebhookEvent
+
+// MessageInteractiveUpdatedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveUpdatedWebhookEventDataMessageType = wire.MessageInteractiveUpdatedWebhookEventDataMessageType
+
+// MessageInteractiveUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveUpdatedWebhookEvent_Data = wire.MessageInteractiveUpdatedWebhookEvent_Data
+
+// MessageInteractiveUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveUpdatedWebhookEvent_Data_Message = wire.MessageInteractiveUpdatedWebhookEvent_Data_Message
+
+// MessageInteractiveWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveWebhookEvent = wire.MessageInteractiveWebhookEvent
+
+// MessageInteractiveWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveWebhookEventType = wire.MessageInteractiveWebhookEventType
+
+// MessageInteractiveWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveWebhookEvent_Data = wire.MessageInteractiveWebhookEvent_Data
+
+// MessageInteractiveWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageInteractiveWebhookEvent_Data_Message = wire.MessageInteractiveWebhookEvent_Data_Message
+
+// MessageLinkPreview 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreview = wire.MessageLinkPreview
+
+// MessageLinkPreviewHTTPURL 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewHTTPURL = wire.MessageLinkPreviewHTTPURL
+
+// MessageLinkPreviewHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewHistoryWebhookEvent = wire.MessageLinkPreviewHistoryWebhookEvent
+
+// MessageLinkPreviewHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewHistoryWebhookEvent_Data = wire.MessageLinkPreviewHistoryWebhookEvent_Data
+
+// MessageLinkPreviewMessage 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewMessage = wire.MessageLinkPreviewMessage
+
+// MessageLinkPreviewMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewMessageType = wire.MessageLinkPreviewMessageType
+
+// MessageLinkPreviewReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewReceivedWebhookEvent = wire.MessageLinkPreviewReceivedWebhookEvent
+
+// MessageLinkPreviewReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewReceivedWebhookEvent_Data = wire.MessageLinkPreviewReceivedWebhookEvent_Data
+
+// MessageLinkPreviewTextUpdate 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewTextUpdate = wire.MessageLinkPreviewTextUpdate
+
+// MessageLinkPreviewTextUpdateType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewTextUpdateType = wire.MessageLinkPreviewTextUpdateType
+
+// MessageLinkPreviewUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewUpdatedWebhookEvent = wire.MessageLinkPreviewUpdatedWebhookEvent
+
+// MessageLinkPreviewUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewUpdatedWebhookEvent_Data = wire.MessageLinkPreviewUpdatedWebhookEvent_Data
+
+// MessageLinkPreviewUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewUpdatedWebhookEvent_Data_Message = wire.MessageLinkPreviewUpdatedWebhookEvent_Data_Message
+
+// MessageLinkPreviewWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewWebhookEvent = wire.MessageLinkPreviewWebhookEvent
+
+// MessageLinkPreviewWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewWebhookEventType = wire.MessageLinkPreviewWebhookEventType
+
+// MessageLinkPreviewWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewWebhookEvent_Data = wire.MessageLinkPreviewWebhookEvent_Data
+
+// MessageLinkPreviewWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLinkPreviewWebhookEvent_Data_Message = wire.MessageLinkPreviewWebhookEvent_Data_Message
+
+// MessageLiveLocation 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocation = wire.MessageLiveLocation
+
+// MessageLiveLocationHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationHistoryWebhookEvent = wire.MessageLiveLocationHistoryWebhookEvent
+
+// MessageLiveLocationHistoryWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationHistoryWebhookEventType = wire.MessageLiveLocationHistoryWebhookEventType
+
+// MessageLiveLocationHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationHistoryWebhookEvent_Data = wire.MessageLiveLocationHistoryWebhookEvent_Data
+
+// MessageLiveLocationReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationReceivedWebhookEvent = wire.MessageLiveLocationReceivedWebhookEvent
+
+// MessageLiveLocationReceivedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationReceivedWebhookEventDataMessageType = wire.MessageLiveLocationReceivedWebhookEventDataMessageType
+
+// MessageLiveLocationReceivedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationReceivedWebhookEventType = wire.MessageLiveLocationReceivedWebhookEventType
+
+// MessageLiveLocationReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationReceivedWebhookEvent_Data = wire.MessageLiveLocationReceivedWebhookEvent_Data
+
+// MessageLiveLocationReceivedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationReceivedWebhookEvent_Data_Message = wire.MessageLiveLocationReceivedWebhookEvent_Data_Message
+
+// MessageLiveLocationType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationType = wire.MessageLiveLocationType
+
+// MessageLiveLocationUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationUpdatedWebhookEvent = wire.MessageLiveLocationUpdatedWebhookEvent
+
+// MessageLiveLocationUpdatedWebhookEventDataMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationUpdatedWebhookEventDataMessageType = wire.MessageLiveLocationUpdatedWebhookEventDataMessageType
+
+// MessageLiveLocationUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationUpdatedWebhookEventType = wire.MessageLiveLocationUpdatedWebhookEventType
+
+// MessageLiveLocationUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationUpdatedWebhookEvent_Data = wire.MessageLiveLocationUpdatedWebhookEvent_Data
+
+// MessageLiveLocationUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageLiveLocationUpdatedWebhookEvent_Data_Message = wire.MessageLiveLocationUpdatedWebhookEvent_Data_Message
+
+// MessageOrder 是由公开 OpenAPI 契约生成的类型别名。
+type MessageOrder = wire.MessageOrder
+
+// MessageOrderStatus 是由公开 OpenAPI 契约生成的类型别名。
+type MessageOrderStatus = wire.MessageOrderStatus
+
 // MessagePayload 是由公开 OpenAPI 契约生成的类型别名。
 type MessagePayload = wire.MessagePayload
 
-// MessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
-type MessagePayloadType = wire.MessagePayloadType
+// MessagePinChange 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinChange = wire.MessagePinChange
+
+// MessagePinChangeChangeType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinChangeChangeType = wire.MessagePinChangeChangeType
+
+// MessagePinChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinChangeKind = wire.MessagePinChangeKind
+
+// MessagePinMessage 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinMessage = wire.MessagePinMessage
+
+// MessagePinParticipant 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinParticipant = wire.MessagePinParticipant
+
+// MessagePinParticipantType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinParticipantType = wire.MessagePinParticipantType
 
 // MessagePinRequest 是由公开 OpenAPI 契约生成的类型别名。
 type MessagePinRequest = wire.MessagePinRequest
 
+// MessagePinState 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinState = wire.MessagePinState
+
+// MessagePinUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinUpdatedWebhookEvent = wire.MessagePinUpdatedWebhookEvent
+
+// MessagePinUpdatedWebhookEventDataConversationType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinUpdatedWebhookEventDataConversationType = wire.MessagePinUpdatedWebhookEventDataConversationType
+
+// MessagePinUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinUpdatedWebhookEventType = wire.MessagePinUpdatedWebhookEventType
+
+// MessagePinUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinUpdatedWebhookEvent_Data = wire.MessagePinUpdatedWebhookEvent_Data
+
+// MessagePinUpdatedWebhookEvent_Data_Conversation 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePinUpdatedWebhookEvent_Data_Conversation = wire.MessagePinUpdatedWebhookEvent_Data_Conversation
+
+// MessagePoll 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePoll = wire.MessagePoll
+
+// MessagePollHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollHistoryWebhookEvent = wire.MessagePollHistoryWebhookEvent
+
+// MessagePollHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollHistoryWebhookEvent_Data = wire.MessagePollHistoryWebhookEvent_Data
+
+// MessagePollMessage 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollMessage = wire.MessagePollMessage
+
+// MessagePollMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollMessageDirection = wire.MessagePollMessageDirection
+
+// MessagePollMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollMessageType = wire.MessagePollMessageType
+
+// MessagePollOption 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollOption = wire.MessagePollOption
+
+// MessagePollReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollReceivedWebhookEvent = wire.MessagePollReceivedWebhookEvent
+
+// MessagePollReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollReceivedWebhookEvent_Data = wire.MessagePollReceivedWebhookEvent_Data
+
+// MessagePollVote 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVote = wire.MessagePollVote
+
+// MessagePollVoteChange 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteChange = wire.MessagePollVoteChange
+
+// MessagePollVoteChangeChangeType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteChangeChangeType = wire.MessagePollVoteChangeChangeType
+
+// MessagePollVoteChangeKind 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteChangeKind = wire.MessagePollVoteChangeKind
+
+// MessagePollVoteMessage 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteMessage = wire.MessagePollVoteMessage
+
+// MessagePollVoteMessageType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteMessageType = wire.MessagePollVoteMessageType
+
+// MessagePollVoteReason 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteReason = wire.MessagePollVoteReason
+
+// MessagePollVoteStatus 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteStatus = wire.MessagePollVoteStatus
+
+// MessagePollVoteUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteUpdatedWebhookEvent = wire.MessagePollVoteUpdatedWebhookEvent
+
+// MessagePollVoteUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollVoteUpdatedWebhookEventType = wire.MessagePollVoteUpdatedWebhookEventType
+
+// MessagePollWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollWebhookEvent = wire.MessagePollWebhookEvent
+
+// MessagePollWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollWebhookEventType = wire.MessagePollWebhookEventType
+
+// MessagePollWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollWebhookEvent_Data = wire.MessagePollWebhookEvent_Data
+
+// MessagePollWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessagePollWebhookEvent_Data_Message = wire.MessagePollWebhookEvent_Data_Message
+
+// MessageProduct 是由公开 OpenAPI 契约生成的类型别名。
+type MessageProduct = wire.MessageProduct
+
 // MessageReactionRequest 是由公开 OpenAPI 契约生成的类型别名。
 type MessageReactionRequest = wire.MessageReactionRequest
+
+// MessageReferral 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferral = wire.MessageReferral
+
+// MessageReferralHistoryWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralHistoryWebhookEvent = wire.MessageReferralHistoryWebhookEvent
+
+// MessageReferralHistoryWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralHistoryWebhookEventType = wire.MessageReferralHistoryWebhookEventType
+
+// MessageReferralHistoryWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralHistoryWebhookEvent_Data = wire.MessageReferralHistoryWebhookEvent_Data
+
+// MessageReferralMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralMediaType = wire.MessageReferralMediaType
+
+// MessageReferralProviderExtensions 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralProviderExtensions = wire.MessageReferralProviderExtensions
+
+// MessageReferralReceivedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEvent = wire.MessageReferralReceivedWebhookEvent
+
+// MessageReferralReceivedWebhookEventDataMessageReferralMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEventDataMessageReferralMediaType = wire.MessageReferralReceivedWebhookEventDataMessageReferralMediaType
+
+// MessageReferralReceivedWebhookEventDataMessageReferralSource 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEventDataMessageReferralSource = wire.MessageReferralReceivedWebhookEventDataMessageReferralSource
+
+// MessageReferralReceivedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEventType = wire.MessageReferralReceivedWebhookEventType
+
+// MessageReferralReceivedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEvent_Data = wire.MessageReferralReceivedWebhookEvent_Data
+
+// MessageReferralReceivedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralReceivedWebhookEvent_Data_Message = wire.MessageReferralReceivedWebhookEvent_Data_Message
+
+// MessageReferralSource 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralSource = wire.MessageReferralSource
+
+// MessageReferralUpdatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEvent = wire.MessageReferralUpdatedWebhookEvent
+
+// MessageReferralUpdatedWebhookEventDataMessageReferralMediaType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEventDataMessageReferralMediaType = wire.MessageReferralUpdatedWebhookEventDataMessageReferralMediaType
+
+// MessageReferralUpdatedWebhookEventDataMessageReferralSource 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEventDataMessageReferralSource = wire.MessageReferralUpdatedWebhookEventDataMessageReferralSource
+
+// MessageReferralUpdatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEventType = wire.MessageReferralUpdatedWebhookEventType
+
+// MessageReferralUpdatedWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEvent_Data = wire.MessageReferralUpdatedWebhookEvent_Data
+
+// MessageReferralUpdatedWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralUpdatedWebhookEvent_Data_Message = wire.MessageReferralUpdatedWebhookEvent_Data_Message
+
+// MessageReferralWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralWebhookEvent = wire.MessageReferralWebhookEvent
+
+// MessageReferralWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralWebhookEventType = wire.MessageReferralWebhookEventType
+
+// MessageReferralWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type MessageReferralWebhookEvent_Data = wire.MessageReferralWebhookEvent_Data
 
 // MessageRevokeRequest 是由公开 OpenAPI 契约生成的类型别名。
 type MessageRevokeRequest = wire.MessageRevokeRequest
 
 // MessageTargetRequest 是由公开 OpenAPI 契约生成的类型别名。
 type MessageTargetRequest = wire.MessageTargetRequest
+
+// MessageWithOptionalCommerce 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalCommerce = wire.MessageWithOptionalCommerce
+
+// MessageWithOptionalContactCards 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalContactCards = wire.MessageWithOptionalContactCards
+
+// MessageWithOptionalInteractive 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalInteractive = wire.MessageWithOptionalInteractive
+
+// MessageWithOptionalLinkPreview 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalLinkPreview = wire.MessageWithOptionalLinkPreview
+
+// MessageWithOptionalLiveLocation 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalLiveLocation = wire.MessageWithOptionalLiveLocation
+
+// MessageWithOptionalPoll 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalPoll = wire.MessageWithOptionalPoll
+
+// MessageWithOptionalReferral 是由公开 OpenAPI 契约生成的类型别名。
+type MessageWithOptionalReferral = wire.MessageWithOptionalReferral
 
 // MuteConversationRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type MuteConversationRequestBody = wire.MuteConversationJSONRequestBody
@@ -296,23 +1367,95 @@ type OkData = wire.OkData
 // OkDataOk 是由公开 OpenAPI 契约生成的类型别名。
 type OkDataOk = wire.OkDataOk
 
+// PasskeyResponseRequest 是由公开 OpenAPI 契约生成的类型别名。
+type PasskeyResponseRequest = wire.PasskeyResponseRequest
+
 // PinConversationRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type PinConversationRequestBody = wire.PinConversationJSONRequestBody
 
 // PinMessageRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type PinMessageRequestBody = wire.PinMessageJSONRequestBody
 
+// PollMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type PollMessagePayload = wire.PollMessagePayload
+
+// PollMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type PollMessagePayloadType = wire.PollMessagePayloadType
+
+// Post 是由公开 OpenAPI 契约生成的类型别名。
+type Post = wire.Post
+
+// PostAuthor 是由公开 OpenAPI 契约生成的类型别名。
+type PostAuthor = wire.PostAuthor
+
+// PostComment 是由公开 OpenAPI 契约生成的类型别名。
+type PostComment = wire.PostComment
+
+// PostCommentCreatedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentCreatedWebhookEvent = wire.PostCommentCreatedWebhookEvent
+
+// PostCommentCreatedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentCreatedWebhookEventProvider = wire.PostCommentCreatedWebhookEventProvider
+
+// PostCommentCreatedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentCreatedWebhookEventType = wire.PostCommentCreatedWebhookEventType
+
+// PostCommentListRequest 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentListRequest = wire.PostCommentListRequest
+
+// PostCommentListResult 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentListResult = wire.PostCommentListResult
+
+// PostCommentReplyRequest 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentReplyRequest = wire.PostCommentReplyRequest
+
+// PostCommentReplyResult 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentReplyResult = wire.PostCommentReplyResult
+
+// PostCommentReplyResultStatus 是由公开 OpenAPI 契约生成的类型别名。
+type PostCommentReplyResultStatus = wire.PostCommentReplyResultStatus
+
+// PostInfoRequest 是由公开 OpenAPI 契约生成的类型别名。
+type PostInfoRequest = wire.PostInfoRequest
+
+// PostListResult 是由公开 OpenAPI 契约生成的类型别名。
+type PostListResult = wire.PostListResult
+
+// PostResourceID 是由公开 OpenAPI 契约生成的类型别名。
+type PostResourceID = wire.PostResourceID
+
 // Provider 是由公开 OpenAPI 契约生成的类型别名。
 type Provider = wire.Provider
+
+// ProviderAuthSession 是由公开 OpenAPI 契约生成的类型别名。
+type ProviderAuthSession = wire.ProviderAuthSession
+
+// ProviderInputName 是由公开 OpenAPI 契约生成的类型别名。
+type ProviderInputName = wire.ProviderInputName
 
 // ProviderName 是由公开 OpenAPI 契约生成的类型别名。
 type ProviderName = wire.ProviderName
 
+// ProviderProfile 是由公开 OpenAPI 契约生成的类型别名。
+type ProviderProfile = wire.ProviderProfile
+
 // ProviderRegionsResponse 是由公开 OpenAPI 契约生成的类型别名。
 type ProviderRegionsResponse = wire.ProviderRegionsResponse
 
+// QRAuthCheckData 是由公开 OpenAPI 契约生成的类型别名。
+type QRAuthCheckData = wire.QRAuthCheckData
+
+// QRAuthCheckDataAction 是由公开 OpenAPI 契约生成的类型别名。
+type QRAuthCheckDataAction = wire.QRAuthCheckDataAction
+
+// QRAuthCheckPayload 是由公开 OpenAPI 契约生成的类型别名。
+type QRAuthCheckPayload = wire.QRAuthCheckPayload
+
 // ReactMessageRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type ReactMessageRequestBody = wire.ReactMessageJSONRequestBody
+
+// ReceivedContactCard 是由公开 OpenAPI 契约生成的类型别名。
+type ReceivedContactCard = wire.ReceivedContactCard
 
 // Recipient 是由公开 OpenAPI 契约生成的类型别名。
 type Recipient = wire.Recipient
@@ -326,8 +1469,14 @@ type RefreshAccountRuntimeRequestBody = wire.RefreshAccountRuntimeJSONRequestBod
 // RegionAvailability 是由公开 OpenAPI 契约生成的类型别名。
 type RegionAvailability = wire.RegionAvailability
 
+// ReplyPostCommentRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type ReplyPostCommentRequestBody = wire.ReplyPostCommentJSONRequestBody
+
 // ReplyTo 是由公开 OpenAPI 契约生成的类型别名。
 type ReplyTo = wire.ReplyTo
+
+// RequestConversationHistoryRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type RequestConversationHistoryRequestBody = wire.RequestConversationHistoryJSONRequestBody
 
 // ResponseMeta 是由公开 OpenAPI 契约生成的类型别名。
 type ResponseMeta = wire.ResponseMeta
@@ -347,6 +1496,18 @@ type RuntimeActionResultAction = wire.RuntimeActionResultAction
 // RuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
 type RuntimeStatus = wire.RuntimeStatus
 
+// SendMessageLinkPreview 是由公开 OpenAPI 契约生成的类型别名。
+type SendMessageLinkPreview = wire.SendMessageLinkPreview
+
+// SendMessagePoll 是由公开 OpenAPI 契约生成的类型别名。
+type SendMessagePoll = wire.SendMessagePoll
+
+// SendMessagePollOption 是由公开 OpenAPI 契约生成的类型别名。
+type SendMessagePollOption = wire.SendMessagePollOption
+
+// SendMessageProviderData 是由公开 OpenAPI 契约生成的类型别名。
+type SendMessageProviderData = wire.SendMessageProviderData
+
 // SendMessageRequest 是由公开 OpenAPI 契约生成的类型别名。
 type SendMessageRequest = wire.SendMessageRequest
 
@@ -355,6 +1516,9 @@ type SendMessageRequestBody = wire.SendMessageJSONRequestBody
 
 // SendMessageResult 是由公开 OpenAPI 契约生成的类型别名。
 type SendMessageResult = wire.SendMessageResult
+
+// SessionImportRequest 是由公开 OpenAPI 契约生成的类型别名。
+type SessionImportRequest = wire.SessionImportRequest
 
 // SetContactNoteRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type SetContactNoteRequestBody = wire.SetContactNoteJSONRequestBody
@@ -377,6 +1541,21 @@ type StartAccountQRAuthRequestBody = wire.StartAccountQRAuthJSONRequestBody
 // StartAccountRuntimeRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type StartAccountRuntimeRequestBody = wire.StartAccountRuntimeJSONRequestBody
 
+// StartCodeAuthData 是由公开 OpenAPI 契约生成的类型别名。
+type StartCodeAuthData = wire.StartCodeAuthData
+
+// StartCodeAuthDataAction 是由公开 OpenAPI 契约生成的类型别名。
+type StartCodeAuthDataAction = wire.StartCodeAuthDataAction
+
+// StartCodeAuthData_AuthPayload 是由公开 OpenAPI 契约生成的类型别名。
+type StartCodeAuthData_AuthPayload = wire.StartCodeAuthData_AuthPayload
+
+// StickerMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type StickerMessagePayload = wire.StickerMessagePayload
+
+// StickerMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type StickerMessagePayloadType = wire.StickerMessagePayloadType
+
 // StopAccountRuntimeRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type StopAccountRuntimeRequestBody = wire.StopAccountRuntimeJSONRequestBody
 
@@ -385,6 +1564,15 @@ type SubmitAccountAuthCodeRequestBody = wire.SubmitAccountAuthCodeJSONRequestBod
 
 // SubmitAccountAuthPasswordRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type SubmitAccountAuthPasswordRequestBody = wire.SubmitAccountAuthPasswordJSONRequestBody
+
+// SubmitAccountPasskeyResponseRequestBody 是由公开 OpenAPI 契约生成的类型别名。
+type SubmitAccountPasskeyResponseRequestBody = wire.SubmitAccountPasskeyResponseJSONRequestBody
+
+// TextMessagePayload 是由公开 OpenAPI 契约生成的类型别名。
+type TextMessagePayload = wire.TextMessagePayload
+
+// TextMessagePayloadType 是由公开 OpenAPI 契约生成的类型别名。
+type TextMessagePayloadType = wire.TextMessagePayloadType
 
 // UnblockContactRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type UnblockContactRequestBody = wire.UnblockContactJSONRequestBody
@@ -419,14 +1607,92 @@ type UpdateWorkspaceRequestBody = wire.UpdateWorkspaceJSONRequestBody
 // UpsertConversationLabelRequestBody 是由公开 OpenAPI 契约生成的类型别名。
 type UpsertConversationLabelRequestBody = wire.UpsertConversationLabelJSONRequestBody
 
+// WebhookAccountIDQuery 是由公开 OpenAPI 契约生成的类型别名。
+type WebhookAccountIDQuery = wire.WebhookAccountIDQuery
+
 // WebhookEndpoint 是由公开 OpenAPI 契约生成的类型别名。
 type WebhookEndpoint = wire.WebhookEndpoint
 
 // WebhookEndpointRequest 是由公开 OpenAPI 契约生成的类型别名。
 type WebhookEndpointRequest = wire.WebhookEndpointRequest
 
+// WebhookEndpointRequestStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WebhookEndpointRequestStatus = wire.WebhookEndpointRequestStatus
+
+// WebhookEndpointStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WebhookEndpointStatus = wire.WebhookEndpointStatus
+
+// WhatsAppAccountAuthFailedWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEvent = wire.WhatsAppAccountAuthFailedWebhookEvent
+
+// WhatsAppAccountAuthFailedWebhookEventDataAuthStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataAuthStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataAuthStatus
+
+// WhatsAppAccountAuthFailedWebhookEventDataErrorCode 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataErrorCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorCode
+
+// WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode
+
+// WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatus
+
+// WhatsAppAccountAuthFailedWebhookEventDataEventKind 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataEventKind = wire.WhatsAppAccountAuthFailedWebhookEventDataEventKind
+
+// WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatus
+
+// WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatus
+
+// WhatsAppAccountAuthFailedWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventProvider = wire.WhatsAppAccountAuthFailedWebhookEventProvider
+
+// WhatsAppAccountAuthFailedWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppAccountAuthFailedWebhookEventType = wire.WhatsAppAccountAuthFailedWebhookEventType
+
+// WhatsAppContactCreateOptions 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppContactCreateOptions = wire.WhatsAppContactCreateOptions
+
+// WhatsAppDeviceID 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppDeviceID = wire.WhatsAppDeviceID
+
+// WhatsAppMessageDeviceSender 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceSender = wire.WhatsAppMessageDeviceSender
+
+// WhatsAppMessageDeviceWebhookEvent 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEvent = wire.WhatsAppMessageDeviceWebhookEvent
+
+// WhatsAppMessageDeviceWebhookEventDataMessageDirection 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEventDataMessageDirection = wire.WhatsAppMessageDeviceWebhookEventDataMessageDirection
+
+// WhatsAppMessageDeviceWebhookEventProvider 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEventProvider = wire.WhatsAppMessageDeviceWebhookEventProvider
+
+// WhatsAppMessageDeviceWebhookEventType 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEventType = wire.WhatsAppMessageDeviceWebhookEventType
+
+// WhatsAppMessageDeviceWebhookEvent_Data 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEvent_Data = wire.WhatsAppMessageDeviceWebhookEvent_Data
+
+// WhatsAppMessageDeviceWebhookEvent_Data_Account 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEvent_Data_Account = wire.WhatsAppMessageDeviceWebhookEvent_Data_Account
+
+// WhatsAppMessageDeviceWebhookEvent_Data_Message 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageDeviceWebhookEvent_Data_Message = wire.WhatsAppMessageDeviceWebhookEvent_Data_Message
+
+// WhatsAppMessageReferralExtension 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppMessageReferralExtension = wire.WhatsAppMessageReferralExtension
+
+// WhatsAppProtocolSessionImportParams 是由公开 OpenAPI 契约生成的类型别名。
+type WhatsAppProtocolSessionImportParams = wire.WhatsAppProtocolSessionImportParams
+
 // Workspace 是由公开 OpenAPI 契约生成的类型别名。
 type Workspace = wire.Workspace
+
+// WorkspaceStatus 是由公开 OpenAPI 契约生成的类型别名。
+type WorkspaceStatus = wire.WorkspaceStatus
 
 // WorkspaceUpdateRequest 是由公开 OpenAPI 契约生成的类型别名。
 type WorkspaceUpdateRequest = wire.WorkspaceUpdateRequest
@@ -440,6 +1706,292 @@ const (
 	APIKeyStatusUpdateRequestStatusActive APIKeyStatusUpdateRequestStatus = wire.APIKeyStatusUpdateRequestStatusActive
 	// APIKeyStatusUpdateRequestStatusInactive 是 APIKeyStatusUpdateRequestStatus 的受支持枚举值。
 	APIKeyStatusUpdateRequestStatusInactive APIKeyStatusUpdateRequestStatus = wire.APIKeyStatusUpdateRequestStatusInactive
+	// AccountBillingCurrencyUSD 是 AccountBillingCurrency 的受支持枚举值。
+	AccountBillingCurrencyUSD AccountBillingCurrency = wire.USD
+	// AccountBillingStateACTIVE 是 AccountBillingState 的受支持枚举值。
+	AccountBillingStateACTIVE AccountBillingState = wire.AccountBillingStateACTIVE
+	// AccountBillingStateCOMPENSATED 是 AccountBillingState 的受支持枚举值。
+	AccountBillingStateCOMPENSATED AccountBillingState = wire.AccountBillingStateCOMPENSATED
+	// AccountBillingStateDELETED 是 AccountBillingState 的受支持枚举值。
+	AccountBillingStateDELETED AccountBillingState = wire.AccountBillingStateDELETED
+	// AccountBillingStateDELETING 是 AccountBillingState 的受支持枚举值。
+	AccountBillingStateDELETING AccountBillingState = wire.AccountBillingStateDELETING
+	// AccountBillingStateREVIEW 是 AccountBillingState 的受支持枚举值。
+	AccountBillingStateREVIEW AccountBillingState = wire.AccountBillingStateREVIEW
+	// AccountCreateRequestAuthModeCode 是 AccountCreateRequestAuthMode 的受支持枚举值。
+	AccountCreateRequestAuthModeCode AccountCreateRequestAuthMode = wire.AccountCreateRequestAuthModeCode
+	// AccountCreateRequestAuthModeQrcode 是 AccountCreateRequestAuthMode 的受支持枚举值。
+	AccountCreateRequestAuthModeQrcode AccountCreateRequestAuthMode = wire.AccountCreateRequestAuthModeQrcode
+	// AccountCreateRequestAuthModeSession 是 AccountCreateRequestAuthMode 的受支持枚举值。
+	AccountCreateRequestAuthModeSession AccountCreateRequestAuthMode = wire.AccountCreateRequestAuthModeSession
+	// AccountOperationKindCOMPENSATE 是 AccountOperationKind 的受支持枚举值。
+	AccountOperationKindCOMPENSATE AccountOperationKind = wire.COMPENSATE
+	// AccountOperationKindCREATE 是 AccountOperationKind 的受支持枚举值。
+	AccountOperationKindCREATE AccountOperationKind = wire.CREATE
+	// AccountOperationKindDELETE 是 AccountOperationKind 的受支持枚举值。
+	AccountOperationKindDELETE AccountOperationKind = wire.DELETE
+	// AccountOperationKindQUOTE 是 AccountOperationKind 的受支持枚举值。
+	AccountOperationKindQUOTE AccountOperationKind = wire.QUOTE
+	// AccountOperationStateCONSUMED 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateCONSUMED AccountOperationState = wire.AccountOperationStateCONSUMED
+	// AccountOperationStateEXPIRED 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateEXPIRED AccountOperationState = wire.AccountOperationStateEXPIRED
+	// AccountOperationStateFAILED 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateFAILED AccountOperationState = wire.AccountOperationStateFAILED
+	// AccountOperationStatePENDING 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStatePENDING AccountOperationState = wire.AccountOperationStatePENDING
+	// AccountOperationStatePROCESSING 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStatePROCESSING AccountOperationState = wire.AccountOperationStatePROCESSING
+	// AccountOperationStateQUOTED 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateQUOTED AccountOperationState = wire.AccountOperationStateQUOTED
+	// AccountOperationStateREVIEW 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateREVIEW AccountOperationState = wire.AccountOperationStateREVIEW
+	// AccountOperationStateSUCCEEDED 是 AccountOperationState 的受支持枚举值。
+	AccountOperationStateSUCCEEDED AccountOperationState = wire.AccountOperationStateSUCCEEDED
+	// AccountProfileUpdatedWebhookEventDataEventChangedFieldsAvatarURL 是 AccountProfileUpdatedWebhookEventDataEventChangedFields 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventChangedFieldsAvatarURL AccountProfileUpdatedWebhookEventDataEventChangedFields = wire.AvatarURL
+	// AccountProfileUpdatedWebhookEventDataEventChangedFieldsBusinessName 是 AccountProfileUpdatedWebhookEventDataEventChangedFields 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventChangedFieldsBusinessName AccountProfileUpdatedWebhookEventDataEventChangedFields = wire.BusinessName
+	// AccountProfileUpdatedWebhookEventDataEventChangedFieldsDisplayName 是 AccountProfileUpdatedWebhookEventDataEventChangedFields 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventChangedFieldsDisplayName AccountProfileUpdatedWebhookEventDataEventChangedFields = wire.DisplayName
+	// AccountProfileUpdatedWebhookEventDataEventChangedFieldsPushName 是 AccountProfileUpdatedWebhookEventDataEventChangedFields 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventChangedFieldsPushName AccountProfileUpdatedWebhookEventDataEventChangedFields = wire.PushName
+	// AccountProfileUpdatedWebhookEventDataEventKindAccountProfileUpdated 是 AccountProfileUpdatedWebhookEventDataEventKind 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventKindAccountProfileUpdated AccountProfileUpdatedWebhookEventDataEventKind = wire.AccountProfileUpdatedWebhookEventDataEventKindAccountProfileUpdated
+	// AccountProfileUpdatedWebhookEventDataEventSourceAvatarChange 是 AccountProfileUpdatedWebhookEventDataEventSource 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventSourceAvatarChange AccountProfileUpdatedWebhookEventDataEventSource = wire.AccountProfileUpdatedWebhookEventDataEventSourceAvatarChange
+	// AccountProfileUpdatedWebhookEventDataEventSourceFullSync 是 AccountProfileUpdatedWebhookEventDataEventSource 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventSourceFullSync AccountProfileUpdatedWebhookEventDataEventSource = wire.AccountProfileUpdatedWebhookEventDataEventSourceFullSync
+	// AccountProfileUpdatedWebhookEventDataEventSourceSelfRename 是 AccountProfileUpdatedWebhookEventDataEventSource 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventDataEventSourceSelfRename AccountProfileUpdatedWebhookEventDataEventSource = wire.AccountProfileUpdatedWebhookEventDataEventSourceSelfRename
+	// AccountProfileUpdatedWebhookEventTypeAccountProfileUpdated 是 AccountProfileUpdatedWebhookEventType 的受支持枚举值。
+	AccountProfileUpdatedWebhookEventTypeAccountProfileUpdated AccountProfileUpdatedWebhookEventType = wire.AccountProfileUpdatedWebhookEventTypeAccountProfileUpdated
+	// AccountStartedWebhookEventDataEventKindAccountStarted 是 AccountStartedWebhookEventDataEventKind 的受支持枚举值。
+	AccountStartedWebhookEventDataEventKindAccountStarted AccountStartedWebhookEventDataEventKind = wire.AccountStartedWebhookEventDataEventKindAccountStarted
+	// AccountStartedWebhookEventDataEventRuntimeStatusRunning 是 AccountStartedWebhookEventDataEventRuntimeStatus 的受支持枚举值。
+	AccountStartedWebhookEventDataEventRuntimeStatusRunning AccountStartedWebhookEventDataEventRuntimeStatus = wire.AccountStartedWebhookEventDataEventRuntimeStatusRunning
+	// AccountStartedWebhookEventDataRuntimeStatusRunning 是 AccountStartedWebhookEventDataRuntimeStatus 的受支持枚举值。
+	AccountStartedWebhookEventDataRuntimeStatusRunning AccountStartedWebhookEventDataRuntimeStatus = wire.AccountStartedWebhookEventDataRuntimeStatusRunning
+	// AccountStartedWebhookEventTypeAccountStarted 是 AccountStartedWebhookEventType 的受支持枚举值。
+	AccountStartedWebhookEventTypeAccountStarted AccountStartedWebhookEventType = wire.AccountStartedWebhookEventTypeAccountStarted
+	// AccountUpdateRequestAuthModeCode 是 AccountUpdateRequestAuthMode 的受支持枚举值。
+	AccountUpdateRequestAuthModeCode AccountUpdateRequestAuthMode = wire.AccountUpdateRequestAuthModeCode
+	// AccountUpdateRequestAuthModeQrcode 是 AccountUpdateRequestAuthMode 的受支持枚举值。
+	AccountUpdateRequestAuthModeQrcode AccountUpdateRequestAuthMode = wire.AccountUpdateRequestAuthModeQrcode
+	// AccountUpdateRequestAuthModeSession 是 AccountUpdateRequestAuthMode 的受支持枚举值。
+	AccountUpdateRequestAuthModeSession AccountUpdateRequestAuthMode = wire.AccountUpdateRequestAuthModeSession
+	// AccountWebhookErrorCodeAccountAuthFailed 是 AccountWebhookErrorCode 的受支持枚举值。
+	AccountWebhookErrorCodeAccountAuthFailed AccountWebhookErrorCode = wire.AccountWebhookErrorCodeAccountAuthFailed
+	// AccountWebhookErrorCodeAccountLoggedOut 是 AccountWebhookErrorCode 的受支持枚举值。
+	AccountWebhookErrorCodeAccountLoggedOut AccountWebhookErrorCode = wire.AccountWebhookErrorCodeAccountLoggedOut
+	// AccountWebhookErrorCodeAccountRestricted 是 AccountWebhookErrorCode 的受支持枚举值。
+	AccountWebhookErrorCodeAccountRestricted AccountWebhookErrorCode = wire.AccountWebhookErrorCodeAccountRestricted
+	// AccountWebhookErrorNumericCodeN20100 是 AccountWebhookErrorNumericCode 的受支持枚举值。
+	AccountWebhookErrorNumericCodeN20100 AccountWebhookErrorNumericCode = wire.AccountWebhookErrorNumericCodeN20100
+	// AccountWebhookErrorNumericCodeN20101 是 AccountWebhookErrorNumericCode 的受支持枚举值。
+	AccountWebhookErrorNumericCodeN20101 AccountWebhookErrorNumericCode = wire.AccountWebhookErrorNumericCodeN20101
+	// AccountWebhookErrorNumericCodeN20102 是 AccountWebhookErrorNumericCode 的受支持枚举值。
+	AccountWebhookErrorNumericCodeN20102 AccountWebhookErrorNumericCode = wire.AccountWebhookErrorNumericCodeN20102
+	// ActiveCallDataDirectionInbound 是 ActiveCallDataDirection 的受支持枚举值。
+	ActiveCallDataDirectionInbound ActiveCallDataDirection = wire.ActiveCallDataDirectionInbound
+	// ActiveCallDataDirectionOutbound 是 ActiveCallDataDirection 的受支持枚举值。
+	ActiveCallDataDirectionOutbound ActiveCallDataDirection = wire.ActiveCallDataDirectionOutbound
+	// ActiveCallDataMediaTypeVideo 是 ActiveCallDataMediaType 的受支持枚举值。
+	ActiveCallDataMediaTypeVideo ActiveCallDataMediaType = wire.ActiveCallDataMediaTypeVideo
+	// ActiveCallDataMediaTypeVoice 是 ActiveCallDataMediaType 的受支持枚举值。
+	ActiveCallDataMediaTypeVoice ActiveCallDataMediaType = wire.ActiveCallDataMediaTypeVoice
+	// ActiveCallDataStateActive 是 ActiveCallDataState 的受支持枚举值。
+	ActiveCallDataStateActive ActiveCallDataState = wire.ActiveCallDataStateActive
+	// ActiveCallDataStateConnecting 是 ActiveCallDataState 的受支持枚举值。
+	ActiveCallDataStateConnecting ActiveCallDataState = wire.ActiveCallDataStateConnecting
+	// ActiveCallDataStateDialing 是 ActiveCallDataState 的受支持枚举值。
+	ActiveCallDataStateDialing ActiveCallDataState = wire.ActiveCallDataStateDialing
+	// ActiveCallDataStatePreparing 是 ActiveCallDataState 的受支持枚举值。
+	ActiveCallDataStatePreparing ActiveCallDataState = wire.ActiveCallDataStatePreparing
+	// ActiveCallDataStateRinging 是 ActiveCallDataState 的受支持枚举值。
+	ActiveCallDataStateRinging ActiveCallDataState = wire.ActiveCallDataStateRinging
+	// CallAnsweredWebhookEventTypeCallAnswered 是 CallAnsweredWebhookEventType 的受支持枚举值。
+	CallAnsweredWebhookEventTypeCallAnswered CallAnsweredWebhookEventType = wire.CallAnsweredWebhookEventTypeCallAnswered
+	// CallEndedWebhookEventDataReasonAnswerFailed 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonAnswerFailed CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonAnswerFailed
+	// CallEndedWebhookEventDataReasonCallerCancelled 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonCallerCancelled CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonCallerCancelled
+	// CallEndedWebhookEventDataReasonDeclined 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonDeclined CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonDeclined
+	// CallEndedWebhookEventDataReasonDialFailed 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonDialFailed CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonDialFailed
+	// CallEndedWebhookEventDataReasonExpired 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonExpired CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonExpired
+	// CallEndedWebhookEventDataReasonLocalHangup 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonLocalHangup CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonLocalHangup
+	// CallEndedWebhookEventDataReasonMediaFailed 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonMediaFailed CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonMediaFailed
+	// CallEndedWebhookEventDataReasonNoAnswer 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonNoAnswer CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonNoAnswer
+	// CallEndedWebhookEventDataReasonProviderDisconnected 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonProviderDisconnected CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonProviderDisconnected
+	// CallEndedWebhookEventDataReasonRemoteBusy 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonRemoteBusy CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonRemoteBusy
+	// CallEndedWebhookEventDataReasonRemoteHangup 是 CallEndedWebhookEventDataReason 的受支持枚举值。
+	CallEndedWebhookEventDataReasonRemoteHangup CallEndedWebhookEventDataReason = wire.CallEndedWebhookEventDataReasonRemoteHangup
+	// CallEndedWebhookEventTypeCallEnded 是 CallEndedWebhookEventType 的受支持枚举值。
+	CallEndedWebhookEventTypeCallEnded CallEndedWebhookEventType = wire.CallEndedWebhookEventTypeCallEnded
+	// CallEventCallDirectionInbound 是 CallEventCallDirection 的受支持枚举值。
+	CallEventCallDirectionInbound CallEventCallDirection = wire.CallEventCallDirectionInbound
+	// CallEventCallDirectionOutbound 是 CallEventCallDirection 的受支持枚举值。
+	CallEventCallDirectionOutbound CallEventCallDirection = wire.CallEventCallDirectionOutbound
+	// CallEventCallMediaTypeVideo 是 CallEventCallMediaType 的受支持枚举值。
+	CallEventCallMediaTypeVideo CallEventCallMediaType = wire.CallEventCallMediaTypeVideo
+	// CallEventCallMediaTypeVoice 是 CallEventCallMediaType 的受支持枚举值。
+	CallEventCallMediaTypeVoice CallEventCallMediaType = wire.CallEventCallMediaTypeVoice
+	// CallEventCallStateActive 是 CallEventCallState 的受支持枚举值。
+	CallEventCallStateActive CallEventCallState = wire.CallEventCallStateActive
+	// CallEventCallStateEnded 是 CallEventCallState 的受支持枚举值。
+	CallEventCallStateEnded CallEventCallState = wire.CallEventCallStateEnded
+	// CallEventCallStateRinging 是 CallEventCallState 的受支持枚举值。
+	CallEventCallStateRinging CallEventCallState = wire.CallEventCallStateRinging
+	// CallIncomingWebhookEventDataCallDirectionInbound 是 CallIncomingWebhookEventDataCallDirection 的受支持枚举值。
+	CallIncomingWebhookEventDataCallDirectionInbound CallIncomingWebhookEventDataCallDirection = wire.CallIncomingWebhookEventDataCallDirectionInbound
+	// CallIncomingWebhookEventDataCallMediaTypeVideo 是 CallIncomingWebhookEventDataCallMediaType 的受支持枚举值。
+	CallIncomingWebhookEventDataCallMediaTypeVideo CallIncomingWebhookEventDataCallMediaType = wire.CallIncomingWebhookEventDataCallMediaTypeVideo
+	// CallIncomingWebhookEventDataCallMediaTypeVoice 是 CallIncomingWebhookEventDataCallMediaType 的受支持枚举值。
+	CallIncomingWebhookEventDataCallMediaTypeVoice CallIncomingWebhookEventDataCallMediaType = wire.CallIncomingWebhookEventDataCallMediaTypeVoice
+	// CallIncomingWebhookEventDataCallStateRinging 是 CallIncomingWebhookEventDataCallState 的受支持枚举值。
+	CallIncomingWebhookEventDataCallStateRinging CallIncomingWebhookEventDataCallState = wire.CallIncomingWebhookEventDataCallStateRinging
+	// CallIncomingWebhookEventTypeCallIncoming 是 CallIncomingWebhookEventType 的受支持枚举值。
+	CallIncomingWebhookEventTypeCallIncoming CallIncomingWebhookEventType = wire.CallIncomingWebhookEventTypeCallIncoming
+	// CallMessageCallEndReasonRejectedElsewhere 是 CallMessageCallEndReason 的受支持枚举值。
+	CallMessageCallEndReasonRejectedElsewhere CallMessageCallEndReason = wire.CallMessageCallEndReasonRejectedElsewhere
+	// CallMessageCallEndReasonTimeout 是 CallMessageCallEndReason 的受支持枚举值。
+	CallMessageCallEndReasonTimeout CallMessageCallEndReason = wire.CallMessageCallEndReasonTimeout
+	// CallMessageCallEndedByRemote 是 CallMessageCallEndedBy 的受支持枚举值。
+	CallMessageCallEndedByRemote CallMessageCallEndedBy = wire.CallMessageCallEndedByRemote
+	// CallMessageCallMediaTypeAudio 是 CallMessageCallMediaType 的受支持枚举值。
+	CallMessageCallMediaTypeAudio CallMessageCallMediaType = wire.CallMessageCallMediaTypeAudio
+	// CallMessageCallMediaTypeVideo 是 CallMessageCallMediaType 的受支持枚举值。
+	CallMessageCallMediaTypeVideo CallMessageCallMediaType = wire.CallMessageCallMediaTypeVideo
+	// CallMessageCallStatusAccepted 是 CallMessageCallStatus 的受支持枚举值。
+	CallMessageCallStatusAccepted CallMessageCallStatus = wire.CallMessageCallStatusAccepted
+	// CallMessageCallStatusEnded 是 CallMessageCallStatus 的受支持枚举值。
+	CallMessageCallStatusEnded CallMessageCallStatus = wire.CallMessageCallStatusEnded
+	// CallMessageCallStatusOffered 是 CallMessageCallStatus 的受支持枚举值。
+	CallMessageCallStatusOffered CallMessageCallStatus = wire.CallMessageCallStatusOffered
+	// CallMessageDirectionInbound 是 CallMessageDirection 的受支持枚举值。
+	CallMessageDirectionInbound CallMessageDirection = wire.CallMessageDirectionInbound
+	// CallMessageDirectionOutbound 是 CallMessageDirection 的受支持枚举值。
+	CallMessageDirectionOutbound CallMessageDirection = wire.CallMessageDirectionOutbound
+	// CallMessageReceivedWebhookEventDataConversationTypeUser 是 CallMessageReceivedWebhookEventDataConversationType 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataConversationTypeUser CallMessageReceivedWebhookEventDataConversationType = wire.CallMessageReceivedWebhookEventDataConversationTypeUser
+	// CallMessageReceivedWebhookEventDataEventKindMessageReceived 是 CallMessageReceivedWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataEventKindMessageReceived CallMessageReceivedWebhookEventDataEventKind = wire.CallMessageReceivedWebhookEventDataEventKindMessageReceived
+	// CallMessageReceivedWebhookEventDataEventKindMessageUpdated 是 CallMessageReceivedWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataEventKindMessageUpdated CallMessageReceivedWebhookEventDataEventKind = wire.CallMessageReceivedWebhookEventDataEventKindMessageUpdated
+	// CallMessageReceivedWebhookEventDataMessageCallEndReasonRejectedElsewhere 是 CallMessageReceivedWebhookEventDataMessageCallEndReason 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallEndReasonRejectedElsewhere CallMessageReceivedWebhookEventDataMessageCallEndReason = wire.CallMessageReceivedWebhookEventDataMessageCallEndReasonRejectedElsewhere
+	// CallMessageReceivedWebhookEventDataMessageCallEndReasonTimeout 是 CallMessageReceivedWebhookEventDataMessageCallEndReason 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallEndReasonTimeout CallMessageReceivedWebhookEventDataMessageCallEndReason = wire.CallMessageReceivedWebhookEventDataMessageCallEndReasonTimeout
+	// CallMessageReceivedWebhookEventDataMessageCallEndedByRemote 是 CallMessageReceivedWebhookEventDataMessageCallEndedBy 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallEndedByRemote CallMessageReceivedWebhookEventDataMessageCallEndedBy = wire.CallMessageReceivedWebhookEventDataMessageCallEndedByRemote
+	// CallMessageReceivedWebhookEventDataMessageCallMediaTypeAudio 是 CallMessageReceivedWebhookEventDataMessageCallMediaType 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallMediaTypeAudio CallMessageReceivedWebhookEventDataMessageCallMediaType = wire.CallMessageReceivedWebhookEventDataMessageCallMediaTypeAudio
+	// CallMessageReceivedWebhookEventDataMessageCallMediaTypeVideo 是 CallMessageReceivedWebhookEventDataMessageCallMediaType 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallMediaTypeVideo CallMessageReceivedWebhookEventDataMessageCallMediaType = wire.CallMessageReceivedWebhookEventDataMessageCallMediaTypeVideo
+	// CallMessageReceivedWebhookEventDataMessageCallStatusOffered 是 CallMessageReceivedWebhookEventDataMessageCallStatus 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageCallStatusOffered CallMessageReceivedWebhookEventDataMessageCallStatus = wire.CallMessageReceivedWebhookEventDataMessageCallStatusOffered
+	// CallMessageReceivedWebhookEventDataMessageDirectionInbound 是 CallMessageReceivedWebhookEventDataMessageDirection 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageDirectionInbound CallMessageReceivedWebhookEventDataMessageDirection = wire.CallMessageReceivedWebhookEventDataMessageDirectionInbound
+	// CallMessageReceivedWebhookEventDataMessageTypeCall 是 CallMessageReceivedWebhookEventDataMessageType 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataMessageTypeCall CallMessageReceivedWebhookEventDataMessageType = wire.CallMessageReceivedWebhookEventDataMessageTypeCall
+	// CallMessageReceivedWebhookEventDataSenderTypeUser 是 CallMessageReceivedWebhookEventDataSenderType 的受支持枚举值。
+	CallMessageReceivedWebhookEventDataSenderTypeUser CallMessageReceivedWebhookEventDataSenderType = wire.CallMessageReceivedWebhookEventDataSenderTypeUser
+	// CallMessageReceivedWebhookEventProviderWhatsapp 是 CallMessageReceivedWebhookEventProvider 的受支持枚举值。
+	CallMessageReceivedWebhookEventProviderWhatsapp CallMessageReceivedWebhookEventProvider = wire.CallMessageReceivedWebhookEventProviderWhatsapp
+	// CallMessageReceivedWebhookEventTypeMessageReceived 是 CallMessageReceivedWebhookEventType 的受支持枚举值。
+	CallMessageReceivedWebhookEventTypeMessageReceived CallMessageReceivedWebhookEventType = wire.CallMessageReceivedWebhookEventTypeMessageReceived
+	// CallMessageTypeCall 是 CallMessageType 的受支持枚举值。
+	CallMessageTypeCall CallMessageType = wire.CallMessageTypeCall
+	// CallMessageUpdatedWebhookEventDataConversationTypeUser 是 CallMessageUpdatedWebhookEventDataConversationType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataConversationTypeUser CallMessageUpdatedWebhookEventDataConversationType = wire.CallMessageUpdatedWebhookEventDataConversationTypeUser
+	// CallMessageUpdatedWebhookEventDataEventKindMessageReceived 是 CallMessageUpdatedWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataEventKindMessageReceived CallMessageUpdatedWebhookEventDataEventKind = wire.CallMessageUpdatedWebhookEventDataEventKindMessageReceived
+	// CallMessageUpdatedWebhookEventDataEventKindMessageUpdated 是 CallMessageUpdatedWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataEventKindMessageUpdated CallMessageUpdatedWebhookEventDataEventKind = wire.CallMessageUpdatedWebhookEventDataEventKindMessageUpdated
+	// CallMessageUpdatedWebhookEventDataMessageCallEndReasonRejectedElsewhere 是 CallMessageUpdatedWebhookEventDataMessageCallEndReason 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallEndReasonRejectedElsewhere CallMessageUpdatedWebhookEventDataMessageCallEndReason = wire.CallMessageUpdatedWebhookEventDataMessageCallEndReasonRejectedElsewhere
+	// CallMessageUpdatedWebhookEventDataMessageCallEndReasonTimeout 是 CallMessageUpdatedWebhookEventDataMessageCallEndReason 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallEndReasonTimeout CallMessageUpdatedWebhookEventDataMessageCallEndReason = wire.CallMessageUpdatedWebhookEventDataMessageCallEndReasonTimeout
+	// CallMessageUpdatedWebhookEventDataMessageCallEndedByRemote 是 CallMessageUpdatedWebhookEventDataMessageCallEndedBy 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallEndedByRemote CallMessageUpdatedWebhookEventDataMessageCallEndedBy = wire.CallMessageUpdatedWebhookEventDataMessageCallEndedByRemote
+	// CallMessageUpdatedWebhookEventDataMessageCallMediaTypeAudio 是 CallMessageUpdatedWebhookEventDataMessageCallMediaType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallMediaTypeAudio CallMessageUpdatedWebhookEventDataMessageCallMediaType = wire.CallMessageUpdatedWebhookEventDataMessageCallMediaTypeAudio
+	// CallMessageUpdatedWebhookEventDataMessageCallMediaTypeVideo 是 CallMessageUpdatedWebhookEventDataMessageCallMediaType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallMediaTypeVideo CallMessageUpdatedWebhookEventDataMessageCallMediaType = wire.CallMessageUpdatedWebhookEventDataMessageCallMediaTypeVideo
+	// CallMessageUpdatedWebhookEventDataMessageCallStatusAccepted 是 CallMessageUpdatedWebhookEventDataMessageCallStatus 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallStatusAccepted CallMessageUpdatedWebhookEventDataMessageCallStatus = wire.CallMessageUpdatedWebhookEventDataMessageCallStatusAccepted
+	// CallMessageUpdatedWebhookEventDataMessageCallStatusEnded 是 CallMessageUpdatedWebhookEventDataMessageCallStatus 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallStatusEnded CallMessageUpdatedWebhookEventDataMessageCallStatus = wire.CallMessageUpdatedWebhookEventDataMessageCallStatusEnded
+	// CallMessageUpdatedWebhookEventDataMessageCallStatusOffered 是 CallMessageUpdatedWebhookEventDataMessageCallStatus 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageCallStatusOffered CallMessageUpdatedWebhookEventDataMessageCallStatus = wire.CallMessageUpdatedWebhookEventDataMessageCallStatusOffered
+	// CallMessageUpdatedWebhookEventDataMessageDirectionInbound 是 CallMessageUpdatedWebhookEventDataMessageDirection 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageDirectionInbound CallMessageUpdatedWebhookEventDataMessageDirection = wire.CallMessageUpdatedWebhookEventDataMessageDirectionInbound
+	// CallMessageUpdatedWebhookEventDataMessageDirectionOutbound 是 CallMessageUpdatedWebhookEventDataMessageDirection 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageDirectionOutbound CallMessageUpdatedWebhookEventDataMessageDirection = wire.CallMessageUpdatedWebhookEventDataMessageDirectionOutbound
+	// CallMessageUpdatedWebhookEventDataMessageTypeCall 是 CallMessageUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataMessageTypeCall CallMessageUpdatedWebhookEventDataMessageType = wire.CallMessageUpdatedWebhookEventDataMessageTypeCall
+	// CallMessageUpdatedWebhookEventDataSenderTypeUser 是 CallMessageUpdatedWebhookEventDataSenderType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventDataSenderTypeUser CallMessageUpdatedWebhookEventDataSenderType = wire.CallMessageUpdatedWebhookEventDataSenderTypeUser
+	// CallMessageUpdatedWebhookEventProviderWhatsapp 是 CallMessageUpdatedWebhookEventProvider 的受支持枚举值。
+	CallMessageUpdatedWebhookEventProviderWhatsapp CallMessageUpdatedWebhookEventProvider = wire.CallMessageUpdatedWebhookEventProviderWhatsapp
+	// CallMessageUpdatedWebhookEventTypeMessageUpdated 是 CallMessageUpdatedWebhookEventType 的受支持枚举值。
+	CallMessageUpdatedWebhookEventTypeMessageUpdated CallMessageUpdatedWebhookEventType = wire.CallMessageUpdatedWebhookEventTypeMessageUpdated
+	// CallMessageWebhookEventDataConversationTypeUser 是 CallMessageWebhookEventDataConversationType 的受支持枚举值。
+	CallMessageWebhookEventDataConversationTypeUser CallMessageWebhookEventDataConversationType = wire.CallMessageWebhookEventDataConversationTypeUser
+	// CallMessageWebhookEventDataEventKindMessageReceived 是 CallMessageWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageWebhookEventDataEventKindMessageReceived CallMessageWebhookEventDataEventKind = wire.CallMessageWebhookEventDataEventKindMessageReceived
+	// CallMessageWebhookEventDataEventKindMessageUpdated 是 CallMessageWebhookEventDataEventKind 的受支持枚举值。
+	CallMessageWebhookEventDataEventKindMessageUpdated CallMessageWebhookEventDataEventKind = wire.CallMessageWebhookEventDataEventKindMessageUpdated
+	// CallMessageWebhookEventDataSenderTypeUser 是 CallMessageWebhookEventDataSenderType 的受支持枚举值。
+	CallMessageWebhookEventDataSenderTypeUser CallMessageWebhookEventDataSenderType = wire.CallMessageWebhookEventDataSenderTypeUser
+	// CallMessageWebhookEventProviderWhatsapp 是 CallMessageWebhookEventProvider 的受支持枚举值。
+	CallMessageWebhookEventProviderWhatsapp CallMessageWebhookEventProvider = wire.CallMessageWebhookEventProviderWhatsapp
+	// CallMessageWebhookEventTypeMessageReceived 是 CallMessageWebhookEventType 的受支持枚举值。
+	CallMessageWebhookEventTypeMessageReceived CallMessageWebhookEventType = wire.CallMessageWebhookEventTypeMessageReceived
+	// CallMessageWebhookEventTypeMessageUpdated 是 CallMessageWebhookEventType 的受支持枚举值。
+	CallMessageWebhookEventTypeMessageUpdated CallMessageWebhookEventType = wire.CallMessageWebhookEventTypeMessageUpdated
+	// ContactMessagePayloadTypeContact 是 ContactMessagePayloadType 的受支持枚举值。
+	ContactMessagePayloadTypeContact ContactMessagePayloadType = wire.ContactMessagePayloadTypeContact
+	// ContactUpdateChangeChangedFieldsAddressBookFirstName 是 ContactUpdateChangeChangedFields 的受支持枚举值。
+	ContactUpdateChangeChangedFieldsAddressBookFirstName ContactUpdateChangeChangedFields = wire.AddressBookFirstName
+	// ContactUpdateChangeChangedFieldsAddressBookFullName 是 ContactUpdateChangeChangedFields 的受支持枚举值。
+	ContactUpdateChangeChangedFieldsAddressBookFullName ContactUpdateChangeChangedFields = wire.AddressBookFullName
+	// ContactUpdateChangeKindContactUpdated 是 ContactUpdateChangeKind 的受支持枚举值。
+	ContactUpdateChangeKindContactUpdated ContactUpdateChangeKind = wire.ContactUpdateChangeKindContactUpdated
+	// ContactUpdateChangeSourceAddressBook 是 ContactUpdateChangeSource 的受支持枚举值。
+	ContactUpdateChangeSourceAddressBook ContactUpdateChangeSource = wire.ContactUpdateChangeSourceAddressBook
+	// ContactUpdateChangeSourceFullSync 是 ContactUpdateChangeSource 的受支持枚举值。
+	ContactUpdateChangeSourceFullSync ContactUpdateChangeSource = wire.ContactUpdateChangeSourceFullSync
+	// ContactUpdatedWebhookEventTypeContactUpdated 是 ContactUpdatedWebhookEventType 的受支持枚举值。
+	ContactUpdatedWebhookEventTypeContactUpdated ContactUpdatedWebhookEventType = wire.ContactUpdatedWebhookEventTypeContactUpdated
+	// ConversationDisappearingMessagesChangeChangeTypeDisappearingMessages 是 ConversationDisappearingMessagesChangeChangeType 的受支持枚举值。
+	ConversationDisappearingMessagesChangeChangeTypeDisappearingMessages ConversationDisappearingMessagesChangeChangeType = wire.DisappearingMessages
+	// ConversationDisappearingMessagesChangeKindConversationUpdated 是 ConversationDisappearingMessagesChangeKind 的受支持枚举值。
+	ConversationDisappearingMessagesChangeKindConversationUpdated ConversationDisappearingMessagesChangeKind = wire.ConversationDisappearingMessagesChangeKindConversationUpdated
+	// ConversationDisappearingMessagesUpdatedWebhookEventTypeConversationUpdated 是 ConversationDisappearingMessagesUpdatedWebhookEventType 的受支持枚举值。
+	ConversationDisappearingMessagesUpdatedWebhookEventTypeConversationUpdated ConversationDisappearingMessagesUpdatedWebhookEventType = wire.ConversationDisappearingMessagesUpdatedWebhookEventTypeConversationUpdated
+	// ConversationHistoryAcceptedStatusAccepted 是 ConversationHistoryAcceptedStatus 的受支持枚举值。
+	ConversationHistoryAcceptedStatusAccepted ConversationHistoryAcceptedStatus = wire.ConversationHistoryAcceptedStatusAccepted
+	// ConversationHistoryBeforeDirectionInbound 是 ConversationHistoryBeforeDirection 的受支持枚举值。
+	ConversationHistoryBeforeDirectionInbound ConversationHistoryBeforeDirection = wire.ConversationHistoryBeforeDirectionInbound
+	// ConversationHistoryBeforeDirectionOutbound 是 ConversationHistoryBeforeDirection 的受支持枚举值。
+	ConversationHistoryBeforeDirectionOutbound ConversationHistoryBeforeDirection = wire.ConversationHistoryBeforeDirectionOutbound
+	// ConversationHistoryMessageDirectionInbound 是 ConversationHistoryMessageDirection 的受支持枚举值。
+	ConversationHistoryMessageDirectionInbound ConversationHistoryMessageDirection = wire.ConversationHistoryMessageDirectionInbound
+	// ConversationHistoryMessageDirectionOutbound 是 ConversationHistoryMessageDirection 的受支持枚举值。
+	ConversationHistoryMessageDirectionOutbound ConversationHistoryMessageDirection = wire.ConversationHistoryMessageDirectionOutbound
+	// ConversationHistorySourceSourceOnDemand 是 ConversationHistorySourceSource 的受支持枚举值。
+	ConversationHistorySourceSourceOnDemand ConversationHistorySourceSource = wire.OnDemand
+	// ConversationHistoryWebhookEventTypeConversationHistory 是 ConversationHistoryWebhookEventType 的受支持枚举值。
+	ConversationHistoryWebhookEventTypeConversationHistory ConversationHistoryWebhookEventType = wire.ConversationHistoryWebhookEventTypeConversationHistory
 	// ConversationLabelDeleteResultDeletedTrue 是 ConversationLabelDeleteResultDeleted 的受支持枚举值。
 	ConversationLabelDeleteResultDeletedTrue ConversationLabelDeleteResultDeleted = wire.ConversationLabelDeleteResultDeletedTrue
 	// ConversationLabelMembersRequestActionAdd 是 ConversationLabelMembersRequestAction 的受支持枚举值。
@@ -450,12 +2002,104 @@ const (
 	ConversationLabelMembersResultActionAdd ConversationLabelMembersResultAction = wire.ConversationLabelMembersResultActionAdd
 	// ConversationLabelMembersResultActionRemove 是 ConversationLabelMembersResultAction 的受支持枚举值。
 	ConversationLabelMembersResultActionRemove ConversationLabelMembersResultAction = wire.ConversationLabelMembersResultActionRemove
+	// ConversationMemberRoleAdmin 是 ConversationMemberRole 的受支持枚举值。
+	ConversationMemberRoleAdmin ConversationMemberRole = wire.ConversationMemberRoleAdmin
+	// ConversationMemberRoleMember 是 ConversationMemberRole 的受支持枚举值。
+	ConversationMemberRoleMember ConversationMemberRole = wire.ConversationMemberRoleMember
+	// ConversationMemberRoleSuperadmin 是 ConversationMemberRole 的受支持枚举值。
+	ConversationMemberRoleSuperadmin ConversationMemberRole = wire.ConversationMemberRoleSuperadmin
+	// ConversationStateActorTypeUser 是 ConversationStateActorType 的受支持枚举值。
+	ConversationStateActorTypeUser ConversationStateActorType = wire.ConversationStateActorTypeUser
 	// ConversationTypeChannel 是 ConversationType 的受支持枚举值。
 	ConversationTypeChannel ConversationType = wire.ConversationTypeChannel
 	// ConversationTypeGroup 是 ConversationType 的受支持枚举值。
 	ConversationTypeGroup ConversationType = wire.ConversationTypeGroup
 	// ConversationTypeUser 是 ConversationType 的受支持枚举值。
 	ConversationTypeUser ConversationType = wire.ConversationTypeUser
+	// CreateCallDataDirectionOutbound 是 CreateCallDataDirection 的受支持枚举值。
+	CreateCallDataDirectionOutbound CreateCallDataDirection = wire.CreateCallDataDirectionOutbound
+	// CreateCallDataMediaTypeVideo 是 CreateCallDataMediaType 的受支持枚举值。
+	CreateCallDataMediaTypeVideo CreateCallDataMediaType = wire.CreateCallDataMediaTypeVideo
+	// CreateCallDataMediaTypeVoice 是 CreateCallDataMediaType 的受支持枚举值。
+	CreateCallDataMediaTypeVoice CreateCallDataMediaType = wire.CreateCallDataMediaTypeVoice
+	// CreateCallDataStatePreparing 是 CreateCallDataState 的受支持枚举值。
+	CreateCallDataStatePreparing CreateCallDataState = wire.CreateCallDataStatePreparing
+	// CreateCallRequestMediaTypeVideo 是 CreateCallRequestMediaType 的受支持枚举值。
+	CreateCallRequestMediaTypeVideo CreateCallRequestMediaType = wire.CreateCallRequestMediaTypeVideo
+	// CreateCallRequestMediaTypeVoice 是 CreateCallRequestMediaType 的受支持枚举值。
+	CreateCallRequestMediaTypeVoice CreateCallRequestMediaType = wire.CreateCallRequestMediaTypeVoice
+	// EndedCallDataDirectionInbound 是 EndedCallDataDirection 的受支持枚举值。
+	EndedCallDataDirectionInbound EndedCallDataDirection = wire.EndedCallDataDirectionInbound
+	// EndedCallDataDirectionOutbound 是 EndedCallDataDirection 的受支持枚举值。
+	EndedCallDataDirectionOutbound EndedCallDataDirection = wire.EndedCallDataDirectionOutbound
+	// EndedCallDataMediaTypeVideo 是 EndedCallDataMediaType 的受支持枚举值。
+	EndedCallDataMediaTypeVideo EndedCallDataMediaType = wire.EndedCallDataMediaTypeVideo
+	// EndedCallDataMediaTypeVoice 是 EndedCallDataMediaType 的受支持枚举值。
+	EndedCallDataMediaTypeVoice EndedCallDataMediaType = wire.EndedCallDataMediaTypeVoice
+	// EndedCallDataStateEnded 是 EndedCallDataState 的受支持枚举值。
+	EndedCallDataStateEnded EndedCallDataState = wire.EndedCallDataStateEnded
+	// EndedCallDataStateFailed 是 EndedCallDataState 的受支持枚举值。
+	EndedCallDataStateFailed EndedCallDataState = wire.EndedCallDataStateFailed
+	// FacebookAccountAuthFailedWebhookEventDataAuthStatusFailed 是 FacebookAccountAuthFailedWebhookEventDataAuthStatus 的受支持枚举值。
+	FacebookAccountAuthFailedWebhookEventDataAuthStatusFailed FacebookAccountAuthFailedWebhookEventDataAuthStatus = wire.FacebookAccountAuthFailedWebhookEventDataAuthStatusFailed
+	// FacebookAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected 是 FacebookAccountAuthFailedWebhookEventDataRuntimeStatus 的受支持枚举值。
+	FacebookAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected FacebookAccountAuthFailedWebhookEventDataRuntimeStatus = wire.FacebookAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected
+	// FacebookAccountAuthFailedWebhookEventProviderFacebook 是 FacebookAccountAuthFailedWebhookEventProvider 的受支持枚举值。
+	FacebookAccountAuthFailedWebhookEventProviderFacebook FacebookAccountAuthFailedWebhookEventProvider = wire.FacebookAccountAuthFailedWebhookEventProviderFacebook
+	// FacebookAccountAuthFailedWebhookEventTypeAccountAuthFailed 是 FacebookAccountAuthFailedWebhookEventType 的受支持枚举值。
+	FacebookAccountAuthFailedWebhookEventTypeAccountAuthFailed FacebookAccountAuthFailedWebhookEventType = wire.FacebookAccountAuthFailedWebhookEventTypeAccountAuthFailed
+	// FacebookAccountAuthSucceededWebhookEventDataAuthStatusAuthorized 是 FacebookAccountAuthSucceededWebhookEventDataAuthStatus 的受支持枚举值。
+	FacebookAccountAuthSucceededWebhookEventDataAuthStatusAuthorized FacebookAccountAuthSucceededWebhookEventDataAuthStatus = wire.Authorized
+	// FacebookAccountAuthSucceededWebhookEventDataRuntimeStatusRunning 是 FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus 的受支持枚举值。
+	FacebookAccountAuthSucceededWebhookEventDataRuntimeStatusRunning FacebookAccountAuthSucceededWebhookEventDataRuntimeStatus = wire.FacebookAccountAuthSucceededWebhookEventDataRuntimeStatusRunning
+	// FacebookAccountAuthSucceededWebhookEventProviderFacebook 是 FacebookAccountAuthSucceededWebhookEventProvider 的受支持枚举值。
+	FacebookAccountAuthSucceededWebhookEventProviderFacebook FacebookAccountAuthSucceededWebhookEventProvider = wire.FacebookAccountAuthSucceededWebhookEventProviderFacebook
+	// FacebookAccountAuthSucceededWebhookEventTypeAccountAuthSucceeded 是 FacebookAccountAuthSucceededWebhookEventType 的受支持枚举值。
+	FacebookAccountAuthSucceededWebhookEventTypeAccountAuthSucceeded FacebookAccountAuthSucceededWebhookEventType = wire.FacebookAccountAuthSucceededWebhookEventTypeAccountAuthSucceeded
+	// FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatusError 是 FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus 的受支持枚举值。
+	FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatusError FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatus = wire.FacebookAccountStatusUpdatedWebhookEventDataRuntimeStatusError
+	// FacebookAccountStatusUpdatedWebhookEventProviderFacebook 是 FacebookAccountStatusUpdatedWebhookEventProvider 的受支持枚举值。
+	FacebookAccountStatusUpdatedWebhookEventProviderFacebook FacebookAccountStatusUpdatedWebhookEventProvider = wire.FacebookAccountStatusUpdatedWebhookEventProviderFacebook
+	// FacebookAccountStatusUpdatedWebhookEventTypeAccountStatusUpdated 是 FacebookAccountStatusUpdatedWebhookEventType 的受支持枚举值。
+	FacebookAccountStatusUpdatedWebhookEventTypeAccountStatusUpdated FacebookAccountStatusUpdatedWebhookEventType = wire.FacebookAccountStatusUpdatedWebhookEventTypeAccountStatusUpdated
+	// FacebookAttachmentMetadataDownloadStatusExpired 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusExpired FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusExpired
+	// FacebookAttachmentMetadataDownloadStatusFailed 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusFailed FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusFailed
+	// FacebookAttachmentMetadataDownloadStatusPending 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusPending FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusPending
+	// FacebookAttachmentMetadataDownloadStatusReady 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusReady FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusReady
+	// FacebookAttachmentMetadataDownloadStatusRestricted 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusRestricted FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusRestricted
+	// FacebookAttachmentMetadataDownloadStatusUnavailable 是 FacebookAttachmentMetadataDownloadStatus 的受支持枚举值。
+	FacebookAttachmentMetadataDownloadStatusUnavailable FacebookAttachmentMetadataDownloadStatus = wire.FacebookAttachmentMetadataDownloadStatusUnavailable
+	// FacebookMessageAttachmentTypeAudio 是 FacebookMessageAttachmentType 的受支持枚举值。
+	FacebookMessageAttachmentTypeAudio FacebookMessageAttachmentType = wire.FacebookMessageAttachmentTypeAudio
+	// FacebookMessageAttachmentTypeDocument 是 FacebookMessageAttachmentType 的受支持枚举值。
+	FacebookMessageAttachmentTypeDocument FacebookMessageAttachmentType = wire.FacebookMessageAttachmentTypeDocument
+	// FacebookMessageAttachmentTypeImage 是 FacebookMessageAttachmentType 的受支持枚举值。
+	FacebookMessageAttachmentTypeImage FacebookMessageAttachmentType = wire.FacebookMessageAttachmentTypeImage
+	// FacebookMessageAttachmentTypeVideo 是 FacebookMessageAttachmentType 的受支持枚举值。
+	FacebookMessageAttachmentTypeVideo FacebookMessageAttachmentType = wire.FacebookMessageAttachmentTypeVideo
+	// FacebookMessageDirectionInbound 是 FacebookMessageDirection 的受支持枚举值。
+	FacebookMessageDirectionInbound FacebookMessageDirection = wire.FacebookMessageDirectionInbound
+	// FacebookMessageDirectionOutbound 是 FacebookMessageDirection 的受支持枚举值。
+	FacebookMessageDirectionOutbound FacebookMessageDirection = wire.FacebookMessageDirectionOutbound
+	// FacebookMessageReceivedWebhookEventDataConversationTypeUser 是 FacebookMessageReceivedWebhookEventDataConversationType 的受支持枚举值。
+	FacebookMessageReceivedWebhookEventDataConversationTypeUser FacebookMessageReceivedWebhookEventDataConversationType = wire.FacebookMessageReceivedWebhookEventDataConversationTypeUser
+	// FacebookMessageReceivedWebhookEventDataSenderTypeUser 是 FacebookMessageReceivedWebhookEventDataSenderType 的受支持枚举值。
+	FacebookMessageReceivedWebhookEventDataSenderTypeUser FacebookMessageReceivedWebhookEventDataSenderType = wire.FacebookMessageReceivedWebhookEventDataSenderTypeUser
+	// FacebookMessageReceivedWebhookEventProviderFacebook 是 FacebookMessageReceivedWebhookEventProvider 的受支持枚举值。
+	FacebookMessageReceivedWebhookEventProviderFacebook FacebookMessageReceivedWebhookEventProvider = wire.FacebookMessageReceivedWebhookEventProviderFacebook
+	// FacebookMessageReceivedWebhookEventTypeMessageReceived 是 FacebookMessageReceivedWebhookEventType 的受支持枚举值。
+	FacebookMessageReceivedWebhookEventTypeMessageReceived FacebookMessageReceivedWebhookEventType = wire.FacebookMessageReceivedWebhookEventTypeMessageReceived
+	// FacebookMessageTypeSticker 是 FacebookMessageType 的受支持枚举值。
+	FacebookMessageTypeSticker FacebookMessageType = wire.FacebookMessageTypeSticker
+	// GroupAnnouncementChangeKindAnnouncementChanged 是 GroupAnnouncementChangeKind 的受支持枚举值。
+	GroupAnnouncementChangeKindAnnouncementChanged GroupAnnouncementChangeKind = wire.AnnouncementChanged
+	// GroupInviteLinkChangeKindInviteLinkChanged 是 GroupInviteLinkChangeKind 的受支持枚举值。
+	GroupInviteLinkChangeKindInviteLinkChanged GroupInviteLinkChangeKind = wire.InviteLinkChanged
 	// GroupJoinRequestsUpdateRequestActionApprove 是 GroupJoinRequestsUpdateRequestAction 的受支持枚举值。
 	GroupJoinRequestsUpdateRequestActionApprove GroupJoinRequestsUpdateRequestAction = wire.Approve
 	// GroupJoinRequestsUpdateRequestActionReject 是 GroupJoinRequestsUpdateRequestAction 的受支持枚举值。
@@ -468,36 +2112,246 @@ const (
 	GroupMemberUpdateRequestActionPromote GroupMemberUpdateRequestAction = wire.GroupMemberUpdateRequestActionPromote
 	// GroupMemberUpdateRequestActionRemove 是 GroupMemberUpdateRequestAction 的受支持枚举值。
 	GroupMemberUpdateRequestActionRemove GroupMemberUpdateRequestAction = wire.GroupMemberUpdateRequestActionRemove
-	// MessagePayloadTypeAudio 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeAudio MessagePayloadType = wire.MessagePayloadTypeAudio
-	// MessagePayloadTypeContact 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeContact MessagePayloadType = wire.MessagePayloadTypeContact
-	// MessagePayloadTypeDocument 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeDocument MessagePayloadType = wire.MessagePayloadTypeDocument
-	// MessagePayloadTypeFile 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeFile MessagePayloadType = wire.MessagePayloadTypeFile
-	// MessagePayloadTypeImage 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeImage MessagePayloadType = wire.MessagePayloadTypeImage
-	// MessagePayloadTypeText 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeText MessagePayloadType = wire.MessagePayloadTypeText
-	// MessagePayloadTypeVideo 是 MessagePayloadType 的受支持枚举值。
-	MessagePayloadTypeVideo MessagePayloadType = wire.MessagePayloadTypeVideo
+	// GroupSettingsEventKindGroupUpdated 是 GroupSettingsEventKind 的受支持枚举值。
+	GroupSettingsEventKindGroupUpdated GroupSettingsEventKind = wire.GroupSettingsEventKindGroupUpdated
+	// GroupSettingsUpdatedWebhookEventTypeGroupUpdated 是 GroupSettingsUpdatedWebhookEventType 的受支持枚举值。
+	GroupSettingsUpdatedWebhookEventTypeGroupUpdated GroupSettingsUpdatedWebhookEventType = wire.GroupSettingsUpdatedWebhookEventTypeGroupUpdated
+	// LinkPreviewMessagePayloadTypeLinkPreview 是 LinkPreviewMessagePayloadType 的受支持枚举值。
+	LinkPreviewMessagePayloadTypeLinkPreview LinkPreviewMessagePayloadType = wire.LinkPreviewMessagePayloadTypeLinkPreview
+	// MediaMessagePayloadTypeAudio 是 MediaMessagePayloadType 的受支持枚举值。
+	MediaMessagePayloadTypeAudio MediaMessagePayloadType = wire.MediaMessagePayloadTypeAudio
+	// MediaMessagePayloadTypeDocument 是 MediaMessagePayloadType 的受支持枚举值。
+	MediaMessagePayloadTypeDocument MediaMessagePayloadType = wire.MediaMessagePayloadTypeDocument
+	// MediaMessagePayloadTypeFile 是 MediaMessagePayloadType 的受支持枚举值。
+	MediaMessagePayloadTypeFile MediaMessagePayloadType = wire.MediaMessagePayloadTypeFile
+	// MediaMessagePayloadTypeImage 是 MediaMessagePayloadType 的受支持枚举值。
+	MediaMessagePayloadTypeImage MediaMessagePayloadType = wire.MediaMessagePayloadTypeImage
+	// MediaMessagePayloadTypeVideo 是 MediaMessagePayloadType 的受支持枚举值。
+	MediaMessagePayloadTypeVideo MediaMessagePayloadType = wire.MediaMessagePayloadTypeVideo
+	// MentionTypeAll 是 MentionType 的受支持枚举值。
+	MentionTypeAll MentionType = wire.MentionTypeAll
+	// MentionTypeMember 是 MentionType 的受支持枚举值。
+	MentionTypeMember MentionType = wire.MentionTypeMember
+	// MessageCommerceTypeOrder 是 MessageCommerceType 的受支持枚举值。
+	MessageCommerceTypeOrder MessageCommerceType = wire.MessageCommerceTypeOrder
+	// MessageCommerceTypeProduct 是 MessageCommerceType 的受支持枚举值。
+	MessageCommerceTypeProduct MessageCommerceType = wire.MessageCommerceTypeProduct
+	// MessageCommerceUpdatedWebhookEventDataMessageTypeOrder 是 MessageCommerceUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageCommerceUpdatedWebhookEventDataMessageTypeOrder MessageCommerceUpdatedWebhookEventDataMessageType = wire.MessageCommerceUpdatedWebhookEventDataMessageTypeOrder
+	// MessageCommerceUpdatedWebhookEventDataMessageTypeProduct 是 MessageCommerceUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageCommerceUpdatedWebhookEventDataMessageTypeProduct MessageCommerceUpdatedWebhookEventDataMessageType = wire.MessageCommerceUpdatedWebhookEventDataMessageTypeProduct
+	// MessageCommerceWebhookEventTypeConversationHistory 是 MessageCommerceWebhookEventType 的受支持枚举值。
+	MessageCommerceWebhookEventTypeConversationHistory MessageCommerceWebhookEventType = wire.MessageCommerceWebhookEventTypeConversationHistory
+	// MessageCommerceWebhookEventTypeMessageReceived 是 MessageCommerceWebhookEventType 的受支持枚举值。
+	MessageCommerceWebhookEventTypeMessageReceived MessageCommerceWebhookEventType = wire.MessageCommerceWebhookEventTypeMessageReceived
+	// MessageCommerceWebhookEventTypeMessageUpdated 是 MessageCommerceWebhookEventType 的受支持枚举值。
+	MessageCommerceWebhookEventTypeMessageUpdated MessageCommerceWebhookEventType = wire.MessageCommerceWebhookEventTypeMessageUpdated
+	// MessageContactCardsHistoryWebhookEventTypeConversationHistory 是 MessageContactCardsHistoryWebhookEventType 的受支持枚举值。
+	MessageContactCardsHistoryWebhookEventTypeConversationHistory MessageContactCardsHistoryWebhookEventType = wire.MessageContactCardsHistoryWebhookEventTypeConversationHistory
+	// MessageContactCardsReceivedWebhookEventDataMessageTypeContact 是 MessageContactCardsReceivedWebhookEventDataMessageType 的受支持枚举值。
+	MessageContactCardsReceivedWebhookEventDataMessageTypeContact MessageContactCardsReceivedWebhookEventDataMessageType = wire.MessageContactCardsReceivedWebhookEventDataMessageTypeContact
+	// MessageContactCardsReceivedWebhookEventTypeMessageReceived 是 MessageContactCardsReceivedWebhookEventType 的受支持枚举值。
+	MessageContactCardsReceivedWebhookEventTypeMessageReceived MessageContactCardsReceivedWebhookEventType = wire.MessageContactCardsReceivedWebhookEventTypeMessageReceived
+	// MessageContactCardsTypeContact 是 MessageContactCardsType 的受支持枚举值。
+	MessageContactCardsTypeContact MessageContactCardsType = wire.MessageContactCardsTypeContact
+	// MessageContactCardsUpdatedWebhookEventDataMessageTypeContact 是 MessageContactCardsUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageContactCardsUpdatedWebhookEventDataMessageTypeContact MessageContactCardsUpdatedWebhookEventDataMessageType = wire.MessageContactCardsUpdatedWebhookEventDataMessageTypeContact
+	// MessageContactCardsUpdatedWebhookEventTypeMessageUpdated 是 MessageContactCardsUpdatedWebhookEventType 的受支持枚举值。
+	MessageContactCardsUpdatedWebhookEventTypeMessageUpdated MessageContactCardsUpdatedWebhookEventType = wire.MessageContactCardsUpdatedWebhookEventTypeMessageUpdated
+	// MessageInteractiveAttachmentTypeDocument 是 MessageInteractiveAttachmentType 的受支持枚举值。
+	MessageInteractiveAttachmentTypeDocument MessageInteractiveAttachmentType = wire.MessageInteractiveAttachmentTypeDocument
+	// MessageInteractiveAttachmentTypeImage 是 MessageInteractiveAttachmentType 的受支持枚举值。
+	MessageInteractiveAttachmentTypeImage MessageInteractiveAttachmentType = wire.MessageInteractiveAttachmentTypeImage
+	// MessageInteractiveAttachmentTypeVideo 是 MessageInteractiveAttachmentType 的受支持枚举值。
+	MessageInteractiveAttachmentTypeVideo MessageInteractiveAttachmentType = wire.MessageInteractiveAttachmentTypeVideo
+	// MessageInteractiveButtonTypePhone 是 MessageInteractiveButtonType 的受支持枚举值。
+	MessageInteractiveButtonTypePhone MessageInteractiveButtonType = wire.MessageInteractiveButtonTypePhone
+	// MessageInteractiveButtonTypeReply 是 MessageInteractiveButtonType 的受支持枚举值。
+	MessageInteractiveButtonTypeReply MessageInteractiveButtonType = wire.MessageInteractiveButtonTypeReply
+	// MessageInteractiveButtonTypeURL 是 MessageInteractiveButtonType 的受支持枚举值。
+	MessageInteractiveButtonTypeURL MessageInteractiveButtonType = wire.MessageInteractiveButtonTypeURL
+	// MessageInteractiveHeaderTypeDocument 是 MessageInteractiveHeaderType 的受支持枚举值。
+	MessageInteractiveHeaderTypeDocument MessageInteractiveHeaderType = wire.MessageInteractiveHeaderTypeDocument
+	// MessageInteractiveHeaderTypeImage 是 MessageInteractiveHeaderType 的受支持枚举值。
+	MessageInteractiveHeaderTypeImage MessageInteractiveHeaderType = wire.MessageInteractiveHeaderTypeImage
+	// MessageInteractiveHeaderTypeText 是 MessageInteractiveHeaderType 的受支持枚举值。
+	MessageInteractiveHeaderTypeText MessageInteractiveHeaderType = wire.MessageInteractiveHeaderTypeText
+	// MessageInteractiveHeaderTypeVideo 是 MessageInteractiveHeaderType 的受支持枚举值。
+	MessageInteractiveHeaderTypeVideo MessageInteractiveHeaderType = wire.MessageInteractiveHeaderTypeVideo
+	// MessageInteractiveKindButtons 是 MessageInteractiveKind 的受支持枚举值。
+	MessageInteractiveKindButtons MessageInteractiveKind = wire.Buttons
+	// MessageInteractiveKindTemplate 是 MessageInteractiveKind 的受支持枚举值。
+	MessageInteractiveKindTemplate MessageInteractiveKind = wire.Template
+	// MessageInteractiveMessageTypeInteractive 是 MessageInteractiveMessageType 的受支持枚举值。
+	MessageInteractiveMessageTypeInteractive MessageInteractiveMessageType = wire.MessageInteractiveMessageTypeInteractive
+	// MessageInteractiveMessageTypeInteractiveResponse 是 MessageInteractiveMessageType 的受支持枚举值。
+	MessageInteractiveMessageTypeInteractiveResponse MessageInteractiveMessageType = wire.MessageInteractiveMessageTypeInteractiveResponse
+	// MessageInteractiveResponseKindButton 是 MessageInteractiveResponseKind 的受支持枚举值。
+	MessageInteractiveResponseKindButton MessageInteractiveResponseKind = wire.Button
+	// MessageInteractiveResponseKindTemplateButton 是 MessageInteractiveResponseKind 的受支持枚举值。
+	MessageInteractiveResponseKindTemplateButton MessageInteractiveResponseKind = wire.TemplateButton
+	// MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractive 是 MessageInteractiveUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractive MessageInteractiveUpdatedWebhookEventDataMessageType = wire.MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractive
+	// MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractiveResponse 是 MessageInteractiveUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractiveResponse MessageInteractiveUpdatedWebhookEventDataMessageType = wire.MessageInteractiveUpdatedWebhookEventDataMessageTypeInteractiveResponse
+	// MessageInteractiveWebhookEventTypeConversationHistory 是 MessageInteractiveWebhookEventType 的受支持枚举值。
+	MessageInteractiveWebhookEventTypeConversationHistory MessageInteractiveWebhookEventType = wire.MessageInteractiveWebhookEventTypeConversationHistory
+	// MessageInteractiveWebhookEventTypeMessageReceived 是 MessageInteractiveWebhookEventType 的受支持枚举值。
+	MessageInteractiveWebhookEventTypeMessageReceived MessageInteractiveWebhookEventType = wire.MessageInteractiveWebhookEventTypeMessageReceived
+	// MessageInteractiveWebhookEventTypeMessageUpdated 是 MessageInteractiveWebhookEventType 的受支持枚举值。
+	MessageInteractiveWebhookEventTypeMessageUpdated MessageInteractiveWebhookEventType = wire.MessageInteractiveWebhookEventTypeMessageUpdated
+	// MessageLinkPreviewMessageTypeLinkPreview 是 MessageLinkPreviewMessageType 的受支持枚举值。
+	MessageLinkPreviewMessageTypeLinkPreview MessageLinkPreviewMessageType = wire.MessageLinkPreviewMessageTypeLinkPreview
+	// MessageLinkPreviewTextUpdateTypeText 是 MessageLinkPreviewTextUpdateType 的受支持枚举值。
+	MessageLinkPreviewTextUpdateTypeText MessageLinkPreviewTextUpdateType = wire.MessageLinkPreviewTextUpdateTypeText
+	// MessageLinkPreviewWebhookEventTypeConversationHistory 是 MessageLinkPreviewWebhookEventType 的受支持枚举值。
+	MessageLinkPreviewWebhookEventTypeConversationHistory MessageLinkPreviewWebhookEventType = wire.MessageLinkPreviewWebhookEventTypeConversationHistory
+	// MessageLinkPreviewWebhookEventTypeMessageReceived 是 MessageLinkPreviewWebhookEventType 的受支持枚举值。
+	MessageLinkPreviewWebhookEventTypeMessageReceived MessageLinkPreviewWebhookEventType = wire.MessageLinkPreviewWebhookEventTypeMessageReceived
+	// MessageLinkPreviewWebhookEventTypeMessageUpdated 是 MessageLinkPreviewWebhookEventType 的受支持枚举值。
+	MessageLinkPreviewWebhookEventTypeMessageUpdated MessageLinkPreviewWebhookEventType = wire.MessageLinkPreviewWebhookEventTypeMessageUpdated
+	// MessageLiveLocationHistoryWebhookEventTypeConversationHistory 是 MessageLiveLocationHistoryWebhookEventType 的受支持枚举值。
+	MessageLiveLocationHistoryWebhookEventTypeConversationHistory MessageLiveLocationHistoryWebhookEventType = wire.MessageLiveLocationHistoryWebhookEventTypeConversationHistory
+	// MessageLiveLocationReceivedWebhookEventDataMessageTypeLiveLocation 是 MessageLiveLocationReceivedWebhookEventDataMessageType 的受支持枚举值。
+	MessageLiveLocationReceivedWebhookEventDataMessageTypeLiveLocation MessageLiveLocationReceivedWebhookEventDataMessageType = wire.MessageLiveLocationReceivedWebhookEventDataMessageTypeLiveLocation
+	// MessageLiveLocationReceivedWebhookEventTypeMessageReceived 是 MessageLiveLocationReceivedWebhookEventType 的受支持枚举值。
+	MessageLiveLocationReceivedWebhookEventTypeMessageReceived MessageLiveLocationReceivedWebhookEventType = wire.MessageLiveLocationReceivedWebhookEventTypeMessageReceived
+	// MessageLiveLocationTypeLiveLocation 是 MessageLiveLocationType 的受支持枚举值。
+	MessageLiveLocationTypeLiveLocation MessageLiveLocationType = wire.MessageLiveLocationTypeLiveLocation
+	// MessageLiveLocationUpdatedWebhookEventDataMessageTypeLiveLocation 是 MessageLiveLocationUpdatedWebhookEventDataMessageType 的受支持枚举值。
+	MessageLiveLocationUpdatedWebhookEventDataMessageTypeLiveLocation MessageLiveLocationUpdatedWebhookEventDataMessageType = wire.MessageLiveLocationUpdatedWebhookEventDataMessageTypeLiveLocation
+	// MessageLiveLocationUpdatedWebhookEventTypeMessageUpdated 是 MessageLiveLocationUpdatedWebhookEventType 的受支持枚举值。
+	MessageLiveLocationUpdatedWebhookEventTypeMessageUpdated MessageLiveLocationUpdatedWebhookEventType = wire.MessageLiveLocationUpdatedWebhookEventTypeMessageUpdated
+	// MessageOrderStatusAccepted 是 MessageOrderStatus 的受支持枚举值。
+	MessageOrderStatusAccepted MessageOrderStatus = wire.MessageOrderStatusAccepted
+	// MessageOrderStatusDeclined 是 MessageOrderStatus 的受支持枚举值。
+	MessageOrderStatusDeclined MessageOrderStatus = wire.MessageOrderStatusDeclined
+	// MessageOrderStatusInquiry 是 MessageOrderStatus 的受支持枚举值。
+	MessageOrderStatusInquiry MessageOrderStatus = wire.MessageOrderStatusInquiry
+	// MessagePinChangeChangeTypeMessagePin 是 MessagePinChangeChangeType 的受支持枚举值。
+	MessagePinChangeChangeTypeMessagePin MessagePinChangeChangeType = wire.MessagePin
+	// MessagePinChangeKindMessageUpdated 是 MessagePinChangeKind 的受支持枚举值。
+	MessagePinChangeKindMessageUpdated MessagePinChangeKind = wire.MessagePinChangeKindMessageUpdated
+	// MessagePinParticipantTypeUser 是 MessagePinParticipantType 的受支持枚举值。
+	MessagePinParticipantTypeUser MessagePinParticipantType = wire.MessagePinParticipantTypeUser
+	// MessagePinUpdatedWebhookEventDataConversationTypeChannel 是 MessagePinUpdatedWebhookEventDataConversationType 的受支持枚举值。
+	MessagePinUpdatedWebhookEventDataConversationTypeChannel MessagePinUpdatedWebhookEventDataConversationType = wire.MessagePinUpdatedWebhookEventDataConversationTypeChannel
+	// MessagePinUpdatedWebhookEventDataConversationTypeGroup 是 MessagePinUpdatedWebhookEventDataConversationType 的受支持枚举值。
+	MessagePinUpdatedWebhookEventDataConversationTypeGroup MessagePinUpdatedWebhookEventDataConversationType = wire.MessagePinUpdatedWebhookEventDataConversationTypeGroup
+	// MessagePinUpdatedWebhookEventDataConversationTypeUser 是 MessagePinUpdatedWebhookEventDataConversationType 的受支持枚举值。
+	MessagePinUpdatedWebhookEventDataConversationTypeUser MessagePinUpdatedWebhookEventDataConversationType = wire.MessagePinUpdatedWebhookEventDataConversationTypeUser
+	// MessagePinUpdatedWebhookEventTypeMessageUpdated 是 MessagePinUpdatedWebhookEventType 的受支持枚举值。
+	MessagePinUpdatedWebhookEventTypeMessageUpdated MessagePinUpdatedWebhookEventType = wire.MessagePinUpdatedWebhookEventTypeMessageUpdated
+	// MessagePollMessageDirectionInbound 是 MessagePollMessageDirection 的受支持枚举值。
+	MessagePollMessageDirectionInbound MessagePollMessageDirection = wire.MessagePollMessageDirectionInbound
+	// MessagePollMessageDirectionOutbound 是 MessagePollMessageDirection 的受支持枚举值。
+	MessagePollMessageDirectionOutbound MessagePollMessageDirection = wire.MessagePollMessageDirectionOutbound
+	// MessagePollMessageTypePoll 是 MessagePollMessageType 的受支持枚举值。
+	MessagePollMessageTypePoll MessagePollMessageType = wire.MessagePollMessageTypePoll
+	// MessagePollVoteChangeChangeTypePollVote 是 MessagePollVoteChangeChangeType 的受支持枚举值。
+	MessagePollVoteChangeChangeTypePollVote MessagePollVoteChangeChangeType = wire.PollVote
+	// MessagePollVoteChangeKindMessageUpdated 是 MessagePollVoteChangeKind 的受支持枚举值。
+	MessagePollVoteChangeKindMessageUpdated MessagePollVoteChangeKind = wire.MessagePollVoteChangeKindMessageUpdated
+	// MessagePollVoteMessageTypePoll 是 MessagePollVoteMessageType 的受支持枚举值。
+	MessagePollVoteMessageTypePoll MessagePollVoteMessageType = wire.MessagePollVoteMessageTypePoll
+	// MessagePollVoteReasonDecryptionFailed 是 MessagePollVoteReason 的受支持枚举值。
+	MessagePollVoteReasonDecryptionFailed MessagePollVoteReason = wire.MessagePollVoteReasonDecryptionFailed
+	// MessagePollVoteReasonMissingPollContext 是 MessagePollVoteReason 的受支持枚举值。
+	MessagePollVoteReasonMissingPollContext MessagePollVoteReason = wire.MessagePollVoteReasonMissingPollContext
+	// MessagePollVoteReasonUnknown 是 MessagePollVoteReason 的受支持枚举值。
+	MessagePollVoteReasonUnknown MessagePollVoteReason = wire.MessagePollVoteReasonUnknown
+	// MessagePollVoteStatusDecoded 是 MessagePollVoteStatus 的受支持枚举值。
+	MessagePollVoteStatusDecoded MessagePollVoteStatus = wire.MessagePollVoteStatusDecoded
+	// MessagePollVoteStatusUnavailable 是 MessagePollVoteStatus 的受支持枚举值。
+	MessagePollVoteStatusUnavailable MessagePollVoteStatus = wire.MessagePollVoteStatusUnavailable
+	// MessagePollVoteUpdatedWebhookEventTypeMessageUpdated 是 MessagePollVoteUpdatedWebhookEventType 的受支持枚举值。
+	MessagePollVoteUpdatedWebhookEventTypeMessageUpdated MessagePollVoteUpdatedWebhookEventType = wire.MessagePollVoteUpdatedWebhookEventTypeMessageUpdated
+	// MessagePollWebhookEventTypeConversationHistory 是 MessagePollWebhookEventType 的受支持枚举值。
+	MessagePollWebhookEventTypeConversationHistory MessagePollWebhookEventType = wire.MessagePollWebhookEventTypeConversationHistory
+	// MessagePollWebhookEventTypeMessageReceived 是 MessagePollWebhookEventType 的受支持枚举值。
+	MessagePollWebhookEventTypeMessageReceived MessagePollWebhookEventType = wire.MessagePollWebhookEventTypeMessageReceived
+	// MessagePollWebhookEventTypeMessageUpdated 是 MessagePollWebhookEventType 的受支持枚举值。
+	MessagePollWebhookEventTypeMessageUpdated MessagePollWebhookEventType = wire.MessagePollWebhookEventTypeMessageUpdated
+	// MessageReferralHistoryWebhookEventTypeConversationHistory 是 MessageReferralHistoryWebhookEventType 的受支持枚举值。
+	MessageReferralHistoryWebhookEventTypeConversationHistory MessageReferralHistoryWebhookEventType = wire.MessageReferralHistoryWebhookEventTypeConversationHistory
+	// MessageReferralMediaTypeImage 是 MessageReferralMediaType 的受支持枚举值。
+	MessageReferralMediaTypeImage MessageReferralMediaType = wire.MessageReferralMediaTypeImage
+	// MessageReferralMediaTypeVideo 是 MessageReferralMediaType 的受支持枚举值。
+	MessageReferralMediaTypeVideo MessageReferralMediaType = wire.MessageReferralMediaTypeVideo
+	// MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeImage 是 MessageReferralReceivedWebhookEventDataMessageReferralMediaType 的受支持枚举值。
+	MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeImage MessageReferralReceivedWebhookEventDataMessageReferralMediaType = wire.MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeImage
+	// MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeVideo 是 MessageReferralReceivedWebhookEventDataMessageReferralMediaType 的受支持枚举值。
+	MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeVideo MessageReferralReceivedWebhookEventDataMessageReferralMediaType = wire.MessageReferralReceivedWebhookEventDataMessageReferralMediaTypeVideo
+	// MessageReferralReceivedWebhookEventDataMessageReferralSourceAd 是 MessageReferralReceivedWebhookEventDataMessageReferralSource 的受支持枚举值。
+	MessageReferralReceivedWebhookEventDataMessageReferralSourceAd MessageReferralReceivedWebhookEventDataMessageReferralSource = wire.MessageReferralReceivedWebhookEventDataMessageReferralSourceAd
+	// MessageReferralReceivedWebhookEventTypeMessageReceived 是 MessageReferralReceivedWebhookEventType 的受支持枚举值。
+	MessageReferralReceivedWebhookEventTypeMessageReceived MessageReferralReceivedWebhookEventType = wire.MessageReferralReceivedWebhookEventTypeMessageReceived
+	// MessageReferralSourceAd 是 MessageReferralSource 的受支持枚举值。
+	MessageReferralSourceAd MessageReferralSource = wire.MessageReferralSourceAd
+	// MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeImage 是 MessageReferralUpdatedWebhookEventDataMessageReferralMediaType 的受支持枚举值。
+	MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeImage MessageReferralUpdatedWebhookEventDataMessageReferralMediaType = wire.MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeImage
+	// MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeVideo 是 MessageReferralUpdatedWebhookEventDataMessageReferralMediaType 的受支持枚举值。
+	MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeVideo MessageReferralUpdatedWebhookEventDataMessageReferralMediaType = wire.MessageReferralUpdatedWebhookEventDataMessageReferralMediaTypeVideo
+	// MessageReferralUpdatedWebhookEventDataMessageReferralSourceAd 是 MessageReferralUpdatedWebhookEventDataMessageReferralSource 的受支持枚举值。
+	MessageReferralUpdatedWebhookEventDataMessageReferralSourceAd MessageReferralUpdatedWebhookEventDataMessageReferralSource = wire.MessageReferralUpdatedWebhookEventDataMessageReferralSourceAd
+	// MessageReferralUpdatedWebhookEventTypeMessageUpdated 是 MessageReferralUpdatedWebhookEventType 的受支持枚举值。
+	MessageReferralUpdatedWebhookEventTypeMessageUpdated MessageReferralUpdatedWebhookEventType = wire.MessageReferralUpdatedWebhookEventTypeMessageUpdated
+	// MessageReferralWebhookEventTypeConversationHistory 是 MessageReferralWebhookEventType 的受支持枚举值。
+	MessageReferralWebhookEventTypeConversationHistory MessageReferralWebhookEventType = wire.MessageReferralWebhookEventTypeConversationHistory
+	// MessageReferralWebhookEventTypeMessageReceived 是 MessageReferralWebhookEventType 的受支持枚举值。
+	MessageReferralWebhookEventTypeMessageReceived MessageReferralWebhookEventType = wire.MessageReferralWebhookEventTypeMessageReceived
+	// MessageReferralWebhookEventTypeMessageUpdated 是 MessageReferralWebhookEventType 的受支持枚举值。
+	MessageReferralWebhookEventTypeMessageUpdated MessageReferralWebhookEventType = wire.MessageReferralWebhookEventTypeMessageUpdated
 	// OkDataOkTrue 是 OkDataOk 的受支持枚举值。
 	OkDataOkTrue OkDataOk = wire.OkDataOkTrue
+	// PollMessagePayloadTypePoll 是 PollMessagePayloadType 的受支持枚举值。
+	PollMessagePayloadTypePoll PollMessagePayloadType = wire.PollMessagePayloadTypePoll
+	// PostCommentCreatedWebhookEventProviderTiktok 是 PostCommentCreatedWebhookEventProvider 的受支持枚举值。
+	PostCommentCreatedWebhookEventProviderTiktok PostCommentCreatedWebhookEventProvider = wire.PostCommentCreatedWebhookEventProviderTiktok
+	// PostCommentCreatedWebhookEventTypePostCommentCreated 是 PostCommentCreatedWebhookEventType 的受支持枚举值。
+	PostCommentCreatedWebhookEventTypePostCommentCreated PostCommentCreatedWebhookEventType = wire.PostCommentCreatedWebhookEventTypePostCommentCreated
+	// PostCommentReplyResultStatusAccepted 是 PostCommentReplyResultStatus 的受支持枚举值。
+	PostCommentReplyResultStatusAccepted PostCommentReplyResultStatus = wire.PostCommentReplyResultStatusAccepted
+	// ProviderInputNameFacebook 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameFacebook ProviderInputName = wire.ProviderInputNameFacebook
+	// ProviderInputNameLine 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameLine ProviderInputName = wire.ProviderInputNameLine
+	// ProviderInputNameTelegram 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameTelegram ProviderInputName = wire.ProviderInputNameTelegram
+	// ProviderInputNameTiktok 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameTiktok ProviderInputName = wire.ProviderInputNameTiktok
+	// ProviderInputNameTwitter 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameTwitter ProviderInputName = wire.ProviderInputNameTwitter
+	// ProviderInputNameTwitterClient 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameTwitterClient ProviderInputName = wire.ProviderInputNameTwitterClient
+	// ProviderInputNameWhatsapp 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameWhatsapp ProviderInputName = wire.ProviderInputNameWhatsapp
+	// ProviderInputNameWhatsappProtocol 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameWhatsappProtocol ProviderInputName = wire.ProviderInputNameWhatsappProtocol
+	// ProviderInputNameX 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameX ProviderInputName = wire.ProviderInputNameX
+	// ProviderInputNameXClient 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameXClient ProviderInputName = wire.ProviderInputNameXClient
+	// ProviderInputNameZalo 是 ProviderInputName 的受支持枚举值。
+	ProviderInputNameZalo ProviderInputName = wire.ProviderInputNameZalo
+	// ProviderNameFacebook 是 ProviderName 的受支持枚举值。
+	ProviderNameFacebook ProviderName = wire.ProviderNameFacebook
 	// ProviderNameLine 是 ProviderName 的受支持枚举值。
-	ProviderNameLine ProviderName = wire.Line
+	ProviderNameLine ProviderName = wire.ProviderNameLine
 	// ProviderNameTelegram 是 ProviderName 的受支持枚举值。
-	ProviderNameTelegram ProviderName = wire.Telegram
+	ProviderNameTelegram ProviderName = wire.ProviderNameTelegram
 	// ProviderNameTiktok 是 ProviderName 的受支持枚举值。
-	ProviderNameTiktok ProviderName = wire.Tiktok
+	ProviderNameTiktok ProviderName = wire.ProviderNameTiktok
 	// ProviderNameTwitter 是 ProviderName 的受支持枚举值。
-	ProviderNameTwitter ProviderName = wire.Twitter
+	ProviderNameTwitter ProviderName = wire.ProviderNameTwitter
 	// ProviderNameWhatsapp 是 ProviderName 的受支持枚举值。
-	ProviderNameWhatsapp ProviderName = wire.Whatsapp
-	// ProviderNameX 是 ProviderName 的受支持枚举值。
-	ProviderNameX ProviderName = wire.X
+	ProviderNameWhatsapp ProviderName = wire.ProviderNameWhatsapp
+	// ProviderNameWhatsappProtocol 是 ProviderName 的受支持枚举值。
+	ProviderNameWhatsappProtocol ProviderName = wire.ProviderNameWhatsappProtocol
 	// ProviderNameZalo 是 ProviderName 的受支持枚举值。
-	ProviderNameZalo ProviderName = wire.Zalo
+	ProviderNameZalo ProviderName = wire.ProviderNameZalo
+	// QRAuthCheckDataActionCheckQRAuth 是 QRAuthCheckDataAction 的受支持枚举值。
+	QRAuthCheckDataActionCheckQRAuth QRAuthCheckDataAction = wire.CheckQRAuth
 	// RuntimeActionResultActionReconnect 是 RuntimeActionResultAction 的受支持枚举值。
 	RuntimeActionResultActionReconnect RuntimeActionResultAction = wire.Reconnect
 	// RuntimeActionResultActionRefreshStatus 是 RuntimeActionResultAction 的受支持枚举值。
@@ -530,12 +2384,22 @@ const (
 	StandardEventTypeAccountAuthSucceeded StandardEventType = wire.StandardEventTypeAccountAuthSucceeded
 	// StandardEventTypeAccountHistorySynced 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeAccountHistorySynced StandardEventType = wire.StandardEventTypeAccountHistorySynced
+	// StandardEventTypeAccountProfileUpdated 是 StandardEventType 的受支持枚举值。
+	StandardEventTypeAccountProfileUpdated StandardEventType = wire.StandardEventTypeAccountProfileUpdated
 	// StandardEventTypeAccountStarted 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeAccountStarted StandardEventType = wire.StandardEventTypeAccountStarted
 	// StandardEventTypeAccountStatusUpdated 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeAccountStatusUpdated StandardEventType = wire.StandardEventTypeAccountStatusUpdated
 	// StandardEventTypeAsterisk 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeAsterisk StandardEventType = wire.StandardEventTypeAsterisk
+	// StandardEventTypeCallAnswered 是 StandardEventType 的受支持枚举值。
+	StandardEventTypeCallAnswered StandardEventType = wire.StandardEventTypeCallAnswered
+	// StandardEventTypeCallEnded 是 StandardEventType 的受支持枚举值。
+	StandardEventTypeCallEnded StandardEventType = wire.StandardEventTypeCallEnded
+	// StandardEventTypeCallIncoming 是 StandardEventType 的受支持枚举值。
+	StandardEventTypeCallIncoming StandardEventType = wire.StandardEventTypeCallIncoming
+	// StandardEventTypeContactUpdated 是 StandardEventType 的受支持枚举值。
+	StandardEventTypeContactUpdated StandardEventType = wire.StandardEventTypeContactUpdated
 	// StandardEventTypeConversationCleared 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeConversationCleared StandardEventType = wire.StandardEventTypeConversationCleared
 	// StandardEventTypeConversationDeleted 是 StandardEventType 的受支持枚举值。
@@ -560,4 +2424,60 @@ const (
 	StandardEventTypeMessageReceived StandardEventType = wire.StandardEventTypeMessageReceived
 	// StandardEventTypeMessageUpdated 是 StandardEventType 的受支持枚举值。
 	StandardEventTypeMessageUpdated StandardEventType = wire.StandardEventTypeMessageUpdated
+	// StandardEventTypePostCommentCreated 是 StandardEventType 的受支持枚举值。
+	StandardEventTypePostCommentCreated StandardEventType = wire.StandardEventTypePostCommentCreated
+	// StartCodeAuthDataActionStartAuth 是 StartCodeAuthDataAction 的受支持枚举值。
+	StartCodeAuthDataActionStartAuth StartCodeAuthDataAction = wire.StartAuth
+	// StickerMessagePayloadTypeSticker 是 StickerMessagePayloadType 的受支持枚举值。
+	StickerMessagePayloadTypeSticker StickerMessagePayloadType = wire.StickerMessagePayloadTypeSticker
+	// TextMessagePayloadTypeText 是 TextMessagePayloadType 的受支持枚举值。
+	TextMessagePayloadTypeText TextMessagePayloadType = wire.TextMessagePayloadTypeText
+	// WebhookEndpointRequestStatusActive 是 WebhookEndpointRequestStatus 的受支持枚举值。
+	WebhookEndpointRequestStatusActive WebhookEndpointRequestStatus = wire.WebhookEndpointRequestStatusActive
+	// WebhookEndpointRequestStatusInactive 是 WebhookEndpointRequestStatus 的受支持枚举值。
+	WebhookEndpointRequestStatusInactive WebhookEndpointRequestStatus = wire.WebhookEndpointRequestStatusInactive
+	// WebhookEndpointStatusActive 是 WebhookEndpointStatus 的受支持枚举值。
+	WebhookEndpointStatusActive WebhookEndpointStatus = wire.WebhookEndpointStatusActive
+	// WebhookEndpointStatusInactive 是 WebhookEndpointStatus 的受支持枚举值。
+	WebhookEndpointStatusInactive WebhookEndpointStatus = wire.WebhookEndpointStatusInactive
+	// WhatsAppAccountAuthFailedWebhookEventDataAuthStatusFailed 是 WhatsAppAccountAuthFailedWebhookEventDataAuthStatus 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataAuthStatusFailed WhatsAppAccountAuthFailedWebhookEventDataAuthStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataAuthStatusFailed
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountAuthFailed 是 WhatsAppAccountAuthFailedWebhookEventDataErrorCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountAuthFailed WhatsAppAccountAuthFailedWebhookEventDataErrorCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountAuthFailed
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountLoggedOut 是 WhatsAppAccountAuthFailedWebhookEventDataErrorCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountLoggedOut WhatsAppAccountAuthFailedWebhookEventDataErrorCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountLoggedOut
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountRestricted 是 WhatsAppAccountAuthFailedWebhookEventDataErrorCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountRestricted WhatsAppAccountAuthFailedWebhookEventDataErrorCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorCodeAccountRestricted
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20100 是 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20100 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20100
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20101 是 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20101 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20101
+	// WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20102 是 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20102 WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCode = wire.WhatsAppAccountAuthFailedWebhookEventDataErrorNumericCodeN20102
+	// WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatusFailed 是 WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatus 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatusFailed WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataEventAuthStatusFailed
+	// WhatsAppAccountAuthFailedWebhookEventDataEventKindAccountAuthStatus 是 WhatsAppAccountAuthFailedWebhookEventDataEventKind 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataEventKindAccountAuthStatus WhatsAppAccountAuthFailedWebhookEventDataEventKind = wire.AccountAuthStatus
+	// WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatusDisconnected 是 WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatus 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatusDisconnected WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataEventRuntimeStatusDisconnected
+	// WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected 是 WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatus 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatus = wire.WhatsAppAccountAuthFailedWebhookEventDataRuntimeStatusDisconnected
+	// WhatsAppAccountAuthFailedWebhookEventProviderWhatsapp 是 WhatsAppAccountAuthFailedWebhookEventProvider 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventProviderWhatsapp WhatsAppAccountAuthFailedWebhookEventProvider = wire.WhatsAppAccountAuthFailedWebhookEventProviderWhatsapp
+	// WhatsAppAccountAuthFailedWebhookEventTypeAccountAuthFailed 是 WhatsAppAccountAuthFailedWebhookEventType 的受支持枚举值。
+	WhatsAppAccountAuthFailedWebhookEventTypeAccountAuthFailed WhatsAppAccountAuthFailedWebhookEventType = wire.WhatsAppAccountAuthFailedWebhookEventTypeAccountAuthFailed
+	// WhatsAppMessageDeviceWebhookEventDataMessageDirectionInbound 是 WhatsAppMessageDeviceWebhookEventDataMessageDirection 的受支持枚举值。
+	WhatsAppMessageDeviceWebhookEventDataMessageDirectionInbound WhatsAppMessageDeviceWebhookEventDataMessageDirection = wire.WhatsAppMessageDeviceWebhookEventDataMessageDirectionInbound
+	// WhatsAppMessageDeviceWebhookEventDataMessageDirectionOutbound 是 WhatsAppMessageDeviceWebhookEventDataMessageDirection 的受支持枚举值。
+	WhatsAppMessageDeviceWebhookEventDataMessageDirectionOutbound WhatsAppMessageDeviceWebhookEventDataMessageDirection = wire.WhatsAppMessageDeviceWebhookEventDataMessageDirectionOutbound
+	// WhatsAppMessageDeviceWebhookEventProviderWhatsapp 是 WhatsAppMessageDeviceWebhookEventProvider 的受支持枚举值。
+	WhatsAppMessageDeviceWebhookEventProviderWhatsapp WhatsAppMessageDeviceWebhookEventProvider = wire.WhatsAppMessageDeviceWebhookEventProviderWhatsapp
+	// WhatsAppMessageDeviceWebhookEventTypeMessageReceived 是 WhatsAppMessageDeviceWebhookEventType 的受支持枚举值。
+	WhatsAppMessageDeviceWebhookEventTypeMessageReceived WhatsAppMessageDeviceWebhookEventType = wire.WhatsAppMessageDeviceWebhookEventTypeMessageReceived
+	// WhatsAppMessageDeviceWebhookEventTypeMessageUpdated 是 WhatsAppMessageDeviceWebhookEventType 的受支持枚举值。
+	WhatsAppMessageDeviceWebhookEventTypeMessageUpdated WhatsAppMessageDeviceWebhookEventType = wire.WhatsAppMessageDeviceWebhookEventTypeMessageUpdated
+	// WorkspaceStatusActive 是 WorkspaceStatus 的受支持枚举值。
+	WorkspaceStatusActive WorkspaceStatus = wire.WorkspaceStatusActive
+	// WorkspaceStatusInactive 是 WorkspaceStatus 的受支持枚举值。
+	WorkspaceStatusInactive WorkspaceStatus = wire.WorkspaceStatusInactive
 )

@@ -9,20 +9,22 @@ SDK. At the current baseline:
 
 | Item | Value |
 | --- | --- |
-| Node package | `@unifyport/sdk-node` `0.3.0` |
+| Node package | `@unifyport/sdk-node` `0.4.0` |
 | Public Node repository | `https://github.com/Unify-Port/UnifyPort-SDK-Nodejs.git` |
-| Public Node commit | `235f40c46a25ffac6dd6bc89e054d6ce56081cb0` |
-| Contract SHA-256 | `513fd190e4c1df911c616d199bc083ef0968cd1f2a25e1aafd7124c94a42aa44` |
-| Operations | 64 |
-| Component schemas | 69 |
-| Resource tags | 11 |
+| Public Node commit | `ce60499d7169c860ed3f64a686e04bff44316f35` |
+| Contract SHA-256 | `8190a34dc8ed60476f79e00b37d9dea418082886724ee6d64efa389f440adffc` |
+| Operations | 78 |
+| Component schemas | 225 |
+| Resource tags | 13 |
 
 The checked-in contract and generated manifest are authoritative. Counts in this document are
 acceptance expectations and must be regenerated when the baseline changes.
 
+The baseline kind is `approved-source`. The package version above is source metadata at that commit, not a claim that the npm release includes these capabilities.
+
 ## Coverage expectations
 
-The Go SDK must preserve all 64 public operations across workspace, API keys, providers, accounts,
+The Go SDK must preserve all 78 public operations across workspace, API keys, providers, accounts,
 account authorization, account runtime, conversations, contacts, groups, messages, and webhook
 endpoints. No operation may disappear because its route belongs to a provider account or because its
 security policy is conservative.
@@ -32,9 +34,9 @@ The policy baseline contains:
 | Classification | Expected count |
 | --- | ---: |
 | Explicitly retryable operations | 19 |
-| Destructive operations | 7 |
-| Secret-input operations | 8 |
-| Secret-output operations | 8 |
+| Destructive operations | 8 |
+| Secret-input operations | 9 |
+| Secret-output operations | 16 |
 
 The generated parity manifest, rather than these prose counts, must enumerate every operation and its
 method, path, tag, Go method, request/response type, retry flag, mutability, and secret flags.
@@ -44,8 +46,8 @@ method, path, tag, Go method, request/response type, retry flag, mutability, and
 | Node SDK concept | Go SDK concept | Parity rule |
 | --- | --- | --- |
 | `contracts/device.openapi.yaml` | `contracts/device.openapi.yaml` | Exact approved public snapshot |
-| `UnifyPortDeviceClient` | `Client` | Same 64 operation IDs through Go-style names |
-| Generated schemas | Generated public models and `internal/wire` models | All 69 schemas traceable |
+| `UnifyPortDeviceClient` | `Client` | Same 78 operation IDs through Go-style names |
+| Generated schemas | Generated public models and `internal/wire` models | All 225 schemas traceable |
 | Generated operation catalog | Generated Go operations and parity manifest | Method/path/policy exact |
 | `DeviceClientConfig` | `Config` | Same security defaults and finite limits |
 | `RetryConfig` | `RetryConfig` | Same default and hard-limit intent |

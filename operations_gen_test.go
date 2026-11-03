@@ -4,8 +4,8 @@ import "testing"
 
 func TestGeneratedOperationCatalogIsCompleteAndDefensive(t *testing.T) {
 	operations := Operations()
-	if len(operations) != 64 {
-		t.Fatalf("len(Operations()) = %d, want 64", len(operations))
+	if len(operations) != 78 {
+		t.Fatalf("len(Operations()) = %d, want 78", len(operations))
 	}
 	counts := struct {
 		retryable    int
@@ -39,7 +39,7 @@ func TestGeneratedOperationCatalogIsCompleteAndDefensive(t *testing.T) {
 			t.Fatalf("LookupOperation(%q) = %#v, %t", operation.ID, lookedUp, ok)
 		}
 	}
-	if counts.retryable != 19 || counts.destructive != 7 || counts.secretInput != 8 || counts.secretOutput != 8 {
+	if counts.retryable != 19 || counts.destructive != 8 || counts.secretInput != 9 || counts.secretOutput != 16 {
 		t.Fatalf("operation policy counts = %#v", counts)
 	}
 

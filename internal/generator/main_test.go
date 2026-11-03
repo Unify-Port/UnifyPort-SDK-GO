@@ -18,13 +18,14 @@ func TestBuildManifestMatchesApprovedBaseline(t *testing.T) {
 		t.Fatalf("buildManifest() error = %v", err)
 	}
 
-	if result.OperationCount != 64 {
-		t.Fatalf("OperationCount = %d, want 64", result.OperationCount)
+	if result.OperationCount != 78 {
+		t.Fatalf("OperationCount = %d, want 78", result.OperationCount)
 	}
-	if result.SchemaCount != 69 {
-		t.Fatalf("SchemaCount = %d, want 69", result.SchemaCount)
+	// FB 接收模型增加覆盖量，不应扩大 HTTP operation 或放宽安全策略。
+	if result.SchemaCount != 225 {
+		t.Fatalf("SchemaCount = %d, want 225", result.SchemaCount)
 	}
-	wantCounts := policyCounts{Retryable: 19, Destructive: 7, SecretInput: 8, SecretOutput: 8}
+	wantCounts := policyCounts{Retryable: 19, Destructive: 8, SecretInput: 9, SecretOutput: 16}
 	if result.PolicyCounts != wantCounts {
 		t.Fatalf("PolicyCounts = %#v, want %#v", result.PolicyCounts, wantCounts)
 	}
@@ -42,8 +43,8 @@ func TestBuildManifestMatchesApprovedBaseline(t *testing.T) {
 	if got := result.Schemas["RuntimeActionResult"].GoType; got != "RuntimeActionResult" {
 		t.Fatalf("RuntimeActionResult GoType = %q, want RuntimeActionResult", got)
 	}
-	if got := result.Operations["deleteAccount"].DataGoType; got != "NoContent" {
-		t.Fatalf("deleteAccount DataGoType = %q, want NoContent", got)
+	if got := result.Operations["deleteAccount"].DataGoType; got != "*AccountOperation" {
+		t.Fatalf("deleteAccount DataGoType = %q, want *AccountOperation", got)
 	}
 	if got := result.Operations["getContact"].RequestArguments[1].GoType; got != "GetContactParams" {
 		t.Fatalf("getContact Params GoType = %q, want required value", got)
@@ -55,24 +56,16 @@ func TestBuildManifestMatchesApprovedBaseline(t *testing.T) {
 		t.Fatalf("cancelAccountAuth Body GoType = %q, want optional pointer", got)
 	}
 	readRequirements := result.Operations["markConversationRead"].DependentRequirements
-	wantReadRequirements := []dependentRequirement{
-		{IfJSONField: "up_to_message_id", IfGoField: "UpToMessageID", RequiresJSONField: "up_to_message_sender_id", RequiresGoField: "UpToMessageSenderID"},
-		{IfJSONField: "up_to_message_sender_id", IfGoField: "UpToMessageSenderID", RequiresJSONField: "up_to_message_id", RequiresGoField: "UpToMessageID"},
-	}
-	if len(readRequirements) != len(wantReadRequirements) {
-		t.Fatalf("markConversationRead dependent requirements = %#v, want %#v", readRequirements, wantReadRequirements)
-	}
-	for index := range wantReadRequirements {
-		if readRequirements[index] != wantReadRequirements[index] {
-			t.Fatalf("markConversationRead dependent requirement %d = %#v, want %#v", index, readRequirements[index], wantReadRequirements[index])
-		}
+	// Telegram 只接受消息边界，WhatsApp 成对约束不能提升为所有 provider 的 guard。
+	if len(readRequirements) != 0 {
+		t.Fatalf("unexpected provider-independent read guard: %#v", readRequirements)
 	}
 
 	models, err := generateModels(result)
 	if err != nil {
 		t.Fatalf("generateModels() error = %v", err)
 	}
-	if !strings.Contains(string(models), "ProviderNameLine ProviderName = wire.Line") || !strings.Contains(string(models), "GroupJoinRequestsUpdateRequestActionApprove") {
+	if !strings.Contains(string(models), "ProviderNameLine ProviderName = wire.ProviderNameLine") || !strings.Contains(string(models), "GroupJoinRequestsUpdateRequestActionApprove") {
 		t.Fatal("generated enum constants do not use stable type-prefixed names")
 	}
 	if regexp.MustCompile(`(?m)^\s*(Line|Start)\s`).Match(models) {
@@ -82,11 +75,11 @@ func TestBuildManifestMatchesApprovedBaseline(t *testing.T) {
 	if err != nil {
 		t.Fatalf("generateOperations() error = %v", err)
 	}
-	if count := len(regexp.MustCompile(`(?m)^func \(c \*Client\) [A-Za-z0-9]+\(`).FindAll(operations, -1)); count != 64 {
-		t.Fatalf("generated Client method count = %d, want 64", count)
+	if count := len(regexp.MustCompile(`(?m)^func \(c \*Client\) [A-Za-z0-9]+\(`).FindAll(operations, -1)); count != 78 {
+		t.Fatalf("generated Client method count = %d, want 78", count)
 	}
-	if !strings.Contains(string(operations), `Reason: "up_to_message_sender_id is required when up_to_message_id is provided"`) {
-		t.Fatal("generated facade does not enforce OpenAPI dependentRequired before request execution")
+	if strings.Contains(string(operations), `Reason: "up_to_message_sender_id is required when up_to_message_id is provided"`) {
+		t.Fatal("generated facade rejects the legal Telegram read boundary")
 	}
 }
 
